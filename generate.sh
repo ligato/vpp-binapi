@@ -14,7 +14,7 @@ VPP_VERSION=$(git describe --always --tags)
 cd ../
 rm -rf ./binapi/*
 
-echo "Generating for VPP ${VPP_VERSION}"
+echo "Generating binapi for VPP ${VPP_VERSION}"
 
 # Generate .api.json files
 find vpp -name \*.api -printf "echo %p \
@@ -22,8 +22,8 @@ find vpp -name \*.api -printf "echo %p \
  --input %p --output binapi/%f.json JSON\n" | xargs -0 sh -c
 
 # Generate Go code
-go install -v git.fd.io/govpp.git/cmd/binapi-generator
-binapi-generator --input-dir=binapi --output-dir=binapi
+GOBIN=$PWD/bin go install -v git.fd.io/govpp.git/cmd/binapi-generator
+./bin/binapi-generator --input-dir=binapi --output-dir=binapi
 
 # Store VPP version to file
-echo ${VPP_VERSION} > VPP_VERSION
+echo -n ${VPP_VERSION} > VPP_VERSION
