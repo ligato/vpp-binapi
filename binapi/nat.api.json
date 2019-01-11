@@ -1655,7 +1655,7 @@
                 "affinity"
             ],
             [
-                "u8",
+                "u32",
                 "local_num"
             ],
             [
@@ -1665,11 +1665,68 @@
                 "local_num"
             ],
             {
-                "crc": "0x135f5f3a"
+                "crc": "0x56a9542c"
             }
         ],
         [
             "nat44_add_del_lb_static_mapping_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "nat44_lb_static_mapping_add_del_local",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u8",
+                "is_add"
+            ],
+            [
+                "u8",
+                "external_addr",
+                4
+            ],
+            [
+                "u16",
+                "external_port"
+            ],
+            [
+                "u8",
+                "protocol"
+            ],
+            [
+                "vl_api_nat44_lb_addr_port_t",
+                "local"
+            ],
+            {
+                "crc": "0x611a9a33"
+            }
+        ],
+        [
+            "nat44_lb_static_mapping_add_del_local_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -1749,7 +1806,7 @@
                 "affinity"
             ],
             [
-                "u8",
+                "u32",
                 "local_num"
             ],
             [
@@ -1759,7 +1816,7 @@
                 "local_num"
             ],
             {
-                "crc": "0xe5aba6bb"
+                "crc": "0xcce01363"
             }
         ],
         [
@@ -3339,7 +3396,7 @@
             }
         ]
     ],
-    "vl_api_version": "0x769423c0",
+    "vl_api_version": "0x6e4a2494",
     "unions": [],
     "services": {
         "nat66_static_mapping_dump": {
@@ -3355,8 +3412,9 @@
         "nat66_add_del_interface": {
             "reply": "nat66_add_del_interface_reply"
         },
-        "nat64_add_del_static_bib": {
-            "reply": "nat64_add_del_static_bib_reply"
+        "dslite_address_dump": {
+            "reply": "dslite_address_details",
+            "stream": true
         },
         "nat_ipfix_enable_disable": {
             "reply": "nat_ipfix_enable_disable_reply"
@@ -3439,9 +3497,6 @@
         "nat44_forwarding_is_enabled": {
             "reply": "nat44_forwarding_is_enabled_reply"
         },
-        "nat64_add_del_prefix": {
-            "reply": "nat64_add_del_prefix_reply"
-        },
         "nat44_interface_addr_dump": {
             "reply": "nat44_interface_addr_details",
             "stream": true
@@ -3453,6 +3508,9 @@
             "reply": "nat44_user_details",
             "stream": true
         },
+        "nat44_lb_static_mapping_add_del_local": {
+            "reply": "nat44_lb_static_mapping_add_del_local_reply"
+        },
         "nat44_del_session": {
             "reply": "nat44_del_session_reply"
         },
@@ -3462,6 +3520,9 @@
         },
         "nat_set_mss_clamping": {
             "reply": "nat_set_mss_clamping_reply"
+        },
+        "nat64_add_del_static_bib": {
+            "reply": "nat64_add_del_static_bib_reply"
         },
         "nat_reass_dump": {
             "reply": "nat_reass_details",
@@ -3530,9 +3591,8 @@
             "reply": "nat_det_session_details",
             "stream": true
         },
-        "dslite_address_dump": {
-            "reply": "dslite_address_details",
-            "stream": true
+        "nat64_add_del_prefix": {
+            "reply": "nat64_add_del_prefix_reply"
         },
         "nat64_add_del_interface_addr": {
             "reply": "nat64_add_del_interface_addr_reply"

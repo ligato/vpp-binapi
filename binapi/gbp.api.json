@@ -993,7 +993,7 @@
             }
         ]
     ],
-    "vl_api_version": "0x5cb4022e",
+    "vl_api_version": "0xa453fb07",
     "unions": [
         [
             "address_union",
@@ -1305,17 +1305,6 @@
             }
         ],
         [
-            "mac_address",
-            [
-                "u8",
-                "bytes",
-                6
-            ],
-            {
-                "crc": "0xefdbdddc"
-            }
-        ],
-        [
             "gbp_bridge_domain",
             [
                 "u32",
@@ -1558,8 +1547,18 @@
                 0,
                 "n_rules"
             ],
+            [
+                "u8",
+                "n_ether_types"
+            ],
+            [
+                "u16",
+                "allowed_ethertypes",
+                0,
+                "n_ether_types"
+            ],
             {
-                "crc": "0x90f7adfc"
+                "crc": "0xdc8898ce"
             }
         ],
         [
@@ -1606,6 +1605,10 @@
         },
         "ip4_address": {
             "length": 4,
+            "type": "u8"
+        },
+        "mac_address": {
+            "length": 6,
             "type": "u8"
         }
     }

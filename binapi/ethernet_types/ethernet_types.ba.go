@@ -5,7 +5,7 @@
  Package ethernet_types is a generated from VPP binary API module 'ethernet_types'.
 
  It contains following objects:
-	  1 type
+	  1 alias
 
 */
 package ethernet_types
@@ -19,30 +19,16 @@ var _ = api.RegisterMessage
 var _ = struc.Pack
 var _ = bytes.NewBuffer
 
-/* Types */
+/* Aliases */
 
-// MacAddress represents VPP binary API type 'mac_address':
+// MacAddress represents VPP binary API alias 'mac_address':
 //
-//	"mac_address",
-//	[
-//	    "u8",
-//	    "bytes",
-//	    6
-//	],
-//	{
-//	    "crc": "0xefdbdddc"
+//	"mac_address": {
+//	    "length": 6,
+//	    "type": "u8"
 //	}
 //
-type MacAddress struct {
-	Bytes []byte `struc:"[6]byte"`
-}
-
-func (*MacAddress) GetTypeName() string {
-	return "mac_address"
-}
-func (*MacAddress) GetCrcString() string {
-	return "efdbdddc"
-}
+type MacAddress [6]uint8
 
 func init() {
 }

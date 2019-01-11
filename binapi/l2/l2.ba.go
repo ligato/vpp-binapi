@@ -5,12 +5,12 @@
  Package l2 is a generated from VPP binary API module 'l2'.
 
  It contains following objects:
-	 45 messages
-	  8 types
-	  2 aliases
+	 47 messages
+	  7 types
+	  3 aliases
 	  3 enums
 	  1 union
-	 22 services
+	 23 services
 
 */
 package l2
@@ -43,6 +43,9 @@ var _ = bytes.NewBuffer
 //	    "bd_ip_mac_dump": {
 //	        "reply": "bd_ip_mac_details",
 //	        "stream": true
+//	    },
+//	    "bd_ip_mac_flush": {
+//	        "reply": "bd_ip_mac_flush_reply"
 //	    },
 //	    "l2_interface_pbb_tag_rewrite": {
 //	        "reply": "l2_interface_pbb_tag_rewrite_reply"
@@ -108,6 +111,7 @@ type Services interface {
 	DumpL2FibTable(*L2FibTableDump) ([]*L2FibTableDetails, error)
 	DumpL2Xconnect(*L2XconnectDump) ([]*L2XconnectDetails, error)
 	BdIPMacAddDel(*BdIPMacAddDel) (*BdIPMacAddDelReply, error)
+	BdIPMacFlush(*BdIPMacFlush) (*BdIPMacFlushReply, error)
 	BridgeDomainAddDel(*BridgeDomainAddDel) (*BridgeDomainAddDelReply, error)
 	BridgeDomainSetMacAge(*BridgeDomainSetMacAge) (*BridgeDomainSetMacAgeReply, error)
 	BridgeFlags(*BridgeFlags) (*BridgeFlagsReply, error)
@@ -222,7 +226,7 @@ const (
 //	"ip4_address": {
 //	    "length": 4,
 //	    "type": "u8"
-//	}
+//	},
 //
 type IP4Address [4]uint8
 
@@ -234,6 +238,15 @@ type IP4Address [4]uint8
 //	},
 //
 type IP6Address [16]uint8
+
+// MacAddress represents VPP binary API alias 'mac_address':
+//
+//	"mac_address": {
+//	    "length": 6,
+//	    "type": "u8"
+//	}
+//
+type MacAddress [6]uint8
 
 /* Types */
 
@@ -380,22 +393,6 @@ func (*IP4Prefix) GetTypeName() string {
 }
 func (*IP4Prefix) GetCrcString() string {
 	return "ea8dc11d"
-}
-
-// MacAddress represents VPP binary API type 'mac_address':
-//
-//	"mac_address",
-//	6
-//
-type MacAddress struct {
-	Bytes []byte `struc:"[6]byte"`
-}
-
-func (*MacAddress) GetTypeName() string {
-	return "mac_address"
-}
-func (*MacAddress) GetCrcString() string {
-	return "efdbdddc"
 }
 
 // MacEntry represents VPP binary API type 'mac_entry':
@@ -2204,6 +2201,76 @@ func (*BdIPMacAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// BdIPMacFlush represents VPP binary API message 'bd_ip_mac_flush':
+//
+//	"bd_ip_mac_flush",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	{
+//	    "crc": "0xc25fdce6"
+//	}
+//
+type BdIPMacFlush struct {
+	BdID uint32
+}
+
+func (*BdIPMacFlush) GetMessageName() string {
+	return "bd_ip_mac_flush"
+}
+func (*BdIPMacFlush) GetCrcString() string {
+	return "c25fdce6"
+}
+func (*BdIPMacFlush) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BdIPMacFlushReply represents VPP binary API message 'bd_ip_mac_flush_reply':
+//
+//	"bd_ip_mac_flush_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type BdIPMacFlushReply struct {
+	Retval int32
+}
+
+func (*BdIPMacFlushReply) GetMessageName() string {
+	return "bd_ip_mac_flush_reply"
+}
+func (*BdIPMacFlushReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*BdIPMacFlushReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // BdIPMacDetails represents VPP binary API message 'bd_ip_mac_details':
 //
 //	"bd_ip_mac_details",
@@ -2229,26 +2296,25 @@ func (*BdIPMacAddDelReply) GetMessageType() api.MessageType {
 //	    16
 //	],
 //	[
-//	    "u8",
-//	    "mac_address",
-//	    6
+//	    "vl_api_mac_address_t",
+//	    "mac_address"
 //	],
 //	{
-//	    "crc": "0xd3184eda"
+//	    "crc": "0xc05c27de"
 //	}
 //
 type BdIPMacDetails struct {
 	BdID       uint32
 	IsIPv6     uint8
 	IPAddress  []byte `struc:"[16]byte"`
-	MacAddress []byte `struc:"[6]byte"`
+	MacAddress MacAddress
 }
 
 func (*BdIPMacDetails) GetMessageName() string {
 	return "bd_ip_mac_details"
 }
 func (*BdIPMacDetails) GetCrcString() string {
-	return "d3184eda"
+	return "c05c27de"
 }
 func (*BdIPMacDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -2481,6 +2547,8 @@ func init() {
 	api.RegisterMessage((*SwInterfaceSetL2BridgeReply)(nil), "l2.SwInterfaceSetL2BridgeReply")
 	api.RegisterMessage((*BdIPMacAddDel)(nil), "l2.BdIPMacAddDel")
 	api.RegisterMessage((*BdIPMacAddDelReply)(nil), "l2.BdIPMacAddDelReply")
+	api.RegisterMessage((*BdIPMacFlush)(nil), "l2.BdIPMacFlush")
+	api.RegisterMessage((*BdIPMacFlushReply)(nil), "l2.BdIPMacFlushReply")
 	api.RegisterMessage((*BdIPMacDetails)(nil), "l2.BdIPMacDetails")
 	api.RegisterMessage((*BdIPMacDump)(nil), "l2.BdIPMacDump")
 	api.RegisterMessage((*L2InterfaceEfpFilter)(nil), "l2.L2InterfaceEfpFilter")

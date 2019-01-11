@@ -120,8 +120,12 @@
                 "tag",
                 64
             ],
+            [
+                "u32",
+                "tap_flags"
+            ],
             {
-                "crc": "0x34ce8043"
+                "crc": "0xeabede03"
             }
         ],
         [
@@ -273,12 +277,16 @@
                 "u8",
                 "host_ip6_prefix_len"
             ],
+            [
+                "u32",
+                "tap_flags"
+            ],
             {
-                "crc": "0xb4c58229"
+                "crc": "0x73dbc2d2"
             }
         ]
     ],
-    "vl_api_version": "0xf9dbb681",
+    "vl_api_version": "0xaebf5bff",
     "unions": [],
     "services": {
         "tap_create_v2": {

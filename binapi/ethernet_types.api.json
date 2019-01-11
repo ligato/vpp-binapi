@@ -1,21 +1,14 @@
 {
     "messages": [],
-    "vl_api_version": "0xefdbdddc",
+    "vl_api_version": "0xd4ff2808",
     "unions": [],
     "services": {},
     "enums": [],
-    "types": [
-        [
-            "mac_address",
-            [
-                "u8",
-                "bytes",
-                6
-            ],
-            {
-                "crc": "0xefdbdddc"
-            }
-        ]
-    ],
-    "aliases": {}
+    "types": [],
+    "aliases": {
+        "mac_address": {
+            "length": 6,
+            "type": "u8"
+        }
+    }
 }

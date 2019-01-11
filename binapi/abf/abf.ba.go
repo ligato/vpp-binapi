@@ -147,6 +147,10 @@ func (*FibMplsLabel) GetCrcString() string {
 //	],
 //	[
 //	    "u8",
+//	    "is_interface_rx"
+//	],
+//	[
+//	    "u8",
 //	    "afi"
 //	],
 //	[
@@ -176,7 +180,7 @@ func (*FibMplsLabel) GetCrcString() string {
 //	    16
 //	],
 //	{
-//	    "crc": "0xabe483ef"
+//	    "crc": "0xba7a81f0"
 //	}
 //
 type FibPath struct {
@@ -193,6 +197,7 @@ type FibPath struct {
 	IsResolveAttached uint8
 	IsDvr             uint8
 	IsSourceLookup    uint8
+	IsInterfaceRx     uint8
 	Afi               uint8
 	NextHop           []byte `struc:"[16]byte"`
 	NextHopID         uint32
@@ -206,7 +211,7 @@ func (*FibPath) GetTypeName() string {
 	return "fib_path"
 }
 func (*FibPath) GetCrcString() string {
-	return "abe483ef"
+	return "ba7a81f0"
 }
 
 // AbfPolicy represents VPP binary API type 'abf_policy':

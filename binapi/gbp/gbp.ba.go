@@ -6,8 +6,8 @@
 
  It contains following objects:
 	 50 messages
-	 19 types
-	  2 aliases
+	 18 types
+	  3 aliases
 	  7 enums
 	  1 union
 	 24 services
@@ -335,6 +335,15 @@ const (
 
 /* Aliases */
 
+// IP4Address represents VPP binary API alias 'ip4_address':
+//
+//	"ip4_address": {
+//	    "length": 4,
+//	    "type": "u8"
+//	},
+//
+type IP4Address [4]uint8
+
 // IP6Address represents VPP binary API alias 'ip6_address':
 //
 //	"ip6_address": {
@@ -344,14 +353,14 @@ const (
 //
 type IP6Address [16]uint8
 
-// IP4Address represents VPP binary API alias 'ip4_address':
+// MacAddress represents VPP binary API alias 'mac_address':
 //
-//	"ip4_address": {
-//	    "length": 4,
+//	"mac_address": {
+//	    "length": 6,
 //	    "type": "u8"
 //	}
 //
-type IP4Address [4]uint8
+type MacAddress [6]uint8
 
 /* Types */
 
@@ -498,29 +507,6 @@ func (*IP4Prefix) GetTypeName() string {
 }
 func (*IP4Prefix) GetCrcString() string {
 	return "ea8dc11d"
-}
-
-// MacAddress represents VPP binary API type 'mac_address':
-//
-//	"mac_address",
-//	[
-//	    "u8",
-//	    "bytes",
-//	    6
-//	],
-//	{
-//	    "crc": "0xefdbdddc"
-//	}
-//
-type MacAddress struct {
-	Bytes []byte `struc:"[6]byte"`
-}
-
-func (*MacAddress) GetTypeName() string {
-	return "mac_address"
-}
-func (*MacAddress) GetCrcString() string {
-	return "efdbdddc"
 }
 
 // GbpBridgeDomain represents VPP binary API type 'gbp_bridge_domain':
@@ -916,23 +902,35 @@ func (*GbpRule) GetCrcString() string {
 //	    0,
 //	    "n_rules"
 //	],
+//	[
+//	    "u8",
+//	    "n_ether_types"
+//	],
+//	[
+//	    "u16",
+//	    "allowed_ethertypes",
+//	    0,
+//	    "n_ether_types"
+//	],
 //	{
-//	    "crc": "0x90f7adfc"
+//	    "crc": "0xdc8898ce"
 //	}
 //
 type GbpContract struct {
-	SrcEpg   uint16
-	DstEpg   uint16
-	ACLIndex uint32
-	NRules   uint8 `struc:"sizeof=Rules"`
-	Rules    []GbpRule
+	SrcEpg            uint16
+	DstEpg            uint16
+	ACLIndex          uint32
+	NRules            uint8 `struc:"sizeof=Rules"`
+	Rules             []GbpRule
+	NEtherTypes       uint8 `struc:"sizeof=AllowedEthertypes"`
+	AllowedEthertypes []uint16
 }
 
 func (*GbpContract) GetTypeName() string {
 	return "gbp_contract"
 }
 func (*GbpContract) GetCrcString() string {
-	return "90f7adfc"
+	return "dc8898ce"
 }
 
 // GbpVxlanTunnel represents VPP binary API type 'gbp_vxlan_tunnel':
