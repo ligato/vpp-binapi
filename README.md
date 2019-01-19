@@ -1,7 +1,7 @@
 # vpp-binapi
 **vpp-binapi** repository contains generated Go code for [VPP binary API](https://wiki.fd.io/view/VPP/The_VPP_API) generated with [GoVPP](https://github.com/FDio/govpp)'s binapi-generator.
 
-### Versioning
+## Versioning
 
 The version of VPP that was used for generating the code is defined in [`VPP_VERSION`](VPP_VERSION) file.
 
