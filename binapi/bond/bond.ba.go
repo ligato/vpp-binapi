@@ -72,6 +72,10 @@ type Services interface {
 //	    "context"
 //	],
 //	[
+//	    "u32",
+//	    "id"
+//	],
+//	[
 //	    "u8",
 //	    "use_custom_mac"
 //	],
@@ -89,10 +93,11 @@ type Services interface {
 //	    "lb"
 //	],
 //	{
-//	    "crc": "0x6921214e"
+//	    "crc": "0x3b21645d"
 //	}
 //
 type BondCreate struct {
+	ID           uint32
 	UseCustomMac uint8
 	MacAddress   []byte `struc:"[6]byte"`
 	Mode         uint8
@@ -103,7 +108,7 @@ func (*BondCreate) GetMessageName() string {
 	return "bond_create"
 }
 func (*BondCreate) GetCrcString() string {
-	return "6921214e"
+	return "3b21645d"
 }
 func (*BondCreate) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -419,6 +424,10 @@ func (*SwInterfaceBondDump) GetMessageType() api.MessageType {
 //	    "sw_if_index"
 //	],
 //	[
+//	    "u32",
+//	    "id"
+//	],
+//	[
 //	    "u8",
 //	    "interface_name",
 //	    64
@@ -440,11 +449,12 @@ func (*SwInterfaceBondDump) GetMessageType() api.MessageType {
 //	    "slaves"
 //	],
 //	{
-//	    "crc": "0xaae79478"
+//	    "crc": "0x22e48daa"
 //	}
 //
 type SwInterfaceBondDetails struct {
 	SwIfIndex     uint32
+	ID            uint32
 	InterfaceName []byte `struc:"[64]byte"`
 	Mode          uint8
 	Lb            uint8
@@ -456,7 +466,7 @@ func (*SwInterfaceBondDetails) GetMessageName() string {
 	return "sw_interface_bond_details"
 }
 func (*SwInterfaceBondDetails) GetCrcString() string {
-	return "aae79478"
+	return "22e48daa"
 }
 func (*SwInterfaceBondDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage

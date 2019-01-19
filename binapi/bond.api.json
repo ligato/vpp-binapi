@@ -15,6 +15,10 @@
                 "context"
             ],
             [
+                "u32",
+                "id"
+            ],
+            [
                 "u8",
                 "use_custom_mac"
             ],
@@ -32,7 +36,7 @@
                 "lb"
             ],
             {
-                "crc": "0x6921214e"
+                "crc": "0x3b21645d"
             }
         ],
         [
@@ -222,6 +226,10 @@
                 "sw_if_index"
             ],
             [
+                "u32",
+                "id"
+            ],
+            [
                 "u8",
                 "interface_name",
                 64
@@ -243,7 +251,7 @@
                 "slaves"
             ],
             {
-                "crc": "0xaae79478"
+                "crc": "0x22e48daa"
             }
         ],
         [
@@ -300,7 +308,7 @@
             }
         ]
     ],
-    "vl_api_version": "0x139f4f11",
+    "vl_api_version": "0x33cb944c",
     "unions": [],
     "services": {
         "bond_enslave": {
