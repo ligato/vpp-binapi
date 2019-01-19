@@ -19,6 +19,9 @@ var _ = api.RegisterMessage
 var _ = struc.Pack
 var _ = bytes.NewBuffer
 
+// VlAPIVersion represents version of the binary API module.
+const VlAPIVersion = 0x7acecda3
+
 /* Types */
 
 // FibMplsLabel represents VPP binary API type 'fib_mpls_label':

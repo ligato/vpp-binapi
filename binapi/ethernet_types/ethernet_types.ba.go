@@ -19,6 +19,9 @@ var _ = api.RegisterMessage
 var _ = struc.Pack
 var _ = bytes.NewBuffer
 
+// VlAPIVersion represents version of the binary API module.
+const VlAPIVersion = 0xd4ff2808
+
 /* Aliases */
 
 // MacAddress represents VPP binary API alias 'mac_address':

@@ -22,6 +22,9 @@ var _ = api.RegisterMessage
 var _ = struc.Pack
 var _ = bytes.NewBuffer
 
+// VlAPIVersion represents version of the binary API module.
+const VlAPIVersion = 0x8492dbcc
+
 /* Enums */
 
 // AddressFamily represents VPP binary API enum 'address_family':

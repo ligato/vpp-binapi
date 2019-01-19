@@ -20,6 +20,9 @@ var _ = api.RegisterMessage
 var _ = struc.Pack
 var _ = bytes.NewBuffer
 
+// VlAPIVersion represents version of the binary API module.
+const VlAPIVersion = 0x22132a2c
+
 // Services represents VPP binary API services:
 //
 //	"services": {

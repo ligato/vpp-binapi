@@ -19,6 +19,9 @@ var _ = api.RegisterMessage
 var _ = struc.Pack
 var _ = bytes.NewBuffer
 
+// VlAPIVersion represents version of the binary API module.
+const VlAPIVersion = 0xfa73ea25
+
 /* Aliases */
 
 // InterfaceIndex represents VPP binary API alias 'interface_index':
