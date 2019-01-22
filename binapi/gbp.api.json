@@ -993,7 +993,7 @@
             }
         ]
     ],
-    "vl_api_version": "0xa453fb07",
+    "vl_api_version": "0xd29ccc94",
     "unions": [
         [
             "address_union",
@@ -1322,8 +1322,12 @@
                 "u32",
                 "uu_fwd_sw_if_index"
             ],
+            [
+                "u32",
+                "bm_flood_sw_if_index"
+            ],
             {
-                "crc": "0xacd57302"
+                "crc": "0xf8b939f0"
             }
         ],
         [
@@ -1409,6 +1413,10 @@
                 "epg_id"
             ],
             [
+                "u16",
+                "sclass"
+            ],
+            [
                 "u32",
                 "bd_id"
             ],
@@ -1421,7 +1429,7 @@
                 "uplink_sw_if_index"
             ],
             {
-                "crc": "0x1a85aac3"
+                "crc": "0xb61e0672"
             }
         ],
         [

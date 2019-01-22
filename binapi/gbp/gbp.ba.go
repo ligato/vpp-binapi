@@ -25,7 +25,7 @@ var _ = struc.Pack
 var _ = bytes.NewBuffer
 
 // VlAPIVersion represents version of the binary API module.
-const VlAPIVersion = 0xa453fb07
+const VlAPIVersion = 0xd29ccc94
 
 // Services represents VPP binary API services:
 //
@@ -531,22 +531,27 @@ func (*IP4Prefix) GetCrcString() string {
 //	    "u32",
 //	    "uu_fwd_sw_if_index"
 //	],
+//	[
+//	    "u32",
+//	    "bm_flood_sw_if_index"
+//	],
 //	{
-//	    "crc": "0xacd57302"
+//	    "crc": "0xf8b939f0"
 //	}
 //
 type GbpBridgeDomain struct {
-	BdID           uint32
-	Flags          GbpBridgeDomainFlags
-	BviSwIfIndex   uint32
-	UuFwdSwIfIndex uint32
+	BdID             uint32
+	Flags            GbpBridgeDomainFlags
+	BviSwIfIndex     uint32
+	UuFwdSwIfIndex   uint32
+	BmFloodSwIfIndex uint32
 }
 
 func (*GbpBridgeDomain) GetTypeName() string {
 	return "gbp_bridge_domain"
 }
 func (*GbpBridgeDomain) GetCrcString() string {
-	return "acd57302"
+	return "f8b939f0"
 }
 
 // GbpRouteDomain represents VPP binary API type 'gbp_route_domain':
@@ -680,6 +685,10 @@ func (*GbpEndpoint) GetCrcString() string {
 //	    "epg_id"
 //	],
 //	[
+//	    "u16",
+//	    "sclass"
+//	],
+//	[
 //	    "u32",
 //	    "bd_id"
 //	],
@@ -692,11 +701,12 @@ func (*GbpEndpoint) GetCrcString() string {
 //	    "uplink_sw_if_index"
 //	],
 //	{
-//	    "crc": "0x1a85aac3"
+//	    "crc": "0xb61e0672"
 //	}
 //
 type GbpEndpointGroup struct {
 	EpgID           uint16
+	Sclass          uint16
 	BdID            uint32
 	RdID            uint32
 	UplinkSwIfIndex uint32
@@ -706,7 +716,7 @@ func (*GbpEndpointGroup) GetTypeName() string {
 	return "gbp_endpoint_group"
 }
 func (*GbpEndpointGroup) GetCrcString() string {
-	return "1a85aac3"
+	return "b61e0672"
 }
 
 // GbpRecirc represents VPP binary API type 'gbp_recirc':
