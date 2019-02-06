@@ -1,4 +1,125 @@
 {
+    "types": [
+        [
+            "address",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "vl_api_address_union_t",
+                "un"
+            ],
+            {
+                "crc": "0x09f11671"
+            }
+        ],
+        [
+            "prefix",
+            [
+                "vl_api_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "address_length"
+            ],
+            {
+                "crc": "0x0403aebc"
+            }
+        ],
+        [
+            "mprefix",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "u16",
+                "grp_address_length"
+            ],
+            [
+                "vl_api_address_union_t",
+                "grp_address"
+            ],
+            [
+                "vl_api_address_union_t",
+                "src_address"
+            ],
+            {
+                "crc": "0x1c4cba05"
+            }
+        ],
+        [
+            "ip6_prefix",
+            [
+                "vl_api_ip6_address_t",
+                "prefix"
+            ],
+            [
+                "u8",
+                "len"
+            ],
+            {
+                "crc": "0x779fd64f"
+            }
+        ],
+        [
+            "ip4_prefix",
+            [
+                "vl_api_ip4_address_t",
+                "prefix"
+            ],
+            [
+                "u8",
+                "len"
+            ],
+            {
+                "crc": "0xea8dc11d"
+            }
+        ],
+        [
+            "mac_entry",
+            [
+                "u32",
+                "sw_if_index"
+            ],
+            [
+                "u8",
+                "mac_addr",
+                6
+            ],
+            [
+                "u8",
+                "action"
+            ],
+            [
+                "u8",
+                "flags"
+            ],
+            {
+                "crc": "0x971135b8"
+            }
+        ],
+        [
+            "bridge_domain_sw_if",
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "sw_if_index"
+            ],
+            [
+                "u8",
+                "shg"
+            ],
+            {
+                "crc": "0xa06dd426"
+            }
+        ]
+    ],
     "messages": [
         [
             "l2_xconnect_details",
@@ -1218,7 +1339,6 @@
             }
         ]
     ],
-    "vl_api_version": "0x74bc81b6",
     "unions": [
         [
             "address_union",
@@ -1235,84 +1355,6 @@
             }
         ]
     ],
-    "services": {
-        "l2_flags": {
-            "reply": "l2_flags_reply"
-        },
-        "l2fib_flush_all": {
-            "reply": "l2fib_flush_all_reply"
-        },
-        "bridge_domain_add_del": {
-            "reply": "bridge_domain_add_del_reply"
-        },
-        "bridge_domain_dump": {
-            "reply": "bridge_domain_details",
-            "stream": true
-        },
-        "bd_ip_mac_dump": {
-            "reply": "bd_ip_mac_details",
-            "stream": true
-        },
-        "bd_ip_mac_flush": {
-            "reply": "bd_ip_mac_flush_reply"
-        },
-        "l2_interface_pbb_tag_rewrite": {
-            "reply": "l2_interface_pbb_tag_rewrite_reply"
-        },
-        "bd_ip_mac_add_del": {
-            "reply": "bd_ip_mac_add_del_reply"
-        },
-        "l2fib_flush_bd": {
-            "reply": "l2fib_flush_bd_reply"
-        },
-        "l2fib_flush_int": {
-            "reply": "l2fib_flush_int_reply"
-        },
-        "bridge_domain_set_mac_age": {
-            "reply": "bridge_domain_set_mac_age_reply"
-        },
-        "l2_interface_efp_filter": {
-            "reply": "l2_interface_efp_filter_reply"
-        },
-        "sw_interface_set_l2_xconnect": {
-            "reply": "sw_interface_set_l2_xconnect_reply"
-        },
-        "l2_patch_add_del": {
-            "reply": "l2_patch_add_del_reply"
-        },
-        "bridge_flags": {
-            "reply": "bridge_flags_reply"
-        },
-        "l2fib_add_del": {
-            "reply": "l2fib_add_del_reply"
-        },
-        "want_l2_macs_events": {
-            "reply": "want_l2_macs_events_reply",
-            "events": [
-                "l2_macs_event"
-            ]
-        },
-        "l2_fib_clear_table": {
-            "reply": "l2_fib_clear_table_reply"
-        },
-        "l2_xconnect_dump": {
-            "reply": "l2_xconnect_details",
-            "stream": true
-        },
-        "sw_interface_set_l2_bridge": {
-            "reply": "sw_interface_set_l2_bridge_reply"
-        },
-        "sw_interface_set_vpath": {
-            "reply": "sw_interface_set_vpath_reply"
-        },
-        "l2_fib_table_dump": {
-            "reply": "l2_fib_table_details",
-            "stream": true
-        },
-        "l2_interface_vlan_tag_rewrite": {
-            "reply": "l2_interface_vlan_tag_rewrite_reply"
-        }
-    },
     "enums": [
         [
             "address_family",
@@ -1373,139 +1415,97 @@
             }
         ]
     ],
-    "types": [
-        [
-            "address",
-            [
-                "vl_api_address_family_t",
-                "af"
-            ],
-            [
-                "vl_api_address_union_t",
-                "un"
-            ],
-            {
-                "crc": "0x09f11671"
-            }
-        ],
-        [
-            "prefix",
-            [
-                "vl_api_address_t",
-                "address"
-            ],
-            [
-                "u8",
-                "address_length"
-            ],
-            {
-                "crc": "0x0403aebc"
-            }
-        ],
-        [
-            "mprefix",
-            [
-                "vl_api_address_family_t",
-                "af"
-            ],
-            [
-                "u16",
-                "grp_address_length"
-            ],
-            [
-                "vl_api_address_union_t",
-                "grp_address"
-            ],
-            [
-                "vl_api_address_union_t",
-                "src_address"
-            ],
-            {
-                "crc": "0x1c4cba05"
-            }
-        ],
-        [
-            "ip6_prefix",
-            [
-                "vl_api_ip6_address_t",
-                "prefix"
-            ],
-            [
-                "u8",
-                "len"
-            ],
-            {
-                "crc": "0x779fd64f"
-            }
-        ],
-        [
-            "ip4_prefix",
-            [
-                "vl_api_ip4_address_t",
-                "prefix"
-            ],
-            [
-                "u8",
-                "len"
-            ],
-            {
-                "crc": "0xea8dc11d"
-            }
-        ],
-        [
-            "mac_entry",
-            [
-                "u32",
-                "sw_if_index"
-            ],
-            [
-                "u8",
-                "mac_addr",
-                6
-            ],
-            [
-                "u8",
-                "action"
-            ],
-            [
-                "u8",
-                "flags"
-            ],
-            {
-                "crc": "0x971135b8"
-            }
-        ],
-        [
-            "bridge_domain_sw_if",
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u32",
-                "sw_if_index"
-            ],
-            [
-                "u8",
-                "shg"
-            ],
-            {
-                "crc": "0xa06dd426"
-            }
-        ]
-    ],
-    "aliases": {
-        "ip6_address": {
-            "length": 16,
-            "type": "u8"
+    "services": {
+        "want_l2_macs_events": {
+            "reply": "want_l2_macs_events_reply",
+            "events": [
+                "l2_macs_event"
+            ]
         },
+        "l2_xconnect_dump": {
+            "reply": "l2_xconnect_details",
+            "stream": true
+        },
+        "l2_fib_table_dump": {
+            "reply": "l2_fib_table_details",
+            "stream": true
+        },
+        "l2_fib_clear_table": {
+            "reply": "l2_fib_clear_table_reply"
+        },
+        "l2fib_flush_all": {
+            "reply": "l2fib_flush_all_reply"
+        },
+        "l2fib_flush_bd": {
+            "reply": "l2fib_flush_bd_reply"
+        },
+        "l2fib_flush_int": {
+            "reply": "l2fib_flush_int_reply"
+        },
+        "l2fib_add_del": {
+            "reply": "l2fib_add_del_reply"
+        },
+        "l2_flags": {
+            "reply": "l2_flags_reply"
+        },
+        "bridge_domain_set_mac_age": {
+            "reply": "bridge_domain_set_mac_age_reply"
+        },
+        "bridge_domain_add_del": {
+            "reply": "bridge_domain_add_del_reply"
+        },
+        "bridge_domain_dump": {
+            "reply": "bridge_domain_details",
+            "stream": true
+        },
+        "bridge_flags": {
+            "reply": "bridge_flags_reply"
+        },
+        "l2_interface_vlan_tag_rewrite": {
+            "reply": "l2_interface_vlan_tag_rewrite_reply"
+        },
+        "l2_interface_pbb_tag_rewrite": {
+            "reply": "l2_interface_pbb_tag_rewrite_reply"
+        },
+        "l2_patch_add_del": {
+            "reply": "l2_patch_add_del_reply"
+        },
+        "sw_interface_set_l2_xconnect": {
+            "reply": "sw_interface_set_l2_xconnect_reply"
+        },
+        "sw_interface_set_l2_bridge": {
+            "reply": "sw_interface_set_l2_bridge_reply"
+        },
+        "bd_ip_mac_add_del": {
+            "reply": "bd_ip_mac_add_del_reply"
+        },
+        "bd_ip_mac_flush": {
+            "reply": "bd_ip_mac_flush_reply"
+        },
+        "bd_ip_mac_dump": {
+            "reply": "bd_ip_mac_details",
+            "stream": true
+        },
+        "l2_interface_efp_filter": {
+            "reply": "l2_interface_efp_filter_reply"
+        },
+        "sw_interface_set_vpath": {
+            "reply": "sw_interface_set_vpath_reply"
+        }
+    },
+    "aliases": {
         "ip4_address": {
-            "length": 4,
-            "type": "u8"
+            "type": "u8",
+            "length": 4
+        },
+        "ip6_address": {
+            "type": "u8",
+            "length": 16
         },
         "mac_address": {
-            "length": 6,
-            "type": "u8"
+            "type": "u8",
+            "length": 6
         }
-    }
+    },
+    "vl_api_version": "0x74bc81b6"
 }

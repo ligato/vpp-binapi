@@ -1,4 +1,28 @@
 {
+    "types": [
+        [
+            "vmxnet3_tx_list",
+            [
+                "u16",
+                "tx_qsize"
+            ],
+            [
+                "u16",
+                "tx_next"
+            ],
+            [
+                "u16",
+                "tx_produce"
+            ],
+            [
+                "u16",
+                "tx_consume"
+            ],
+            {
+                "crc": "0xf5427b33"
+            }
+        ]
+    ],
     "messages": [
         [
             "vmxnet3_create",
@@ -30,8 +54,12 @@
                 "u16",
                 "txq_size"
             ],
+            [
+                "u16",
+                "txq_num"
+            ],
             {
-                "crc": "0x7318251d"
+                "crc": "0x51912357"
             }
         ],
         [
@@ -129,8 +157,8 @@
                 "version"
             ],
             [
-                "u16",
-                "rx_qid"
+                "u8",
+                "admin_up_down"
             ],
             [
                 "u16",
@@ -156,31 +184,16 @@
                 2
             ],
             [
-                "u16",
-                "tx_qid"
-            ],
-            [
-                "u16",
-                "tx_qsize"
-            ],
-            [
-                "u16",
-                "tx_next"
-            ],
-            [
-                "u16",
-                "tx_produce"
-            ],
-            [
-                "u16",
-                "tx_consume"
-            ],
-            [
                 "u8",
-                "admin_up_down"
+                "tx_count"
+            ],
+            [
+                "vl_api_vmxnet3_tx_list_t",
+                "tx_list",
+                8
             ],
             {
-                "crc": "0x2374ddc9"
+                "crc": "0x9b81b042"
             }
         ],
         [
@@ -202,21 +215,20 @@
             }
         ]
     ],
-    "vl_api_version": "0xe6419b6b",
     "unions": [],
+    "enums": [],
     "services": {
-        "vmxnet3_dump": {
-            "reply": "vmxnet3_details",
-            "stream": true
+        "vmxnet3_create": {
+            "reply": "vmxnet3_create_reply"
         },
         "vmxnet3_delete": {
             "reply": "vmxnet3_delete_reply"
         },
-        "vmxnet3_create": {
-            "reply": "vmxnet3_create_reply"
+        "vmxnet3_dump": {
+            "reply": "vmxnet3_details",
+            "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xfcb44c6b"
 }

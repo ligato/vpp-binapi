@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "pg_create_interface",
@@ -153,20 +154,19 @@
             }
         ]
     ],
-    "vl_api_version": "0xf189eee1",
     "unions": [],
+    "enums": [],
     "services": {
         "pg_create_interface": {
             "reply": "pg_create_interface_reply"
         },
-        "pg_enable_disable": {
-            "reply": "pg_enable_disable_reply"
-        },
         "pg_capture": {
             "reply": "pg_capture_reply"
+        },
+        "pg_enable_disable": {
+            "reply": "pg_enable_disable_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xf189eee1"
 }

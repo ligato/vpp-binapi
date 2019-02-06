@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "sw_interface_lacp_dump",
@@ -113,15 +114,14 @@
             }
         ]
     ],
-    "vl_api_version": "0xec776e02",
     "unions": [],
+    "enums": [],
     "services": {
         "sw_interface_lacp_dump": {
             "reply": "sw_interface_lacp_details",
             "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xec776e02"
 }

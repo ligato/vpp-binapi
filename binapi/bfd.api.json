@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "bfd_udp_set_echo_source",
@@ -778,55 +779,54 @@
             }
         ]
     ],
-    "vl_api_version": "0xa37bd695",
     "unions": [],
+    "enums": [],
     "services": {
-        "bfd_udp_mod": {
-            "reply": "bfd_udp_mod_reply"
-        },
-        "bfd_auth_del_key": {
-            "reply": "bfd_auth_del_key_reply"
+        "bfd_udp_set_echo_source": {
+            "reply": "bfd_udp_set_echo_source_reply"
         },
         "bfd_udp_del_echo_source": {
             "reply": "bfd_udp_del_echo_source_reply"
         },
-        "bfd_auth_keys_dump": {
-            "reply": "bfd_auth_keys_details",
-            "stream": true
-        },
         "bfd_udp_get_echo_source": {
             "reply": "bfd_udp_get_echo_source_reply"
         },
-        "want_bfd_events": {
-            "reply": "want_bfd_events_reply"
+        "bfd_udp_add": {
+            "reply": "bfd_udp_add_reply"
         },
-        "bfd_udp_auth_deactivate": {
-            "reply": "bfd_udp_auth_deactivate_reply"
+        "bfd_udp_mod": {
+            "reply": "bfd_udp_mod_reply"
         },
-        "bfd_auth_set_key": {
-            "reply": "bfd_auth_set_key_reply"
-        },
-        "bfd_udp_auth_activate": {
-            "reply": "bfd_udp_auth_activate_reply"
+        "bfd_udp_del": {
+            "reply": "bfd_udp_del_reply"
         },
         "bfd_udp_session_dump": {
             "reply": "bfd_udp_session_details",
             "stream": true
         },
-        "bfd_udp_add": {
-            "reply": "bfd_udp_add_reply"
-        },
-        "bfd_udp_del": {
-            "reply": "bfd_udp_del_reply"
-        },
-        "bfd_udp_set_echo_source": {
-            "reply": "bfd_udp_set_echo_source_reply"
-        },
         "bfd_udp_session_set_flags": {
             "reply": "bfd_udp_session_set_flags_reply"
+        },
+        "want_bfd_events": {
+            "reply": "want_bfd_events_reply"
+        },
+        "bfd_auth_set_key": {
+            "reply": "bfd_auth_set_key_reply"
+        },
+        "bfd_auth_del_key": {
+            "reply": "bfd_auth_del_key_reply"
+        },
+        "bfd_auth_keys_dump": {
+            "reply": "bfd_auth_keys_details",
+            "stream": true
+        },
+        "bfd_udp_auth_activate": {
+            "reply": "bfd_udp_auth_activate_reply"
+        },
+        "bfd_udp_auth_deactivate": {
+            "reply": "bfd_udp_auth_deactivate_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xa37bd695"
 }

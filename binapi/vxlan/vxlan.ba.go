@@ -23,12 +23,12 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "vxlan_add_del_tunnel": {
+//	        "reply": "vxlan_add_del_tunnel_reply"
+//	    },
 //	    "vxlan_tunnel_dump": {
 //	        "reply": "vxlan_tunnel_details",
 //	        "stream": true
-//	    },
-//	    "vxlan_add_del_tunnel": {
-//	        "reply": "vxlan_add_del_tunnel_reply"
 //	    },
 //	    "sw_interface_set_vxlan_bypass": {
 //	        "reply": "sw_interface_set_vxlan_bypass_reply"

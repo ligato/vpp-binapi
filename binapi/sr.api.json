@@ -1,4 +1,47 @@
 {
+    "types": [
+        [
+            "srv6_sid",
+            [
+                "u8",
+                "addr",
+                16
+            ],
+            {
+                "crc": "0x6ee67284"
+            }
+        ],
+        [
+            "srv6_sid_list",
+            [
+                "u8",
+                "num_sids"
+            ],
+            [
+                "u32",
+                "weight"
+            ],
+            [
+                "vl_api_srv6_sid_t",
+                "sids",
+                16
+            ],
+            {
+                "crc": "0x4066af74"
+            }
+        ],
+        [
+            "sr_ip6_address",
+            [
+                "u8",
+                "data",
+                16
+            ],
+            {
+                "crc": "0xbea0c5e6"
+            }
+        ]
+    ],
     "messages": [
         [
             "sr_localsid_add_del",
@@ -537,83 +580,40 @@
             }
         ]
     ],
-    "vl_api_version": "0x9cb542fd",
     "unions": [],
+    "enums": [],
     "services": {
-        "sr_steering_pol_dump": {
-            "reply": "sr_steering_pol_details",
-            "stream": true
-        },
-        "sr_localsids_dump": {
-            "reply": "sr_localsids_details",
-            "stream": true
-        },
-        "sr_steering_add_del": {
-            "reply": "sr_steering_add_del_reply"
-        },
-        "sr_set_encap_source": {
-            "reply": "sr_set_encap_source_reply"
-        },
         "sr_localsid_add_del": {
             "reply": "sr_localsid_add_del_reply"
         },
         "sr_policy_add": {
             "reply": "sr_policy_add_reply"
         },
-        "sr_policies_dump": {
-            "reply": "sr_policies_details",
-            "stream": true
-        },
         "sr_policy_mod": {
             "reply": "sr_policy_mod_reply"
         },
         "sr_policy_del": {
             "reply": "sr_policy_del_reply"
+        },
+        "sr_set_encap_source": {
+            "reply": "sr_set_encap_source_reply"
+        },
+        "sr_steering_add_del": {
+            "reply": "sr_steering_add_del_reply"
+        },
+        "sr_localsids_dump": {
+            "reply": "sr_localsids_details",
+            "stream": true
+        },
+        "sr_policies_dump": {
+            "reply": "sr_policies_details",
+            "stream": true
+        },
+        "sr_steering_pol_dump": {
+            "reply": "sr_steering_pol_details",
+            "stream": true
         }
     },
-    "enums": [],
-    "types": [
-        [
-            "srv6_sid",
-            [
-                "u8",
-                "addr",
-                16
-            ],
-            {
-                "crc": "0x6ee67284"
-            }
-        ],
-        [
-            "srv6_sid_list",
-            [
-                "u8",
-                "num_sids"
-            ],
-            [
-                "u32",
-                "weight"
-            ],
-            [
-                "vl_api_srv6_sid_t",
-                "sids",
-                16
-            ],
-            {
-                "crc": "0x4066af74"
-            }
-        ],
-        [
-            "sr_ip6_address",
-            [
-                "u8",
-                "data",
-                16
-            ],
-            {
-                "crc": "0xbea0c5e6"
-            }
-        ]
-    ],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x9cb542fd"
 }

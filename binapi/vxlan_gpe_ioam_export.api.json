@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "vxlan_gpe_ioam_export_enable_disable",
@@ -51,14 +52,13 @@
             }
         ]
     ],
-    "vl_api_version": "0x22132a2c",
     "unions": [],
+    "enums": [],
     "services": {
         "vxlan_gpe_ioam_export_enable_disable": {
             "reply": "vxlan_gpe_ioam_export_enable_disable_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x22132a2c"
 }

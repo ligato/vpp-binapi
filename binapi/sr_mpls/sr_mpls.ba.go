@@ -23,20 +23,20 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "sr_mpls_policy_add": {
+//	        "reply": "sr_mpls_policy_add_reply"
+//	    },
+//	    "sr_mpls_policy_mod": {
+//	        "reply": "sr_mpls_policy_mod_reply"
+//	    },
+//	    "sr_mpls_policy_del": {
+//	        "reply": "sr_mpls_policy_del_reply"
+//	    },
 //	    "sr_mpls_steering_add_del": {
 //	        "reply": "sr_mpls_steering_add_del_reply"
 //	    },
 //	    "sr_mpls_policy_assign_endpoint_color": {
 //	        "reply": "sr_mpls_policy_assign_endpoint_color_reply"
-//	    },
-//	    "sr_mpls_policy_mod": {
-//	        "reply": "sr_mpls_policy_mod_reply"
-//	    },
-//	    "sr_mpls_policy_add": {
-//	        "reply": "sr_mpls_policy_add_reply"
-//	    },
-//	    "sr_mpls_policy_del": {
-//	        "reply": "sr_mpls_policy_del_reply"
 //	    }
 //	},
 //

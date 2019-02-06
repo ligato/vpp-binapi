@@ -28,14 +28,14 @@ var _ = bytes.NewBuffer
 //	    "qos_record_enable_disable": {
 //	        "reply": "qos_record_enable_disable_reply"
 //	    },
-//	    "qos_mark_enable_disable": {
-//	        "reply": "qos_mark_enable_disable_reply"
+//	    "qos_egress_map_update": {
+//	        "reply": "qos_egress_map_update_reply"
 //	    },
 //	    "qos_egress_map_delete": {
 //	        "reply": "qos_egress_map_delete_reply"
 //	    },
-//	    "qos_egress_map_update": {
-//	        "reply": "qos_egress_map_update_reply"
+//	    "qos_mark_enable_disable": {
+//	        "reply": "qos_mark_enable_disable_reply"
 //	    }
 //	},
 //

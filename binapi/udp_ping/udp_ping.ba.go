@@ -23,11 +23,11 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "udp_ping_export": {
-//	        "reply": "udp_ping_export_reply"
-//	    },
 //	    "udp_ping_add_del": {
 //	        "reply": "udp_ping_add_del_reply"
+//	    },
+//	    "udp_ping_export": {
+//	        "reply": "udp_ping_export_reply"
 //	    }
 //	},
 //

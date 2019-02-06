@@ -6,9 +6,9 @@
 
  It contains following objects:
 	 91 messages
-	 11 types
+	 12 types
 	  3 aliases
-	  1 enum
+	  2 enums
 	  1 union
 	 44 services
 
@@ -27,22 +27,17 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "ip_container_proxy_dump": {
-//	        "reply": "ip_container_proxy_details",
-//	        "stream": true
+//	    "want_ip4_arp_events": {
+//	        "reply": "want_ip4_arp_events_reply",
+//	        "events": [
+//	            "ip4_arp_event"
+//	        ]
 //	    },
-//	    "ip_address_dump": {
-//	        "reply": "ip_address_details",
-//	        "stream": true
-//	    },
-//	    "ip_source_and_port_range_check_add_del": {
-//	        "reply": "ip_source_and_port_range_check_add_del_reply"
-//	    },
-//	    "reset_fib": {
-//	        "reply": "reset_fib_reply"
-//	    },
-//	    "ip_probe_neighbor": {
-//	        "reply": "ip_probe_neighbor_reply"
+//	    "want_ip6_ra_events": {
+//	        "reply": "want_ip6_ra_events_reply",
+//	        "events": [
+//	            "ip6_ra_event"
+//	        ]
 //	    },
 //	    "want_ip6_nd_events": {
 //	        "reply": "want_ip6_nd_events_reply",
@@ -50,74 +45,62 @@ var _ = bytes.NewBuffer
 //	            "ip6_nd_event"
 //	        ]
 //	    },
-//	    "ip_punt_police": {
-//	        "reply": "ip_punt_police_reply"
+//	    "ip_table_add_del": {
+//	        "reply": "ip_table_add_del_reply"
 //	    },
-//	    "ip6nd_proxy_add_del": {
-//	        "reply": "ip6nd_proxy_add_del_reply"
-//	    },
-//	    "set_arp_neighbor_limit": {
-//	        "reply": "set_arp_neighbor_limit_reply"
-//	    },
-//	    "ip_reassembly_enable_disable": {
-//	        "reply": "ip_reassembly_enable_disable_reply"
+//	    "ip_fib_dump": {
+//	        "reply": "ip_fib_details",
+//	        "stream": true
 //	    },
 //	    "ip6_fib_dump": {
 //	        "reply": "ip6_fib_details",
 //	        "stream": true
 //	    },
-//	    "ip6nd_send_router_solicitation": {
-//	        "reply": "ip6nd_send_router_solicitation_reply"
-//	    },
-//	    "ip_source_check_interface_add_del": {
-//	        "reply": "ip_source_check_interface_add_del_reply"
-//	    },
-//	    "ip_table_add_del": {
-//	        "reply": "ip_table_add_del_reply"
+//	    "ip_neighbor_add_del": {
+//	        "reply": "ip_neighbor_add_del_reply"
 //	    },
 //	    "ip_neighbor_dump": {
 //	        "reply": "ip_neighbor_details",
 //	        "stream": true
 //	    },
-//	    "ip_punt_redirect": {
-//	        "reply": "ip_punt_redirect_reply"
+//	    "set_ip_flow_hash": {
+//	        "reply": "set_ip_flow_hash_reply"
+//	    },
+//	    "sw_interface_ip6nd_ra_config": {
+//	        "reply": "sw_interface_ip6nd_ra_config_reply"
 //	    },
 //	    "sw_interface_ip6nd_ra_prefix": {
 //	        "reply": "sw_interface_ip6nd_ra_prefix_reply"
 //	    },
-//	    "ip_reassembly_set": {
-//	        "reply": "ip_reassembly_set_reply"
+//	    "ip6nd_proxy_add_del": {
+//	        "reply": "ip6nd_proxy_add_del_reply"
+//	    },
+//	    "ip6nd_proxy_dump": {
+//	        "reply": "ip6nd_proxy_details",
+//	        "stream": true
+//	    },
+//	    "ip6nd_send_router_solicitation": {
+//	        "reply": "ip6nd_send_router_solicitation_reply"
+//	    },
+//	    "sw_interface_ip6_enable_disable": {
+//	        "reply": "sw_interface_ip6_enable_disable_reply"
+//	    },
+//	    "ip_add_del_route": {
+//	        "reply": "ip_add_del_route_reply"
+//	    },
+//	    "ip_mroute_add_del": {
+//	        "reply": "ip_mroute_add_del_reply"
+//	    },
+//	    "ip_mfib_dump": {
+//	        "reply": "ip_mfib_details",
+//	        "stream": true
 //	    },
 //	    "ip6_mfib_dump": {
 //	        "reply": "ip6_mfib_details",
 //	        "stream": true
 //	    },
-//	    "sw_interface_ip6nd_ra_config": {
-//	        "reply": "sw_interface_ip6nd_ra_config_reply"
-//	    },
-//	    "proxy_arp_dump": {
-//	        "reply": "proxy_arp_details",
-//	        "stream": true
-//	    },
-//	    "sw_interface_ip6_enable_disable": {
-//	        "reply": "sw_interface_ip6_enable_disable_reply"
-//	    },
-//	    "ip_source_and_port_range_check_interface_add_del": {
-//	        "reply": "ip_source_and_port_range_check_interface_add_del_reply"
-//	    },
-//	    "mfib_signal_dump": {
-//	        "reply": "mfib_signal_details",
-//	        "stream": true
-//	    },
-//	    "ip_punt_redirect_dump": {
-//	        "reply": "ip_punt_redirect_details",
-//	        "stream": true
-//	    },
-//	    "ip_container_proxy_add_del": {
-//	        "reply": "ip_container_proxy_add_del_reply"
-//	    },
-//	    "ip_mfib_dump": {
-//	        "reply": "ip_mfib_details",
+//	    "ip_address_dump": {
+//	        "reply": "ip_address_details",
 //	        "stream": true
 //	    },
 //	    "ip_unnumbered_dump": {
@@ -128,59 +111,76 @@ var _ = bytes.NewBuffer
 //	        "reply": "ip_details",
 //	        "stream": true
 //	    },
-//	    "ip_neighbor_add_del": {
-//	        "reply": "ip_neighbor_add_del_reply"
-//	    },
-//	    "proxy_arp_intfc_enable_disable": {
-//	        "reply": "proxy_arp_intfc_enable_disable_reply"
-//	    },
-//	    "proxy_arp_add_del": {
-//	        "reply": "proxy_arp_add_del_reply"
-//	    },
-//	    "ip_add_del_route": {
-//	        "reply": "ip_add_del_route_reply"
-//	    },
-//	    "ip6nd_proxy_dump": {
-//	        "reply": "ip6nd_proxy_details",
+//	    "mfib_signal_dump": {
+//	        "reply": "mfib_signal_details",
 //	        "stream": true
 //	    },
-//	    "want_ip6_ra_events": {
-//	        "reply": "want_ip6_ra_events_reply",
-//	        "events": [
-//	            "ip6_ra_event"
-//	        ]
+//	    "ip_punt_police": {
+//	        "reply": "ip_punt_police_reply"
 //	    },
-//	    "ip_fib_dump": {
-//	        "reply": "ip_fib_details",
+//	    "ip_punt_redirect": {
+//	        "reply": "ip_punt_redirect_reply"
+//	    },
+//	    "ip_punt_redirect_dump": {
+//	        "reply": "ip_punt_redirect_details",
 //	        "stream": true
+//	    },
+//	    "ip_container_proxy_add_del": {
+//	        "reply": "ip_container_proxy_add_del_reply"
+//	    },
+//	    "ip_container_proxy_dump": {
+//	        "reply": "ip_container_proxy_details",
+//	        "stream": true
+//	    },
+//	    "ip_source_and_port_range_check_add_del": {
+//	        "reply": "ip_source_and_port_range_check_add_del_reply"
+//	    },
+//	    "ip_source_and_port_range_check_interface_add_del": {
+//	        "reply": "ip_source_and_port_range_check_interface_add_del_reply"
+//	    },
+//	    "ip_source_check_interface_add_del": {
+//	        "reply": "ip_source_check_interface_add_del_reply"
 //	    },
 //	    "ip_scan_neighbor_enable_disable": {
 //	        "reply": "ip_scan_neighbor_enable_disable_reply"
 //	    },
-//	    "ioam_enable": {
-//	        "reply": "ioam_enable_reply"
+//	    "ip_probe_neighbor": {
+//	        "reply": "ip_probe_neighbor_reply"
 //	    },
-//	    "ip_mroute_add_del": {
-//	        "reply": "ip_mroute_add_del_reply"
+//	    "proxy_arp_add_del": {
+//	        "reply": "proxy_arp_add_del_reply"
+//	    },
+//	    "proxy_arp_dump": {
+//	        "reply": "proxy_arp_details",
+//	        "stream": true
+//	    },
+//	    "proxy_arp_intfc_enable_disable": {
+//	        "reply": "proxy_arp_intfc_enable_disable_reply"
 //	    },
 //	    "proxy_arp_intfc_dump": {
 //	        "reply": "proxy_arp_intfc_details",
 //	        "stream": true
 //	    },
-//	    "want_ip4_arp_events": {
-//	        "reply": "want_ip4_arp_events_reply",
-//	        "events": [
-//	            "ip4_arp_event"
-//	        ]
+//	    "reset_fib": {
+//	        "reply": "reset_fib_reply"
+//	    },
+//	    "set_arp_neighbor_limit": {
+//	        "reply": "set_arp_neighbor_limit_reply"
+//	    },
+//	    "ioam_enable": {
+//	        "reply": "ioam_enable_reply"
+//	    },
+//	    "ioam_disable": {
+//	        "reply": "ioam_disable_reply"
+//	    },
+//	    "ip_reassembly_set": {
+//	        "reply": "ip_reassembly_set_reply"
 //	    },
 //	    "ip_reassembly_get": {
 //	        "reply": "ip_reassembly_get_reply"
 //	    },
-//	    "set_ip_flow_hash": {
-//	        "reply": "set_ip_flow_hash_reply"
-//	    },
-//	    "ioam_disable": {
-//	        "reply": "ioam_disable_reply"
+//	    "ip_reassembly_enable_disable": {
+//	        "reply": "ip_reassembly_enable_disable_reply"
 //	    }
 //	},
 //
@@ -255,13 +255,45 @@ const (
 	ADDRESS_IP6 AddressFamily = 1
 )
 
+// IPNeighborFlags represents VPP binary API enum 'ip_neighbor_flags':
+//
+//	"ip_neighbor_flags",
+//	[
+//	    "IP_API_NEIGHBOR_FLAG_NONE",
+//	    0
+//	],
+//	[
+//	    "IP_API_NEIGHBOR_FLAG_STATIC",
+//	    1
+//	],
+//	[
+//	    "IP_API_NEIGHBOR_FLAG_NO_FIB_ENTRY",
+//	    2
+//	],
+//	[
+//	    "IP_API_NEIGHBOR_FLAG_FIX_ME_OLE",
+//	    3
+//	],
+//	{
+//	    "enumtype": "u32"
+//	}
+//
+type IPNeighborFlags uint32
+
+const (
+	IP_API_NEIGHBOR_FLAG_NONE         IPNeighborFlags = 0
+	IP_API_NEIGHBOR_FLAG_STATIC       IPNeighborFlags = 1
+	IP_API_NEIGHBOR_FLAG_NO_FIB_ENTRY IPNeighborFlags = 2
+	IP_API_NEIGHBOR_FLAG_FIX_ME_OLE   IPNeighborFlags = 3
+)
+
 /* Aliases */
 
 // IP4Address represents VPP binary API alias 'ip4_address':
 //
 //	"ip4_address": {
-//	    "length": 4,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 4
 //	},
 //
 type IP4Address [4]uint8
@@ -269,8 +301,8 @@ type IP4Address [4]uint8
 // IP6Address represents VPP binary API alias 'ip6_address':
 //
 //	"ip6_address": {
-//	    "length": 16,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 16
 //	},
 //
 type IP6Address [16]uint8
@@ -278,8 +310,8 @@ type IP6Address [16]uint8
 // MacAddress represents VPP binary API alias 'mac_address':
 //
 //	"mac_address": {
-//	    "length": 6,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 6
 //	}
 //
 type MacAddress [6]uint8
@@ -289,7 +321,17 @@ type MacAddress [6]uint8
 // Address represents VPP binary API type 'address':
 //
 //	"address",
-//	4
+//	[
+//	    "vl_api_address_family_t",
+//	    "af"
+//	],
+//	[
+//	    "vl_api_address_union_t",
+//	    "un"
+//	],
+//	{
+//	    "crc": "0x09f11671"
+//	}
 //
 type Address struct {
 	Af AddressFamily
@@ -582,6 +624,43 @@ func (*FibPath) GetCrcString() string {
 	return "ba7a81f0"
 }
 
+// IPNeighbor represents VPP binary API type 'ip_neighbor':
+//
+//	"ip_neighbor",
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "vl_api_ip_neighbor_flags_t",
+//	    "flags"
+//	],
+//	[
+//	    "vl_api_mac_address_t",
+//	    "mac_address"
+//	],
+//	[
+//	    "vl_api_address_t",
+//	    "ip_address"
+//	],
+//	{
+//	    "crc": "0x4bf82d5d"
+//	}
+//
+type IPNeighbor struct {
+	SwIfIndex  uint32
+	Flags      IPNeighborFlags
+	MacAddress MacAddress
+	IPAddress  Address
+}
+
+func (*IPNeighbor) GetTypeName() string {
+	return "ip_neighbor"
+}
+func (*IPNeighbor) GetCrcString() string {
+	return "4bf82d5d"
+}
+
 // MfibPath represents VPP binary API type 'mfib_path':
 //
 //	"mfib_path",
@@ -645,13 +724,8 @@ func (*PuntRedirect) GetCrcString() string {
 //
 //	"ip6_ra_prefix_info",
 //	[
-//	    "u8",
-//	    "dst_address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "dst_address_length"
+//	    "vl_api_prefix_t",
+//	    "prefix"
 //	],
 //	[
 //	    "u8",
@@ -666,22 +740,21 @@ func (*PuntRedirect) GetCrcString() string {
 //	    "preferred_time"
 //	],
 //	{
-//	    "crc": "0x83d7c6e5"
+//	    "crc": "0xfa025b72"
 //	}
 //
 type IP6RaPrefixInfo struct {
-	DstAddress       []byte `struc:"[16]byte"`
-	DstAddressLength uint8
-	Flags            uint8
-	ValidTime        uint32
-	PreferredTime    uint32
+	Prefix        Prefix
+	Flags         uint8
+	ValidTime     uint32
+	PreferredTime uint32
 }
 
 func (*IP6RaPrefixInfo) GetTypeName() string {
 	return "ip6_ra_prefix_info"
 }
 func (*IP6RaPrefixInfo) GetCrcString() string {
-	return "83d7c6e5"
+	return "fa025b72"
 }
 
 // ProxyArp represents VPP binary API type 'proxy_arp':
@@ -689,33 +762,31 @@ func (*IP6RaPrefixInfo) GetCrcString() string {
 //	"proxy_arp",
 //	[
 //	    "u32",
-//	    "vrf_id"
+//	    "table_id"
 //	],
 //	[
-//	    "u8",
-//	    "low_address",
-//	    4
+//	    "vl_api_ip4_address_t",
+//	    "low"
 //	],
 //	[
-//	    "u8",
-//	    "hi_address",
-//	    4
+//	    "vl_api_ip4_address_t",
+//	    "hi"
 //	],
 //	{
-//	    "crc": "0x6d88106e"
+//	    "crc": "0xe9067693"
 //	}
 //
 type ProxyArp struct {
-	VrfID      uint32
-	LowAddress []byte `struc:"[4]byte"`
-	HiAddress  []byte `struc:"[4]byte"`
+	TableID uint32
+	Low     IP4Address
+	Hi      IP4Address
 }
 
 func (*ProxyArp) GetTypeName() string {
 	return "proxy_arp"
 }
 func (*ProxyArp) GetCrcString() string {
-	return "6d88106e"
+	return "e9067693"
 }
 
 /* Unions */
@@ -1056,6 +1127,86 @@ func (*IP6FibDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// IPNeighborAddDel represents VPP binary API message 'ip_neighbor_add_del':
+//
+//	"ip_neighbor_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "vl_api_ip_neighbor_t",
+//	    "neighbor"
+//	],
+//	{
+//	    "crc": "0xadea3ef4"
+//	}
+//
+type IPNeighborAddDel struct {
+	IsAdd    uint8
+	Neighbor IPNeighbor
+}
+
+func (*IPNeighborAddDel) GetMessageName() string {
+	return "ip_neighbor_add_del"
+}
+func (*IPNeighborAddDel) GetCrcString() string {
+	return "adea3ef4"
+}
+func (*IPNeighborAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// IPNeighborAddDelReply represents VPP binary API message 'ip_neighbor_add_del_reply':
+//
+//	"ip_neighbor_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "stats_index"
+//	],
+//	{
+//	    "crc": "0x1992deab"
+//	}
+//
+type IPNeighborAddDelReply struct {
+	Retval     int32
+	StatsIndex uint32
+}
+
+func (*IPNeighborAddDelReply) GetMessageName() string {
+	return "ip_neighbor_add_del_reply"
+}
+func (*IPNeighborAddDelReply) GetCrcString() string {
+	return "1992deab"
+}
+func (*IPNeighborAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // IPNeighborDump represents VPP binary API message 'ip_neighbor_dump':
 //
 //	"ip_neighbor_dump",
@@ -1110,158 +1261,24 @@ func (*IPNeighborDump) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "stats_index"
-//	],
-//	[
-//	    "u8",
-//	    "is_static"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "mac_address",
-//	    6
-//	],
-//	[
-//	    "u8",
-//	    "ip_address",
-//	    16
+//	    "vl_api_ip_neighbor_t",
+//	    "neighbor"
 //	],
 //	{
-//	    "crc": "0xc7001770"
+//	    "crc": "0x512fb08d"
 //	}
 //
 type IPNeighborDetails struct {
-	SwIfIndex  uint32
-	StatsIndex uint32
-	IsStatic   uint8
-	IsIPv6     uint8
-	MacAddress []byte `struc:"[6]byte"`
-	IPAddress  []byte `struc:"[16]byte"`
+	Neighbor IPNeighbor
 }
 
 func (*IPNeighborDetails) GetMessageName() string {
 	return "ip_neighbor_details"
 }
 func (*IPNeighborDetails) GetCrcString() string {
-	return "c7001770"
+	return "512fb08d"
 }
 func (*IPNeighborDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// IPNeighborAddDel represents VPP binary API message 'ip_neighbor_add_del':
-//
-//	"ip_neighbor_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "is_static"
-//	],
-//	[
-//	    "u8",
-//	    "is_no_adj_fib"
-//	],
-//	[
-//	    "u8",
-//	    "mac_address",
-//	    6
-//	],
-//	[
-//	    "u8",
-//	    "dst_address",
-//	    16
-//	],
-//	{
-//	    "crc": "0x4711eb25"
-//	}
-//
-type IPNeighborAddDel struct {
-	SwIfIndex  uint32
-	IsAdd      uint8
-	IsIPv6     uint8
-	IsStatic   uint8
-	IsNoAdjFib uint8
-	MacAddress []byte `struc:"[6]byte"`
-	DstAddress []byte `struc:"[16]byte"`
-}
-
-func (*IPNeighborAddDel) GetMessageName() string {
-	return "ip_neighbor_add_del"
-}
-func (*IPNeighborAddDel) GetCrcString() string {
-	return "4711eb25"
-}
-func (*IPNeighborAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// IPNeighborAddDelReply represents VPP binary API message 'ip_neighbor_add_del_reply':
-//
-//	"ip_neighbor_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "stats_index"
-//	],
-//	{
-//	    "crc": "0x1992deab"
-//	}
-//
-type IPNeighborAddDelReply struct {
-	Retval     int32
-	StatsIndex uint32
-}
-
-func (*IPNeighborAddDelReply) GetMessageName() string {
-	return "ip_neighbor_add_del_reply"
-}
-func (*IPNeighborAddDelReply) GetCrcString() string {
-	return "1992deab"
-}
-func (*IPNeighborAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -1530,13 +1547,8 @@ func (*SwInterfaceIP6ndRaConfigReply) GetMessageType() api.MessageType {
 //	    "sw_if_index"
 //	],
 //	[
-//	    "u8",
-//	    "address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "address_length"
+//	    "vl_api_prefix_t",
+//	    "prefix"
 //	],
 //	[
 //	    "u8",
@@ -1571,28 +1583,27 @@ func (*SwInterfaceIP6ndRaConfigReply) GetMessageType() api.MessageType {
 //	    "pref_lifetime"
 //	],
 //	{
-//	    "crc": "0xca763c9a"
+//	    "crc": "0x59934d3b"
 //	}
 //
 type SwInterfaceIP6ndRaPrefix struct {
-	SwIfIndex     uint32
-	Address       []byte `struc:"[16]byte"`
-	AddressLength uint8
-	UseDefault    uint8
-	NoAdvertise   uint8
-	OffLink       uint8
-	NoAutoconfig  uint8
-	NoOnlink      uint8
-	IsNo          uint8
-	ValLifetime   uint32
-	PrefLifetime  uint32
+	SwIfIndex    uint32
+	Prefix       Prefix
+	UseDefault   uint8
+	NoAdvertise  uint8
+	OffLink      uint8
+	NoAutoconfig uint8
+	NoOnlink     uint8
+	IsNo         uint8
+	ValLifetime  uint32
+	PrefLifetime uint32
 }
 
 func (*SwInterfaceIP6ndRaPrefix) GetMessageName() string {
 	return "sw_interface_ip6nd_ra_prefix"
 }
 func (*SwInterfaceIP6ndRaPrefix) GetCrcString() string {
-	return "ca763c9a"
+	return "59934d3b"
 }
 func (*SwInterfaceIP6ndRaPrefix) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -1655,25 +1666,24 @@ func (*SwInterfaceIP6ndRaPrefixReply) GetMessageType() api.MessageType {
 //	    "is_del"
 //	],
 //	[
-//	    "u8",
-//	    "address",
-//	    16
+//	    "vl_api_ip6_address_t",
+//	    "ip"
 //	],
 //	{
-//	    "crc": "0xd95f0fa0"
+//	    "crc": "0xbff10d55"
 //	}
 //
 type IP6ndProxyAddDel struct {
 	SwIfIndex uint32
 	IsDel     uint8
-	Address   []byte `struc:"[16]byte"`
+	IP        IP6Address
 }
 
 func (*IP6ndProxyAddDel) GetMessageName() string {
 	return "ip6nd_proxy_add_del"
 }
 func (*IP6ndProxyAddDel) GetCrcString() string {
-	return "d95f0fa0"
+	return "bff10d55"
 }
 func (*IP6ndProxyAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -1728,24 +1738,23 @@ func (*IP6ndProxyAddDelReply) GetMessageType() api.MessageType {
 //	    "sw_if_index"
 //	],
 //	[
-//	    "u8",
-//	    "address",
-//	    16
+//	    "vl_api_ip6_address_t",
+//	    "ip"
 //	],
 //	{
-//	    "crc": "0x6a47c974"
+//	    "crc": "0xbbbd7894"
 //	}
 //
 type IP6ndProxyDetails struct {
 	SwIfIndex uint32
-	Address   []byte `struc:"[16]byte"`
+	IP        IP6Address
 }
 
 func (*IP6ndProxyDetails) GetMessageName() string {
 	return "ip6nd_proxy_details"
 }
 func (*IP6ndProxyDetails) GetCrcString() string {
-	return "6a47c974"
+	return "bbbd7894"
 }
 func (*IP6ndProxyDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -3089,17 +3098,8 @@ func (*IPPuntRedirectDetails) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "u8",
-//	    "ip",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "is_ip4"
-//	],
-//	[
-//	    "u8",
-//	    "plen"
+//	    "vl_api_prefix_t",
+//	    "pfx"
 //	],
 //	[
 //	    "u32",
@@ -3110,13 +3110,11 @@ func (*IPPuntRedirectDetails) GetMessageType() api.MessageType {
 //	    "is_add"
 //	],
 //	{
-//	    "crc": "0x0a355d39"
+//	    "crc": "0x5938e73a"
 //	}
 //
 type IPContainerProxyAddDel struct {
-	IP        []byte `struc:"[16]byte"`
-	IsIP4     uint8
-	Plen      uint8
+	Pfx       Prefix
 	SwIfIndex uint32
 	IsAdd     uint8
 }
@@ -3125,7 +3123,7 @@ func (*IPContainerProxyAddDel) GetMessageName() string {
 	return "ip_container_proxy_add_del"
 }
 func (*IPContainerProxyAddDel) GetCrcString() string {
-	return "0a355d39"
+	return "5938e73a"
 }
 func (*IPContainerProxyAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -3250,20 +3248,11 @@ func (*IPContainerProxyDetails) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
 //	    "is_add"
 //	],
 //	[
-//	    "u8",
-//	    "mask_length"
-//	],
-//	[
-//	    "u8",
-//	    "address",
-//	    16
+//	    "vl_api_prefix_t",
+//	    "prefix"
 //	],
 //	[
 //	    "u8",
@@ -3284,14 +3273,12 @@ func (*IPContainerProxyDetails) GetMessageType() api.MessageType {
 //	    "vrf_id"
 //	],
 //	{
-//	    "crc": "0x03d6b03a"
+//	    "crc": "0xea07c429"
 //	}
 //
 type IPSourceAndPortRangeCheckAddDel struct {
-	IsIPv6         uint8
 	IsAdd          uint8
-	MaskLength     uint8
-	Address        []byte `struc:"[16]byte"`
+	Prefix         Prefix
 	NumberOfRanges uint8
 	LowPorts       []uint16 `struc:"[32]uint16"`
 	HighPorts      []uint16 `struc:"[32]uint16"`
@@ -3302,7 +3289,7 @@ func (*IPSourceAndPortRangeCheckAddDel) GetMessageName() string {
 	return "ip_source_and_port_range_check_add_del"
 }
 func (*IPSourceAndPortRangeCheckAddDel) GetCrcString() string {
-	return "03d6b03a"
+	return "ea07c429"
 }
 func (*IPSourceAndPortRangeCheckAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -3631,29 +3618,23 @@ func (*IPScanNeighborEnableDisableReply) GetMessageType() api.MessageType {
 //	    "sw_if_index"
 //	],
 //	[
-//	    "u8",
-//	    "dst_address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
+//	    "vl_api_address_t",
+//	    "dst"
 //	],
 //	{
-//	    "crc": "0x1e44bfd7"
+//	    "crc": "0x1e6c0a77"
 //	}
 //
 type IPProbeNeighbor struct {
-	SwIfIndex  uint32
-	DstAddress []byte `struc:"[16]byte"`
-	IsIPv6     uint8
+	SwIfIndex uint32
+	Dst       Address
 }
 
 func (*IPProbeNeighbor) GetMessageName() string {
 	return "ip_probe_neighbor"
 }
 func (*IPProbeNeighbor) GetCrcString() string {
-	return "1e44bfd7"
+	return "1e6c0a77"
 }
 func (*IPProbeNeighbor) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -3716,24 +3697,24 @@ func (*IPProbeNeighborReply) GetMessageType() api.MessageType {
 //	    "pid"
 //	],
 //	[
-//	    "u32",
-//	    "address"
+//	    "vl_api_ip4_address_t",
+//	    "ip"
 //	],
 //	{
-//	    "crc": "0x77e06379"
+//	    "crc": "0x70fd7195"
 //	}
 //
 type WantIP4ArpEvents struct {
 	EnableDisable uint8
 	PID           uint32
-	Address       uint32
+	IP            IP4Address
 }
 
 func (*WantIP4ArpEvents) GetMessageName() string {
 	return "want_ip4_arp_events"
 }
 func (*WantIP4ArpEvents) GetCrcString() string {
-	return "77e06379"
+	return "70fd7195"
 }
 func (*WantIP4ArpEvents) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -3784,8 +3765,8 @@ func (*WantIP4ArpEventsReply) GetMessageType() api.MessageType {
 //	    "client_index"
 //	],
 //	[
-//	    "u32",
-//	    "address"
+//	    "vl_api_ip4_address_t",
+//	    "ip"
 //	],
 //	[
 //	    "u32",
@@ -3796,23 +3777,22 @@ func (*WantIP4ArpEventsReply) GetMessageType() api.MessageType {
 //	    "sw_if_index"
 //	],
 //	[
-//	    "u8",
-//	    "new_mac",
-//	    6
+//	    "vl_api_mac_address_t",
+//	    "mac"
 //	],
 //	[
 //	    "u8",
 //	    "mac_ip"
 //	],
 //	{
-//	    "crc": "0xef7235f7"
+//	    "crc": "0x72cdde7c"
 //	}
 //
 type IP4ArpEvent struct {
-	Address   uint32
+	IP        IP4Address
 	PID       uint32
 	SwIfIndex uint32
-	NewMac    []byte `struc:"[6]byte"`
+	Mac       MacAddress
 	MacIP     uint8
 }
 
@@ -3820,7 +3800,7 @@ func (*IP4ArpEvent) GetMessageName() string {
 	return "ip4_arp_event"
 }
 func (*IP4ArpEvent) GetCrcString() string {
-	return "ef7235f7"
+	return "72cdde7c"
 }
 func (*IP4ArpEvent) GetMessageType() api.MessageType {
 	return api.EventMessage
@@ -3850,25 +3830,24 @@ func (*IP4ArpEvent) GetMessageType() api.MessageType {
 //	    "pid"
 //	],
 //	[
-//	    "u8",
-//	    "address",
-//	    16
+//	    "vl_api_ip6_address_t",
+//	    "ip"
 //	],
 //	{
-//	    "crc": "0x1cf65fbb"
+//	    "crc": "0xba330719"
 //	}
 //
 type WantIP6NdEvents struct {
 	EnableDisable uint8
 	PID           uint32
-	Address       []byte `struc:"[16]byte"`
+	IP            IP6Address
 }
 
 func (*WantIP6NdEvents) GetMessageName() string {
 	return "want_ip6_nd_events"
 }
 func (*WantIP6NdEvents) GetCrcString() string {
-	return "1cf65fbb"
+	return "ba330719"
 }
 func (*WantIP6NdEvents) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -3927,28 +3906,26 @@ func (*WantIP6NdEventsReply) GetMessageType() api.MessageType {
 //	    "sw_if_index"
 //	],
 //	[
-//	    "u8",
-//	    "address",
-//	    16
+//	    "vl_api_ip6_address_t",
+//	    "ip"
 //	],
 //	[
-//	    "u8",
-//	    "new_mac",
-//	    6
+//	    "vl_api_mac_address_t",
+//	    "mac"
 //	],
 //	[
 //	    "u8",
 //	    "mac_ip"
 //	],
 //	{
-//	    "crc": "0x96ab2fdd"
+//	    "crc": "0x3a23e7d4"
 //	}
 //
 type IP6NdEvent struct {
 	PID       uint32
 	SwIfIndex uint32
-	Address   []byte `struc:"[16]byte"`
-	NewMac    []byte `struc:"[6]byte"`
+	IP        IP6Address
+	Mac       MacAddress
 	MacIP     uint8
 }
 
@@ -3956,7 +3933,7 @@ func (*IP6NdEvent) GetMessageName() string {
 	return "ip6_nd_event"
 }
 func (*IP6NdEvent) GetCrcString() string {
-	return "96ab2fdd"
+	return "3a23e7d4"
 }
 func (*IP6NdEvent) GetMessageType() api.MessageType {
 	return api.EventMessage
@@ -4057,9 +4034,8 @@ func (*WantIP6RaEventsReply) GetMessageType() api.MessageType {
 //	    "sw_if_index"
 //	],
 //	[
-//	    "u8",
-//	    "router_address",
-//	    16
+//	    "vl_api_ip6_address_t",
+//	    "router_addr"
 //	],
 //	[
 //	    "u8",
@@ -4092,13 +4068,13 @@ func (*WantIP6RaEventsReply) GetMessageType() api.MessageType {
 //	    "n_prefixes"
 //	],
 //	{
-//	    "crc": "0xc5e54257"
+//	    "crc": "0x2e718fcc"
 //	}
 //
 type IP6RaEvent struct {
 	PID                                                 uint32
 	SwIfIndex                                           uint32
-	RouterAddress                                       []byte `struc:"[16]byte"`
+	RouterAddr                                          IP6Address
 	CurrentHopLimit                                     uint8
 	Flags                                               uint8
 	RouterLifetimeInSec                                 uint16
@@ -4112,7 +4088,7 @@ func (*IP6RaEvent) GetMessageName() string {
 	return "ip6_ra_event"
 }
 func (*IP6RaEvent) GetCrcString() string {
-	return "c5e54257"
+	return "2e718fcc"
 }
 func (*IP6RaEvent) GetMessageType() api.MessageType {
 	return api.EventMessage
@@ -4973,10 +4949,10 @@ func init() {
 	api.RegisterMessage((*IPFibDetails)(nil), "ip.IPFibDetails")
 	api.RegisterMessage((*IP6FibDump)(nil), "ip.IP6FibDump")
 	api.RegisterMessage((*IP6FibDetails)(nil), "ip.IP6FibDetails")
-	api.RegisterMessage((*IPNeighborDump)(nil), "ip.IPNeighborDump")
-	api.RegisterMessage((*IPNeighborDetails)(nil), "ip.IPNeighborDetails")
 	api.RegisterMessage((*IPNeighborAddDel)(nil), "ip.IPNeighborAddDel")
 	api.RegisterMessage((*IPNeighborAddDelReply)(nil), "ip.IPNeighborAddDelReply")
+	api.RegisterMessage((*IPNeighborDump)(nil), "ip.IPNeighborDump")
+	api.RegisterMessage((*IPNeighborDetails)(nil), "ip.IPNeighborDetails")
 	api.RegisterMessage((*SetIPFlowHash)(nil), "ip.SetIPFlowHash")
 	api.RegisterMessage((*SetIPFlowHashReply)(nil), "ip.SetIPFlowHashReply")
 	api.RegisterMessage((*SwInterfaceIP6ndRaConfig)(nil), "ip.SwInterfaceIP6ndRaConfig")

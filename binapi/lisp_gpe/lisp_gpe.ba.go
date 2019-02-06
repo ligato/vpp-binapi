@@ -24,36 +24,36 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "gpe_add_del_fwd_entry": {
+//	        "reply": "gpe_add_del_fwd_entry_reply"
+//	    },
+//	    "gpe_enable_disable": {
+//	        "reply": "gpe_enable_disable_reply"
+//	    },
+//	    "gpe_add_del_iface": {
+//	        "reply": "gpe_add_del_iface_reply"
+//	    },
+//	    "gpe_fwd_entry_vnis_get": {
+//	        "reply": "gpe_fwd_entry_vnis_get_reply"
+//	    },
+//	    "gpe_fwd_entries_get": {
+//	        "reply": "gpe_fwd_entries_get_reply"
+//	    },
+//	    "gpe_fwd_entry_path_dump": {
+//	        "reply": "gpe_fwd_entry_path_details",
+//	        "stream": true
+//	    },
 //	    "gpe_set_encap_mode": {
 //	        "reply": "gpe_set_encap_mode_reply"
 //	    },
-//	    "gpe_add_del_fwd_entry": {
-//	        "reply": "gpe_add_del_fwd_entry_reply"
+//	    "gpe_get_encap_mode": {
+//	        "reply": "gpe_get_encap_mode_reply"
 //	    },
 //	    "gpe_add_del_native_fwd_rpath": {
 //	        "reply": "gpe_add_del_native_fwd_rpath_reply"
 //	    },
 //	    "gpe_native_fwd_rpaths_get": {
 //	        "reply": "gpe_native_fwd_rpaths_get_reply"
-//	    },
-//	    "gpe_fwd_entries_get": {
-//	        "reply": "gpe_fwd_entries_get_reply"
-//	    },
-//	    "gpe_get_encap_mode": {
-//	        "reply": "gpe_get_encap_mode_reply"
-//	    },
-//	    "gpe_add_del_iface": {
-//	        "reply": "gpe_add_del_iface_reply"
-//	    },
-//	    "gpe_enable_disable": {
-//	        "reply": "gpe_enable_disable_reply"
-//	    },
-//	    "gpe_fwd_entry_path_dump": {
-//	        "reply": "gpe_fwd_entry_path_details",
-//	        "stream": true
-//	    },
-//	    "gpe_fwd_entry_vnis_get": {
-//	        "reply": "gpe_fwd_entry_vnis_get_reply"
 //	    }
 //	},
 //

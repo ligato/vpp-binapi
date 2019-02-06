@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "dhcp6_pd_client_enable_disable",
@@ -108,8 +109,8 @@
             }
         ]
     ],
-    "vl_api_version": "0xe7d7ed38",
     "unions": [],
+    "enums": [],
     "services": {
         "dhcp6_pd_client_enable_disable": {
             "reply": "dhcp6_pd_client_enable_disable_reply"
@@ -118,7 +119,6 @@
             "reply": "ip6_add_del_address_using_prefix_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xe7d7ed38"
 }

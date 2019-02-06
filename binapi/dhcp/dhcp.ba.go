@@ -24,20 +24,11 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "dhcp6_clients_enable_disable": {
-//	        "reply": "dhcp6_clients_enable_disable_reply"
-//	    },
-//	    "dhcp6_duid_ll_set": {
-//	        "reply": "dhcp6_duid_ll_set_reply"
-//	    },
-//	    "want_dhcp6_pd_reply_events": {
-//	        "reply": "want_dhcp6_pd_reply_events_reply",
+//	    "dhcp_client_config": {
+//	        "reply": "dhcp_client_config_reply",
 //	        "events": [
-//	            "dhcp6_pd_reply_event"
+//	            "dhcp_compl_event"
 //	        ]
-//	    },
-//	    "dhcp6_send_client_message": {
-//	        "reply": "dhcp6_send_client_message_reply"
 //	    },
 //	    "want_dhcp6_reply_events": {
 //	        "reply": "want_dhcp6_reply_events_reply",
@@ -45,28 +36,37 @@ var _ = bytes.NewBuffer
 //	            "dhcp6_reply_event"
 //	        ]
 //	    },
-//	    "dhcp_client_config": {
-//	        "reply": "dhcp_client_config_reply",
+//	    "want_dhcp6_pd_reply_events": {
+//	        "reply": "want_dhcp6_pd_reply_events_reply",
 //	        "events": [
-//	            "dhcp_compl_event"
+//	            "dhcp6_pd_reply_event"
 //	        ]
-//	    },
-//	    "dhcp6_pd_send_client_message": {
-//	        "reply": "dhcp6_pd_send_client_message_reply"
-//	    },
-//	    "dhcp_proxy_dump": {
-//	        "reply": "dhcp_proxy_details",
-//	        "stream": true
-//	    },
-//	    "dhcp_client_dump": {
-//	        "reply": "dhcp_client_details",
-//	        "stream": true
 //	    },
 //	    "dhcp_proxy_config": {
 //	        "reply": "dhcp_proxy_config_reply"
 //	    },
 //	    "dhcp_proxy_set_vss": {
 //	        "reply": "dhcp_proxy_set_vss_reply"
+//	    },
+//	    "dhcp_client_dump": {
+//	        "reply": "dhcp_client_details",
+//	        "stream": true
+//	    },
+//	    "dhcp_proxy_dump": {
+//	        "reply": "dhcp_proxy_details",
+//	        "stream": true
+//	    },
+//	    "dhcp6_duid_ll_set": {
+//	        "reply": "dhcp6_duid_ll_set_reply"
+//	    },
+//	    "dhcp6_clients_enable_disable": {
+//	        "reply": "dhcp6_clients_enable_disable_reply"
+//	    },
+//	    "dhcp6_send_client_message": {
+//	        "reply": "dhcp6_send_client_message_reply"
+//	    },
+//	    "dhcp6_pd_send_client_message": {
+//	        "reply": "dhcp6_pd_send_client_message_reply"
 //	    }
 //	},
 //
@@ -199,7 +199,18 @@ func (*DHCPLease) GetCrcString() string {
 // DHCPServer represents VPP binary API type 'dhcp_server':
 //
 //	"dhcp_server",
-//	16
+//	[
+//	    "u32",
+//	    "server_vrf_id"
+//	],
+//	[
+//	    "u8",
+//	    "dhcp_server",
+//	    16
+//	],
+//	{
+//	    "crc": "0xf16506c4"
+//	}
 //
 type DHCPServer struct {
 	ServerVrfID uint32

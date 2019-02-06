@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "tcp_configure_src_addresses",
@@ -55,14 +56,13 @@
             }
         ]
     ],
-    "vl_api_version": "0x3e216e88",
     "unions": [],
+    "enums": [],
     "services": {
         "tcp_configure_src_addresses": {
             "reply": "tcp_configure_src_addresses_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x3e216e88"
 }

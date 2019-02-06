@@ -24,209 +24,209 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "nat66_static_mapping_dump": {
-//	        "reply": "nat66_static_mapping_details",
-//	        "stream": true
-//	    },
-//	    "dslite_set_b4_addr": {
-//	        "reply": "dslite_set_b4_addr_reply"
-//	    },
-//	    "nat44_add_del_address_range": {
-//	        "reply": "nat44_add_del_address_range_reply"
-//	    },
-//	    "nat66_add_del_interface": {
-//	        "reply": "nat66_add_del_interface_reply"
-//	    },
-//	    "dslite_address_dump": {
-//	        "reply": "dslite_address_details",
-//	        "stream": true
-//	    },
-//	    "nat_ipfix_enable_disable": {
-//	        "reply": "nat_ipfix_enable_disable_reply"
-//	    },
-//	    "nat44_interface_add_del_output_feature": {
-//	        "reply": "nat44_interface_add_del_output_feature_reply"
-//	    },
-//	    "dslite_get_b4_addr": {
-//	        "reply": "dslite_get_b4_addr_reply"
-//	    },
-//	    "nat_set_reass": {
-//	        "reply": "nat_set_reass_reply"
-//	    },
-//	    "nat44_interface_output_feature_dump": {
-//	        "reply": "nat44_interface_output_feature_details",
-//	        "stream": true
-//	    },
-//	    "nat44_interface_add_del_feature": {
-//	        "reply": "nat44_interface_add_del_feature_reply"
-//	    },
-//	    "nat_set_addr_and_port_alloc_alg": {
-//	        "reply": "nat_set_addr_and_port_alloc_alg_reply"
-//	    },
-//	    "nat44_lb_static_mapping_dump": {
-//	        "reply": "nat44_lb_static_mapping_details",
-//	        "stream": true
-//	    },
-//	    "nat_get_reass": {
-//	        "reply": "nat_get_reass_reply"
-//	    },
-//	    "nat66_add_del_static_mapping": {
-//	        "reply": "nat66_add_del_static_mapping_reply"
-//	    },
-//	    "nat_get_timeouts": {
-//	        "reply": "nat_get_timeouts_reply"
-//	    },
-//	    "nat64_interface_dump": {
-//	        "reply": "nat64_interface_details",
-//	        "stream": true
-//	    },
-//	    "nat_det_add_del_map": {
-//	        "reply": "nat_det_add_del_map_reply"
-//	    },
-//	    "nat66_interface_dump": {
-//	        "reply": "nat66_interface_details",
-//	        "stream": true
+//	    "nat_control_ping": {
+//	        "reply": "nat_control_ping_reply"
 //	    },
 //	    "nat_show_config": {
 //	        "reply": "nat_show_config_reply"
 //	    },
-//	    "nat64_st_dump": {
-//	        "reply": "nat64_st_details",
-//	        "stream": true
-//	    },
-//	    "nat_set_timeouts": {
-//	        "reply": "nat_set_timeouts_reply"
-//	    },
-//	    "nat44_identity_mapping_dump": {
-//	        "reply": "nat44_identity_mapping_details",
-//	        "stream": true
-//	    },
-//	    "nat_det_forward": {
-//	        "reply": "nat_det_forward_reply"
-//	    },
-//	    "nat44_address_dump": {
-//	        "reply": "nat44_address_details",
-//	        "stream": true
+//	    "nat_set_workers": {
+//	        "reply": "nat_set_workers_reply"
 //	    },
 //	    "nat_worker_dump": {
 //	        "reply": "nat_worker_details",
 //	        "stream": true
 //	    },
-//	    "nat44_add_del_identity_mapping": {
-//	        "reply": "nat44_add_del_identity_mapping_reply"
+//	    "nat_ipfix_enable_disable": {
+//	        "reply": "nat_ipfix_enable_disable_reply"
 //	    },
-//	    "nat44_static_mapping_dump": {
-//	        "reply": "nat44_static_mapping_details",
-//	        "stream": true
+//	    "nat_set_reass": {
+//	        "reply": "nat_set_reass_reply"
 //	    },
-//	    "nat44_forwarding_is_enabled": {
-//	        "reply": "nat44_forwarding_is_enabled_reply"
-//	    },
-//	    "nat44_interface_addr_dump": {
-//	        "reply": "nat44_interface_addr_details",
-//	        "stream": true
-//	    },
-//	    "dslite_set_aftr_addr": {
-//	        "reply": "dslite_set_aftr_addr_reply"
-//	    },
-//	    "nat44_user_dump": {
-//	        "reply": "nat44_user_details",
-//	        "stream": true
-//	    },
-//	    "nat44_lb_static_mapping_add_del_local": {
-//	        "reply": "nat44_lb_static_mapping_add_del_local_reply"
-//	    },
-//	    "nat44_del_session": {
-//	        "reply": "nat44_del_session_reply"
-//	    },
-//	    "nat64_prefix_dump": {
-//	        "reply": "nat64_prefix_details",
-//	        "stream": true
-//	    },
-//	    "nat_set_mss_clamping": {
-//	        "reply": "nat_set_mss_clamping_reply"
-//	    },
-//	    "nat64_add_del_static_bib": {
-//	        "reply": "nat64_add_del_static_bib_reply"
+//	    "nat_get_reass": {
+//	        "reply": "nat_get_reass_reply"
 //	    },
 //	    "nat_reass_dump": {
 //	        "reply": "nat_reass_details",
 //	        "stream": true
 //	    },
-//	    "nat44_interface_dump": {
-//	        "reply": "nat44_interface_details",
-//	        "stream": true
+//	    "nat_set_timeouts": {
+//	        "reply": "nat_set_timeouts_reply"
 //	    },
-//	    "nat_det_close_session_out": {
-//	        "reply": "nat_det_close_session_out_reply"
+//	    "nat_get_timeouts": {
+//	        "reply": "nat_get_timeouts_reply"
 //	    },
-//	    "nat64_bib_dump": {
-//	        "reply": "nat64_bib_details",
-//	        "stream": true
+//	    "nat_set_addr_and_port_alloc_alg": {
+//	        "reply": "nat_set_addr_and_port_alloc_alg_reply"
 //	    },
-//	    "nat64_add_del_pool_addr_range": {
-//	        "reply": "nat64_add_del_pool_addr_range_reply"
+//	    "nat_get_addr_and_port_alloc_alg": {
+//	        "reply": "nat_get_addr_and_port_alloc_alg_reply"
 //	    },
-//	    "dslite_add_del_pool_addr_range": {
-//	        "reply": "dslite_add_del_pool_addr_range_reply"
+//	    "nat_set_mss_clamping": {
+//	        "reply": "nat_set_mss_clamping_reply"
 //	    },
 //	    "nat_get_mss_clamping": {
 //	        "reply": "nat_get_mss_clamping_reply"
 //	    },
-//	    "nat64_pool_addr_dump": {
-//	        "reply": "nat64_pool_addr_details",
+//	    "nat44_add_del_address_range": {
+//	        "reply": "nat44_add_del_address_range_reply"
+//	    },
+//	    "nat44_address_dump": {
+//	        "reply": "nat44_address_details",
 //	        "stream": true
 //	    },
-//	    "nat44_add_del_lb_static_mapping": {
-//	        "reply": "nat44_add_del_lb_static_mapping_reply"
+//	    "nat44_interface_add_del_feature": {
+//	        "reply": "nat44_interface_add_del_feature_reply"
 //	    },
-//	    "nat_control_ping": {
-//	        "reply": "nat_control_ping_reply"
+//	    "nat44_interface_dump": {
+//	        "reply": "nat44_interface_details",
+//	        "stream": true
 //	    },
-//	    "nat_det_map_dump": {
-//	        "reply": "nat_det_map_details",
+//	    "nat44_interface_add_del_output_feature": {
+//	        "reply": "nat44_interface_add_del_output_feature_reply"
+//	    },
+//	    "nat44_interface_output_feature_dump": {
+//	        "reply": "nat44_interface_output_feature_details",
 //	        "stream": true
 //	    },
 //	    "nat44_add_del_static_mapping": {
 //	        "reply": "nat44_add_del_static_mapping_reply"
 //	    },
+//	    "nat44_static_mapping_dump": {
+//	        "reply": "nat44_static_mapping_details",
+//	        "stream": true
+//	    },
+//	    "nat44_add_del_identity_mapping": {
+//	        "reply": "nat44_add_del_identity_mapping_reply"
+//	    },
+//	    "nat44_identity_mapping_dump": {
+//	        "reply": "nat44_identity_mapping_details",
+//	        "stream": true
+//	    },
 //	    "nat44_add_del_interface_addr": {
 //	        "reply": "nat44_add_del_interface_addr_reply"
 //	    },
-//	    "nat_det_reverse": {
-//	        "reply": "nat_det_reverse_reply"
+//	    "nat44_interface_addr_dump": {
+//	        "reply": "nat44_interface_addr_details",
+//	        "stream": true
 //	    },
-//	    "nat64_add_del_interface": {
-//	        "reply": "nat64_add_del_interface_reply"
-//	    },
-//	    "nat_det_close_session_in": {
-//	        "reply": "nat_det_close_session_in_reply"
+//	    "nat44_user_dump": {
+//	        "reply": "nat44_user_details",
+//	        "stream": true
 //	    },
 //	    "nat44_user_session_dump": {
 //	        "reply": "nat44_user_session_details",
 //	        "stream": true
 //	    },
-//	    "nat_set_workers": {
-//	        "reply": "nat_set_workers_reply"
+//	    "nat44_add_del_lb_static_mapping": {
+//	        "reply": "nat44_add_del_lb_static_mapping_reply"
 //	    },
-//	    "dslite_get_aftr_addr": {
-//	        "reply": "dslite_get_aftr_addr_reply"
+//	    "nat44_lb_static_mapping_add_del_local": {
+//	        "reply": "nat44_lb_static_mapping_add_del_local_reply"
+//	    },
+//	    "nat44_lb_static_mapping_dump": {
+//	        "reply": "nat44_lb_static_mapping_details",
+//	        "stream": true
+//	    },
+//	    "nat44_del_session": {
+//	        "reply": "nat44_del_session_reply"
+//	    },
+//	    "nat44_forwarding_enable_disable": {
+//	        "reply": "nat44_forwarding_enable_disable_reply"
+//	    },
+//	    "nat44_forwarding_is_enabled": {
+//	        "reply": "nat44_forwarding_is_enabled_reply"
+//	    },
+//	    "nat_det_add_del_map": {
+//	        "reply": "nat_det_add_del_map_reply"
+//	    },
+//	    "nat_det_forward": {
+//	        "reply": "nat_det_forward_reply"
+//	    },
+//	    "nat_det_reverse": {
+//	        "reply": "nat_det_reverse_reply"
+//	    },
+//	    "nat_det_map_dump": {
+//	        "reply": "nat_det_map_details",
+//	        "stream": true
+//	    },
+//	    "nat_det_close_session_out": {
+//	        "reply": "nat_det_close_session_out_reply"
+//	    },
+//	    "nat_det_close_session_in": {
+//	        "reply": "nat_det_close_session_in_reply"
 //	    },
 //	    "nat_det_session_dump": {
 //	        "reply": "nat_det_session_details",
 //	        "stream": true
 //	    },
+//	    "nat64_add_del_pool_addr_range": {
+//	        "reply": "nat64_add_del_pool_addr_range_reply"
+//	    },
+//	    "nat64_pool_addr_dump": {
+//	        "reply": "nat64_pool_addr_details",
+//	        "stream": true
+//	    },
+//	    "nat64_add_del_interface": {
+//	        "reply": "nat64_add_del_interface_reply"
+//	    },
+//	    "nat64_interface_dump": {
+//	        "reply": "nat64_interface_details",
+//	        "stream": true
+//	    },
+//	    "nat64_add_del_static_bib": {
+//	        "reply": "nat64_add_del_static_bib_reply"
+//	    },
+//	    "nat64_bib_dump": {
+//	        "reply": "nat64_bib_details",
+//	        "stream": true
+//	    },
+//	    "nat64_st_dump": {
+//	        "reply": "nat64_st_details",
+//	        "stream": true
+//	    },
 //	    "nat64_add_del_prefix": {
 //	        "reply": "nat64_add_del_prefix_reply"
+//	    },
+//	    "nat64_prefix_dump": {
+//	        "reply": "nat64_prefix_details",
+//	        "stream": true
 //	    },
 //	    "nat64_add_del_interface_addr": {
 //	        "reply": "nat64_add_del_interface_addr_reply"
 //	    },
-//	    "nat_get_addr_and_port_alloc_alg": {
-//	        "reply": "nat_get_addr_and_port_alloc_alg_reply"
+//	    "dslite_add_del_pool_addr_range": {
+//	        "reply": "dslite_add_del_pool_addr_range_reply"
 //	    },
-//	    "nat44_forwarding_enable_disable": {
-//	        "reply": "nat44_forwarding_enable_disable_reply"
+//	    "dslite_address_dump": {
+//	        "reply": "dslite_address_details",
+//	        "stream": true
+//	    },
+//	    "dslite_set_aftr_addr": {
+//	        "reply": "dslite_set_aftr_addr_reply"
+//	    },
+//	    "dslite_get_aftr_addr": {
+//	        "reply": "dslite_get_aftr_addr_reply"
+//	    },
+//	    "dslite_set_b4_addr": {
+//	        "reply": "dslite_set_b4_addr_reply"
+//	    },
+//	    "dslite_get_b4_addr": {
+//	        "reply": "dslite_get_b4_addr_reply"
+//	    },
+//	    "nat66_add_del_interface": {
+//	        "reply": "nat66_add_del_interface_reply"
+//	    },
+//	    "nat66_interface_dump": {
+//	        "reply": "nat66_interface_details",
+//	        "stream": true
+//	    },
+//	    "nat66_add_del_static_mapping": {
+//	        "reply": "nat66_add_del_static_mapping_reply"
+//	    },
+//	    "nat66_static_mapping_dump": {
+//	        "reply": "nat66_static_mapping_details",
+//	        "stream": true
 //	    }
 //	},
 //

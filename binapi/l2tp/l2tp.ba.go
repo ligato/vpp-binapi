@@ -23,21 +23,21 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "l2tpv3_interface_enable_disable": {
-//	        "reply": "l2tpv3_interface_enable_disable_reply"
+//	    "l2tpv3_create_tunnel": {
+//	        "reply": "l2tpv3_create_tunnel_reply"
 //	    },
 //	    "l2tpv3_set_tunnel_cookies": {
 //	        "reply": "l2tpv3_set_tunnel_cookies_reply"
 //	    },
-//	    "l2tpv3_create_tunnel": {
-//	        "reply": "l2tpv3_create_tunnel_reply"
-//	    },
-//	    "l2tpv3_set_lookup_key": {
-//	        "reply": "l2tpv3_set_lookup_key_reply"
-//	    },
 //	    "sw_if_l2tpv3_tunnel_dump": {
 //	        "reply": "sw_if_l2tpv3_tunnel_details",
 //	        "stream": true
+//	    },
+//	    "l2tpv3_interface_enable_disable": {
+//	        "reply": "l2tpv3_interface_enable_disable_reply"
+//	    },
+//	    "l2tpv3_set_lookup_key": {
+//	        "reply": "l2tpv3_set_lookup_key_reply"
 //	    }
 //	},
 //

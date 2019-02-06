@@ -23,14 +23,14 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "oam_add_del": {
-//	        "reply": "oam_add_del_reply"
-//	    },
 //	    "want_oam_events": {
 //	        "reply": "want_oam_events_reply",
 //	        "events": [
 //	            "oam_event"
 //	        ]
+//	    },
+//	    "oam_add_del": {
+//	        "reply": "oam_add_del_reply"
 //	    }
 //	},
 //

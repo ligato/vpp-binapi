@@ -23,12 +23,12 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "ipsec_gre_add_del_tunnel": {
+//	        "reply": "ipsec_gre_add_del_tunnel_reply"
+//	    },
 //	    "ipsec_gre_tunnel_dump": {
 //	        "reply": "ipsec_gre_tunnel_details",
 //	        "stream": true
-//	    },
-//	    "ipsec_gre_add_del_tunnel": {
-//	        "reply": "ipsec_gre_add_del_tunnel_reply"
 //	    }
 //	},
 //

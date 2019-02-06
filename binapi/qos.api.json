@@ -1,4 +1,17 @@
 {
+    "types": [
+        [
+            "qos_egress_map_row",
+            [
+                "u8",
+                "outputs",
+                256
+            ],
+            {
+                "crc": "0xd3bbaed6"
+            }
+        ]
+    ],
     "messages": [
         [
             "qos_record_enable_disable",
@@ -186,22 +199,7 @@
             }
         ]
     ],
-    "vl_api_version": "0xa23036b4",
     "unions": [],
-    "services": {
-        "qos_record_enable_disable": {
-            "reply": "qos_record_enable_disable_reply"
-        },
-        "qos_mark_enable_disable": {
-            "reply": "qos_mark_enable_disable_reply"
-        },
-        "qos_egress_map_delete": {
-            "reply": "qos_egress_map_delete_reply"
-        },
-        "qos_egress_map_update": {
-            "reply": "qos_egress_map_update_reply"
-        }
-    },
     "enums": [
         [
             "qos_source",
@@ -226,18 +224,20 @@
             }
         ]
     ],
-    "types": [
-        [
-            "qos_egress_map_row",
-            [
-                "u8",
-                "outputs",
-                256
-            ],
-            {
-                "crc": "0xd3bbaed6"
-            }
-        ]
-    ],
-    "aliases": {}
+    "services": {
+        "qos_record_enable_disable": {
+            "reply": "qos_record_enable_disable_reply"
+        },
+        "qos_egress_map_update": {
+            "reply": "qos_egress_map_update_reply"
+        },
+        "qos_egress_map_delete": {
+            "reply": "qos_egress_map_delete_reply"
+        },
+        "qos_mark_enable_disable": {
+            "reply": "qos_mark_enable_disable_reply"
+        }
+    },
+    "aliases": {},
+    "vl_api_version": "0xa23036b4"
 }

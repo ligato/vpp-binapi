@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "l2_emulation",
@@ -45,14 +46,13 @@
             }
         ]
     ],
-    "vl_api_version": "0x3fc84d7c",
     "unions": [],
+    "enums": [],
     "services": {
         "l2_emulation": {
             "reply": "l2_emulation_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x3fc84d7c"
 }

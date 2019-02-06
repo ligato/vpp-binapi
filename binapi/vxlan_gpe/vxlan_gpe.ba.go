@@ -26,12 +26,12 @@ var _ = bytes.NewBuffer
 //	    "vxlan_gpe_add_del_tunnel": {
 //	        "reply": "vxlan_gpe_add_del_tunnel_reply"
 //	    },
-//	    "sw_interface_set_vxlan_gpe_bypass": {
-//	        "reply": "sw_interface_set_vxlan_gpe_bypass_reply"
-//	    },
 //	    "vxlan_gpe_tunnel_dump": {
 //	        "reply": "vxlan_gpe_tunnel_details",
 //	        "stream": true
+//	    },
+//	    "sw_interface_set_vxlan_gpe_bypass": {
+//	        "reply": "sw_interface_set_vxlan_gpe_bypass_reply"
 //	    }
 //	},
 //

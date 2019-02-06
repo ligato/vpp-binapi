@@ -23,11 +23,11 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "nsim_configure": {
-//	        "reply": "nsim_configure_reply"
-//	    },
 //	    "nsim_enable_disable": {
 //	        "reply": "nsim_enable_disable_reply"
+//	    },
+//	    "nsim_configure": {
+//	        "reply": "nsim_configure_reply"
 //	    }
 //	},
 //

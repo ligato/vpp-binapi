@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "feature_enable_disable",
@@ -55,14 +56,13 @@
             }
         ]
     ],
-    "vl_api_version": "0xf82f7a4",
     "unions": [],
+    "enums": [],
     "services": {
         "feature_enable_disable": {
             "reply": "feature_enable_disable_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xf82f7a4"
 }

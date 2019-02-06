@@ -24,18 +24,18 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "abf_itf_attach_add_del": {
-//	        "reply": "abf_itf_attach_add_del_reply"
+//	    "abf_plugin_get_version": {
+//	        "reply": "abf_plugin_get_version_reply"
 //	    },
 //	    "abf_policy_add_del": {
 //	        "reply": "abf_policy_add_del_reply"
 //	    },
-//	    "abf_plugin_get_version": {
-//	        "reply": "abf_plugin_get_version_reply"
-//	    },
 //	    "abf_policy_dump": {
 //	        "reply": "abf_policy_details",
 //	        "stream": true
+//	    },
+//	    "abf_itf_attach_add_del": {
+//	        "reply": "abf_itf_attach_add_del_reply"
 //	    },
 //	    "abf_itf_attach_dump": {
 //	        "reply": "abf_itf_attach_details",

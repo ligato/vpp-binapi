@@ -24,35 +24,35 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "sr_steering_pol_dump": {
-//	        "reply": "sr_steering_pol_details",
-//	        "stream": true
-//	    },
-//	    "sr_localsids_dump": {
-//	        "reply": "sr_localsids_details",
-//	        "stream": true
-//	    },
-//	    "sr_steering_add_del": {
-//	        "reply": "sr_steering_add_del_reply"
-//	    },
-//	    "sr_set_encap_source": {
-//	        "reply": "sr_set_encap_source_reply"
-//	    },
 //	    "sr_localsid_add_del": {
 //	        "reply": "sr_localsid_add_del_reply"
 //	    },
 //	    "sr_policy_add": {
 //	        "reply": "sr_policy_add_reply"
 //	    },
-//	    "sr_policies_dump": {
-//	        "reply": "sr_policies_details",
-//	        "stream": true
-//	    },
 //	    "sr_policy_mod": {
 //	        "reply": "sr_policy_mod_reply"
 //	    },
 //	    "sr_policy_del": {
 //	        "reply": "sr_policy_del_reply"
+//	    },
+//	    "sr_set_encap_source": {
+//	        "reply": "sr_set_encap_source_reply"
+//	    },
+//	    "sr_steering_add_del": {
+//	        "reply": "sr_steering_add_del_reply"
+//	    },
+//	    "sr_localsids_dump": {
+//	        "reply": "sr_localsids_details",
+//	        "stream": true
+//	    },
+//	    "sr_policies_dump": {
+//	        "reply": "sr_policies_details",
+//	        "stream": true
+//	    },
+//	    "sr_steering_pol_dump": {
+//	        "reply": "sr_steering_pol_details",
+//	        "stream": true
 //	    }
 //	},
 //

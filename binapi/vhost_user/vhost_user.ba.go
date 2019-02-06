@@ -23,18 +23,18 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "sw_interface_vhost_user_dump": {
-//	        "reply": "sw_interface_vhost_user_details",
-//	        "stream": true
-//	    },
-//	    "delete_vhost_user_if": {
-//	        "reply": "delete_vhost_user_if_reply"
-//	    },
 //	    "create_vhost_user_if": {
 //	        "reply": "create_vhost_user_if_reply"
 //	    },
 //	    "modify_vhost_user_if": {
 //	        "reply": "modify_vhost_user_if_reply"
+//	    },
+//	    "delete_vhost_user_if": {
+//	        "reply": "delete_vhost_user_if_reply"
+//	    },
+//	    "sw_interface_vhost_user_dump": {
+//	        "reply": "sw_interface_vhost_user_details",
+//	        "stream": true
 //	    }
 //	},
 //

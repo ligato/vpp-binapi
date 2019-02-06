@@ -26,11 +26,11 @@ var _ = bytes.NewBuffer
 //	    "sctp_add_src_dst_connection": {
 //	        "reply": "sctp_add_src_dst_connection_reply"
 //	    },
-//	    "sctp_config": {
-//	        "reply": "sctp_config_reply"
-//	    },
 //	    "sctp_del_src_dst_connection": {
 //	        "reply": "sctp_del_src_dst_connection_reply"
+//	    },
+//	    "sctp_config": {
+//	        "reply": "sctp_config_reply"
 //	    }
 //	},
 //

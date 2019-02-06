@@ -24,16 +24,6 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "mpls_table_add_del": {
-//	        "reply": "mpls_table_add_del_reply"
-//	    },
-//	    "mpls_fib_dump": {
-//	        "reply": "mpls_fib_details",
-//	        "stream": true
-//	    },
-//	    "mpls_route_add_del": {
-//	        "reply": "mpls_route_add_del_reply"
-//	    },
 //	    "mpls_ip_bind_unbind": {
 //	        "reply": "mpls_ip_bind_unbind_reply"
 //	    },
@@ -42,6 +32,16 @@ var _ = bytes.NewBuffer
 //	    },
 //	    "mpls_tunnel_dump": {
 //	        "reply": "mpls_tunnel_details",
+//	        "stream": true
+//	    },
+//	    "mpls_table_add_del": {
+//	        "reply": "mpls_table_add_del_reply"
+//	    },
+//	    "mpls_route_add_del": {
+//	        "reply": "mpls_route_add_del_reply"
+//	    },
+//	    "mpls_fib_dump": {
+//	        "reply": "mpls_fib_details",
 //	        "stream": true
 //	    },
 //	    "sw_interface_set_mpls_enable": {

@@ -27,60 +27,60 @@ var _ = bytes.NewBuffer
 //	    "acl_plugin_get_version": {
 //	        "reply": "acl_plugin_get_version_reply"
 //	    },
-//	    "acl_dump": {
-//	        "reply": "acl_details",
-//	        "stream": true
-//	    },
-//	    "acl_interface_add_del": {
-//	        "reply": "acl_interface_add_del_reply"
-//	    },
-//	    "acl_del": {
-//	        "reply": "acl_del_reply"
-//	    },
-//	    "macip_acl_del": {
-//	        "reply": "macip_acl_del_reply"
-//	    },
 //	    "acl_plugin_control_ping": {
 //	        "reply": "acl_plugin_control_ping_reply"
 //	    },
-//	    "macip_acl_interface_get": {
-//	        "reply": "macip_acl_interface_get_reply"
-//	    },
-//	    "acl_interface_etype_whitelist_dump": {
-//	        "reply": "acl_interface_etype_whitelist_details",
-//	        "stream": true
-//	    },
-//	    "macip_acl_interface_add_del": {
-//	        "reply": "macip_acl_interface_add_del_reply"
+//	    "acl_plugin_get_conn_table_max_entries": {
+//	        "reply": "acl_plugin_get_conn_table_max_entries_reply"
 //	    },
 //	    "acl_add_replace": {
 //	        "reply": "acl_add_replace_reply"
 //	    },
-//	    "acl_plugin_get_conn_table_max_entries": {
-//	        "reply": "acl_plugin_get_conn_table_max_entries_reply"
+//	    "acl_del": {
+//	        "reply": "acl_del_reply"
+//	    },
+//	    "acl_interface_add_del": {
+//	        "reply": "acl_interface_add_del_reply"
+//	    },
+//	    "acl_interface_set_acl_list": {
+//	        "reply": "acl_interface_set_acl_list_reply"
+//	    },
+//	    "acl_dump": {
+//	        "reply": "acl_details",
+//	        "stream": true
 //	    },
 //	    "acl_interface_list_dump": {
 //	        "reply": "acl_interface_list_details",
 //	        "stream": true
 //	    },
-//	    "acl_interface_set_acl_list": {
-//	        "reply": "acl_interface_set_acl_list_reply"
-//	    },
 //	    "macip_acl_add": {
 //	        "reply": "macip_acl_add_reply"
 //	    },
-//	    "acl_interface_set_etype_whitelist": {
-//	        "reply": "acl_interface_set_etype_whitelist_reply"
-//	    },
 //	    "macip_acl_add_replace": {
 //	        "reply": "macip_acl_add_replace_reply"
+//	    },
+//	    "macip_acl_del": {
+//	        "reply": "macip_acl_del_reply"
+//	    },
+//	    "macip_acl_interface_add_del": {
+//	        "reply": "macip_acl_interface_add_del_reply"
 //	    },
 //	    "macip_acl_dump": {
 //	        "reply": "macip_acl_details",
 //	        "stream": true
 //	    },
+//	    "macip_acl_interface_get": {
+//	        "reply": "macip_acl_interface_get_reply"
+//	    },
 //	    "macip_acl_interface_list_dump": {
 //	        "reply": "macip_acl_interface_list_details",
+//	        "stream": true
+//	    },
+//	    "acl_interface_set_etype_whitelist": {
+//	        "reply": "acl_interface_set_etype_whitelist_reply"
+//	    },
+//	    "acl_interface_etype_whitelist_dump": {
+//	        "reply": "acl_interface_etype_whitelist_details",
 //	        "stream": true
 //	    }
 //	},

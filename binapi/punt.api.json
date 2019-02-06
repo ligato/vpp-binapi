@@ -1,4 +1,24 @@
 {
+    "types": [
+        [
+            "punt",
+            [
+                "u8",
+                "ipv"
+            ],
+            [
+                "u8",
+                "l4_protocol"
+            ],
+            [
+                "u16",
+                "l4_port"
+            ],
+            {
+                "crc": "0xfe4f98ac"
+            }
+        ]
+    ],
     "messages": [
         [
             "set_punt",
@@ -224,18 +244,11 @@
             }
         ]
     ],
-    "vl_api_version": "0x1c487f2b",
     "unions": [],
+    "enums": [],
     "services": {
         "set_punt": {
             "reply": "set_punt_reply"
-        },
-        "punt_socket_dump": {
-            "reply": "punt_socket_details",
-            "stream": true
-        },
-        "punt_socket_deregister": {
-            "reply": "punt_socket_deregister_reply"
         },
         "punt_dump": {
             "reply": "punt_details",
@@ -243,28 +256,15 @@
         },
         "punt_socket_register": {
             "reply": "punt_socket_register_reply"
+        },
+        "punt_socket_dump": {
+            "reply": "punt_socket_details",
+            "stream": true
+        },
+        "punt_socket_deregister": {
+            "reply": "punt_socket_deregister_reply"
         }
     },
-    "enums": [],
-    "types": [
-        [
-            "punt",
-            [
-                "u8",
-                "ipv"
-            ],
-            [
-                "u8",
-                "l4_protocol"
-            ],
-            [
-                "u16",
-                "l4_port"
-            ],
-            {
-                "crc": "0xfe4f98ac"
-            }
-        ]
-    ],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x1c487f2b"
 }

@@ -26,16 +26,16 @@ var _ = bytes.NewBuffer
 //	    "nsh_add_del_entry": {
 //	        "reply": "nsh_add_del_entry_reply"
 //	    },
-//	    "nsh_map_dump": {
-//	        "reply": "nsh_map_details",
-//	        "stream": true
-//	    },
 //	    "nsh_entry_dump": {
 //	        "reply": "nsh_entry_details",
 //	        "stream": true
 //	    },
 //	    "nsh_add_del_map": {
 //	        "reply": "nsh_add_del_map_reply"
+//	    },
+//	    "nsh_map_dump": {
+//	        "reply": "nsh_map_details",
+//	        "stream": true
 //	    }
 //	},
 //

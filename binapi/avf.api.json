@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "avf_create",
@@ -101,8 +102,8 @@
             }
         ]
     ],
-    "vl_api_version": "0x71cc3938",
     "unions": [],
+    "enums": [],
     "services": {
         "avf_create": {
             "reply": "avf_create_reply"
@@ -111,7 +112,6 @@
             "reply": "avf_delete_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x71cc3938"
 }

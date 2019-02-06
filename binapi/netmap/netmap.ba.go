@@ -23,11 +23,11 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "netmap_delete": {
-//	        "reply": "netmap_delete_reply"
-//	    },
 //	    "netmap_create": {
 //	        "reply": "netmap_create_reply"
+//	    },
+//	    "netmap_delete": {
+//	        "reply": "netmap_delete_reply"
 //	    }
 //	},
 //

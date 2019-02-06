@@ -23,14 +23,14 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "memif_delete": {
-//	        "reply": "memif_delete_reply"
-//	    },
 //	    "memif_socket_filename_add_del": {
 //	        "reply": "memif_socket_filename_add_del_reply"
 //	    },
 //	    "memif_create": {
 //	        "reply": "memif_create_reply"
+//	    },
+//	    "memif_delete": {
+//	        "reply": "memif_delete_reply"
 //	    },
 //	    "memif_socket_filename_dump": {
 //	        "reply": "memif_socket_filename_details",

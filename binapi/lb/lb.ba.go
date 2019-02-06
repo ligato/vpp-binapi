@@ -23,17 +23,17 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "lb_flush_vip": {
-//	        "reply": "lb_flush_vip_reply"
-//	    },
-//	    "lb_add_del_as": {
-//	        "reply": "lb_add_del_as_reply"
-//	    },
 //	    "lb_conf": {
 //	        "reply": "lb_conf_reply"
 //	    },
 //	    "lb_add_del_vip": {
 //	        "reply": "lb_add_del_vip_reply"
+//	    },
+//	    "lb_add_del_as": {
+//	        "reply": "lb_add_del_as_reply"
+//	    },
+//	    "lb_flush_vip": {
+//	        "reply": "lb_flush_vip_reply"
 //	    }
 //	},
 //

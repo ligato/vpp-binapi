@@ -24,85 +24,85 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "create_subif": {
-//	        "reply": "create_subif_reply"
-//	    },
-//	    "sw_interface_set_ip_directed_broadcast": {
-//	        "reply": "sw_interface_set_ip_directed_broadcast_reply"
-//	    },
-//	    "delete_subif": {
-//	        "reply": "delete_subif_reply"
-//	    },
-//	    "sw_interface_get_mac_address": {
-//	        "reply": "sw_interface_get_mac_address_reply"
-//	    },
-//	    "sw_interface_tag_add_del": {
-//	        "reply": "sw_interface_tag_add_del_reply"
-//	    },
-//	    "collect_detailed_interface_stats": {
-//	        "reply": "collect_detailed_interface_stats_reply"
-//	    },
-//	    "sw_interface_dump": {
-//	        "reply": "sw_interface_details",
-//	        "stream": true
-//	    },
-//	    "sw_interface_set_rx_placement": {
-//	        "reply": "sw_interface_set_rx_placement_reply"
-//	    },
-//	    "sw_interface_add_del_address": {
-//	        "reply": "sw_interface_add_del_address_reply"
-//	    },
-//	    "sw_interface_get_table": {
-//	        "reply": "sw_interface_get_table_reply"
-//	    },
-//	    "interface_name_renumber": {
-//	        "reply": "interface_name_renumber_reply"
-//	    },
-//	    "create_loopback_instance": {
-//	        "reply": "create_loopback_instance_reply"
-//	    },
-//	    "sw_interface_set_mtu": {
-//	        "reply": "sw_interface_set_mtu_reply"
-//	    },
 //	    "want_interface_events": {
 //	        "reply": "want_interface_events_reply",
 //	        "events": [
 //	            "sw_interface_event"
 //	        ]
 //	    },
-//	    "create_loopback": {
-//	        "reply": "create_loopback_reply"
-//	    },
-//	    "sw_interface_clear_stats": {
-//	        "reply": "sw_interface_clear_stats_reply"
+//	    "sw_interface_set_flags": {
+//	        "reply": "sw_interface_set_flags_reply"
 //	    },
 //	    "hw_interface_set_mtu": {
 //	        "reply": "hw_interface_set_mtu_reply"
 //	    },
-//	    "sw_interface_set_mac_address": {
-//	        "reply": "sw_interface_set_mac_address_reply"
+//	    "sw_interface_set_mtu": {
+//	        "reply": "sw_interface_set_mtu_reply"
+//	    },
+//	    "sw_interface_set_ip_directed_broadcast": {
+//	        "reply": "sw_interface_set_ip_directed_broadcast_reply"
+//	    },
+//	    "sw_interface_dump": {
+//	        "reply": "sw_interface_details",
+//	        "stream": true
+//	    },
+//	    "sw_interface_add_del_address": {
+//	        "reply": "sw_interface_add_del_address_reply"
+//	    },
+//	    "sw_interface_set_table": {
+//	        "reply": "sw_interface_set_table_reply"
+//	    },
+//	    "sw_interface_get_table": {
+//	        "reply": "sw_interface_get_table_reply"
 //	    },
 //	    "sw_interface_set_unnumbered": {
 //	        "reply": "sw_interface_set_unnumbered_reply"
+//	    },
+//	    "sw_interface_clear_stats": {
+//	        "reply": "sw_interface_clear_stats_reply"
+//	    },
+//	    "sw_interface_tag_add_del": {
+//	        "reply": "sw_interface_tag_add_del_reply"
+//	    },
+//	    "sw_interface_set_mac_address": {
+//	        "reply": "sw_interface_set_mac_address_reply"
+//	    },
+//	    "sw_interface_get_mac_address": {
+//	        "reply": "sw_interface_get_mac_address_reply"
+//	    },
+//	    "sw_interface_set_rx_mode": {
+//	        "reply": "sw_interface_set_rx_mode_reply"
+//	    },
+//	    "sw_interface_set_rx_placement": {
+//	        "reply": "sw_interface_set_rx_placement_reply"
 //	    },
 //	    "sw_interface_rx_placement_dump": {
 //	        "reply": "sw_interface_rx_placement_details",
 //	        "stream": true
 //	    },
-//	    "sw_interface_set_flags": {
-//	        "reply": "sw_interface_set_flags_reply"
+//	    "interface_name_renumber": {
+//	        "reply": "interface_name_renumber_reply"
 //	    },
-//	    "delete_loopback": {
-//	        "reply": "delete_loopback_reply"
-//	    },
-//	    "sw_interface_set_rx_mode": {
-//	        "reply": "sw_interface_set_rx_mode_reply"
+//	    "create_subif": {
+//	        "reply": "create_subif_reply"
 //	    },
 //	    "create_vlan_subif": {
 //	        "reply": "create_vlan_subif_reply"
 //	    },
-//	    "sw_interface_set_table": {
-//	        "reply": "sw_interface_set_table_reply"
+//	    "delete_subif": {
+//	        "reply": "delete_subif_reply"
+//	    },
+//	    "create_loopback": {
+//	        "reply": "create_loopback_reply"
+//	    },
+//	    "create_loopback_instance": {
+//	        "reply": "create_loopback_instance_reply"
+//	    },
+//	    "delete_loopback": {
+//	        "reply": "delete_loopback_reply"
+//	    },
+//	    "collect_detailed_interface_stats": {
+//	        "reply": "collect_detailed_interface_stats_reply"
 //	    }
 //	},
 //

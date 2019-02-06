@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "policer_add_del",
@@ -244,8 +245,8 @@
             }
         ]
     ],
-    "vl_api_version": "0x7807cc8d",
     "unions": [],
+    "enums": [],
     "services": {
         "policer_add_del": {
             "reply": "policer_add_del_reply"
@@ -255,7 +256,6 @@
             "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x7807cc8d"
 }

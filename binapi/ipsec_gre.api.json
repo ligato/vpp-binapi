@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "ipsec_gre_add_del_tunnel",
@@ -121,18 +122,17 @@
             }
         ]
     ],
-    "vl_api_version": "0x54e103fe",
     "unions": [],
+    "enums": [],
     "services": {
+        "ipsec_gre_add_del_tunnel": {
+            "reply": "ipsec_gre_add_del_tunnel_reply"
+        },
         "ipsec_gre_tunnel_dump": {
             "reply": "ipsec_gre_tunnel_details",
             "stream": true
-        },
-        "ipsec_gre_add_del_tunnel": {
-            "reply": "ipsec_gre_add_del_tunnel_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x54e103fe"
 }

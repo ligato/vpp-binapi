@@ -23,15 +23,15 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "pipe_dump": {
-//	        "reply": "pipe_details",
-//	        "stream": true
+//	    "pipe_create": {
+//	        "reply": "pipe_create_reply"
 //	    },
 //	    "pipe_delete": {
 //	        "reply": "pipe_delete_reply"
 //	    },
-//	    "pipe_create": {
-//	        "reply": "pipe_create_reply"
+//	    "pipe_dump": {
+//	        "reply": "pipe_details",
+//	        "stream": true
 //	    }
 //	},
 //

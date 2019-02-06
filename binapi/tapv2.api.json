@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "tap_create_v2",
@@ -286,8 +287,8 @@
             }
         ]
     ],
-    "vl_api_version": "0xaebf5bff",
     "unions": [],
+    "enums": [],
     "services": {
         "tap_create_v2": {
             "reply": "tap_create_v2_reply"
@@ -300,7 +301,6 @@
             "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xaebf5bff"
 }

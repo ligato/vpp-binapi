@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "ioam_cache_ip6_enable_disable",
@@ -41,14 +42,13 @@
             }
         ]
     ],
-    "vl_api_version": "0xb7452f41",
     "unions": [],
+    "enums": [],
     "services": {
         "ioam_cache_ip6_enable_disable": {
             "reply": "ioam_cache_ip6_enable_disable_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xb7452f41"
 }

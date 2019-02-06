@@ -26,11 +26,11 @@ var _ = bytes.NewBuffer
 //	    "trace_profile_add": {
 //	        "reply": "trace_profile_add_reply"
 //	    },
-//	    "trace_profile_show_config": {
-//	        "reply": "trace_profile_show_config_reply"
-//	    },
 //	    "trace_profile_del": {
 //	        "reply": "trace_profile_del_reply"
+//	    },
+//	    "trace_profile_show_config": {
+//	        "reply": "trace_profile_show_config_reply"
 //	    }
 //	},
 //

@@ -27,8 +27,14 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "svs_plugin_get_version": {
+//	        "reply": "svs_plugin_get_version_reply"
+//	    },
 //	    "svs_table_add_del": {
 //	        "reply": "svs_table_add_del_reply"
+//	    },
+//	    "svs_route_add_del": {
+//	        "reply": "svs_route_add_del_reply"
 //	    },
 //	    "svs_enable_disable": {
 //	        "reply": "svs_enable_disable_reply"
@@ -36,12 +42,6 @@ var _ = bytes.NewBuffer
 //	    "svs_dump": {
 //	        "reply": "svs_details",
 //	        "stream": true
-//	    },
-//	    "svs_plugin_get_version": {
-//	        "reply": "svs_plugin_get_version_reply"
-//	    },
-//	    "svs_route_add_del": {
-//	        "reply": "svs_route_add_del_reply"
 //	    }
 //	},
 //
@@ -82,18 +82,18 @@ const (
 // IP4Address represents VPP binary API alias 'ip4_address':
 //
 //	"ip4_address": {
-//	    "length": 4,
-//	    "type": "u8"
-//	}
+//	    "type": "u8",
+//	    "length": 4
+//	},
 //
 type IP4Address [4]uint8
 
 // IP6Address represents VPP binary API alias 'ip6_address':
 //
 //	"ip6_address": {
-//	    "length": 16,
-//	    "type": "u8"
-//	},
+//	    "type": "u8",
+//	    "length": 16
+//	}
 //
 type IP6Address [16]uint8
 

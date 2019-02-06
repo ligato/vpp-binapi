@@ -23,12 +23,12 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "geneve_add_del_tunnel": {
+//	        "reply": "geneve_add_del_tunnel_reply"
+//	    },
 //	    "geneve_tunnel_dump": {
 //	        "reply": "geneve_tunnel_details",
 //	        "stream": true
-//	    },
-//	    "geneve_add_del_tunnel": {
-//	        "reply": "geneve_add_del_tunnel_reply"
 //	    },
 //	    "sw_interface_set_geneve_bypass": {
 //	        "reply": "sw_interface_set_geneve_bypass_reply"

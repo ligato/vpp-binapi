@@ -23,17 +23,17 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "dns_resolve_name": {
-//	        "reply": "dns_resolve_name_reply"
+//	    "dns_enable_disable": {
+//	        "reply": "dns_enable_disable_reply"
 //	    },
 //	    "dns_name_server_add_del": {
 //	        "reply": "dns_name_server_add_del_reply"
 //	    },
+//	    "dns_resolve_name": {
+//	        "reply": "dns_resolve_name_reply"
+//	    },
 //	    "dns_resolve_ip": {
 //	        "reply": "dns_resolve_ip_reply"
-//	    },
-//	    "dns_enable_disable": {
-//	        "reply": "dns_enable_disable_reply"
 //	    }
 //	},
 //

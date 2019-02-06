@@ -29,17 +29,17 @@ var _ = bytes.NewBuffer
 //	    "vxlan_gpe_ioam_disable": {
 //	        "reply": "vxlan_gpe_ioam_disable_reply"
 //	    },
-//	    "vxlan_gpe_ioam_transit_enable": {
-//	        "reply": "vxlan_gpe_ioam_transit_enable_reply"
-//	    },
-//	    "vxlan_gpe_ioam_transit_disable": {
-//	        "reply": "vxlan_gpe_ioam_transit_disable_reply"
-//	    },
 //	    "vxlan_gpe_ioam_vni_enable": {
 //	        "reply": "vxlan_gpe_ioam_vni_enable_reply"
 //	    },
 //	    "vxlan_gpe_ioam_vni_disable": {
 //	        "reply": "vxlan_gpe_ioam_vni_disable_reply"
+//	    },
+//	    "vxlan_gpe_ioam_transit_enable": {
+//	        "reply": "vxlan_gpe_ioam_transit_enable_reply"
+//	    },
+//	    "vxlan_gpe_ioam_transit_disable": {
+//	        "reply": "vxlan_gpe_ioam_transit_disable_reply"
 //	    }
 //	},
 //

@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "oam_event",
@@ -118,20 +119,19 @@
             }
         ]
     ],
-    "vl_api_version": "0x6aac8f57",
     "unions": [],
+    "enums": [],
     "services": {
-        "oam_add_del": {
-            "reply": "oam_add_del_reply"
-        },
         "want_oam_events": {
             "reply": "want_oam_events_reply",
             "events": [
                 "oam_event"
             ]
+        },
+        "oam_add_del": {
+            "reply": "oam_add_del_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x6aac8f57"
 }

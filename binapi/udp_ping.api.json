@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "udp_ping_add_del",
@@ -124,17 +125,16 @@
             }
         ]
     ],
-    "vl_api_version": "0x64460ef2",
     "unions": [],
+    "enums": [],
     "services": {
-        "udp_ping_export": {
-            "reply": "udp_ping_export_reply"
-        },
         "udp_ping_add_del": {
             "reply": "udp_ping_add_del_reply"
+        },
+        "udp_ping_export": {
+            "reply": "udp_ping_export_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x64460ef2"
 }

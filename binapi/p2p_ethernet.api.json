@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "p2p_ethernet_add",
@@ -99,8 +100,8 @@
             }
         ]
     ],
-    "vl_api_version": "0x65c834be",
     "unions": [],
+    "enums": [],
     "services": {
         "p2p_ethernet_add": {
             "reply": "p2p_ethernet_add_reply"
@@ -109,7 +110,6 @@
             "reply": "p2p_ethernet_del_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x65c834be"
 }

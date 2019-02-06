@@ -24,21 +24,21 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "ipip_6rd_add_tunnel": {
-//	        "reply": "ipip_6rd_add_tunnel_reply"
-//	    },
-//	    "ipip_tunnel_dump": {
-//	        "reply": "ipip_tunnel_details",
-//	        "stream": true
-//	    },
-//	    "ipip_6rd_del_tunnel": {
-//	        "reply": "ipip_6rd_del_tunnel_reply"
+//	    "ipip_add_tunnel": {
+//	        "reply": "ipip_add_tunnel_reply"
 //	    },
 //	    "ipip_del_tunnel": {
 //	        "reply": "ipip_del_tunnel_reply"
 //	    },
-//	    "ipip_add_tunnel": {
-//	        "reply": "ipip_add_tunnel_reply"
+//	    "ipip_6rd_add_tunnel": {
+//	        "reply": "ipip_6rd_add_tunnel_reply"
+//	    },
+//	    "ipip_6rd_del_tunnel": {
+//	        "reply": "ipip_6rd_del_tunnel_reply"
+//	    },
+//	    "ipip_tunnel_dump": {
+//	        "reply": "ipip_tunnel_details",
+//	        "stream": true
 //	    }
 //	},
 //

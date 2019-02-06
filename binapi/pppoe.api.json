@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "pppoe_add_del_session",
@@ -138,18 +139,17 @@
             }
         ]
     ],
-    "vl_api_version": "0x4def67c4",
     "unions": [],
+    "enums": [],
     "services": {
+        "pppoe_add_del_session": {
+            "reply": "pppoe_add_del_session_reply"
+        },
         "pppoe_session_dump": {
             "reply": "pppoe_session_details",
             "stream": true
-        },
-        "pppoe_add_del_session": {
-            "reply": "pppoe_add_del_session_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x4def67c4"
 }

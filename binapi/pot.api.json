@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "pot_profile_add",
@@ -247,13 +248,9 @@
             }
         ]
     ],
-    "vl_api_version": "0x6858f477",
     "unions": [],
+    "enums": [],
     "services": {
-        "pot_profile_show_config_dump": {
-            "reply": "pot_profile_show_config_details",
-            "stream": true
-        },
         "pot_profile_add": {
             "reply": "pot_profile_add_reply"
         },
@@ -262,9 +259,12 @@
         },
         "pot_profile_del": {
             "reply": "pot_profile_del_reply"
+        },
+        "pot_profile_show_config_dump": {
+            "reply": "pot_profile_show_config_details",
+            "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x6858f477"
 }

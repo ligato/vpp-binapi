@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "dns_enable_disable",
@@ -199,23 +200,22 @@
             }
         ]
     ],
-    "vl_api_version": "0x55f2dff8",
     "unions": [],
+    "enums": [],
     "services": {
-        "dns_resolve_name": {
-            "reply": "dns_resolve_name_reply"
+        "dns_enable_disable": {
+            "reply": "dns_enable_disable_reply"
         },
         "dns_name_server_add_del": {
             "reply": "dns_name_server_add_del_reply"
         },
+        "dns_resolve_name": {
+            "reply": "dns_resolve_name_reply"
+        },
         "dns_resolve_ip": {
             "reply": "dns_resolve_ip_reply"
-        },
-        "dns_enable_disable": {
-            "reply": "dns_enable_disable_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x55f2dff8"
 }

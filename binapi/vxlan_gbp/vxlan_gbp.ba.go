@@ -27,15 +27,15 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "vxlan_gbp_tunnel_add_del": {
+//	        "reply": "vxlan_gbp_tunnel_add_del_reply"
+//	    },
 //	    "vxlan_gbp_tunnel_dump": {
 //	        "reply": "vxlan_gbp_tunnel_details",
 //	        "stream": true
 //	    },
 //	    "sw_interface_set_vxlan_gbp_bypass": {
 //	        "reply": "sw_interface_set_vxlan_gbp_bypass_reply"
-//	    },
-//	    "vxlan_gbp_tunnel_add_del": {
-//	        "reply": "vxlan_gbp_tunnel_add_del_reply"
 //	    }
 //	},
 //
@@ -74,18 +74,18 @@ const (
 // IP4Address represents VPP binary API alias 'ip4_address':
 //
 //	"ip4_address": {
-//	    "length": 4,
-//	    "type": "u8"
-//	}
+//	    "type": "u8",
+//	    "length": 4
+//	},
 //
 type IP4Address [4]uint8
 
 // IP6Address represents VPP binary API alias 'ip6_address':
 //
 //	"ip6_address": {
-//	    "length": 16,
-//	    "type": "u8"
-//	},
+//	    "type": "u8",
+//	    "length": 16
+//	}
 //
 type IP6Address [16]uint8
 

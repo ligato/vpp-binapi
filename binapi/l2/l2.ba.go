@@ -27,11 +27,40 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "l2_flags": {
-//	        "reply": "l2_flags_reply"
+//	    "want_l2_macs_events": {
+//	        "reply": "want_l2_macs_events_reply",
+//	        "events": [
+//	            "l2_macs_event"
+//	        ]
+//	    },
+//	    "l2_xconnect_dump": {
+//	        "reply": "l2_xconnect_details",
+//	        "stream": true
+//	    },
+//	    "l2_fib_table_dump": {
+//	        "reply": "l2_fib_table_details",
+//	        "stream": true
+//	    },
+//	    "l2_fib_clear_table": {
+//	        "reply": "l2_fib_clear_table_reply"
 //	    },
 //	    "l2fib_flush_all": {
 //	        "reply": "l2fib_flush_all_reply"
+//	    },
+//	    "l2fib_flush_bd": {
+//	        "reply": "l2fib_flush_bd_reply"
+//	    },
+//	    "l2fib_flush_int": {
+//	        "reply": "l2fib_flush_int_reply"
+//	    },
+//	    "l2fib_add_del": {
+//	        "reply": "l2fib_add_del_reply"
+//	    },
+//	    "l2_flags": {
+//	        "reply": "l2_flags_reply"
+//	    },
+//	    "bridge_domain_set_mac_age": {
+//	        "reply": "bridge_domain_set_mac_age_reply"
 //	    },
 //	    "bridge_domain_add_del": {
 //	        "reply": "bridge_domain_add_del_reply"
@@ -40,68 +69,39 @@ var _ = bytes.NewBuffer
 //	        "reply": "bridge_domain_details",
 //	        "stream": true
 //	    },
-//	    "bd_ip_mac_dump": {
-//	        "reply": "bd_ip_mac_details",
-//	        "stream": true
+//	    "bridge_flags": {
+//	        "reply": "bridge_flags_reply"
 //	    },
-//	    "bd_ip_mac_flush": {
-//	        "reply": "bd_ip_mac_flush_reply"
+//	    "l2_interface_vlan_tag_rewrite": {
+//	        "reply": "l2_interface_vlan_tag_rewrite_reply"
 //	    },
 //	    "l2_interface_pbb_tag_rewrite": {
 //	        "reply": "l2_interface_pbb_tag_rewrite_reply"
 //	    },
-//	    "bd_ip_mac_add_del": {
-//	        "reply": "bd_ip_mac_add_del_reply"
-//	    },
-//	    "l2fib_flush_bd": {
-//	        "reply": "l2fib_flush_bd_reply"
-//	    },
-//	    "l2fib_flush_int": {
-//	        "reply": "l2fib_flush_int_reply"
-//	    },
-//	    "bridge_domain_set_mac_age": {
-//	        "reply": "bridge_domain_set_mac_age_reply"
-//	    },
-//	    "l2_interface_efp_filter": {
-//	        "reply": "l2_interface_efp_filter_reply"
+//	    "l2_patch_add_del": {
+//	        "reply": "l2_patch_add_del_reply"
 //	    },
 //	    "sw_interface_set_l2_xconnect": {
 //	        "reply": "sw_interface_set_l2_xconnect_reply"
 //	    },
-//	    "l2_patch_add_del": {
-//	        "reply": "l2_patch_add_del_reply"
-//	    },
-//	    "bridge_flags": {
-//	        "reply": "bridge_flags_reply"
-//	    },
-//	    "l2fib_add_del": {
-//	        "reply": "l2fib_add_del_reply"
-//	    },
-//	    "want_l2_macs_events": {
-//	        "reply": "want_l2_macs_events_reply",
-//	        "events": [
-//	            "l2_macs_event"
-//	        ]
-//	    },
-//	    "l2_fib_clear_table": {
-//	        "reply": "l2_fib_clear_table_reply"
-//	    },
-//	    "l2_xconnect_dump": {
-//	        "reply": "l2_xconnect_details",
-//	        "stream": true
-//	    },
 //	    "sw_interface_set_l2_bridge": {
 //	        "reply": "sw_interface_set_l2_bridge_reply"
 //	    },
-//	    "sw_interface_set_vpath": {
-//	        "reply": "sw_interface_set_vpath_reply"
+//	    "bd_ip_mac_add_del": {
+//	        "reply": "bd_ip_mac_add_del_reply"
 //	    },
-//	    "l2_fib_table_dump": {
-//	        "reply": "l2_fib_table_details",
+//	    "bd_ip_mac_flush": {
+//	        "reply": "bd_ip_mac_flush_reply"
+//	    },
+//	    "bd_ip_mac_dump": {
+//	        "reply": "bd_ip_mac_details",
 //	        "stream": true
 //	    },
-//	    "l2_interface_vlan_tag_rewrite": {
-//	        "reply": "l2_interface_vlan_tag_rewrite_reply"
+//	    "l2_interface_efp_filter": {
+//	        "reply": "l2_interface_efp_filter_reply"
+//	    },
+//	    "sw_interface_set_vpath": {
+//	        "reply": "sw_interface_set_vpath_reply"
 //	    }
 //	},
 //
@@ -224,8 +224,8 @@ const (
 // IP4Address represents VPP binary API alias 'ip4_address':
 //
 //	"ip4_address": {
-//	    "length": 4,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 4
 //	},
 //
 type IP4Address [4]uint8
@@ -233,8 +233,8 @@ type IP4Address [4]uint8
 // IP6Address represents VPP binary API alias 'ip6_address':
 //
 //	"ip6_address": {
-//	    "length": 16,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 16
 //	},
 //
 type IP6Address [16]uint8
@@ -242,8 +242,8 @@ type IP6Address [16]uint8
 // MacAddress represents VPP binary API alias 'mac_address':
 //
 //	"mac_address": {
-//	    "length": 6,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 6
 //	}
 //
 type MacAddress [6]uint8

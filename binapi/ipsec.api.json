@@ -1,4 +1,207 @@
 {
+    "types": [
+        [
+            "address",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "vl_api_address_union_t",
+                "un"
+            ],
+            {
+                "crc": "0x09f11671"
+            }
+        ],
+        [
+            "prefix",
+            [
+                "vl_api_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "address_length"
+            ],
+            {
+                "crc": "0x0403aebc"
+            }
+        ],
+        [
+            "mprefix",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "u16",
+                "grp_address_length"
+            ],
+            [
+                "vl_api_address_union_t",
+                "grp_address"
+            ],
+            [
+                "vl_api_address_union_t",
+                "src_address"
+            ],
+            {
+                "crc": "0x1c4cba05"
+            }
+        ],
+        [
+            "ip6_prefix",
+            [
+                "vl_api_ip6_address_t",
+                "prefix"
+            ],
+            [
+                "u8",
+                "len"
+            ],
+            {
+                "crc": "0x779fd64f"
+            }
+        ],
+        [
+            "ip4_prefix",
+            [
+                "vl_api_ip4_address_t",
+                "prefix"
+            ],
+            [
+                "u8",
+                "len"
+            ],
+            {
+                "crc": "0xea8dc11d"
+            }
+        ],
+        [
+            "ipsec_spd_entry",
+            [
+                "u32",
+                "spd_id"
+            ],
+            [
+                "i32",
+                "priority"
+            ],
+            [
+                "u8",
+                "is_outbound"
+            ],
+            [
+                "u32",
+                "sa_id"
+            ],
+            [
+                "vl_api_ipsec_spd_action_t",
+                "policy"
+            ],
+            [
+                "u8",
+                "protocol"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "remote_address_stop"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_start"
+            ],
+            [
+                "vl_api_address_t",
+                "local_address_stop"
+            ],
+            [
+                "u16",
+                "remote_port_start"
+            ],
+            [
+                "u16",
+                "remote_port_stop"
+            ],
+            [
+                "u16",
+                "local_port_start"
+            ],
+            [
+                "u16",
+                "local_port_stop"
+            ],
+            {
+                "crc": "0x876fdb2c"
+            }
+        ],
+        [
+            "key",
+            [
+                "u8",
+                "length"
+            ],
+            [
+                "u8",
+                "data",
+                128
+            ],
+            {
+                "crc": "0xf3d0c4fd"
+            }
+        ],
+        [
+            "ipsec_sad_entry",
+            [
+                "u32",
+                "sad_id"
+            ],
+            [
+                "u32",
+                "spi"
+            ],
+            [
+                "vl_api_ipsec_proto_t",
+                "protocol"
+            ],
+            [
+                "vl_api_ipsec_crypto_alg_t",
+                "crypto_algorithm"
+            ],
+            [
+                "vl_api_key_t",
+                "crypto_key"
+            ],
+            [
+                "vl_api_ipsec_integ_alg_t",
+                "integrity_algorithm"
+            ],
+            [
+                "vl_api_key_t",
+                "integrity_key"
+            ],
+            [
+                "vl_api_ipsec_sad_flags_t",
+                "flags"
+            ],
+            [
+                "vl_api_address_t",
+                "tunnel_src"
+            ],
+            [
+                "vl_api_address_t",
+                "tunnel_dst"
+            ],
+            {
+                "crc": "0x18e3d382"
+            }
+        ]
+    ],
     "messages": [
         [
             "ipsec_spd_add_del",
@@ -93,7 +296,7 @@
             }
         ],
         [
-            "ipsec_spd_add_del_entry",
+            "ipsec_spd_entry_add_del",
             [
                 "u16",
                 "_vl_msg_id"
@@ -111,79 +314,15 @@
                 "is_add"
             ],
             [
-                "u32",
-                "spd_id"
-            ],
-            [
-                "i32",
-                "priority"
-            ],
-            [
-                "u8",
-                "is_outbound"
-            ],
-            [
-                "u8",
-                "is_ipv6"
-            ],
-            [
-                "u8",
-                "is_ip_any"
-            ],
-            [
-                "u8",
-                "remote_address_start",
-                16
-            ],
-            [
-                "u8",
-                "remote_address_stop",
-                16
-            ],
-            [
-                "u8",
-                "local_address_start",
-                16
-            ],
-            [
-                "u8",
-                "local_address_stop",
-                16
-            ],
-            [
-                "u8",
-                "protocol"
-            ],
-            [
-                "u16",
-                "remote_port_start"
-            ],
-            [
-                "u16",
-                "remote_port_stop"
-            ],
-            [
-                "u16",
-                "local_port_start"
-            ],
-            [
-                "u16",
-                "local_port_stop"
-            ],
-            [
-                "u8",
-                "policy"
-            ],
-            [
-                "u32",
-                "sa_id"
+                "vl_api_ipsec_spd_entry_t",
+                "entry"
             ],
             {
-                "crc": "0x7687a364"
+                "crc": "0xbbab53da"
             }
         ],
         [
-            "ipsec_spd_add_del_entry_reply",
+            "ipsec_spd_entry_add_del_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -196,12 +335,100 @@
                 "i32",
                 "retval"
             ],
+            [
+                "u32",
+                "stat_index"
+            ],
             {
-                "crc": "0xe8d4e804"
+                "crc": "0x9ffac24b"
             }
         ],
         [
-            "ipsec_sad_add_del_entry",
+            "ipsec_spds_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14"
+            }
+        ],
+        [
+            "ipsec_spds_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "spd_id"
+            ],
+            [
+                "u32",
+                "npolicies"
+            ],
+            {
+                "crc": "0xa04bb254"
+            }
+        ],
+        [
+            "ipsec_spd_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "spd_id"
+            ],
+            [
+                "u32",
+                "sa_id"
+            ],
+            {
+                "crc": "0xafefbf7d"
+            }
+        ],
+        [
+            "ipsec_spd_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ipsec_spd_entry_t",
+                "entry"
+            ],
+            {
+                "crc": "0x928e5fcc"
+            }
+        ],
+        [
+            "ipsec_sad_entry_add_del",
             [
                 "u16",
                 "_vl_msg_id"
@@ -219,79 +446,15 @@
                 "is_add"
             ],
             [
-                "u32",
-                "sad_id"
-            ],
-            [
-                "u32",
-                "spi"
-            ],
-            [
-                "u8",
-                "protocol"
-            ],
-            [
-                "u8",
-                "crypto_algorithm"
-            ],
-            [
-                "u8",
-                "crypto_key_length"
-            ],
-            [
-                "u8",
-                "crypto_key",
-                128
-            ],
-            [
-                "u8",
-                "integrity_algorithm"
-            ],
-            [
-                "u8",
-                "integrity_key_length"
-            ],
-            [
-                "u8",
-                "integrity_key",
-                128
-            ],
-            [
-                "u8",
-                "use_extended_sequence_number"
-            ],
-            [
-                "u8",
-                "use_anti_replay"
-            ],
-            [
-                "u8",
-                "is_tunnel"
-            ],
-            [
-                "u8",
-                "is_tunnel_ipv6"
-            ],
-            [
-                "u8",
-                "tunnel_src_address",
-                16
-            ],
-            [
-                "u8",
-                "tunnel_dst_address",
-                16
-            ],
-            [
-                "u8",
-                "udp_encap"
+                "vl_api_ipsec_sad_entry_t",
+                "entry"
             ],
             {
-                "crc": "0x306782b4"
+                "crc": "0x05747d5b"
             }
         ],
         [
-            "ipsec_sad_add_del_entry_reply",
+            "ipsec_sad_entry_add_del_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -327,25 +490,15 @@
                 "sa_id"
             ],
             [
-                "u8",
-                "crypto_key_length"
+                "vl_api_key_t",
+                "crypto_key"
             ],
             [
-                "u8",
-                "crypto_key",
-                128
-            ],
-            [
-                "u8",
-                "integrity_key_length"
-            ],
-            [
-                "u8",
-                "integrity_key",
-                128
+                "vl_api_key_t",
+                "integrity_key"
             ],
             {
-                "crc": "0x93b4f08a"
+                "crc": "0xf407f496"
             }
         ],
         [
@@ -1018,158 +1171,6 @@
             }
         ],
         [
-            "ipsec_spds_dump",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            {
-                "crc": "0x51077d14"
-            }
-        ],
-        [
-            "ipsec_spds_details",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u32",
-                "spd_id"
-            ],
-            [
-                "u32",
-                "npolicies"
-            ],
-            {
-                "crc": "0xa04bb254"
-            }
-        ],
-        [
-            "ipsec_spd_dump",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "client_index"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u32",
-                "spd_id"
-            ],
-            [
-                "u32",
-                "sa_id"
-            ],
-            {
-                "crc": "0xafefbf7d"
-            }
-        ],
-        [
-            "ipsec_spd_details",
-            [
-                "u16",
-                "_vl_msg_id"
-            ],
-            [
-                "u32",
-                "context"
-            ],
-            [
-                "u32",
-                "spd_id"
-            ],
-            [
-                "i32",
-                "priority"
-            ],
-            [
-                "u8",
-                "is_outbound"
-            ],
-            [
-                "u8",
-                "is_ipv6"
-            ],
-            [
-                "u8",
-                "local_start_addr",
-                16
-            ],
-            [
-                "u8",
-                "local_stop_addr",
-                16
-            ],
-            [
-                "u16",
-                "local_start_port"
-            ],
-            [
-                "u16",
-                "local_stop_port"
-            ],
-            [
-                "u8",
-                "remote_start_addr",
-                16
-            ],
-            [
-                "u8",
-                "remote_stop_addr",
-                16
-            ],
-            [
-                "u16",
-                "remote_start_port"
-            ],
-            [
-                "u16",
-                "remote_stop_port"
-            ],
-            [
-                "u8",
-                "protocol"
-            ],
-            [
-                "u8",
-                "policy"
-            ],
-            [
-                "u32",
-                "sa_id"
-            ],
-            [
-                "u64",
-                "bytes"
-            ],
-            [
-                "u64",
-                "packets"
-            ],
-            {
-                "crc": "0x1560895d"
-            }
-        ],
-        [
             "ipsec_spd_interface_dump",
             [
                 "u16",
@@ -1618,7 +1619,7 @@
                 128
             ],
             [
-                "u8",
+                "vl_api_ipsec_proto_t",
                 "protocol"
             ],
             [
@@ -1630,7 +1631,7 @@
                 "active"
             ],
             {
-                "crc": "0x3ba4d642"
+                "crc": "0x3341f485"
             }
         ],
         [
@@ -1648,7 +1649,7 @@
                 "context"
             ],
             [
-                "u8",
+                "vl_api_ipsec_proto_t",
                 "protocol"
             ],
             [
@@ -1656,7 +1657,7 @@
                 "index"
             ],
             {
-                "crc": "0xf2cc2b47"
+                "crc": "0xb36bcff3"
             }
         ],
         [
@@ -1678,31 +1679,224 @@
             }
         ]
     ],
-    "vl_api_version": "0xd79c12fb",
-    "unions": [],
+    "unions": [
+        [
+            "address_union",
+            [
+                "vl_api_ip4_address_t",
+                "ip4"
+            ],
+            [
+                "vl_api_ip6_address_t",
+                "ip6"
+            ],
+            {
+                "crc": "0xd68a2fb4"
+            }
+        ]
+    ],
+    "enums": [
+        [
+            "address_family",
+            [
+                "ADDRESS_IP4",
+                0
+            ],
+            [
+                "ADDRESS_IP6",
+                1
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ipsec_spd_action",
+            [
+                "IPSEC_API_SPD_ACTION_BYPASS",
+                0
+            ],
+            [
+                "IPSEC_API_SPD_ACTION_DISCARD",
+                1
+            ],
+            [
+                "IPSEC_API_SPD_ACTION_RESOLVE",
+                2
+            ],
+            [
+                "IPSEC_API_SPD_ACTION_PROTECT",
+                3
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ipsec_crypto_alg",
+            [
+                "IPSEC_API_CRYPTO_ALG_NONE",
+                0
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_AES_CBC_128",
+                1
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_AES_CBC_192",
+                2
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_AES_CBC_256",
+                3
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_AES_CTR_128",
+                4
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_AES_CTR_192",
+                5
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_AES_CTR_256",
+                6
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_AES_GCM_128",
+                7
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_AES_GCM_192",
+                8
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_AES_GCM_256",
+                9
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_DES_CBC",
+                10
+            ],
+            [
+                "IPSEC_API_CRYPTO_ALG_3DES_CBC",
+                11
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ipsec_integ_alg",
+            [
+                "IPSEC_API_INTEG_ALG_NONE",
+                0
+            ],
+            [
+                "IPSEC_API_INTEG_ALG_MD5_96",
+                1
+            ],
+            [
+                "IPSEC_API_INTEG_ALG_SHA1_96",
+                2
+            ],
+            [
+                "IPSEC_API_INTEG_ALG_SHA_256_96",
+                3
+            ],
+            [
+                "IPSEC_API_INTEG_ALG_SHA_256_128",
+                4
+            ],
+            [
+                "IPSEC_API_INTEG_ALG_SHA_384_192",
+                5
+            ],
+            [
+                "IPSEC_API_INTEG_ALG_SHA_512_256",
+                6
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ipsec_sad_flags",
+            [
+                "IPSEC_API_SAD_FLAG_NONE",
+                0
+            ],
+            [
+                "IPSEC_API_SAD_FLAG_USE_EXTENDED_SEQ_NUM",
+                1
+            ],
+            [
+                "IPSEC_API_SAD_FLAG_USE_ANTI_REPLAY",
+                2
+            ],
+            [
+                "IPSEC_API_SAD_FLAG_IS_TUNNEL",
+                4
+            ],
+            [
+                "IPSEC_API_SAD_FLAG_IS_TUNNEL_V6",
+                8
+            ],
+            [
+                "IPSEC_API_SAD_FLAG_UDP_ENCAP",
+                16
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ipsec_proto",
+            [
+                "IPSEC_API_PROTO_ESP",
+                1
+            ],
+            [
+                "IPSEC_API_PROTO_AH",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ]
+    ],
     "services": {
-        "ipsec_backend_dump": {
-            "reply": "ipsec_backend_details",
-            "stream": true
-        },
         "ipsec_spd_add_del": {
             "reply": "ipsec_spd_add_del_reply"
         },
         "ipsec_interface_add_del_spd": {
             "reply": "ipsec_interface_add_del_spd_reply"
         },
-        "ipsec_tunnel_if_set_sa": {
-            "reply": "ipsec_tunnel_if_set_sa_reply"
-        },
-        "ikev2_set_responder": {
-            "reply": "ikev2_set_responder_reply"
-        },
-        "ipsec_select_backend": {
-            "reply": "ipsec_select_backend_reply"
+        "ipsec_spd_entry_add_del": {
+            "reply": "ipsec_spd_entry_add_del_reply"
         },
         "ipsec_spds_dump": {
             "reply": "ipsec_spds_details",
             "stream": true
+        },
+        "ipsec_spd_dump": {
+            "reply": "ipsec_spd_details",
+            "stream": true
+        },
+        "ipsec_sad_entry_add_del": {
+            "reply": "ipsec_sad_entry_add_del_reply"
+        },
+        "ipsec_sa_set_key": {
+            "reply": "ipsec_sa_set_key_reply"
+        },
+        "ikev2_profile_add_del": {
+            "reply": "ikev2_profile_add_del_reply"
+        },
+        "ikev2_profile_set_auth": {
+            "reply": "ikev2_profile_set_auth_reply"
+        },
+        "ikev2_profile_set_id": {
+            "reply": "ikev2_profile_set_id_reply"
         },
         "ikev2_profile_set_ts": {
             "reply": "ikev2_profile_set_ts_reply"
@@ -1710,40 +1904,8 @@
         "ikev2_set_local_key": {
             "reply": "ikev2_set_local_key_reply"
         },
-        "ikev2_initiate_del_ike_sa": {
-            "reply": "ikev2_initiate_del_ike_sa_reply"
-        },
-        "ikev2_profile_add_del": {
-            "reply": "ikev2_profile_add_del_reply"
-        },
-        "ipsec_tunnel_if_set_key": {
-            "reply": "ipsec_tunnel_if_set_key_reply"
-        },
-        "ikev2_initiate_sa_init": {
-            "reply": "ikev2_initiate_sa_init_reply"
-        },
-        "ipsec_sa_set_key": {
-            "reply": "ipsec_sa_set_key_reply"
-        },
-        "ikev2_set_sa_lifetime": {
-            "reply": "ikev2_set_sa_lifetime_reply"
-        },
-        "ikev2_initiate_rekey_child_sa": {
-            "reply": "ikev2_initiate_rekey_child_sa_reply"
-        },
-        "ipsec_sad_add_del_entry": {
-            "reply": "ipsec_sad_add_del_entry_reply"
-        },
-        "ikev2_profile_set_auth": {
-            "reply": "ikev2_profile_set_auth_reply"
-        },
-        "ipsec_spd_dump": {
-            "reply": "ipsec_spd_details",
-            "stream": true
-        },
-        "ipsec_sa_dump": {
-            "reply": "ipsec_sa_details",
-            "stream": true
+        "ikev2_set_responder": {
+            "reply": "ikev2_set_responder_reply"
         },
         "ikev2_set_ike_transforms": {
             "reply": "ikev2_set_ike_transforms_reply"
@@ -1751,24 +1913,55 @@
         "ikev2_set_esp_transforms": {
             "reply": "ikev2_set_esp_transforms_reply"
         },
-        "ipsec_spd_add_del_entry": {
-            "reply": "ipsec_spd_add_del_entry_reply"
+        "ikev2_set_sa_lifetime": {
+            "reply": "ikev2_set_sa_lifetime_reply"
         },
-        "ikev2_profile_set_id": {
-            "reply": "ikev2_profile_set_id_reply"
+        "ikev2_initiate_sa_init": {
+            "reply": "ikev2_initiate_sa_init_reply"
+        },
+        "ikev2_initiate_del_ike_sa": {
+            "reply": "ikev2_initiate_del_ike_sa_reply"
         },
         "ikev2_initiate_del_child_sa": {
             "reply": "ikev2_initiate_del_child_sa_reply"
         },
-        "ipsec_tunnel_if_add_del": {
-            "reply": "ipsec_tunnel_if_add_del_reply"
+        "ikev2_initiate_rekey_child_sa": {
+            "reply": "ikev2_initiate_rekey_child_sa_reply"
         },
         "ipsec_spd_interface_dump": {
             "reply": "ipsec_spd_interface_details",
             "stream": true
+        },
+        "ipsec_tunnel_if_add_del": {
+            "reply": "ipsec_tunnel_if_add_del_reply"
+        },
+        "ipsec_sa_dump": {
+            "reply": "ipsec_sa_details",
+            "stream": true
+        },
+        "ipsec_tunnel_if_set_key": {
+            "reply": "ipsec_tunnel_if_set_key_reply"
+        },
+        "ipsec_tunnel_if_set_sa": {
+            "reply": "ipsec_tunnel_if_set_sa_reply"
+        },
+        "ipsec_backend_dump": {
+            "reply": "ipsec_backend_details",
+            "stream": true
+        },
+        "ipsec_select_backend": {
+            "reply": "ipsec_select_backend_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {
+        "ip4_address": {
+            "type": "u8",
+            "length": 4
+        },
+        "ip6_address": {
+            "type": "u8",
+            "length": 16
+        }
+    },
+    "vl_api_version": "0x5de3ef8c"
 }

@@ -26,12 +26,12 @@ var _ = bytes.NewBuffer
 //	    "gtpu_add_del_tunnel": {
 //	        "reply": "gtpu_add_del_tunnel_reply"
 //	    },
-//	    "sw_interface_set_gtpu_bypass": {
-//	        "reply": "sw_interface_set_gtpu_bypass_reply"
-//	    },
 //	    "gtpu_tunnel_dump": {
 //	        "reply": "gtpu_tunnel_details",
 //	        "stream": true
+//	    },
+//	    "sw_interface_set_gtpu_bypass": {
+//	        "reply": "sw_interface_set_gtpu_bypass_reply"
 //	    }
 //	},
 //

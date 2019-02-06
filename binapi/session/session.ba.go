@@ -23,54 +23,62 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "accept_session": {
-//	        "reply": "accept_session_reply"
-//	    },
-//	    "application_detach": {
-//	        "reply": "application_detach_reply"
-//	    },
 //	    "application_attach": {
 //	        "reply": "application_attach_reply"
 //	    },
-//	    "reset_session": {
-//	        "reply": "reset_session_reply"
-//	    },
-//	    "unbind_sock": {
-//	        "reply": "unbind_sock_reply"
-//	    },
-//	    "map_another_segment": {
-//	        "reply": "map_another_segment_reply"
-//	    },
-//	    "session_rules_dump": {
-//	        "reply": "session_rules_details",
-//	        "stream": true
-//	    },
-//	    "unmap_segment": {
-//	        "reply": "unmap_segment_reply"
-//	    },
-//	    "connect_sock": {
-//	        "reply": "connect_sock_reply"
-//	    },
-//	    "unbind_uri": {
-//	        "reply": "unbind_uri_reply"
+//	    "application_tls_cert_add": {
+//	        "reply": "application_tls_cert_add_reply"
 //	    },
 //	    "application_tls_key_add": {
 //	        "reply": "application_tls_key_add_reply"
 //	    },
+//	    "application_detach": {
+//	        "reply": "application_detach_reply"
+//	    },
+//	    "map_another_segment": {
+//	        "reply": "map_another_segment_reply"
+//	    },
+//	    "unmap_segment": {
+//	        "reply": "unmap_segment_reply"
+//	    },
+//	    "bind_uri": {
+//	        "reply": "bind_uri_reply"
+//	    },
+//	    "unbind_uri": {
+//	        "reply": "unbind_uri_reply"
+//	    },
+//	    "connect_uri": {
+//	        "reply": "connect_uri_reply"
+//	    },
+//	    "accept_session": {
+//	        "reply": "accept_session_reply"
+//	    },
+//	    "disconnect_session": {
+//	        "reply": "disconnect_session_reply"
+//	    },
+//	    "reset_session": {
+//	        "reply": "reset_session_reply"
+//	    },
 //	    "bind_sock": {
 //	        "reply": "bind_sock_reply"
 //	    },
-//	    "app_cut_through_registration_add": {
-//	        "reply": "app_cut_through_registration_add_reply"
+//	    "unbind_sock": {
+//	        "reply": "unbind_sock_reply"
 //	    },
-//	    "session_enable_disable": {
-//	        "reply": "session_enable_disable_reply"
+//	    "connect_sock": {
+//	        "reply": "connect_sock_reply"
 //	    },
 //	    "connect_session": {
 //	        "reply": "connect_session_reply"
 //	    },
+//	    "app_cut_through_registration_add": {
+//	        "reply": "app_cut_through_registration_add_reply"
+//	    },
 //	    "app_worker_add_del": {
 //	        "reply": "app_worker_add_del_reply"
+//	    },
+//	    "session_enable_disable": {
+//	        "reply": "session_enable_disable_reply"
 //	    },
 //	    "app_namespace_add_del": {
 //	        "reply": "app_namespace_add_del_reply"
@@ -78,17 +86,9 @@ var _ = bytes.NewBuffer
 //	    "session_rule_add_del": {
 //	        "reply": "session_rule_add_del_reply"
 //	    },
-//	    "connect_uri": {
-//	        "reply": "connect_uri_reply"
-//	    },
-//	    "bind_uri": {
-//	        "reply": "bind_uri_reply"
-//	    },
-//	    "disconnect_session": {
-//	        "reply": "disconnect_session_reply"
-//	    },
-//	    "application_tls_cert_add": {
-//	        "reply": "application_tls_cert_add_reply"
+//	    "session_rules_dump": {
+//	        "reply": "session_rules_details",
+//	        "stream": true
 //	    }
 //	},
 //

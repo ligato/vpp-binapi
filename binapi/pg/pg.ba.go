@@ -26,11 +26,11 @@ var _ = bytes.NewBuffer
 //	    "pg_create_interface": {
 //	        "reply": "pg_create_interface_reply"
 //	    },
-//	    "pg_enable_disable": {
-//	        "reply": "pg_enable_disable_reply"
-//	    },
 //	    "pg_capture": {
 //	        "reply": "pg_capture_reply"
+//	    },
+//	    "pg_enable_disable": {
+//	        "reply": "pg_enable_disable_reply"
 //	    }
 //	},
 //

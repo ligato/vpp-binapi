@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "memif_socket_filename_add_del",
@@ -291,17 +292,17 @@
             }
         ]
     ],
-    "vl_api_version": "0x31b42e17",
     "unions": [],
+    "enums": [],
     "services": {
-        "memif_delete": {
-            "reply": "memif_delete_reply"
-        },
         "memif_socket_filename_add_del": {
             "reply": "memif_socket_filename_add_del_reply"
         },
         "memif_create": {
             "reply": "memif_create_reply"
+        },
+        "memif_delete": {
+            "reply": "memif_delete_reply"
         },
         "memif_socket_filename_dump": {
             "reply": "memif_socket_filename_details",
@@ -312,7 +313,6 @@
             "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x31b42e17"
 }

@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "create_vhost_user_if",
@@ -243,24 +244,23 @@
             }
         ]
     ],
-    "vl_api_version": "0x584ddcc0",
     "unions": [],
+    "enums": [],
     "services": {
-        "sw_interface_vhost_user_dump": {
-            "reply": "sw_interface_vhost_user_details",
-            "stream": true
-        },
-        "delete_vhost_user_if": {
-            "reply": "delete_vhost_user_if_reply"
-        },
         "create_vhost_user_if": {
             "reply": "create_vhost_user_if_reply"
         },
         "modify_vhost_user_if": {
             "reply": "modify_vhost_user_if_reply"
+        },
+        "delete_vhost_user_if": {
+            "reply": "delete_vhost_user_if_reply"
+        },
+        "sw_interface_vhost_user_dump": {
+            "reply": "sw_interface_vhost_user_details",
+            "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x584ddcc0"
 }

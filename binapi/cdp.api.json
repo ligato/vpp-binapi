@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "cdp_enable_disable",
@@ -41,14 +42,13 @@
             }
         ]
     ],
-    "vl_api_version": "0x1b8d20f5",
     "unions": [],
+    "enums": [],
     "services": {
         "cdp_enable_disable": {
             "reply": "cdp_enable_disable_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x1b8d20f5"
 }

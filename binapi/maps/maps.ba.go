@@ -27,24 +27,11 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "map_param_set_fragmentation": {
-//	        "reply": "map_param_set_fragmentation_reply"
+//	    "map_add_domain": {
+//	        "reply": "map_add_domain_reply"
 //	    },
-//	    "map_param_add_del_pre_resolve": {
-//	        "reply": "map_param_add_del_pre_resolve_reply"
-//	    },
-//	    "map_param_set_tcp": {
-//	        "reply": "map_param_set_tcp_reply"
-//	    },
-//	    "map_rule_dump": {
-//	        "reply": "map_rule_details",
-//	        "stream": true
-//	    },
-//	    "map_if_enable_disable": {
-//	        "reply": "map_if_enable_disable_reply"
-//	    },
-//	    "map_param_set_icmp6": {
-//	        "reply": "map_param_set_icmp6_reply"
+//	    "map_del_domain": {
+//	        "reply": "map_del_domain_reply"
 //	    },
 //	    "map_add_del_rule": {
 //	        "reply": "map_add_del_rule_reply"
@@ -53,29 +40,42 @@ var _ = bytes.NewBuffer
 //	        "reply": "map_domain_details",
 //	        "stream": true
 //	    },
-//	    "map_param_get": {
-//	        "reply": "map_param_get_reply"
+//	    "map_rule_dump": {
+//	        "reply": "map_rule_details",
+//	        "stream": true
 //	    },
-//	    "map_param_set_icmp": {
-//	        "reply": "map_param_set_icmp_reply"
-//	    },
-//	    "map_add_domain": {
-//	        "reply": "map_add_domain_reply"
+//	    "map_if_enable_disable": {
+//	        "reply": "map_if_enable_disable_reply"
 //	    },
 //	    "map_summary_stats": {
 //	        "reply": "map_summary_stats_reply"
 //	    },
-//	    "map_param_set_traffic_class": {
-//	        "reply": "map_param_set_traffic_class_reply"
+//	    "map_param_set_fragmentation": {
+//	        "reply": "map_param_set_fragmentation_reply"
 //	    },
-//	    "map_del_domain": {
-//	        "reply": "map_del_domain_reply"
+//	    "map_param_set_icmp": {
+//	        "reply": "map_param_set_icmp_reply"
+//	    },
+//	    "map_param_set_icmp6": {
+//	        "reply": "map_param_set_icmp6_reply"
+//	    },
+//	    "map_param_add_del_pre_resolve": {
+//	        "reply": "map_param_add_del_pre_resolve_reply"
 //	    },
 //	    "map_param_set_reassembly": {
 //	        "reply": "map_param_set_reassembly_reply"
 //	    },
 //	    "map_param_set_security_check": {
 //	        "reply": "map_param_set_security_check_reply"
+//	    },
+//	    "map_param_set_traffic_class": {
+//	        "reply": "map_param_set_traffic_class_reply"
+//	    },
+//	    "map_param_set_tcp": {
+//	        "reply": "map_param_set_tcp_reply"
+//	    },
+//	    "map_param_get": {
+//	        "reply": "map_param_get_reply"
 //	    }
 //	},
 //
@@ -127,18 +127,18 @@ const (
 // IP4Address represents VPP binary API alias 'ip4_address':
 //
 //	"ip4_address": {
-//	    "length": 4,
-//	    "type": "u8"
-//	}
+//	    "type": "u8",
+//	    "length": 4
+//	},
 //
 type IP4Address [4]uint8
 
 // IP6Address represents VPP binary API alias 'ip6_address':
 //
 //	"ip6_address": {
-//	    "length": 16,
-//	    "type": "u8"
-//	},
+//	    "type": "u8",
+//	    "length": 16
+//	}
 //
 type IP6Address [16]uint8
 

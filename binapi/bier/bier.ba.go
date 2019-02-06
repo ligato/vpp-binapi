@@ -24,29 +24,12 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "bier_imp_add": {
-//	        "reply": "bier_imp_add_reply"
+//	    "bier_table_add_del": {
+//	        "reply": "bier_table_add_del_reply"
 //	    },
 //	    "bier_table_dump": {
 //	        "reply": "bier_table_details",
 //	        "stream": true
-//	    },
-//	    "bier_imp_dump": {
-//	        "reply": "bier_imp_details",
-//	        "stream": true
-//	    },
-//	    "bier_disp_entry_add_del": {
-//	        "reply": "bier_disp_entry_add_del_reply"
-//	    },
-//	    "bier_imp_del": {
-//	        "reply": "bier_imp_del_reply"
-//	    },
-//	    "bier_disp_table_dump": {
-//	        "reply": "bier_disp_table_details",
-//	        "stream": true
-//	    },
-//	    "bier_table_add_del": {
-//	        "reply": "bier_table_add_del_reply"
 //	    },
 //	    "bier_route_add_del": {
 //	        "reply": "bier_route_add_del_reply"
@@ -55,8 +38,25 @@ var _ = bytes.NewBuffer
 //	        "reply": "bier_route_details",
 //	        "stream": true
 //	    },
+//	    "bier_imp_add": {
+//	        "reply": "bier_imp_add_reply"
+//	    },
+//	    "bier_imp_del": {
+//	        "reply": "bier_imp_del_reply"
+//	    },
+//	    "bier_imp_dump": {
+//	        "reply": "bier_imp_details",
+//	        "stream": true
+//	    },
 //	    "bier_disp_table_add_del": {
 //	        "reply": "bier_disp_table_add_del_reply"
+//	    },
+//	    "bier_disp_table_dump": {
+//	        "reply": "bier_disp_table_details",
+//	        "stream": true
+//	    },
+//	    "bier_disp_entry_add_del": {
+//	        "reply": "bier_disp_entry_add_del_reply"
 //	    },
 //	    "bier_disp_entry_dump": {
 //	        "reply": "bier_disp_entry_details",

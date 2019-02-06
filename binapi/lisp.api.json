@@ -1,4 +1,75 @@
 {
+    "types": [
+        [
+            "local_locator",
+            [
+                "u32",
+                "sw_if_index"
+            ],
+            [
+                "u8",
+                "priority"
+            ],
+            [
+                "u8",
+                "weight"
+            ],
+            {
+                "crc": "0xf6d90f0b"
+            }
+        ],
+        [
+            "remote_locator",
+            [
+                "u8",
+                "is_ip4"
+            ],
+            [
+                "u8",
+                "priority"
+            ],
+            [
+                "u8",
+                "weight"
+            ],
+            [
+                "u8",
+                "addr",
+                16
+            ],
+            {
+                "crc": "0xfc6f49a4"
+            }
+        ],
+        [
+            "lisp_adjacency",
+            [
+                "u8",
+                "eid_type"
+            ],
+            [
+                "u8",
+                "reid",
+                16
+            ],
+            [
+                "u8",
+                "leid",
+                16
+            ],
+            [
+                "u8",
+                "reid_prefix_len"
+            ],
+            [
+                "u8",
+                "leid_prefix_len"
+            ],
+            {
+                "crc": "0x1f885751"
+            }
+        ]
+    ],
     "messages": [
         [
             "lisp_add_del_locator_set",
@@ -1533,178 +1604,107 @@
             }
         ]
     ],
-    "vl_api_version": "0xa4efcd13",
     "unions": [],
+    "enums": [],
     "services": {
-        "lisp_eid_table_vni_dump": {
-            "reply": "lisp_eid_table_vni_details",
-            "stream": true
-        },
-        "show_lisp_map_request_mode": {
-            "reply": "show_lisp_map_request_mode_reply"
-        },
         "lisp_add_del_locator_set": {
             "reply": "lisp_add_del_locator_set_reply"
         },
-        "lisp_eid_table_map_dump": {
-            "reply": "lisp_eid_table_map_details",
-            "stream": true
+        "lisp_add_del_locator": {
+            "reply": "lisp_add_del_locator_reply"
         },
-        "show_lisp_use_petr": {
-            "reply": "show_lisp_use_petr_reply"
+        "lisp_add_del_local_eid": {
+            "reply": "lisp_add_del_local_eid_reply"
         },
-        "lisp_adjacencies_get": {
-            "reply": "lisp_adjacencies_get_reply"
-        },
-        "lisp_map_resolver_dump": {
-            "reply": "lisp_map_resolver_details",
-            "stream": true
-        },
-        "lisp_use_petr": {
-            "reply": "lisp_use_petr_reply"
+        "lisp_add_del_map_server": {
+            "reply": "lisp_add_del_map_server_reply"
         },
         "lisp_add_del_map_resolver": {
             "reply": "lisp_add_del_map_resolver_reply"
         },
-        "show_lisp_pitr": {
-            "reply": "show_lisp_pitr_reply"
-        },
-        "lisp_eid_table_add_del_map": {
-            "reply": "lisp_eid_table_add_del_map_reply"
+        "lisp_enable_disable": {
+            "reply": "lisp_enable_disable_reply"
         },
         "lisp_pitr_set_locator_set": {
             "reply": "lisp_pitr_set_locator_set_reply"
         },
-        "lisp_get_map_request_itr_rlocs": {
-            "reply": "lisp_get_map_request_itr_rlocs_reply"
+        "lisp_use_petr": {
+            "reply": "lisp_use_petr_reply"
         },
-        "lisp_add_del_adjacency": {
-            "reply": "lisp_add_del_adjacency_reply"
+        "show_lisp_use_petr": {
+            "reply": "show_lisp_use_petr_reply"
         },
-        "lisp_map_request_mode": {
-            "reply": "lisp_map_request_mode_reply"
+        "show_lisp_rloc_probe_state": {
+            "reply": "show_lisp_rloc_probe_state_reply"
+        },
+        "lisp_rloc_probe_enable_disable": {
+            "reply": "lisp_rloc_probe_enable_disable_reply"
+        },
+        "lisp_map_register_enable_disable": {
+            "reply": "lisp_map_register_enable_disable_reply"
         },
         "show_lisp_map_register_state": {
             "reply": "show_lisp_map_register_state_reply"
         },
+        "lisp_map_request_mode": {
+            "reply": "lisp_map_request_mode_reply"
+        },
+        "show_lisp_map_request_mode": {
+            "reply": "show_lisp_map_request_mode_reply"
+        },
         "lisp_add_del_remote_mapping": {
             "reply": "lisp_add_del_remote_mapping_reply"
         },
-        "lisp_eid_table_dump": {
-            "reply": "lisp_eid_table_details",
-            "stream": true
+        "lisp_add_del_adjacency": {
+            "reply": "lisp_add_del_adjacency_reply"
         },
-        "lisp_enable_disable": {
-            "reply": "lisp_enable_disable_reply"
+        "lisp_add_del_map_request_itr_rlocs": {
+            "reply": "lisp_add_del_map_request_itr_rlocs_reply"
+        },
+        "lisp_eid_table_add_del_map": {
+            "reply": "lisp_eid_table_add_del_map_reply"
         },
         "lisp_locator_dump": {
             "reply": "lisp_locator_details",
             "stream": true
         },
-        "lisp_map_register_enable_disable": {
-            "reply": "lisp_map_register_enable_disable_reply"
-        },
         "lisp_locator_set_dump": {
             "reply": "lisp_locator_set_details",
             "stream": true
         },
-        "lisp_rloc_probe_enable_disable": {
-            "reply": "lisp_rloc_probe_enable_disable_reply"
+        "lisp_eid_table_dump": {
+            "reply": "lisp_eid_table_details",
+            "stream": true
         },
-        "lisp_add_del_map_server": {
-            "reply": "lisp_add_del_map_server_reply"
+        "lisp_adjacencies_get": {
+            "reply": "lisp_adjacencies_get_reply"
         },
-        "lisp_add_del_local_eid": {
-            "reply": "lisp_add_del_local_eid_reply"
+        "lisp_eid_table_map_dump": {
+            "reply": "lisp_eid_table_map_details",
+            "stream": true
         },
-        "lisp_add_del_map_request_itr_rlocs": {
-            "reply": "lisp_add_del_map_request_itr_rlocs_reply"
+        "lisp_eid_table_vni_dump": {
+            "reply": "lisp_eid_table_vni_details",
+            "stream": true
+        },
+        "lisp_map_resolver_dump": {
+            "reply": "lisp_map_resolver_details",
+            "stream": true
         },
         "lisp_map_server_dump": {
             "reply": "lisp_map_server_details",
             "stream": true
         },
-        "show_lisp_rloc_probe_state": {
-            "reply": "show_lisp_rloc_probe_state_reply"
-        },
         "show_lisp_status": {
             "reply": "show_lisp_status_reply"
         },
-        "lisp_add_del_locator": {
-            "reply": "lisp_add_del_locator_reply"
+        "lisp_get_map_request_itr_rlocs": {
+            "reply": "lisp_get_map_request_itr_rlocs_reply"
+        },
+        "show_lisp_pitr": {
+            "reply": "show_lisp_pitr_reply"
         }
     },
-    "enums": [],
-    "types": [
-        [
-            "local_locator",
-            [
-                "u32",
-                "sw_if_index"
-            ],
-            [
-                "u8",
-                "priority"
-            ],
-            [
-                "u8",
-                "weight"
-            ],
-            {
-                "crc": "0xf6d90f0b"
-            }
-        ],
-        [
-            "remote_locator",
-            [
-                "u8",
-                "is_ip4"
-            ],
-            [
-                "u8",
-                "priority"
-            ],
-            [
-                "u8",
-                "weight"
-            ],
-            [
-                "u8",
-                "addr",
-                16
-            ],
-            {
-                "crc": "0xfc6f49a4"
-            }
-        ],
-        [
-            "lisp_adjacency",
-            [
-                "u8",
-                "eid_type"
-            ],
-            [
-                "u8",
-                "reid",
-                16
-            ],
-            [
-                "u8",
-                "leid",
-                16
-            ],
-            [
-                "u8",
-                "reid_prefix_len"
-            ],
-            [
-                "u8",
-                "leid_prefix_len"
-            ],
-            {
-                "crc": "0x1f885751"
-            }
-        ]
-    ],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xa4efcd13"
 }

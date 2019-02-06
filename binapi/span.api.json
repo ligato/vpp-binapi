@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "sw_interface_span_enable_disable",
@@ -105,8 +106,8 @@
             }
         ]
     ],
-    "vl_api_version": "0x3bf64515",
     "unions": [],
+    "enums": [],
     "services": {
         "sw_interface_span_enable_disable": {
             "reply": "sw_interface_span_enable_disable_reply"
@@ -116,7 +117,6 @@
             "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x3bf64515"
 }

@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "stn_add_del_rule",
@@ -99,8 +100,8 @@
             }
         ]
     ],
-    "vl_api_version": "0xc7404144",
     "unions": [],
+    "enums": [],
     "services": {
         "stn_add_del_rule": {
             "reply": "stn_add_del_rule_reply"
@@ -110,7 +111,6 @@
             "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xc7404144"
 }

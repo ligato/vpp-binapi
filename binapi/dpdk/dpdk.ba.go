@@ -26,11 +26,11 @@ var _ = bytes.NewBuffer
 //	    "sw_interface_set_dpdk_hqos_pipe": {
 //	        "reply": "sw_interface_set_dpdk_hqos_pipe_reply"
 //	    },
-//	    "sw_interface_set_dpdk_hqos_tctbl": {
-//	        "reply": "sw_interface_set_dpdk_hqos_tctbl_reply"
-//	    },
 //	    "sw_interface_set_dpdk_hqos_subport": {
 //	        "reply": "sw_interface_set_dpdk_hqos_subport_reply"
+//	    },
+//	    "sw_interface_set_dpdk_hqos_tctbl": {
+//	        "reply": "sw_interface_set_dpdk_hqos_tctbl_reply"
 //	    }
 //	},
 //

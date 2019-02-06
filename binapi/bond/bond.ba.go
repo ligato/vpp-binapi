@@ -23,11 +23,14 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "bond_enslave": {
-//	        "reply": "bond_enslave_reply"
-//	    },
 //	    "bond_create": {
 //	        "reply": "bond_create_reply"
+//	    },
+//	    "bond_delete": {
+//	        "reply": "bond_delete_reply"
+//	    },
+//	    "bond_enslave": {
+//	        "reply": "bond_enslave_reply"
 //	    },
 //	    "bond_detach_slave": {
 //	        "reply": "bond_detach_slave_reply"
@@ -39,9 +42,6 @@ var _ = bytes.NewBuffer
 //	    "sw_interface_slave_dump": {
 //	        "reply": "sw_interface_slave_details",
 //	        "stream": true
-//	    },
-//	    "bond_delete": {
-//	        "reply": "bond_delete_reply"
 //	    }
 //	},
 //

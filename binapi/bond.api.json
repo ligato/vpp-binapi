@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "bond_create",
@@ -308,14 +309,17 @@
             }
         ]
     ],
-    "vl_api_version": "0x33cb944c",
     "unions": [],
+    "enums": [],
     "services": {
-        "bond_enslave": {
-            "reply": "bond_enslave_reply"
-        },
         "bond_create": {
             "reply": "bond_create_reply"
+        },
+        "bond_delete": {
+            "reply": "bond_delete_reply"
+        },
+        "bond_enslave": {
+            "reply": "bond_enslave_reply"
         },
         "bond_detach_slave": {
             "reply": "bond_detach_slave_reply"
@@ -327,12 +331,8 @@
         "sw_interface_slave_dump": {
             "reply": "sw_interface_slave_details",
             "stream": true
-        },
-        "bond_delete": {
-            "reply": "bond_delete_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x33cb944c"
 }

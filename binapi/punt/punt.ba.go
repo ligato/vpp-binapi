@@ -27,19 +27,19 @@ var _ = bytes.NewBuffer
 //	    "set_punt": {
 //	        "reply": "set_punt_reply"
 //	    },
-//	    "punt_socket_dump": {
-//	        "reply": "punt_socket_details",
-//	        "stream": true
-//	    },
-//	    "punt_socket_deregister": {
-//	        "reply": "punt_socket_deregister_reply"
-//	    },
 //	    "punt_dump": {
 //	        "reply": "punt_details",
 //	        "stream": true
 //	    },
 //	    "punt_socket_register": {
 //	        "reply": "punt_socket_register_reply"
+//	    },
+//	    "punt_socket_dump": {
+//	        "reply": "punt_socket_details",
+//	        "stream": true
+//	    },
+//	    "punt_socket_deregister": {
+//	        "reply": "punt_socket_deregister_reply"
 //	    }
 //	},
 //

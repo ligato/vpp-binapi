@@ -1,4 +1,118 @@
 {
+    "types": [
+        [
+            "address",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "vl_api_address_union_t",
+                "un"
+            ],
+            {
+                "crc": "0x09f11671"
+            }
+        ],
+        [
+            "prefix",
+            [
+                "vl_api_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "address_length"
+            ],
+            {
+                "crc": "0x0403aebc"
+            }
+        ],
+        [
+            "mprefix",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "u16",
+                "grp_address_length"
+            ],
+            [
+                "vl_api_address_union_t",
+                "grp_address"
+            ],
+            [
+                "vl_api_address_union_t",
+                "src_address"
+            ],
+            {
+                "crc": "0x1c4cba05"
+            }
+        ],
+        [
+            "ip6_prefix",
+            [
+                "vl_api_ip6_address_t",
+                "prefix"
+            ],
+            [
+                "u8",
+                "len"
+            ],
+            {
+                "crc": "0x779fd64f"
+            }
+        ],
+        [
+            "ip4_prefix",
+            [
+                "vl_api_ip4_address_t",
+                "prefix"
+            ],
+            [
+                "u8",
+                "len"
+            ],
+            {
+                "crc": "0xea8dc11d"
+            }
+        ],
+        [
+            "vxlan_gbp_tunnel",
+            [
+                "u32",
+                "instance"
+            ],
+            [
+                "vl_api_address_t",
+                "src"
+            ],
+            [
+                "vl_api_address_t",
+                "dst"
+            ],
+            [
+                "u32",
+                "mcast_sw_if_index"
+            ],
+            [
+                "u32",
+                "encap_table_id"
+            ],
+            [
+                "u32",
+                "vni"
+            ],
+            [
+                "u32",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x2bb00ea0"
+            }
+        ]
+    ],
     "messages": [
         [
             "vxlan_gbp_tunnel_add_del",
@@ -137,7 +251,6 @@
             }
         ]
     ],
-    "vl_api_version": "0xff1fa142",
     "unions": [
         [
             "address_union",
@@ -154,18 +267,6 @@
             }
         ]
     ],
-    "services": {
-        "vxlan_gbp_tunnel_dump": {
-            "reply": "vxlan_gbp_tunnel_details",
-            "stream": true
-        },
-        "sw_interface_set_vxlan_gbp_bypass": {
-            "reply": "sw_interface_set_vxlan_gbp_bypass_reply"
-        },
-        "vxlan_gbp_tunnel_add_del": {
-            "reply": "vxlan_gbp_tunnel_add_del_reply"
-        }
-    },
     "enums": [
         [
             "address_family",
@@ -182,128 +283,27 @@
             }
         ]
     ],
-    "types": [
-        [
-            "address",
-            [
-                "vl_api_address_family_t",
-                "af"
-            ],
-            [
-                "vl_api_address_union_t",
-                "un"
-            ],
-            {
-                "crc": "0x09f11671"
-            }
-        ],
-        [
-            "prefix",
-            [
-                "vl_api_address_t",
-                "address"
-            ],
-            [
-                "u8",
-                "address_length"
-            ],
-            {
-                "crc": "0x0403aebc"
-            }
-        ],
-        [
-            "mprefix",
-            [
-                "vl_api_address_family_t",
-                "af"
-            ],
-            [
-                "u16",
-                "grp_address_length"
-            ],
-            [
-                "vl_api_address_union_t",
-                "grp_address"
-            ],
-            [
-                "vl_api_address_union_t",
-                "src_address"
-            ],
-            {
-                "crc": "0x1c4cba05"
-            }
-        ],
-        [
-            "ip6_prefix",
-            [
-                "vl_api_ip6_address_t",
-                "prefix"
-            ],
-            [
-                "u8",
-                "len"
-            ],
-            {
-                "crc": "0x779fd64f"
-            }
-        ],
-        [
-            "ip4_prefix",
-            [
-                "vl_api_ip4_address_t",
-                "prefix"
-            ],
-            [
-                "u8",
-                "len"
-            ],
-            {
-                "crc": "0xea8dc11d"
-            }
-        ],
-        [
-            "vxlan_gbp_tunnel",
-            [
-                "u32",
-                "instance"
-            ],
-            [
-                "vl_api_address_t",
-                "src"
-            ],
-            [
-                "vl_api_address_t",
-                "dst"
-            ],
-            [
-                "u32",
-                "mcast_sw_if_index"
-            ],
-            [
-                "u32",
-                "encap_table_id"
-            ],
-            [
-                "u32",
-                "vni"
-            ],
-            [
-                "u32",
-                "sw_if_index"
-            ],
-            {
-                "crc": "0x2bb00ea0"
-            }
-        ]
-    ],
-    "aliases": {
-        "ip6_address": {
-            "length": 16,
-            "type": "u8"
+    "services": {
+        "vxlan_gbp_tunnel_add_del": {
+            "reply": "vxlan_gbp_tunnel_add_del_reply"
         },
-        "ip4_address": {
-            "length": 4,
-            "type": "u8"
+        "vxlan_gbp_tunnel_dump": {
+            "reply": "vxlan_gbp_tunnel_details",
+            "stream": true
+        },
+        "sw_interface_set_vxlan_gbp_bypass": {
+            "reply": "sw_interface_set_vxlan_gbp_bypass_reply"
         }
-    }
+    },
+    "aliases": {
+        "ip4_address": {
+            "type": "u8",
+            "length": 4
+        },
+        "ip6_address": {
+            "type": "u8",
+            "length": 16
+        }
+    },
+    "vl_api_version": "0xff1fa142"
 }

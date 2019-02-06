@@ -24,8 +24,8 @@ var _ = bytes.NewBuffer
 // MacAddress represents VPP binary API alias 'mac_address':
 //
 //	"mac_address": {
-//	    "length": 6,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 6
 //	}
 //
 type MacAddress [6]uint8

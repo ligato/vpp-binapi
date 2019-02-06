@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "flowprobe_tx_interface_add_del",
@@ -105,8 +106,8 @@
             }
         ]
     ],
-    "vl_api_version": "0x8c36cb50",
     "unions": [],
+    "enums": [],
     "services": {
         "flowprobe_tx_interface_add_del": {
             "reply": "flowprobe_tx_interface_add_del_reply"
@@ -115,7 +116,6 @@
             "reply": "flowprobe_params_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x8c36cb50"
 }

@@ -23,10 +23,6 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "pot_profile_show_config_dump": {
-//	        "reply": "pot_profile_show_config_details",
-//	        "stream": true
-//	    },
 //	    "pot_profile_add": {
 //	        "reply": "pot_profile_add_reply"
 //	    },
@@ -35,6 +31,10 @@ var _ = bytes.NewBuffer
 //	    },
 //	    "pot_profile_del": {
 //	        "reply": "pot_profile_del_reply"
+//	    },
+//	    "pot_profile_show_config_dump": {
+//	        "reply": "pot_profile_show_config_details",
+//	        "stream": true
 //	    }
 //	},
 //

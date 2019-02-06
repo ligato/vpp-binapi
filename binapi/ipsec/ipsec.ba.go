@@ -6,6 +6,10 @@
 
  It contains following objects:
 	 54 messages
+	  8 types
+	  2 aliases
+	  6 enums
+	  1 union
 	 27 services
 
 */
@@ -23,28 +27,37 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "ipsec_backend_dump": {
-//	        "reply": "ipsec_backend_details",
-//	        "stream": true
-//	    },
 //	    "ipsec_spd_add_del": {
 //	        "reply": "ipsec_spd_add_del_reply"
 //	    },
 //	    "ipsec_interface_add_del_spd": {
 //	        "reply": "ipsec_interface_add_del_spd_reply"
 //	    },
-//	    "ipsec_tunnel_if_set_sa": {
-//	        "reply": "ipsec_tunnel_if_set_sa_reply"
-//	    },
-//	    "ikev2_set_responder": {
-//	        "reply": "ikev2_set_responder_reply"
-//	    },
-//	    "ipsec_select_backend": {
-//	        "reply": "ipsec_select_backend_reply"
+//	    "ipsec_spd_entry_add_del": {
+//	        "reply": "ipsec_spd_entry_add_del_reply"
 //	    },
 //	    "ipsec_spds_dump": {
 //	        "reply": "ipsec_spds_details",
 //	        "stream": true
+//	    },
+//	    "ipsec_spd_dump": {
+//	        "reply": "ipsec_spd_details",
+//	        "stream": true
+//	    },
+//	    "ipsec_sad_entry_add_del": {
+//	        "reply": "ipsec_sad_entry_add_del_reply"
+//	    },
+//	    "ipsec_sa_set_key": {
+//	        "reply": "ipsec_sa_set_key_reply"
+//	    },
+//	    "ikev2_profile_add_del": {
+//	        "reply": "ikev2_profile_add_del_reply"
+//	    },
+//	    "ikev2_profile_set_auth": {
+//	        "reply": "ikev2_profile_set_auth_reply"
+//	    },
+//	    "ikev2_profile_set_id": {
+//	        "reply": "ikev2_profile_set_id_reply"
 //	    },
 //	    "ikev2_profile_set_ts": {
 //	        "reply": "ikev2_profile_set_ts_reply"
@@ -52,40 +65,8 @@ var _ = bytes.NewBuffer
 //	    "ikev2_set_local_key": {
 //	        "reply": "ikev2_set_local_key_reply"
 //	    },
-//	    "ikev2_initiate_del_ike_sa": {
-//	        "reply": "ikev2_initiate_del_ike_sa_reply"
-//	    },
-//	    "ikev2_profile_add_del": {
-//	        "reply": "ikev2_profile_add_del_reply"
-//	    },
-//	    "ipsec_tunnel_if_set_key": {
-//	        "reply": "ipsec_tunnel_if_set_key_reply"
-//	    },
-//	    "ikev2_initiate_sa_init": {
-//	        "reply": "ikev2_initiate_sa_init_reply"
-//	    },
-//	    "ipsec_sa_set_key": {
-//	        "reply": "ipsec_sa_set_key_reply"
-//	    },
-//	    "ikev2_set_sa_lifetime": {
-//	        "reply": "ikev2_set_sa_lifetime_reply"
-//	    },
-//	    "ikev2_initiate_rekey_child_sa": {
-//	        "reply": "ikev2_initiate_rekey_child_sa_reply"
-//	    },
-//	    "ipsec_sad_add_del_entry": {
-//	        "reply": "ipsec_sad_add_del_entry_reply"
-//	    },
-//	    "ikev2_profile_set_auth": {
-//	        "reply": "ikev2_profile_set_auth_reply"
-//	    },
-//	    "ipsec_spd_dump": {
-//	        "reply": "ipsec_spd_details",
-//	        "stream": true
-//	    },
-//	    "ipsec_sa_dump": {
-//	        "reply": "ipsec_sa_details",
-//	        "stream": true
+//	    "ikev2_set_responder": {
+//	        "reply": "ikev2_set_responder_reply"
 //	    },
 //	    "ikev2_set_ike_transforms": {
 //	        "reply": "ikev2_set_ike_transforms_reply"
@@ -93,21 +74,44 @@ var _ = bytes.NewBuffer
 //	    "ikev2_set_esp_transforms": {
 //	        "reply": "ikev2_set_esp_transforms_reply"
 //	    },
-//	    "ipsec_spd_add_del_entry": {
-//	        "reply": "ipsec_spd_add_del_entry_reply"
+//	    "ikev2_set_sa_lifetime": {
+//	        "reply": "ikev2_set_sa_lifetime_reply"
 //	    },
-//	    "ikev2_profile_set_id": {
-//	        "reply": "ikev2_profile_set_id_reply"
+//	    "ikev2_initiate_sa_init": {
+//	        "reply": "ikev2_initiate_sa_init_reply"
+//	    },
+//	    "ikev2_initiate_del_ike_sa": {
+//	        "reply": "ikev2_initiate_del_ike_sa_reply"
 //	    },
 //	    "ikev2_initiate_del_child_sa": {
 //	        "reply": "ikev2_initiate_del_child_sa_reply"
 //	    },
-//	    "ipsec_tunnel_if_add_del": {
-//	        "reply": "ipsec_tunnel_if_add_del_reply"
+//	    "ikev2_initiate_rekey_child_sa": {
+//	        "reply": "ikev2_initiate_rekey_child_sa_reply"
 //	    },
 //	    "ipsec_spd_interface_dump": {
 //	        "reply": "ipsec_spd_interface_details",
 //	        "stream": true
+//	    },
+//	    "ipsec_tunnel_if_add_del": {
+//	        "reply": "ipsec_tunnel_if_add_del_reply"
+//	    },
+//	    "ipsec_sa_dump": {
+//	        "reply": "ipsec_sa_details",
+//	        "stream": true
+//	    },
+//	    "ipsec_tunnel_if_set_key": {
+//	        "reply": "ipsec_tunnel_if_set_key_reply"
+//	    },
+//	    "ipsec_tunnel_if_set_sa": {
+//	        "reply": "ipsec_tunnel_if_set_sa_reply"
+//	    },
+//	    "ipsec_backend_dump": {
+//	        "reply": "ipsec_backend_details",
+//	        "stream": true
+//	    },
+//	    "ipsec_select_backend": {
+//	        "reply": "ipsec_select_backend_reply"
 //	    }
 //	},
 //
@@ -132,13 +136,655 @@ type Services interface {
 	Ikev2SetSaLifetime(*Ikev2SetSaLifetime) (*Ikev2SetSaLifetimeReply, error)
 	IpsecInterfaceAddDelSpd(*IpsecInterfaceAddDelSpd) (*IpsecInterfaceAddDelSpdReply, error)
 	IpsecSaSetKey(*IpsecSaSetKey) (*IpsecSaSetKeyReply, error)
-	IpsecSadAddDelEntry(*IpsecSadAddDelEntry) (*IpsecSadAddDelEntryReply, error)
+	IpsecSadEntryAddDel(*IpsecSadEntryAddDel) (*IpsecSadEntryAddDelReply, error)
 	IpsecSelectBackend(*IpsecSelectBackend) (*IpsecSelectBackendReply, error)
 	IpsecSpdAddDel(*IpsecSpdAddDel) (*IpsecSpdAddDelReply, error)
-	IpsecSpdAddDelEntry(*IpsecSpdAddDelEntry) (*IpsecSpdAddDelEntryReply, error)
+	IpsecSpdEntryAddDel(*IpsecSpdEntryAddDel) (*IpsecSpdEntryAddDelReply, error)
 	IpsecTunnelIfAddDel(*IpsecTunnelIfAddDel) (*IpsecTunnelIfAddDelReply, error)
 	IpsecTunnelIfSetKey(*IpsecTunnelIfSetKey) (*IpsecTunnelIfSetKeyReply, error)
 	IpsecTunnelIfSetSa(*IpsecTunnelIfSetSa) (*IpsecTunnelIfSetSaReply, error)
+}
+
+/* Enums */
+
+// AddressFamily represents VPP binary API enum 'address_family':
+//
+//	"address_family",
+//	[
+//	    "ADDRESS_IP4",
+//	    0
+//	],
+//	[
+//	    "ADDRESS_IP6",
+//	    1
+//	],
+//	{
+//	    "enumtype": "u32"
+//	}
+//
+type AddressFamily uint32
+
+const (
+	ADDRESS_IP4 AddressFamily = 0
+	ADDRESS_IP6 AddressFamily = 1
+)
+
+// IpsecSpdAction represents VPP binary API enum 'ipsec_spd_action':
+//
+//	"ipsec_spd_action",
+//	[
+//	    "IPSEC_API_SPD_ACTION_BYPASS",
+//	    0
+//	],
+//	[
+//	    "IPSEC_API_SPD_ACTION_DISCARD",
+//	    1
+//	],
+//	[
+//	    "IPSEC_API_SPD_ACTION_RESOLVE",
+//	    2
+//	],
+//	[
+//	    "IPSEC_API_SPD_ACTION_PROTECT",
+//	    3
+//	],
+//	{
+//	    "enumtype": "u32"
+//	}
+//
+type IpsecSpdAction uint32
+
+const (
+	IPSEC_API_SPD_ACTION_BYPASS  IpsecSpdAction = 0
+	IPSEC_API_SPD_ACTION_DISCARD IpsecSpdAction = 1
+	IPSEC_API_SPD_ACTION_RESOLVE IpsecSpdAction = 2
+	IPSEC_API_SPD_ACTION_PROTECT IpsecSpdAction = 3
+)
+
+// IpsecCryptoAlg represents VPP binary API enum 'ipsec_crypto_alg':
+//
+//	"ipsec_crypto_alg",
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_NONE",
+//	    0
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_AES_CBC_128",
+//	    1
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_AES_CBC_192",
+//	    2
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_AES_CBC_256",
+//	    3
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_AES_CTR_128",
+//	    4
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_AES_CTR_192",
+//	    5
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_AES_CTR_256",
+//	    6
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_AES_GCM_128",
+//	    7
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_AES_GCM_192",
+//	    8
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_AES_GCM_256",
+//	    9
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_DES_CBC",
+//	    10
+//	],
+//	[
+//	    "IPSEC_API_CRYPTO_ALG_3DES_CBC",
+//	    11
+//	],
+//	{
+//	    "enumtype": "u32"
+//	}
+//
+type IpsecCryptoAlg uint32
+
+const (
+	IPSEC_API_CRYPTO_ALG_NONE        IpsecCryptoAlg = 0
+	IPSEC_API_CRYPTO_ALG_AES_CBC_128 IpsecCryptoAlg = 1
+	IPSEC_API_CRYPTO_ALG_AES_CBC_192 IpsecCryptoAlg = 2
+	IPSEC_API_CRYPTO_ALG_AES_CBC_256 IpsecCryptoAlg = 3
+	IPSEC_API_CRYPTO_ALG_AES_CTR_128 IpsecCryptoAlg = 4
+	IPSEC_API_CRYPTO_ALG_AES_CTR_192 IpsecCryptoAlg = 5
+	IPSEC_API_CRYPTO_ALG_AES_CTR_256 IpsecCryptoAlg = 6
+	IPSEC_API_CRYPTO_ALG_AES_GCM_128 IpsecCryptoAlg = 7
+	IPSEC_API_CRYPTO_ALG_AES_GCM_192 IpsecCryptoAlg = 8
+	IPSEC_API_CRYPTO_ALG_AES_GCM_256 IpsecCryptoAlg = 9
+	IPSEC_API_CRYPTO_ALG_DES_CBC     IpsecCryptoAlg = 10
+	IPSEC_API_CRYPTO_ALG_3DES_CBC    IpsecCryptoAlg = 11
+)
+
+// IpsecIntegAlg represents VPP binary API enum 'ipsec_integ_alg':
+//
+//	"ipsec_integ_alg",
+//	[
+//	    "IPSEC_API_INTEG_ALG_NONE",
+//	    0
+//	],
+//	[
+//	    "IPSEC_API_INTEG_ALG_MD5_96",
+//	    1
+//	],
+//	[
+//	    "IPSEC_API_INTEG_ALG_SHA1_96",
+//	    2
+//	],
+//	[
+//	    "IPSEC_API_INTEG_ALG_SHA_256_96",
+//	    3
+//	],
+//	[
+//	    "IPSEC_API_INTEG_ALG_SHA_256_128",
+//	    4
+//	],
+//	[
+//	    "IPSEC_API_INTEG_ALG_SHA_384_192",
+//	    5
+//	],
+//	[
+//	    "IPSEC_API_INTEG_ALG_SHA_512_256",
+//	    6
+//	],
+//	{
+//	    "enumtype": "u32"
+//	}
+//
+type IpsecIntegAlg uint32
+
+const (
+	IPSEC_API_INTEG_ALG_NONE        IpsecIntegAlg = 0
+	IPSEC_API_INTEG_ALG_MD5_96      IpsecIntegAlg = 1
+	IPSEC_API_INTEG_ALG_SHA1_96     IpsecIntegAlg = 2
+	IPSEC_API_INTEG_ALG_SHA_256_96  IpsecIntegAlg = 3
+	IPSEC_API_INTEG_ALG_SHA_256_128 IpsecIntegAlg = 4
+	IPSEC_API_INTEG_ALG_SHA_384_192 IpsecIntegAlg = 5
+	IPSEC_API_INTEG_ALG_SHA_512_256 IpsecIntegAlg = 6
+)
+
+// IpsecSadFlags represents VPP binary API enum 'ipsec_sad_flags':
+//
+//	"ipsec_sad_flags",
+//	[
+//	    "IPSEC_API_SAD_FLAG_NONE",
+//	    0
+//	],
+//	[
+//	    "IPSEC_API_SAD_FLAG_USE_EXTENDED_SEQ_NUM",
+//	    1
+//	],
+//	[
+//	    "IPSEC_API_SAD_FLAG_USE_ANTI_REPLAY",
+//	    2
+//	],
+//	[
+//	    "IPSEC_API_SAD_FLAG_IS_TUNNEL",
+//	    4
+//	],
+//	[
+//	    "IPSEC_API_SAD_FLAG_IS_TUNNEL_V6",
+//	    8
+//	],
+//	[
+//	    "IPSEC_API_SAD_FLAG_UDP_ENCAP",
+//	    16
+//	],
+//	{
+//	    "enumtype": "u32"
+//	}
+//
+type IpsecSadFlags uint32
+
+const (
+	IPSEC_API_SAD_FLAG_NONE                 IpsecSadFlags = 0
+	IPSEC_API_SAD_FLAG_USE_EXTENDED_SEQ_NUM IpsecSadFlags = 1
+	IPSEC_API_SAD_FLAG_USE_ANTI_REPLAY      IpsecSadFlags = 2
+	IPSEC_API_SAD_FLAG_IS_TUNNEL            IpsecSadFlags = 4
+	IPSEC_API_SAD_FLAG_IS_TUNNEL_V6         IpsecSadFlags = 8
+	IPSEC_API_SAD_FLAG_UDP_ENCAP            IpsecSadFlags = 16
+)
+
+// IpsecProto represents VPP binary API enum 'ipsec_proto':
+//
+//	"ipsec_proto",
+//	[
+//	    "IPSEC_API_PROTO_ESP",
+//	    1
+//	],
+//	[
+//	    "IPSEC_API_PROTO_AH",
+//	    2
+//	],
+//	{
+//	    "enumtype": "u32"
+//	}
+//
+type IpsecProto uint32
+
+const (
+	IPSEC_API_PROTO_ESP IpsecProto = 1
+	IPSEC_API_PROTO_AH  IpsecProto = 2
+)
+
+/* Aliases */
+
+// IP4Address represents VPP binary API alias 'ip4_address':
+//
+//	"ip4_address": {
+//	    "type": "u8",
+//	    "length": 4
+//	},
+//
+type IP4Address [4]uint8
+
+// IP6Address represents VPP binary API alias 'ip6_address':
+//
+//	"ip6_address": {
+//	    "type": "u8",
+//	    "length": 16
+//	}
+//
+type IP6Address [16]uint8
+
+/* Types */
+
+// Address represents VPP binary API type 'address':
+//
+//	"address",
+//	[
+//	    "vl_api_address_family_t",
+//	    "af"
+//	],
+//	[
+//	    "vl_api_address_union_t",
+//	    "un"
+//	],
+//	{
+//	    "crc": "0x09f11671"
+//	}
+//
+type Address struct {
+	Af AddressFamily
+	Un AddressUnion
+}
+
+func (*Address) GetTypeName() string {
+	return "address"
+}
+func (*Address) GetCrcString() string {
+	return "09f11671"
+}
+
+// Prefix represents VPP binary API type 'prefix':
+//
+//	"prefix",
+//	[
+//	    "vl_api_address_t",
+//	    "address"
+//	],
+//	[
+//	    "u8",
+//	    "address_length"
+//	],
+//	{
+//	    "crc": "0x0403aebc"
+//	}
+//
+type Prefix struct {
+	Address       Address
+	AddressLength uint8
+}
+
+func (*Prefix) GetTypeName() string {
+	return "prefix"
+}
+func (*Prefix) GetCrcString() string {
+	return "0403aebc"
+}
+
+// Mprefix represents VPP binary API type 'mprefix':
+//
+//	"mprefix",
+//	[
+//	    "vl_api_address_family_t",
+//	    "af"
+//	],
+//	[
+//	    "u16",
+//	    "grp_address_length"
+//	],
+//	[
+//	    "vl_api_address_union_t",
+//	    "grp_address"
+//	],
+//	[
+//	    "vl_api_address_union_t",
+//	    "src_address"
+//	],
+//	{
+//	    "crc": "0x1c4cba05"
+//	}
+//
+type Mprefix struct {
+	Af               AddressFamily
+	GrpAddressLength uint16
+	GrpAddress       AddressUnion
+	SrcAddress       AddressUnion
+}
+
+func (*Mprefix) GetTypeName() string {
+	return "mprefix"
+}
+func (*Mprefix) GetCrcString() string {
+	return "1c4cba05"
+}
+
+// IP6Prefix represents VPP binary API type 'ip6_prefix':
+//
+//	"ip6_prefix",
+//	[
+//	    "vl_api_ip6_address_t",
+//	    "prefix"
+//	],
+//	[
+//	    "u8",
+//	    "len"
+//	],
+//	{
+//	    "crc": "0x779fd64f"
+//	}
+//
+type IP6Prefix struct {
+	Prefix IP6Address
+	Len    uint8
+}
+
+func (*IP6Prefix) GetTypeName() string {
+	return "ip6_prefix"
+}
+func (*IP6Prefix) GetCrcString() string {
+	return "779fd64f"
+}
+
+// IP4Prefix represents VPP binary API type 'ip4_prefix':
+//
+//	"ip4_prefix",
+//	[
+//	    "vl_api_ip4_address_t",
+//	    "prefix"
+//	],
+//	[
+//	    "u8",
+//	    "len"
+//	],
+//	{
+//	    "crc": "0xea8dc11d"
+//	}
+//
+type IP4Prefix struct {
+	Prefix IP4Address
+	Len    uint8
+}
+
+func (*IP4Prefix) GetTypeName() string {
+	return "ip4_prefix"
+}
+func (*IP4Prefix) GetCrcString() string {
+	return "ea8dc11d"
+}
+
+// IpsecSpdEntry represents VPP binary API type 'ipsec_spd_entry':
+//
+//	"ipsec_spd_entry",
+//	[
+//	    "u32",
+//	    "spd_id"
+//	],
+//	[
+//	    "i32",
+//	    "priority"
+//	],
+//	[
+//	    "u8",
+//	    "is_outbound"
+//	],
+//	[
+//	    "u32",
+//	    "sa_id"
+//	],
+//	[
+//	    "vl_api_ipsec_spd_action_t",
+//	    "policy"
+//	],
+//	[
+//	    "u8",
+//	    "protocol"
+//	],
+//	[
+//	    "vl_api_address_t",
+//	    "remote_address_start"
+//	],
+//	[
+//	    "vl_api_address_t",
+//	    "remote_address_stop"
+//	],
+//	[
+//	    "vl_api_address_t",
+//	    "local_address_start"
+//	],
+//	[
+//	    "vl_api_address_t",
+//	    "local_address_stop"
+//	],
+//	[
+//	    "u16",
+//	    "remote_port_start"
+//	],
+//	[
+//	    "u16",
+//	    "remote_port_stop"
+//	],
+//	[
+//	    "u16",
+//	    "local_port_start"
+//	],
+//	[
+//	    "u16",
+//	    "local_port_stop"
+//	],
+//	{
+//	    "crc": "0x876fdb2c"
+//	}
+//
+type IpsecSpdEntry struct {
+	SpdID              uint32
+	Priority           int32
+	IsOutbound         uint8
+	SaID               uint32
+	Policy             IpsecSpdAction
+	Protocol           uint8
+	RemoteAddressStart Address
+	RemoteAddressStop  Address
+	LocalAddressStart  Address
+	LocalAddressStop   Address
+	RemotePortStart    uint16
+	RemotePortStop     uint16
+	LocalPortStart     uint16
+	LocalPortStop      uint16
+}
+
+func (*IpsecSpdEntry) GetTypeName() string {
+	return "ipsec_spd_entry"
+}
+func (*IpsecSpdEntry) GetCrcString() string {
+	return "876fdb2c"
+}
+
+// Key represents VPP binary API type 'key':
+//
+//	"key",
+//	[
+//	    "u8",
+//	    "length"
+//	],
+//	[
+//	    "u8",
+//	    "data",
+//	    128
+//	],
+//	{
+//	    "crc": "0xf3d0c4fd"
+//	}
+//
+type Key struct {
+	Length uint8
+	Data   []byte `struc:"[128]byte"`
+}
+
+func (*Key) GetTypeName() string {
+	return "key"
+}
+func (*Key) GetCrcString() string {
+	return "f3d0c4fd"
+}
+
+// IpsecSadEntry represents VPP binary API type 'ipsec_sad_entry':
+//
+//	"ipsec_sad_entry",
+//	[
+//	    "u32",
+//	    "sad_id"
+//	],
+//	[
+//	    "u32",
+//	    "spi"
+//	],
+//	[
+//	    "vl_api_ipsec_proto_t",
+//	    "protocol"
+//	],
+//	[
+//	    "vl_api_ipsec_crypto_alg_t",
+//	    "crypto_algorithm"
+//	],
+//	[
+//	    "vl_api_key_t",
+//	    "crypto_key"
+//	],
+//	[
+//	    "vl_api_ipsec_integ_alg_t",
+//	    "integrity_algorithm"
+//	],
+//	[
+//	    "vl_api_key_t",
+//	    "integrity_key"
+//	],
+//	[
+//	    "vl_api_ipsec_sad_flags_t",
+//	    "flags"
+//	],
+//	[
+//	    "vl_api_address_t",
+//	    "tunnel_src"
+//	],
+//	[
+//	    "vl_api_address_t",
+//	    "tunnel_dst"
+//	],
+//	{
+//	    "crc": "0x18e3d382"
+//	}
+//
+type IpsecSadEntry struct {
+	SadID              uint32
+	Spi                uint32
+	Protocol           IpsecProto
+	CryptoAlgorithm    IpsecCryptoAlg
+	CryptoKey          Key
+	IntegrityAlgorithm IpsecIntegAlg
+	IntegrityKey       Key
+	Flags              IpsecSadFlags
+	TunnelSrc          Address
+	TunnelDst          Address
+}
+
+func (*IpsecSadEntry) GetTypeName() string {
+	return "ipsec_sad_entry"
+}
+func (*IpsecSadEntry) GetCrcString() string {
+	return "18e3d382"
+}
+
+/* Unions */
+
+// AddressUnion represents VPP binary API union 'address_union':
+//
+//	"address_union",
+//	[
+//	    "vl_api_ip4_address_t",
+//	    "ip4"
+//	],
+//	[
+//	    "vl_api_ip6_address_t",
+//	    "ip6"
+//	],
+//	{
+//	    "crc": "0xd68a2fb4"
+//	}
+//
+type AddressUnion struct {
+	Union_data [16]byte
+}
+
+func (*AddressUnion) GetTypeName() string {
+	return "address_union"
+}
+func (*AddressUnion) GetCrcString() string {
+	return "d68a2fb4"
+}
+
+func (u *AddressUnion) SetIP4(a IP4Address) {
+	var b = new(bytes.Buffer)
+	if err := struc.Pack(b, &a); err != nil {
+		return
+	}
+	copy(u.Union_data[:], b.Bytes())
+}
+func (u *AddressUnion) GetIP4() (a IP4Address) {
+	var b = bytes.NewReader(u.Union_data[:])
+	struc.Unpack(b, &a)
+	return
+}
+
+func (u *AddressUnion) SetIP6(a IP6Address) {
+	var b = new(bytes.Buffer)
+	if err := struc.Pack(b, &a); err != nil {
+		return
+	}
+	copy(u.Union_data[:], b.Bytes())
+}
+func (u *AddressUnion) GetIP6() (a IP6Address) {
+	var b = bytes.NewReader(u.Union_data[:])
+	struc.Unpack(b, &a)
+	return
 }
 
 /* Messages */
@@ -298,9 +944,9 @@ func (*IpsecInterfaceAddDelSpdReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// IpsecSpdAddDelEntry represents VPP binary API message 'ipsec_spd_add_del_entry':
+// IpsecSpdEntryAddDel represents VPP binary API message 'ipsec_spd_entry_add_del':
 //
-//	"ipsec_spd_add_del_entry",
+//	"ipsec_spd_entry_add_del",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -316,112 +962,182 @@ func (*IpsecInterfaceAddDelSpdReply) GetMessageType() api.MessageType {
 //	[
 //	    "u8",
 //	    "is_add"
+//	],
+//	[
+//	    "vl_api_ipsec_spd_entry_t",
+//	    "entry"
+//	],
+//	{
+//	    "crc": "0xbbab53da"
+//	}
+//
+type IpsecSpdEntryAddDel struct {
+	IsAdd uint8
+	Entry IpsecSpdEntry
+}
+
+func (*IpsecSpdEntryAddDel) GetMessageName() string {
+	return "ipsec_spd_entry_add_del"
+}
+func (*IpsecSpdEntryAddDel) GetCrcString() string {
+	return "bbab53da"
+}
+func (*IpsecSpdEntryAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// IpsecSpdEntryAddDelReply represents VPP binary API message 'ipsec_spd_entry_add_del_reply':
+//
+//	"ipsec_spd_entry_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "stat_index"
+//	],
+//	{
+//	    "crc": "0x9ffac24b"
+//	}
+//
+type IpsecSpdEntryAddDelReply struct {
+	Retval    int32
+	StatIndex uint32
+}
+
+func (*IpsecSpdEntryAddDelReply) GetMessageName() string {
+	return "ipsec_spd_entry_add_del_reply"
+}
+func (*IpsecSpdEntryAddDelReply) GetCrcString() string {
+	return "9ffac24b"
+}
+func (*IpsecSpdEntryAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// IpsecSpdsDump represents VPP binary API message 'ipsec_spds_dump':
+//
+//	"ipsec_spds_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type IpsecSpdsDump struct{}
+
+func (*IpsecSpdsDump) GetMessageName() string {
+	return "ipsec_spds_dump"
+}
+func (*IpsecSpdsDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*IpsecSpdsDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// IpsecSpdsDetails represents VPP binary API message 'ipsec_spds_details':
+//
+//	"ipsec_spds_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
 //	],
 //	[
 //	    "u32",
 //	    "spd_id"
 //	],
 //	[
-//	    "i32",
-//	    "priority"
+//	    "u32",
+//	    "npolicies"
 //	],
-//	[
-//	    "u8",
-//	    "is_outbound"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "is_ip_any"
-//	],
-//	[
-//	    "u8",
-//	    "remote_address_start",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "remote_address_stop",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "local_address_start",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "local_address_stop",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "protocol"
-//	],
+//	{
+//	    "crc": "0xa04bb254"
+//	}
+//
+type IpsecSpdsDetails struct {
+	SpdID     uint32
+	Npolicies uint32
+}
+
+func (*IpsecSpdsDetails) GetMessageName() string {
+	return "ipsec_spds_details"
+}
+func (*IpsecSpdsDetails) GetCrcString() string {
+	return "a04bb254"
+}
+func (*IpsecSpdsDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// IpsecSpdDump represents VPP binary API message 'ipsec_spd_dump':
+//
+//	"ipsec_spd_dump",
 //	[
 //	    "u16",
-//	    "remote_port_start"
+//	    "_vl_msg_id"
 //	],
 //	[
-//	    "u16",
-//	    "remote_port_stop"
+//	    "u32",
+//	    "client_index"
 //	],
 //	[
-//	    "u16",
-//	    "local_port_start"
+//	    "u32",
+//	    "context"
 //	],
 //	[
-//	    "u16",
-//	    "local_port_stop"
-//	],
-//	[
-//	    "u8",
-//	    "policy"
+//	    "u32",
+//	    "spd_id"
 //	],
 //	[
 //	    "u32",
 //	    "sa_id"
 //	],
 //	{
-//	    "crc": "0x7687a364"
+//	    "crc": "0xafefbf7d"
 //	}
 //
-type IpsecSpdAddDelEntry struct {
-	IsAdd              uint8
-	SpdID              uint32
-	Priority           int32
-	IsOutbound         uint8
-	IsIPv6             uint8
-	IsIPAny            uint8
-	RemoteAddressStart []byte `struc:"[16]byte"`
-	RemoteAddressStop  []byte `struc:"[16]byte"`
-	LocalAddressStart  []byte `struc:"[16]byte"`
-	LocalAddressStop   []byte `struc:"[16]byte"`
-	Protocol           uint8
-	RemotePortStart    uint16
-	RemotePortStop     uint16
-	LocalPortStart     uint16
-	LocalPortStop      uint16
-	Policy             uint8
-	SaID               uint32
+type IpsecSpdDump struct {
+	SpdID uint32
+	SaID  uint32
 }
 
-func (*IpsecSpdAddDelEntry) GetMessageName() string {
-	return "ipsec_spd_add_del_entry"
+func (*IpsecSpdDump) GetMessageName() string {
+	return "ipsec_spd_dump"
 }
-func (*IpsecSpdAddDelEntry) GetCrcString() string {
-	return "7687a364"
+func (*IpsecSpdDump) GetCrcString() string {
+	return "afefbf7d"
 }
-func (*IpsecSpdAddDelEntry) GetMessageType() api.MessageType {
+func (*IpsecSpdDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// IpsecSpdAddDelEntryReply represents VPP binary API message 'ipsec_spd_add_del_entry_reply':
+// IpsecSpdDetails represents VPP binary API message 'ipsec_spd_details':
 //
-//	"ipsec_spd_add_del_entry_reply",
+//	"ipsec_spd_details",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -431,30 +1147,30 @@ func (*IpsecSpdAddDelEntry) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "i32",
-//	    "retval"
+//	    "vl_api_ipsec_spd_entry_t",
+//	    "entry"
 //	],
 //	{
-//	    "crc": "0xe8d4e804"
+//	    "crc": "0x928e5fcc"
 //	}
 //
-type IpsecSpdAddDelEntryReply struct {
-	Retval int32
+type IpsecSpdDetails struct {
+	Entry IpsecSpdEntry
 }
 
-func (*IpsecSpdAddDelEntryReply) GetMessageName() string {
-	return "ipsec_spd_add_del_entry_reply"
+func (*IpsecSpdDetails) GetMessageName() string {
+	return "ipsec_spd_details"
 }
-func (*IpsecSpdAddDelEntryReply) GetCrcString() string {
-	return "e8d4e804"
+func (*IpsecSpdDetails) GetCrcString() string {
+	return "928e5fcc"
 }
-func (*IpsecSpdAddDelEntryReply) GetMessageType() api.MessageType {
+func (*IpsecSpdDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// IpsecSadAddDelEntry represents VPP binary API message 'ipsec_sad_add_del_entry':
+// IpsecSadEntryAddDel represents VPP binary API message 'ipsec_sad_entry_add_del':
 //
-//	"ipsec_sad_add_del_entry",
+//	"ipsec_sad_entry_add_del",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -472,110 +1188,31 @@ func (*IpsecSpdAddDelEntryReply) GetMessageType() api.MessageType {
 //	    "is_add"
 //	],
 //	[
-//	    "u32",
-//	    "sad_id"
-//	],
-//	[
-//	    "u32",
-//	    "spi"
-//	],
-//	[
-//	    "u8",
-//	    "protocol"
-//	],
-//	[
-//	    "u8",
-//	    "crypto_algorithm"
-//	],
-//	[
-//	    "u8",
-//	    "crypto_key_length"
-//	],
-//	[
-//	    "u8",
-//	    "crypto_key",
-//	    128
-//	],
-//	[
-//	    "u8",
-//	    "integrity_algorithm"
-//	],
-//	[
-//	    "u8",
-//	    "integrity_key_length"
-//	],
-//	[
-//	    "u8",
-//	    "integrity_key",
-//	    128
-//	],
-//	[
-//	    "u8",
-//	    "use_extended_sequence_number"
-//	],
-//	[
-//	    "u8",
-//	    "use_anti_replay"
-//	],
-//	[
-//	    "u8",
-//	    "is_tunnel"
-//	],
-//	[
-//	    "u8",
-//	    "is_tunnel_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "tunnel_src_address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "tunnel_dst_address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "udp_encap"
+//	    "vl_api_ipsec_sad_entry_t",
+//	    "entry"
 //	],
 //	{
-//	    "crc": "0x306782b4"
+//	    "crc": "0x05747d5b"
 //	}
 //
-type IpsecSadAddDelEntry struct {
-	IsAdd                     uint8
-	SadID                     uint32
-	Spi                       uint32
-	Protocol                  uint8
-	CryptoAlgorithm           uint8
-	CryptoKeyLength           uint8
-	CryptoKey                 []byte `struc:"[128]byte"`
-	IntegrityAlgorithm        uint8
-	IntegrityKeyLength        uint8
-	IntegrityKey              []byte `struc:"[128]byte"`
-	UseExtendedSequenceNumber uint8
-	UseAntiReplay             uint8
-	IsTunnel                  uint8
-	IsTunnelIPv6              uint8
-	TunnelSrcAddress          []byte `struc:"[16]byte"`
-	TunnelDstAddress          []byte `struc:"[16]byte"`
-	UDPEncap                  uint8
+type IpsecSadEntryAddDel struct {
+	IsAdd uint8
+	Entry IpsecSadEntry
 }
 
-func (*IpsecSadAddDelEntry) GetMessageName() string {
-	return "ipsec_sad_add_del_entry"
+func (*IpsecSadEntryAddDel) GetMessageName() string {
+	return "ipsec_sad_entry_add_del"
 }
-func (*IpsecSadAddDelEntry) GetCrcString() string {
-	return "306782b4"
+func (*IpsecSadEntryAddDel) GetCrcString() string {
+	return "05747d5b"
 }
-func (*IpsecSadAddDelEntry) GetMessageType() api.MessageType {
+func (*IpsecSadEntryAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// IpsecSadAddDelEntryReply represents VPP binary API message 'ipsec_sad_add_del_entry_reply':
+// IpsecSadEntryAddDelReply represents VPP binary API message 'ipsec_sad_entry_add_del_reply':
 //
-//	"ipsec_sad_add_del_entry_reply",
+//	"ipsec_sad_entry_add_del_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -592,17 +1229,17 @@ func (*IpsecSadAddDelEntry) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type IpsecSadAddDelEntryReply struct {
+type IpsecSadEntryAddDelReply struct {
 	Retval int32
 }
 
-func (*IpsecSadAddDelEntryReply) GetMessageName() string {
-	return "ipsec_sad_add_del_entry_reply"
+func (*IpsecSadEntryAddDelReply) GetMessageName() string {
+	return "ipsec_sad_entry_add_del_reply"
 }
-func (*IpsecSadAddDelEntryReply) GetCrcString() string {
+func (*IpsecSadEntryAddDelReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*IpsecSadAddDelEntryReply) GetMessageType() api.MessageType {
+func (*IpsecSadEntryAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -626,40 +1263,28 @@ func (*IpsecSadAddDelEntryReply) GetMessageType() api.MessageType {
 //	    "sa_id"
 //	],
 //	[
-//	    "u8",
-//	    "crypto_key_length"
+//	    "vl_api_key_t",
+//	    "crypto_key"
 //	],
 //	[
-//	    "u8",
-//	    "crypto_key",
-//	    128
-//	],
-//	[
-//	    "u8",
-//	    "integrity_key_length"
-//	],
-//	[
-//	    "u8",
-//	    "integrity_key",
-//	    128
+//	    "vl_api_key_t",
+//	    "integrity_key"
 //	],
 //	{
-//	    "crc": "0x93b4f08a"
+//	    "crc": "0xf407f496"
 //	}
 //
 type IpsecSaSetKey struct {
-	SaID               uint32
-	CryptoKeyLength    uint8
-	CryptoKey          []byte `struc:"[128]byte"`
-	IntegrityKeyLength uint8
-	IntegrityKey       []byte `struc:"[128]byte"`
+	SaID         uint32
+	CryptoKey    Key
+	IntegrityKey Key
 }
 
 func (*IpsecSaSetKey) GetMessageName() string {
 	return "ipsec_sa_set_key"
 }
 func (*IpsecSaSetKey) GetCrcString() string {
-	return "93b4f08a"
+	return "f407f496"
 }
 func (*IpsecSaSetKey) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -1768,234 +2393,6 @@ func (*Ikev2InitiateRekeyChildSaReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// IpsecSpdsDump represents VPP binary API message 'ipsec_spds_dump':
-//
-//	"ipsec_spds_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type IpsecSpdsDump struct{}
-
-func (*IpsecSpdsDump) GetMessageName() string {
-	return "ipsec_spds_dump"
-}
-func (*IpsecSpdsDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*IpsecSpdsDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// IpsecSpdsDetails represents VPP binary API message 'ipsec_spds_details':
-//
-//	"ipsec_spds_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "spd_id"
-//	],
-//	[
-//	    "u32",
-//	    "npolicies"
-//	],
-//	{
-//	    "crc": "0xa04bb254"
-//	}
-//
-type IpsecSpdsDetails struct {
-	SpdID     uint32
-	Npolicies uint32
-}
-
-func (*IpsecSpdsDetails) GetMessageName() string {
-	return "ipsec_spds_details"
-}
-func (*IpsecSpdsDetails) GetCrcString() string {
-	return "a04bb254"
-}
-func (*IpsecSpdsDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// IpsecSpdDump represents VPP binary API message 'ipsec_spd_dump':
-//
-//	"ipsec_spd_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "spd_id"
-//	],
-//	[
-//	    "u32",
-//	    "sa_id"
-//	],
-//	{
-//	    "crc": "0xafefbf7d"
-//	}
-//
-type IpsecSpdDump struct {
-	SpdID uint32
-	SaID  uint32
-}
-
-func (*IpsecSpdDump) GetMessageName() string {
-	return "ipsec_spd_dump"
-}
-func (*IpsecSpdDump) GetCrcString() string {
-	return "afefbf7d"
-}
-func (*IpsecSpdDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// IpsecSpdDetails represents VPP binary API message 'ipsec_spd_details':
-//
-//	"ipsec_spd_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "spd_id"
-//	],
-//	[
-//	    "i32",
-//	    "priority"
-//	],
-//	[
-//	    "u8",
-//	    "is_outbound"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "local_start_addr",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "local_stop_addr",
-//	    16
-//	],
-//	[
-//	    "u16",
-//	    "local_start_port"
-//	],
-//	[
-//	    "u16",
-//	    "local_stop_port"
-//	],
-//	[
-//	    "u8",
-//	    "remote_start_addr",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "remote_stop_addr",
-//	    16
-//	],
-//	[
-//	    "u16",
-//	    "remote_start_port"
-//	],
-//	[
-//	    "u16",
-//	    "remote_stop_port"
-//	],
-//	[
-//	    "u8",
-//	    "protocol"
-//	],
-//	[
-//	    "u8",
-//	    "policy"
-//	],
-//	[
-//	    "u32",
-//	    "sa_id"
-//	],
-//	[
-//	    "u64",
-//	    "bytes"
-//	],
-//	[
-//	    "u64",
-//	    "packets"
-//	],
-//	{
-//	    "crc": "0x1560895d"
-//	}
-//
-type IpsecSpdDetails struct {
-	SpdID           uint32
-	Priority        int32
-	IsOutbound      uint8
-	IsIPv6          uint8
-	LocalStartAddr  []byte `struc:"[16]byte"`
-	LocalStopAddr   []byte `struc:"[16]byte"`
-	LocalStartPort  uint16
-	LocalStopPort   uint16
-	RemoteStartAddr []byte `struc:"[16]byte"`
-	RemoteStopAddr  []byte `struc:"[16]byte"`
-	RemoteStartPort uint16
-	RemoteStopPort  uint16
-	Protocol        uint8
-	Policy          uint8
-	SaID            uint32
-	Bytes           uint64
-	Packets         uint64
-}
-
-func (*IpsecSpdDetails) GetMessageName() string {
-	return "ipsec_spd_details"
-}
-func (*IpsecSpdDetails) GetCrcString() string {
-	return "1560895d"
-}
-func (*IpsecSpdDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 // IpsecSpdInterfaceDump represents VPP binary API message 'ipsec_spd_interface_dump':
 //
 //	"ipsec_spd_interface_dump",
@@ -2660,7 +3057,7 @@ func (*IpsecBackendDump) GetMessageType() api.MessageType {
 //	    128
 //	],
 //	[
-//	    "u8",
+//	    "vl_api_ipsec_proto_t",
 //	    "protocol"
 //	],
 //	[
@@ -2672,12 +3069,12 @@ func (*IpsecBackendDump) GetMessageType() api.MessageType {
 //	    "active"
 //	],
 //	{
-//	    "crc": "0x3ba4d642"
+//	    "crc": "0x3341f485"
 //	}
 //
 type IpsecBackendDetails struct {
 	Name     []byte `struc:"[128]byte"`
-	Protocol uint8
+	Protocol IpsecProto
 	Index    uint8
 	Active   uint8
 }
@@ -2686,7 +3083,7 @@ func (*IpsecBackendDetails) GetMessageName() string {
 	return "ipsec_backend_details"
 }
 func (*IpsecBackendDetails) GetCrcString() string {
-	return "3ba4d642"
+	return "3341f485"
 }
 func (*IpsecBackendDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -2708,7 +3105,7 @@ func (*IpsecBackendDetails) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "u8",
+//	    "vl_api_ipsec_proto_t",
 //	    "protocol"
 //	],
 //	[
@@ -2716,11 +3113,11 @@ func (*IpsecBackendDetails) GetMessageType() api.MessageType {
 //	    "index"
 //	],
 //	{
-//	    "crc": "0xf2cc2b47"
+//	    "crc": "0xb36bcff3"
 //	}
 //
 type IpsecSelectBackend struct {
-	Protocol uint8
+	Protocol IpsecProto
 	Index    uint8
 }
 
@@ -2728,7 +3125,7 @@ func (*IpsecSelectBackend) GetMessageName() string {
 	return "ipsec_select_backend"
 }
 func (*IpsecSelectBackend) GetCrcString() string {
-	return "f2cc2b47"
+	return "b36bcff3"
 }
 func (*IpsecSelectBackend) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -2772,10 +3169,14 @@ func init() {
 	api.RegisterMessage((*IpsecSpdAddDelReply)(nil), "ipsec.IpsecSpdAddDelReply")
 	api.RegisterMessage((*IpsecInterfaceAddDelSpd)(nil), "ipsec.IpsecInterfaceAddDelSpd")
 	api.RegisterMessage((*IpsecInterfaceAddDelSpdReply)(nil), "ipsec.IpsecInterfaceAddDelSpdReply")
-	api.RegisterMessage((*IpsecSpdAddDelEntry)(nil), "ipsec.IpsecSpdAddDelEntry")
-	api.RegisterMessage((*IpsecSpdAddDelEntryReply)(nil), "ipsec.IpsecSpdAddDelEntryReply")
-	api.RegisterMessage((*IpsecSadAddDelEntry)(nil), "ipsec.IpsecSadAddDelEntry")
-	api.RegisterMessage((*IpsecSadAddDelEntryReply)(nil), "ipsec.IpsecSadAddDelEntryReply")
+	api.RegisterMessage((*IpsecSpdEntryAddDel)(nil), "ipsec.IpsecSpdEntryAddDel")
+	api.RegisterMessage((*IpsecSpdEntryAddDelReply)(nil), "ipsec.IpsecSpdEntryAddDelReply")
+	api.RegisterMessage((*IpsecSpdsDump)(nil), "ipsec.IpsecSpdsDump")
+	api.RegisterMessage((*IpsecSpdsDetails)(nil), "ipsec.IpsecSpdsDetails")
+	api.RegisterMessage((*IpsecSpdDump)(nil), "ipsec.IpsecSpdDump")
+	api.RegisterMessage((*IpsecSpdDetails)(nil), "ipsec.IpsecSpdDetails")
+	api.RegisterMessage((*IpsecSadEntryAddDel)(nil), "ipsec.IpsecSadEntryAddDel")
+	api.RegisterMessage((*IpsecSadEntryAddDelReply)(nil), "ipsec.IpsecSadEntryAddDelReply")
 	api.RegisterMessage((*IpsecSaSetKey)(nil), "ipsec.IpsecSaSetKey")
 	api.RegisterMessage((*IpsecSaSetKeyReply)(nil), "ipsec.IpsecSaSetKeyReply")
 	api.RegisterMessage((*Ikev2ProfileAddDel)(nil), "ipsec.Ikev2ProfileAddDel")
@@ -2804,10 +3205,6 @@ func init() {
 	api.RegisterMessage((*Ikev2InitiateDelChildSaReply)(nil), "ipsec.Ikev2InitiateDelChildSaReply")
 	api.RegisterMessage((*Ikev2InitiateRekeyChildSa)(nil), "ipsec.Ikev2InitiateRekeyChildSa")
 	api.RegisterMessage((*Ikev2InitiateRekeyChildSaReply)(nil), "ipsec.Ikev2InitiateRekeyChildSaReply")
-	api.RegisterMessage((*IpsecSpdsDump)(nil), "ipsec.IpsecSpdsDump")
-	api.RegisterMessage((*IpsecSpdsDetails)(nil), "ipsec.IpsecSpdsDetails")
-	api.RegisterMessage((*IpsecSpdDump)(nil), "ipsec.IpsecSpdDump")
-	api.RegisterMessage((*IpsecSpdDetails)(nil), "ipsec.IpsecSpdDetails")
 	api.RegisterMessage((*IpsecSpdInterfaceDump)(nil), "ipsec.IpsecSpdInterfaceDump")
 	api.RegisterMessage((*IpsecSpdInterfaceDetails)(nil), "ipsec.IpsecSpdInterfaceDetails")
 	api.RegisterMessage((*IpsecTunnelIfAddDel)(nil), "ipsec.IpsecTunnelIfAddDel")

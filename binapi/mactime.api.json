@@ -1,4 +1,20 @@
 {
+    "types": [
+        [
+            "time_range",
+            [
+                "f64",
+                "start"
+            ],
+            [
+                "f64",
+                "end"
+            ],
+            {
+                "crc": "0x941c191b"
+            }
+        ]
+    ],
     "messages": [
         [
             "mactime_enable_disable",
@@ -113,32 +129,16 @@
             }
         ]
     ],
-    "vl_api_version": "0xbfee791",
     "unions": [],
+    "enums": [],
     "services": {
-        "mactime_add_del_range": {
-            "reply": "mactime_add_del_range_reply"
-        },
         "mactime_enable_disable": {
             "reply": "mactime_enable_disable_reply"
+        },
+        "mactime_add_del_range": {
+            "reply": "mactime_add_del_range_reply"
         }
     },
-    "enums": [],
-    "types": [
-        [
-            "time_range",
-            [
-                "f64",
-                "start"
-            ],
-            [
-                "f64",
-                "end"
-            ],
-            {
-                "crc": "0x941c191b"
-            }
-        ]
-    ],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xbfee791"
 }

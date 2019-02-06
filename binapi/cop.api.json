@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "cop_interface_enable_disable",
@@ -101,8 +102,8 @@
             }
         ]
     ],
-    "vl_api_version": "0xea0859f6",
     "unions": [],
+    "enums": [],
     "services": {
         "cop_interface_enable_disable": {
             "reply": "cop_interface_enable_disable_reply"
@@ -111,7 +112,6 @@
             "reply": "cop_whitelist_enable_disable_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xea0859f6"
 }

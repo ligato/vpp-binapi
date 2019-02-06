@@ -23,9 +23,11 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "flow_classify_dump": {
-//	        "reply": "flow_classify_details",
-//	        "stream": true
+//	    "classify_add_del_table": {
+//	        "reply": "classify_add_del_table_reply"
+//	    },
+//	    "classify_add_del_session": {
+//	        "reply": "classify_add_del_session_reply"
 //	    },
 //	    "policer_classify_set_interface": {
 //	        "reply": "policer_classify_set_interface_reply"
@@ -34,36 +36,34 @@ var _ = bytes.NewBuffer
 //	        "reply": "policer_classify_details",
 //	        "stream": true
 //	    },
-//	    "classify_add_del_session": {
-//	        "reply": "classify_add_del_session_reply"
+//	    "classify_table_ids": {
+//	        "reply": "classify_table_ids_reply"
+//	    },
+//	    "classify_table_by_interface": {
+//	        "reply": "classify_table_by_interface_reply"
+//	    },
+//	    "classify_table_info": {
+//	        "reply": "classify_table_info_reply"
 //	    },
 //	    "classify_session_dump": {
 //	        "reply": "classify_session_details",
 //	        "stream": true
 //	    },
-//	    "classify_set_interface_l2_tables": {
-//	        "reply": "classify_set_interface_l2_tables_reply"
+//	    "flow_classify_set_interface": {
+//	        "reply": "flow_classify_set_interface_reply"
+//	    },
+//	    "flow_classify_dump": {
+//	        "reply": "flow_classify_details",
+//	        "stream": true
 //	    },
 //	    "classify_set_interface_ip_table": {
 //	        "reply": "classify_set_interface_ip_table_reply"
 //	    },
-//	    "classify_table_ids": {
-//	        "reply": "classify_table_ids_reply"
+//	    "classify_set_interface_l2_tables": {
+//	        "reply": "classify_set_interface_l2_tables_reply"
 //	    },
 //	    "input_acl_set_interface": {
 //	        "reply": "input_acl_set_interface_reply"
-//	    },
-//	    "flow_classify_set_interface": {
-//	        "reply": "flow_classify_set_interface_reply"
-//	    },
-//	    "classify_add_del_table": {
-//	        "reply": "classify_add_del_table_reply"
-//	    },
-//	    "classify_table_info": {
-//	        "reply": "classify_table_info_reply"
-//	    },
-//	    "classify_table_by_interface": {
-//	        "reply": "classify_table_by_interface_reply"
 //	    },
 //	    "output_acl_set_interface": {
 //	        "reply": "output_acl_set_interface_reply"

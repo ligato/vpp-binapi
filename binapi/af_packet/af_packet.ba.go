@@ -23,18 +23,18 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "af_packet_dump": {
-//	        "reply": "af_packet_details",
-//	        "stream": true
-//	    },
-//	    "af_packet_set_l4_cksum_offload": {
-//	        "reply": "af_packet_set_l4_cksum_offload_reply"
+//	    "af_packet_create": {
+//	        "reply": "af_packet_create_reply"
 //	    },
 //	    "af_packet_delete": {
 //	        "reply": "af_packet_delete_reply"
 //	    },
-//	    "af_packet_create": {
-//	        "reply": "af_packet_create_reply"
+//	    "af_packet_set_l4_cksum_offload": {
+//	        "reply": "af_packet_set_l4_cksum_offload_reply"
+//	    },
+//	    "af_packet_dump": {
+//	        "reply": "af_packet_details",
+//	        "stream": true
 //	    }
 //	},
 //

@@ -24,11 +24,11 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "mactime_add_del_range": {
-//	        "reply": "mactime_add_del_range_reply"
-//	    },
 //	    "mactime_enable_disable": {
 //	        "reply": "mactime_enable_disable_reply"
+//	    },
+//	    "mactime_add_del_range": {
+//	        "reply": "mactime_add_del_range_reply"
 //	    }
 //	},
 //

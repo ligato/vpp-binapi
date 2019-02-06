@@ -24,44 +24,44 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "api_versions": {
-//	        "reply": "api_versions_reply"
-//	    },
-//	    "memclnt_keepalive": {
-//	        "reply": "memclnt_keepalive_reply"
-//	    },
 //	    "memclnt_rx_thread_suspend": {
 //	        "reply": "null"
-//	    },
-//	    "sockclnt_delete": {
-//	        "reply": "sockclnt_delete_reply"
-//	    },
-//	    "memclnt_create": {
-//	        "reply": "memclnt_create_reply"
-//	    },
-//	    "get_first_msg_id": {
-//	        "reply": "get_first_msg_id_reply"
 //	    },
 //	    "memclnt_read_timeout": {
 //	        "reply": "null"
 //	    },
-//	    "rpc_call": {
-//	        "reply": "rpc_call_reply"
-//	    },
 //	    "rx_thread_exit": {
 //	        "reply": "null"
 //	    },
-//	    "sock_init_shm": {
-//	        "reply": "sock_init_shm_reply"
+//	    "trace_plugin_msg_ids": {
+//	        "reply": "null"
+//	    },
+//	    "memclnt_create": {
+//	        "reply": "memclnt_create_reply"
 //	    },
 //	    "memclnt_delete": {
 //	        "reply": "memclnt_delete_reply"
 //	    },
+//	    "rpc_call": {
+//	        "reply": "rpc_call_reply"
+//	    },
+//	    "get_first_msg_id": {
+//	        "reply": "get_first_msg_id_reply"
+//	    },
+//	    "api_versions": {
+//	        "reply": "api_versions_reply"
+//	    },
 //	    "sockclnt_create": {
 //	        "reply": "sockclnt_create_reply"
 //	    },
-//	    "trace_plugin_msg_ids": {
-//	        "reply": "null"
+//	    "sockclnt_delete": {
+//	        "reply": "sockclnt_delete_reply"
+//	    },
+//	    "sock_init_shm": {
+//	        "reply": "sock_init_shm_reply"
+//	    },
+//	    "memclnt_keepalive": {
+//	        "reply": "memclnt_keepalive_reply"
 //	    }
 //	},
 //

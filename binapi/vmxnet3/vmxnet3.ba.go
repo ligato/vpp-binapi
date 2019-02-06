@@ -6,6 +6,7 @@
 
  It contains following objects:
 	  6 messages
+	  1 type
 	  3 services
 
 */
@@ -23,15 +24,15 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "vmxnet3_dump": {
-//	        "reply": "vmxnet3_details",
-//	        "stream": true
+//	    "vmxnet3_create": {
+//	        "reply": "vmxnet3_create_reply"
 //	    },
 //	    "vmxnet3_delete": {
 //	        "reply": "vmxnet3_delete_reply"
 //	    },
-//	    "vmxnet3_create": {
-//	        "reply": "vmxnet3_create_reply"
+//	    "vmxnet3_dump": {
+//	        "reply": "vmxnet3_details",
+//	        "stream": true
 //	    }
 //	},
 //
@@ -39,6 +40,45 @@ type Services interface {
 	DumpVmxnet3(*Vmxnet3Dump) ([]*Vmxnet3Details, error)
 	Vmxnet3Create(*Vmxnet3Create) (*Vmxnet3CreateReply, error)
 	Vmxnet3Delete(*Vmxnet3Delete) (*Vmxnet3DeleteReply, error)
+}
+
+/* Types */
+
+// Vmxnet3TxList represents VPP binary API type 'vmxnet3_tx_list':
+//
+//	"vmxnet3_tx_list",
+//	[
+//	    "u16",
+//	    "tx_qsize"
+//	],
+//	[
+//	    "u16",
+//	    "tx_next"
+//	],
+//	[
+//	    "u16",
+//	    "tx_produce"
+//	],
+//	[
+//	    "u16",
+//	    "tx_consume"
+//	],
+//	{
+//	    "crc": "0xf5427b33"
+//	}
+//
+type Vmxnet3TxList struct {
+	TxQsize   uint16
+	TxNext    uint16
+	TxProduce uint16
+	TxConsume uint16
+}
+
+func (*Vmxnet3TxList) GetTypeName() string {
+	return "vmxnet3_tx_list"
+}
+func (*Vmxnet3TxList) GetCrcString() string {
+	return "f5427b33"
 }
 
 /* Messages */
@@ -74,8 +114,12 @@ type Services interface {
 //	    "u16",
 //	    "txq_size"
 //	],
+//	[
+//	    "u16",
+//	    "txq_num"
+//	],
 //	{
-//	    "crc": "0x7318251d"
+//	    "crc": "0x51912357"
 //	}
 //
 type Vmxnet3Create struct {
@@ -83,13 +127,14 @@ type Vmxnet3Create struct {
 	EnableElog int32
 	RxqSize    uint16
 	TxqSize    uint16
+	TxqNum     uint16
 }
 
 func (*Vmxnet3Create) GetMessageName() string {
 	return "vmxnet3_create"
 }
 func (*Vmxnet3Create) GetCrcString() string {
-	return "7318251d"
+	return "51912357"
 }
 func (*Vmxnet3Create) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -237,8 +282,8 @@ func (*Vmxnet3DeleteReply) GetMessageType() api.MessageType {
 //	    "version"
 //	],
 //	[
-//	    "u16",
-//	    "rx_qid"
+//	    "u8",
+//	    "admin_up_down"
 //	],
 //	[
 //	    "u16",
@@ -264,31 +309,16 @@ func (*Vmxnet3DeleteReply) GetMessageType() api.MessageType {
 //	    2
 //	],
 //	[
-//	    "u16",
-//	    "tx_qid"
-//	],
-//	[
-//	    "u16",
-//	    "tx_qsize"
-//	],
-//	[
-//	    "u16",
-//	    "tx_next"
-//	],
-//	[
-//	    "u16",
-//	    "tx_produce"
-//	],
-//	[
-//	    "u16",
-//	    "tx_consume"
-//	],
-//	[
 //	    "u8",
-//	    "admin_up_down"
+//	    "tx_count"
+//	],
+//	[
+//	    "vl_api_vmxnet3_tx_list_t",
+//	    "tx_list",
+//	    8
 //	],
 //	{
-//	    "crc": "0x2374ddc9"
+//	    "crc": "0x9b81b042"
 //	}
 //
 type Vmxnet3Details struct {
@@ -297,25 +327,21 @@ type Vmxnet3Details struct {
 	HwAddr      []byte `struc:"[6]byte"`
 	PciAddr     uint32
 	Version     uint8
-	RxQid       uint16
+	AdminUpDown uint8
 	RxQsize     uint16
 	RxFill      []uint16 `struc:"[2]uint16"`
 	RxNext      uint16
 	RxProduce   []uint16 `struc:"[2]uint16"`
 	RxConsume   []uint16 `struc:"[2]uint16"`
-	TxQid       uint16
-	TxQsize     uint16
-	TxNext      uint16
-	TxProduce   uint16
-	TxConsume   uint16
-	AdminUpDown uint8
+	TxCount     uint8
+	TxList      []Vmxnet3TxList `struc:"[8]Vmxnet3TxList"`
 }
 
 func (*Vmxnet3Details) GetMessageName() string {
 	return "vmxnet3_details"
 }
 func (*Vmxnet3Details) GetCrcString() string {
-	return "2374ddc9"
+	return "9b81b042"
 }
 func (*Vmxnet3Details) GetMessageType() api.MessageType {
 	return api.ReplyMessage

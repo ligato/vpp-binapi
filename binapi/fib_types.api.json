@@ -1,9 +1,4 @@
 {
-    "messages": [],
-    "vl_api_version": "0x7acecda3",
-    "unions": [],
-    "services": {},
-    "enums": [],
     "types": [
         [
             "fib_mpls_label",
@@ -120,5 +115,10 @@
             }
         ]
     ],
-    "aliases": {}
+    "messages": [],
+    "unions": [],
+    "enums": [],
+    "services": {},
+    "aliases": {},
+    "vl_api_version": "0x7acecda3"
 }

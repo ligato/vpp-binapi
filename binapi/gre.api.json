@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "gre_add_del_tunnel",
@@ -145,8 +146,8 @@
             }
         ]
     ],
-    "vl_api_version": "0x83d2c14f",
     "unions": [],
+    "enums": [],
     "services": {
         "gre_add_del_tunnel": {
             "reply": "gre_add_del_tunnel_reply"
@@ -156,7 +157,6 @@
             "stream": true
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0x83d2c14f"
 }

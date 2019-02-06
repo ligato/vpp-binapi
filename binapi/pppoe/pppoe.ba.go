@@ -23,12 +23,12 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "pppoe_add_del_session": {
+//	        "reply": "pppoe_add_del_session_reply"
+//	    },
 //	    "pppoe_session_dump": {
 //	        "reply": "pppoe_session_details",
 //	        "stream": true
-//	    },
-//	    "pppoe_add_del_session": {
-//	        "reply": "pppoe_add_del_session_reply"
 //	    }
 //	},
 //

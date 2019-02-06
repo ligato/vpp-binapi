@@ -27,42 +27,75 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
-//	    "gbp_subnet_dump": {
-//	        "reply": "gbp_subnet_details",
+//	    "gbp_bridge_domain_add": {
+//	        "reply": "gbp_bridge_domain_add_reply"
+//	    },
+//	    "gbp_bridge_domain_del": {
+//	        "reply": "gbp_bridge_domain_del_reply"
+//	    },
+//	    "gbp_bridge_domain_dump": {
+//	        "reply": "gbp_bridge_domain_details",
 //	        "stream": true
 //	    },
-//	    "gbp_recirc_dump": {
-//	        "reply": "gbp_recirc_details",
+//	    "gbp_route_domain_add": {
+//	        "reply": "gbp_route_domain_add_reply"
+//	    },
+//	    "gbp_route_domain_del": {
+//	        "reply": "gbp_route_domain_del_reply"
+//	    },
+//	    "gbp_route_domain_dump": {
+//	        "reply": "gbp_route_domain_details",
 //	        "stream": true
 //	    },
 //	    "gbp_endpoint_add": {
 //	        "reply": "gbp_endpoint_add_reply"
 //	    },
-//	    "gbp_bridge_domain_del": {
-//	        "reply": "gbp_bridge_domain_del_reply"
-//	    },
-//	    "gbp_endpoint_learn_set_inactive_threshold": {
-//	        "reply": "gbp_endpoint_learn_set_inactive_threshold_reply"
-//	    },
-//	    "gbp_route_domain_del": {
-//	        "reply": "gbp_route_domain_del_reply"
-//	    },
-//	    "gbp_vxlan_tunnel_add": {
-//	        "reply": "gbp_vxlan_tunnel_add_reply"
-//	    },
 //	    "gbp_endpoint_del": {
 //	        "reply": "gbp_endpoint_del_reply"
+//	    },
+//	    "gbp_endpoint_dump": {
+//	        "reply": "gbp_endpoint_details",
+//	        "stream": true
+//	    },
+//	    "gbp_endpoint_group_add": {
+//	        "reply": "gbp_endpoint_group_add_reply"
 //	    },
 //	    "gbp_endpoint_group_del": {
 //	        "reply": "gbp_endpoint_group_del_reply"
 //	    },
-//	    "gbp_ext_itf_dump": {
-//	        "reply": "gbp_ext_itf_details",
-//	        "stream": true
-//	    },
 //	    "gbp_endpoint_group_dump": {
 //	        "reply": "gbp_endpoint_group_details",
 //	        "stream": true
+//	    },
+//	    "gbp_recirc_add_del": {
+//	        "reply": "gbp_recirc_add_del_reply"
+//	    },
+//	    "gbp_recirc_dump": {
+//	        "reply": "gbp_recirc_details",
+//	        "stream": true
+//	    },
+//	    "gbp_subnet_add_del": {
+//	        "reply": "gbp_subnet_add_del_reply"
+//	    },
+//	    "gbp_subnet_dump": {
+//	        "reply": "gbp_subnet_details",
+//	        "stream": true
+//	    },
+//	    "gbp_contract_add_del": {
+//	        "reply": "gbp_contract_add_del_reply"
+//	    },
+//	    "gbp_contract_dump": {
+//	        "reply": "gbp_contract_details",
+//	        "stream": true
+//	    },
+//	    "gbp_endpoint_learn_set_inactive_threshold": {
+//	        "reply": "gbp_endpoint_learn_set_inactive_threshold_reply"
+//	    },
+//	    "gbp_vxlan_tunnel_add": {
+//	        "reply": "gbp_vxlan_tunnel_add_reply"
+//	    },
+//	    "gbp_vxlan_tunnel_del": {
+//	        "reply": "gbp_vxlan_tunnel_del_reply"
 //	    },
 //	    "gbp_vxlan_tunnel_dump": {
 //	        "reply": "gbp_vxlan_tunnel_details",
@@ -71,41 +104,8 @@ var _ = bytes.NewBuffer
 //	    "gbp_ext_itf_add_del": {
 //	        "reply": "gbp_ext_itf_add_del_reply"
 //	    },
-//	    "gbp_route_domain_add": {
-//	        "reply": "gbp_route_domain_add_reply"
-//	    },
-//	    "gbp_vxlan_tunnel_del": {
-//	        "reply": "gbp_vxlan_tunnel_del_reply"
-//	    },
-//	    "gbp_endpoint_dump": {
-//	        "reply": "gbp_endpoint_details",
-//	        "stream": true
-//	    },
-//	    "gbp_contract_dump": {
-//	        "reply": "gbp_contract_details",
-//	        "stream": true
-//	    },
-//	    "gbp_bridge_domain_dump": {
-//	        "reply": "gbp_bridge_domain_details",
-//	        "stream": true
-//	    },
-//	    "gbp_bridge_domain_add": {
-//	        "reply": "gbp_bridge_domain_add_reply"
-//	    },
-//	    "gbp_subnet_add_del": {
-//	        "reply": "gbp_subnet_add_del_reply"
-//	    },
-//	    "gbp_recirc_add_del": {
-//	        "reply": "gbp_recirc_add_del_reply"
-//	    },
-//	    "gbp_endpoint_group_add": {
-//	        "reply": "gbp_endpoint_group_add_reply"
-//	    },
-//	    "gbp_contract_add_del": {
-//	        "reply": "gbp_contract_add_del_reply"
-//	    },
-//	    "gbp_route_domain_dump": {
-//	        "reply": "gbp_route_domain_details",
+//	    "gbp_ext_itf_dump": {
+//	        "reply": "gbp_ext_itf_details",
 //	        "stream": true
 //	    }
 //	},
@@ -338,8 +338,8 @@ const (
 // IP4Address represents VPP binary API alias 'ip4_address':
 //
 //	"ip4_address": {
-//	    "length": 4,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 4
 //	},
 //
 type IP4Address [4]uint8
@@ -347,8 +347,8 @@ type IP4Address [4]uint8
 // IP6Address represents VPP binary API alias 'ip6_address':
 //
 //	"ip6_address": {
-//	    "length": 16,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 16
 //	},
 //
 type IP6Address [16]uint8
@@ -356,8 +356,8 @@ type IP6Address [16]uint8
 // MacAddress represents VPP binary API alias 'mac_address':
 //
 //	"mac_address": {
-//	    "length": 6,
-//	    "type": "u8"
+//	    "type": "u8",
+//	    "length": 6
 //	}
 //
 type MacAddress [6]uint8
@@ -528,22 +528,27 @@ func (*IP4Prefix) GetCrcString() string {
 //	    "u32",
 //	    "uu_fwd_sw_if_index"
 //	],
+//	[
+//	    "u32",
+//	    "bm_flood_sw_if_index"
+//	],
 //	{
-//	    "crc": "0xacd57302"
+//	    "crc": "0xf8b939f0"
 //	}
 //
 type GbpBridgeDomain struct {
-	BdID           uint32
-	Flags          GbpBridgeDomainFlags
-	BviSwIfIndex   uint32
-	UuFwdSwIfIndex uint32
+	BdID             uint32
+	Flags            GbpBridgeDomainFlags
+	BviSwIfIndex     uint32
+	UuFwdSwIfIndex   uint32
+	BmFloodSwIfIndex uint32
 }
 
 func (*GbpBridgeDomain) GetTypeName() string {
 	return "gbp_bridge_domain"
 }
 func (*GbpBridgeDomain) GetCrcString() string {
-	return "acd57302"
+	return "f8b939f0"
 }
 
 // GbpRouteDomain represents VPP binary API type 'gbp_route_domain':
@@ -677,6 +682,10 @@ func (*GbpEndpoint) GetCrcString() string {
 //	    "epg_id"
 //	],
 //	[
+//	    "u16",
+//	    "sclass"
+//	],
+//	[
 //	    "u32",
 //	    "bd_id"
 //	],
@@ -689,11 +698,12 @@ func (*GbpEndpoint) GetCrcString() string {
 //	    "uplink_sw_if_index"
 //	],
 //	{
-//	    "crc": "0x1a85aac3"
+//	    "crc": "0xb61e0672"
 //	}
 //
 type GbpEndpointGroup struct {
 	EpgID           uint16
+	Sclass          uint16
 	BdID            uint32
 	RdID            uint32
 	UplinkSwIfIndex uint32
@@ -703,7 +713,7 @@ func (*GbpEndpointGroup) GetTypeName() string {
 	return "gbp_endpoint_group"
 }
 func (*GbpEndpointGroup) GetCrcString() string {
-	return "1a85aac3"
+	return "b61e0672"
 }
 
 // GbpRecirc represents VPP binary API type 'gbp_recirc':

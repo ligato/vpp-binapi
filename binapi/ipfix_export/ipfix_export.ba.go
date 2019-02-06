@@ -23,9 +23,15 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "set_ipfix_exporter": {
+//	        "reply": "set_ipfix_exporter_reply"
+//	    },
 //	    "ipfix_exporter_dump": {
 //	        "reply": "ipfix_exporter_details",
 //	        "stream": true
+//	    },
+//	    "set_ipfix_classify_stream": {
+//	        "reply": "set_ipfix_classify_stream_reply"
 //	    },
 //	    "ipfix_classify_stream_dump": {
 //	        "reply": "ipfix_classify_stream_details",
@@ -33,12 +39,6 @@ var _ = bytes.NewBuffer
 //	    },
 //	    "ipfix_classify_table_add_del": {
 //	        "reply": "ipfix_classify_table_add_del_reply"
-//	    },
-//	    "set_ipfix_classify_stream": {
-//	        "reply": "set_ipfix_classify_stream_reply"
-//	    },
-//	    "set_ipfix_exporter": {
-//	        "reply": "set_ipfix_exporter_reply"
 //	    },
 //	    "ipfix_classify_table_dump": {
 //	        "reply": "ipfix_classify_table_details",

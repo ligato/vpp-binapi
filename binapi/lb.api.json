@@ -1,4 +1,5 @@
 {
+    "types": [],
     "messages": [
         [
             "lb_conf",
@@ -254,23 +255,22 @@
             }
         ]
     ],
-    "vl_api_version": "0xdb8a2f4f",
     "unions": [],
+    "enums": [],
     "services": {
-        "lb_flush_vip": {
-            "reply": "lb_flush_vip_reply"
-        },
-        "lb_add_del_as": {
-            "reply": "lb_add_del_as_reply"
-        },
         "lb_conf": {
             "reply": "lb_conf_reply"
         },
         "lb_add_del_vip": {
             "reply": "lb_add_del_vip_reply"
+        },
+        "lb_add_del_as": {
+            "reply": "lb_add_del_as_reply"
+        },
+        "lb_flush_vip": {
+            "reply": "lb_flush_vip_reply"
         }
     },
-    "enums": [],
-    "types": [],
-    "aliases": {}
+    "aliases": {},
+    "vl_api_version": "0xdb8a2f4f"
 }

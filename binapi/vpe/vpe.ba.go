@@ -24,32 +24,32 @@ var _ = bytes.NewBuffer
 // Services represents VPP binary API services:
 //
 //	"services": {
+//	    "control_ping": {
+//	        "reply": "control_ping_reply"
+//	    },
+//	    "cli": {
+//	        "reply": "cli_reply"
+//	    },
 //	    "cli_inband": {
 //	        "reply": "cli_inband_reply"
 //	    },
 //	    "get_node_index": {
 //	        "reply": "get_node_index_reply"
 //	    },
-//	    "cli": {
-//	        "reply": "cli_reply"
+//	    "add_node_next": {
+//	        "reply": "add_node_next_reply"
 //	    },
 //	    "show_version": {
 //	        "reply": "show_version_reply"
+//	    },
+//	    "show_threads": {
+//	        "reply": "show_threads_reply"
 //	    },
 //	    "get_node_graph": {
 //	        "reply": "get_node_graph_reply"
 //	    },
 //	    "get_next_index": {
 //	        "reply": "get_next_index_reply"
-//	    },
-//	    "show_threads": {
-//	        "reply": "show_threads_reply"
-//	    },
-//	    "add_node_next": {
-//	        "reply": "add_node_next_reply"
-//	    },
-//	    "control_ping": {
-//	        "reply": "control_ping_reply"
 //	    }
 //	},
 //
@@ -70,8 +70,39 @@ type Services interface {
 // ThreadData represents VPP binary API type 'thread_data':
 //
 //	"thread_data",
-//	0,
-//	"count"
+//	[
+//	    "u32",
+//	    "id"
+//	],
+//	[
+//	    "u8",
+//	    "name",
+//	    64
+//	],
+//	[
+//	    "u8",
+//	    "type",
+//	    64
+//	],
+//	[
+//	    "u32",
+//	    "pid"
+//	],
+//	[
+//	    "u32",
+//	    "cpu_id"
+//	],
+//	[
+//	    "u32",
+//	    "core"
+//	],
+//	[
+//	    "u32",
+//	    "cpu_socket"
+//	],
+//	{
+//	    "crc": "0x0f57094e"
+//	}
 //
 type ThreadData struct {
 	ID        uint32
