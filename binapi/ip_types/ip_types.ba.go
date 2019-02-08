@@ -5,11 +5,10 @@
  Package ip_types is a generated from VPP binary API module 'ip_types'.
 
  It contains following objects:
-	  5 types
-	  2 aliases
 	  1 enum
+	  2 aliases
+	  5 types
 	  1 union
-
 */
 package ip_types
 
@@ -98,31 +97,58 @@ func (*Address) GetCrcString() string {
 	return "09f11671"
 }
 
-// Prefix represents VPP binary API type 'prefix':
+// IP4Prefix represents VPP binary API type 'ip4_prefix':
 //
-//	"prefix",
+//	"ip4_prefix",
 //	[
-//	    "vl_api_address_t",
-//	    "address"
+//	    "vl_api_ip4_address_t",
+//	    "prefix"
 //	],
 //	[
 //	    "u8",
-//	    "address_length"
+//	    "len"
 //	],
 //	{
-//	    "crc": "0x0403aebc"
+//	    "crc": "0xea8dc11d"
 //	}
 //
-type Prefix struct {
-	Address       Address
-	AddressLength uint8
+type IP4Prefix struct {
+	Prefix IP4Address
+	Len    uint8
 }
 
-func (*Prefix) GetTypeName() string {
-	return "prefix"
+func (*IP4Prefix) GetTypeName() string {
+	return "ip4_prefix"
 }
-func (*Prefix) GetCrcString() string {
-	return "0403aebc"
+func (*IP4Prefix) GetCrcString() string {
+	return "ea8dc11d"
+}
+
+// IP6Prefix represents VPP binary API type 'ip6_prefix':
+//
+//	"ip6_prefix",
+//	[
+//	    "vl_api_ip6_address_t",
+//	    "prefix"
+//	],
+//	[
+//	    "u8",
+//	    "len"
+//	],
+//	{
+//	    "crc": "0x779fd64f"
+//	}
+//
+type IP6Prefix struct {
+	Prefix IP6Address
+	Len    uint8
+}
+
+func (*IP6Prefix) GetTypeName() string {
+	return "ip6_prefix"
+}
+func (*IP6Prefix) GetCrcString() string {
+	return "779fd64f"
 }
 
 // Mprefix represents VPP binary API type 'mprefix':
@@ -162,58 +188,31 @@ func (*Mprefix) GetCrcString() string {
 	return "1c4cba05"
 }
 
-// IP6Prefix represents VPP binary API type 'ip6_prefix':
+// Prefix represents VPP binary API type 'prefix':
 //
-//	"ip6_prefix",
+//	"prefix",
 //	[
-//	    "vl_api_ip6_address_t",
-//	    "prefix"
+//	    "vl_api_address_t",
+//	    "address"
 //	],
 //	[
 //	    "u8",
-//	    "len"
+//	    "address_length"
 //	],
 //	{
-//	    "crc": "0x779fd64f"
+//	    "crc": "0x0403aebc"
 //	}
 //
-type IP6Prefix struct {
-	Prefix IP6Address
-	Len    uint8
+type Prefix struct {
+	Address       Address
+	AddressLength uint8
 }
 
-func (*IP6Prefix) GetTypeName() string {
-	return "ip6_prefix"
+func (*Prefix) GetTypeName() string {
+	return "prefix"
 }
-func (*IP6Prefix) GetCrcString() string {
-	return "779fd64f"
-}
-
-// IP4Prefix represents VPP binary API type 'ip4_prefix':
-//
-//	"ip4_prefix",
-//	[
-//	    "vl_api_ip4_address_t",
-//	    "prefix"
-//	],
-//	[
-//	    "u8",
-//	    "len"
-//	],
-//	{
-//	    "crc": "0xea8dc11d"
-//	}
-//
-type IP4Prefix struct {
-	Prefix IP4Address
-	Len    uint8
-}
-
-func (*IP4Prefix) GetTypeName() string {
-	return "ip4_prefix"
-}
-func (*IP4Prefix) GetCrcString() string {
-	return "ea8dc11d"
+func (*Prefix) GetCrcString() string {
+	return "0403aebc"
 }
 
 /* Unions */
@@ -244,6 +243,10 @@ func (*AddressUnion) GetCrcString() string {
 	return "d68a2fb4"
 }
 
+func AddressUnionIP4(a IP4Address) (u AddressUnion) {
+	u.SetIP4(a)
+	return
+}
 func (u *AddressUnion) SetIP4(a IP4Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -257,6 +260,10 @@ func (u *AddressUnion) GetIP4() (a IP4Address) {
 	return
 }
 
+func AddressUnionIP6(a IP6Address) (u AddressUnion) {
+	u.SetIP6(a)
+	return
+}
 func (u *AddressUnion) SetIP6(a IP6Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -268,7 +275,4 @@ func (u *AddressUnion) GetIP6() (a IP6Address) {
 	var b = bytes.NewReader(u.Union_data[:])
 	struc.Unpack(b, &a)
 	return
-}
-
-func init() {
 }

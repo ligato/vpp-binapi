@@ -5,10 +5,9 @@
  Package dhcp is a generated from VPP binary API module 'dhcp'.
 
  It contains following objects:
-	 25 messages
-	  5 types
 	 11 services
-
+	  5 types
+	 25 messages
 */
 package dhcp
 
@@ -88,6 +87,77 @@ type Services interface {
 }
 
 /* Types */
+
+// DHCP6AddressInfo represents VPP binary API type 'dhcp6_address_info':
+//
+//	"dhcp6_address_info",
+//	[
+//	    "u8",
+//	    "address",
+//	    16
+//	],
+//	[
+//	    "u32",
+//	    "valid_time"
+//	],
+//	[
+//	    "u32",
+//	    "preferred_time"
+//	],
+//	{
+//	    "crc": "0xf3d501e2"
+//	}
+//
+type DHCP6AddressInfo struct {
+	Address       []byte `struc:"[16]byte"`
+	ValidTime     uint32
+	PreferredTime uint32
+}
+
+func (*DHCP6AddressInfo) GetTypeName() string {
+	return "dhcp6_address_info"
+}
+func (*DHCP6AddressInfo) GetCrcString() string {
+	return "f3d501e2"
+}
+
+// DHCP6PdPrefixInfo represents VPP binary API type 'dhcp6_pd_prefix_info':
+//
+//	"dhcp6_pd_prefix_info",
+//	[
+//	    "u8",
+//	    "prefix",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "prefix_length"
+//	],
+//	[
+//	    "u32",
+//	    "valid_time"
+//	],
+//	[
+//	    "u32",
+//	    "preferred_time"
+//	],
+//	{
+//	    "crc": "0xc459690e"
+//	}
+//
+type DHCP6PdPrefixInfo struct {
+	Prefix        []byte `struc:"[16]byte"`
+	PrefixLength  uint8
+	ValidTime     uint32
+	PreferredTime uint32
+}
+
+func (*DHCP6PdPrefixInfo) GetTypeName() string {
+	return "dhcp6_pd_prefix_info"
+}
+func (*DHCP6PdPrefixInfo) GetCrcString() string {
+	return "c459690e"
+}
 
 // DHCPClient represents VPP binary API type 'dhcp_client':
 //
@@ -216,82 +286,11 @@ func (*DHCPServer) GetCrcString() string {
 	return "f16506c4"
 }
 
-// DHCP6AddressInfo represents VPP binary API type 'dhcp6_address_info':
-//
-//	"dhcp6_address_info",
-//	[
-//	    "u8",
-//	    "address",
-//	    16
-//	],
-//	[
-//	    "u32",
-//	    "valid_time"
-//	],
-//	[
-//	    "u32",
-//	    "preferred_time"
-//	],
-//	{
-//	    "crc": "0xf3d501e2"
-//	}
-//
-type DHCP6AddressInfo struct {
-	Address       []byte `struc:"[16]byte"`
-	ValidTime     uint32
-	PreferredTime uint32
-}
-
-func (*DHCP6AddressInfo) GetTypeName() string {
-	return "dhcp6_address_info"
-}
-func (*DHCP6AddressInfo) GetCrcString() string {
-	return "f3d501e2"
-}
-
-// DHCP6PdPrefixInfo represents VPP binary API type 'dhcp6_pd_prefix_info':
-//
-//	"dhcp6_pd_prefix_info",
-//	[
-//	    "u8",
-//	    "prefix",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "prefix_length"
-//	],
-//	[
-//	    "u32",
-//	    "valid_time"
-//	],
-//	[
-//	    "u32",
-//	    "preferred_time"
-//	],
-//	{
-//	    "crc": "0xc459690e"
-//	}
-//
-type DHCP6PdPrefixInfo struct {
-	Prefix        []byte `struc:"[16]byte"`
-	PrefixLength  uint8
-	ValidTime     uint32
-	PreferredTime uint32
-}
-
-func (*DHCP6PdPrefixInfo) GetTypeName() string {
-	return "dhcp6_pd_prefix_info"
-}
-func (*DHCP6PdPrefixInfo) GetCrcString() string {
-	return "c459690e"
-}
-
 /* Messages */
 
-// DHCPProxyConfig represents VPP binary API message 'dhcp_proxy_config':
+// DHCP6ClientsEnableDisable represents VPP binary API message 'dhcp6_clients_enable_disable':
 //
-//	"dhcp_proxy_config",
+//	"dhcp6_clients_enable_disable",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -305,57 +304,30 @@ func (*DHCP6PdPrefixInfo) GetCrcString() string {
 //	    "context"
 //	],
 //	[
-//	    "u32",
-//	    "rx_vrf_id"
-//	],
-//	[
-//	    "u32",
-//	    "server_vrf_id"
-//	],
-//	[
 //	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "u8",
-//	    "dhcp_server",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "dhcp_src_address",
-//	    16
+//	    "enable"
 //	],
 //	{
-//	    "crc": "0x6af4b645"
+//	    "crc": "0x8050327d"
 //	}
 //
-type DHCPProxyConfig struct {
-	RxVrfID        uint32
-	ServerVrfID    uint32
-	IsIPv6         uint8
-	IsAdd          uint8
-	DHCPServer     []byte `struc:"[16]byte"`
-	DHCPSrcAddress []byte `struc:"[16]byte"`
+type DHCP6ClientsEnableDisable struct {
+	Enable uint8
 }
 
-func (*DHCPProxyConfig) GetMessageName() string {
-	return "dhcp_proxy_config"
+func (*DHCP6ClientsEnableDisable) GetMessageName() string {
+	return "dhcp6_clients_enable_disable"
 }
-func (*DHCPProxyConfig) GetCrcString() string {
-	return "6af4b645"
+func (*DHCP6ClientsEnableDisable) GetCrcString() string {
+	return "8050327d"
 }
-func (*DHCPProxyConfig) GetMessageType() api.MessageType {
+func (*DHCP6ClientsEnableDisable) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// DHCPProxyConfigReply represents VPP binary API message 'dhcp_proxy_config_reply':
+// DHCP6ClientsEnableDisableReply represents VPP binary API message 'dhcp6_clients_enable_disable_reply':
 //
-//	"dhcp_proxy_config_reply",
+//	"dhcp6_clients_enable_disable_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -372,414 +344,17 @@ func (*DHCPProxyConfig) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type DHCPProxyConfigReply struct {
+type DHCP6ClientsEnableDisableReply struct {
 	Retval int32
 }
 
-func (*DHCPProxyConfigReply) GetMessageName() string {
-	return "dhcp_proxy_config_reply"
+func (*DHCP6ClientsEnableDisableReply) GetMessageName() string {
+	return "dhcp6_clients_enable_disable_reply"
 }
-func (*DHCPProxyConfigReply) GetCrcString() string {
+func (*DHCP6ClientsEnableDisableReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*DHCPProxyConfigReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// DHCPProxySetVss represents VPP binary API message 'dhcp_proxy_set_vss':
-//
-//	"dhcp_proxy_set_vss",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "tbl_id"
-//	],
-//	[
-//	    "u8",
-//	    "vss_type"
-//	],
-//	[
-//	    "u8",
-//	    "vpn_ascii_id",
-//	    129
-//	],
-//	[
-//	    "u32",
-//	    "oui"
-//	],
-//	[
-//	    "u32",
-//	    "vpn_index"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	{
-//	    "crc": "0x606535aa"
-//	}
-//
-type DHCPProxySetVss struct {
-	TblID      uint32
-	VssType    uint8
-	VPNAsciiID []byte `struc:"[129]byte"`
-	Oui        uint32
-	VPNIndex   uint32
-	IsIPv6     uint8
-	IsAdd      uint8
-}
-
-func (*DHCPProxySetVss) GetMessageName() string {
-	return "dhcp_proxy_set_vss"
-}
-func (*DHCPProxySetVss) GetCrcString() string {
-	return "606535aa"
-}
-func (*DHCPProxySetVss) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// DHCPProxySetVssReply represents VPP binary API message 'dhcp_proxy_set_vss_reply':
-//
-//	"dhcp_proxy_set_vss_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type DHCPProxySetVssReply struct {
-	Retval int32
-}
-
-func (*DHCPProxySetVssReply) GetMessageName() string {
-	return "dhcp_proxy_set_vss_reply"
-}
-func (*DHCPProxySetVssReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*DHCPProxySetVssReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// DHCPClientConfig represents VPP binary API message 'dhcp_client_config':
-//
-//	"dhcp_client_config",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "vl_api_dhcp_client_t",
-//	    "client"
-//	],
-//	{
-//	    "crc": "0xc32ccdfe"
-//	}
-//
-type DHCPClientConfig struct {
-	IsAdd  uint8
-	Client DHCPClient
-}
-
-func (*DHCPClientConfig) GetMessageName() string {
-	return "dhcp_client_config"
-}
-func (*DHCPClientConfig) GetCrcString() string {
-	return "c32ccdfe"
-}
-func (*DHCPClientConfig) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// DHCPClientConfigReply represents VPP binary API message 'dhcp_client_config_reply':
-//
-//	"dhcp_client_config_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type DHCPClientConfigReply struct {
-	Retval int32
-}
-
-func (*DHCPClientConfigReply) GetMessageName() string {
-	return "dhcp_client_config_reply"
-}
-func (*DHCPClientConfigReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*DHCPClientConfigReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// DHCPComplEvent represents VPP binary API message 'dhcp_compl_event':
-//
-//	"dhcp_compl_event",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "pid"
-//	],
-//	[
-//	    "vl_api_dhcp_lease_t",
-//	    "lease"
-//	],
-//	{
-//	    "crc": "0x2105c31b"
-//	}
-//
-type DHCPComplEvent struct {
-	PID   uint32
-	Lease DHCPLease
-}
-
-func (*DHCPComplEvent) GetMessageName() string {
-	return "dhcp_compl_event"
-}
-func (*DHCPComplEvent) GetCrcString() string {
-	return "2105c31b"
-}
-func (*DHCPComplEvent) GetMessageType() api.MessageType {
-	return api.EventMessage
-}
-
-// DHCPClientDump represents VPP binary API message 'dhcp_client_dump':
-//
-//	"dhcp_client_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type DHCPClientDump struct{}
-
-func (*DHCPClientDump) GetMessageName() string {
-	return "dhcp_client_dump"
-}
-func (*DHCPClientDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*DHCPClientDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// DHCPClientDetails represents VPP binary API message 'dhcp_client_details':
-//
-//	"dhcp_client_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_dhcp_client_t",
-//	    "client"
-//	],
-//	[
-//	    "vl_api_dhcp_lease_t",
-//	    "lease"
-//	],
-//	{
-//	    "crc": "0x7ea3a745"
-//	}
-//
-type DHCPClientDetails struct {
-	Client DHCPClient
-	Lease  DHCPLease
-}
-
-func (*DHCPClientDetails) GetMessageName() string {
-	return "dhcp_client_details"
-}
-func (*DHCPClientDetails) GetCrcString() string {
-	return "7ea3a745"
-}
-func (*DHCPClientDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// DHCPProxyDump represents VPP binary API message 'dhcp_proxy_dump':
-//
-//	"dhcp_proxy_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_ip6"
-//	],
-//	{
-//	    "crc": "0x6fe91190"
-//	}
-//
-type DHCPProxyDump struct {
-	IsIP6 uint8
-}
-
-func (*DHCPProxyDump) GetMessageName() string {
-	return "dhcp_proxy_dump"
-}
-func (*DHCPProxyDump) GetCrcString() string {
-	return "6fe91190"
-}
-func (*DHCPProxyDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// DHCPProxyDetails represents VPP binary API message 'dhcp_proxy_details':
-//
-//	"dhcp_proxy_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "rx_vrf_id"
-//	],
-//	[
-//	    "u32",
-//	    "vss_oui"
-//	],
-//	[
-//	    "u32",
-//	    "vss_fib_id"
-//	],
-//	[
-//	    "u8",
-//	    "vss_type"
-//	],
-//	[
-//	    "u8",
-//	    "vss_vpn_ascii_id",
-//	    129
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "dhcp_src_address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "count"
-//	],
-//	[
-//	    "vl_api_dhcp_server_t",
-//	    "servers",
-//	    0,
-//	    "count"
-//	],
-//	{
-//	    "crc": "0xa5f2ad84"
-//	}
-//
-type DHCPProxyDetails struct {
-	RxVrfID        uint32
-	VssOui         uint32
-	VssFibID       uint32
-	VssType        uint8
-	VssVPNAsciiID  []byte `struc:"[129]byte"`
-	IsIPv6         uint8
-	DHCPSrcAddress []byte `struc:"[16]byte"`
-	Count          uint8  `struc:"sizeof=Servers"`
-	Servers        []DHCPServer
-}
-
-func (*DHCPProxyDetails) GetMessageName() string {
-	return "dhcp_proxy_details"
-}
-func (*DHCPProxyDetails) GetCrcString() string {
-	return "a5f2ad84"
-}
-func (*DHCPProxyDetails) GetMessageType() api.MessageType {
+func (*DHCP6ClientsEnableDisableReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -854,9 +429,9 @@ func (*DHCP6DuidLlSetReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// DHCP6ClientsEnableDisable represents VPP binary API message 'dhcp6_clients_enable_disable':
+// DHCP6PdReplyEvent represents VPP binary API message 'dhcp6_pd_reply_event':
 //
-//	"dhcp6_clients_enable_disable",
+//	"dhcp6_pd_reply_event",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -867,77 +442,7 @@ func (*DHCP6DuidLlSetReply) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "enable"
-//	],
-//	{
-//	    "crc": "0x8050327d"
-//	}
-//
-type DHCP6ClientsEnableDisable struct {
-	Enable uint8
-}
-
-func (*DHCP6ClientsEnableDisable) GetMessageName() string {
-	return "dhcp6_clients_enable_disable"
-}
-func (*DHCP6ClientsEnableDisable) GetCrcString() string {
-	return "8050327d"
-}
-func (*DHCP6ClientsEnableDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// DHCP6ClientsEnableDisableReply represents VPP binary API message 'dhcp6_clients_enable_disable_reply':
-//
-//	"dhcp6_clients_enable_disable_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type DHCP6ClientsEnableDisableReply struct {
-	Retval int32
-}
-
-func (*DHCP6ClientsEnableDisableReply) GetMessageName() string {
-	return "dhcp6_clients_enable_disable_reply"
-}
-func (*DHCP6ClientsEnableDisableReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*DHCP6ClientsEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// DHCP6SendClientMessage represents VPP binary API message 'dhcp6_send_client_message':
-//
-//	"dhcp6_send_client_message",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
+//	    "pid"
 //	],
 //	[
 //	    "u32",
@@ -946,26 +451,6 @@ func (*DHCP6ClientsEnableDisableReply) GetMessageType() api.MessageType {
 //	[
 //	    "u32",
 //	    "server_index"
-//	],
-//	[
-//	    "u32",
-//	    "irt"
-//	],
-//	[
-//	    "u32",
-//	    "mrt"
-//	],
-//	[
-//	    "u32",
-//	    "mrc"
-//	],
-//	[
-//	    "u32",
-//	    "mrd"
-//	],
-//	[
-//	    "u8",
-//	    "stop"
 //	],
 //	[
 //	    "u8",
@@ -980,75 +465,53 @@ func (*DHCP6ClientsEnableDisableReply) GetMessageType() api.MessageType {
 //	    "T2"
 //	],
 //	[
-//	    "u32",
-//	    "n_addresses"
+//	    "u16",
+//	    "inner_status_code"
 //	],
-//	[
-//	    "vl_api_dhcp6_address_info_t",
-//	    "addresses",
-//	    0,
-//	    "n_addresses"
-//	],
-//	{
-//	    "crc": "0xa13ae8c4"
-//	}
-//
-type DHCP6SendClientMessage struct {
-	SwIfIndex   uint32
-	ServerIndex uint32
-	Irt         uint32
-	Mrt         uint32
-	Mrc         uint32
-	Mrd         uint32
-	Stop        uint8
-	MsgType     uint8
-	T1          uint32
-	T2          uint32
-	NAddresses  uint32 `struc:"sizeof=Addresses"`
-	Addresses   []DHCP6AddressInfo
-}
-
-func (*DHCP6SendClientMessage) GetMessageName() string {
-	return "dhcp6_send_client_message"
-}
-func (*DHCP6SendClientMessage) GetCrcString() string {
-	return "a13ae8c4"
-}
-func (*DHCP6SendClientMessage) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// DHCP6SendClientMessageReply represents VPP binary API message 'dhcp6_send_client_message_reply':
-//
-//	"dhcp6_send_client_message_reply",
 //	[
 //	    "u16",
-//	    "_vl_msg_id"
+//	    "status_code"
+//	],
+//	[
+//	    "u8",
+//	    "preference"
 //	],
 //	[
 //	    "u32",
-//	    "context"
+//	    "n_prefixes"
 //	],
 //	[
-//	    "i32",
-//	    "retval"
+//	    "vl_api_dhcp6_pd_prefix_info_t",
+//	    "prefixes",
+//	    0,
+//	    "n_prefixes"
 //	],
 //	{
-//	    "crc": "0xe8d4e804"
+//	    "crc": "0x48e73c36"
 //	}
 //
-type DHCP6SendClientMessageReply struct {
-	Retval int32
+type DHCP6PdReplyEvent struct {
+	PID             uint32
+	SwIfIndex       uint32
+	ServerIndex     uint32
+	MsgType         uint8
+	T1              uint32
+	T2              uint32
+	InnerStatusCode uint16
+	StatusCode      uint16
+	Preference      uint8
+	NPrefixes       uint32 `struc:"sizeof=Prefixes"`
+	Prefixes        []DHCP6PdPrefixInfo
 }
 
-func (*DHCP6SendClientMessageReply) GetMessageName() string {
-	return "dhcp6_send_client_message_reply"
+func (*DHCP6PdReplyEvent) GetMessageName() string {
+	return "dhcp6_pd_reply_event"
 }
-func (*DHCP6SendClientMessageReply) GetCrcString() string {
-	return "e8d4e804"
+func (*DHCP6PdReplyEvent) GetCrcString() string {
+	return "48e73c36"
 }
-func (*DHCP6SendClientMessageReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
+func (*DHCP6PdReplyEvent) GetMessageType() api.MessageType {
+	return api.EventMessage
 }
 
 // DHCP6PdSendClientMessage represents VPP binary API message 'dhcp6_pd_send_client_message':
@@ -1178,156 +641,6 @@ func (*DHCP6PdSendClientMessageReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// WantDHCP6ReplyEvents represents VPP binary API message 'want_dhcp6_reply_events':
-//
-//	"want_dhcp6_reply_events",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "enable_disable"
-//	],
-//	[
-//	    "u32",
-//	    "pid"
-//	],
-//	{
-//	    "crc": "0x05b454b5"
-//	}
-//
-type WantDHCP6ReplyEvents struct {
-	EnableDisable uint8
-	PID           uint32
-}
-
-func (*WantDHCP6ReplyEvents) GetMessageName() string {
-	return "want_dhcp6_reply_events"
-}
-func (*WantDHCP6ReplyEvents) GetCrcString() string {
-	return "05b454b5"
-}
-func (*WantDHCP6ReplyEvents) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// WantDHCP6ReplyEventsReply represents VPP binary API message 'want_dhcp6_reply_events_reply':
-//
-//	"want_dhcp6_reply_events_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type WantDHCP6ReplyEventsReply struct {
-	Retval int32
-}
-
-func (*WantDHCP6ReplyEventsReply) GetMessageName() string {
-	return "want_dhcp6_reply_events_reply"
-}
-func (*WantDHCP6ReplyEventsReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*WantDHCP6ReplyEventsReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// WantDHCP6PdReplyEvents represents VPP binary API message 'want_dhcp6_pd_reply_events':
-//
-//	"want_dhcp6_pd_reply_events",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "enable_disable"
-//	],
-//	[
-//	    "u32",
-//	    "pid"
-//	],
-//	{
-//	    "crc": "0x05b454b5"
-//	}
-//
-type WantDHCP6PdReplyEvents struct {
-	EnableDisable uint8
-	PID           uint32
-}
-
-func (*WantDHCP6PdReplyEvents) GetMessageName() string {
-	return "want_dhcp6_pd_reply_events"
-}
-func (*WantDHCP6PdReplyEvents) GetCrcString() string {
-	return "05b454b5"
-}
-func (*WantDHCP6PdReplyEvents) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// WantDHCP6PdReplyEventsReply represents VPP binary API message 'want_dhcp6_pd_reply_events_reply':
-//
-//	"want_dhcp6_pd_reply_events_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type WantDHCP6PdReplyEventsReply struct {
-	Retval int32
-}
-
-func (*WantDHCP6PdReplyEventsReply) GetMessageName() string {
-	return "want_dhcp6_pd_reply_events_reply"
-}
-func (*WantDHCP6PdReplyEventsReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*WantDHCP6PdReplyEventsReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 // DHCP6ReplyEvent represents VPP binary API message 'dhcp6_reply_event':
 //
 //	"dhcp6_reply_event",
@@ -1413,9 +726,9 @@ func (*DHCP6ReplyEvent) GetMessageType() api.MessageType {
 	return api.EventMessage
 }
 
-// DHCP6PdReplyEvent represents VPP binary API message 'dhcp6_pd_reply_event':
+// DHCP6SendClientMessage represents VPP binary API message 'dhcp6_send_client_message':
 //
-//	"dhcp6_pd_reply_event",
+//	"dhcp6_send_client_message",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1426,7 +739,7 @@ func (*DHCP6ReplyEvent) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u32",
-//	    "pid"
+//	    "context"
 //	],
 //	[
 //	    "u32",
@@ -1435,6 +748,26 @@ func (*DHCP6ReplyEvent) GetMessageType() api.MessageType {
 //	[
 //	    "u32",
 //	    "server_index"
+//	],
+//	[
+//	    "u32",
+//	    "irt"
+//	],
+//	[
+//	    "u32",
+//	    "mrt"
+//	],
+//	[
+//	    "u32",
+//	    "mrc"
+//	],
+//	[
+//	    "u32",
+//	    "mrd"
+//	],
+//	[
+//	    "u8",
+//	    "stop"
 //	],
 //	[
 //	    "u8",
@@ -1449,79 +782,745 @@ func (*DHCP6ReplyEvent) GetMessageType() api.MessageType {
 //	    "T2"
 //	],
 //	[
-//	    "u16",
-//	    "inner_status_code"
+//	    "u32",
+//	    "n_addresses"
 //	],
 //	[
-//	    "u16",
-//	    "status_code"
+//	    "vl_api_dhcp6_address_info_t",
+//	    "addresses",
+//	    0,
+//	    "n_addresses"
 //	],
+//	{
+//	    "crc": "0xa13ae8c4"
+//	}
+//
+type DHCP6SendClientMessage struct {
+	SwIfIndex   uint32
+	ServerIndex uint32
+	Irt         uint32
+	Mrt         uint32
+	Mrc         uint32
+	Mrd         uint32
+	Stop        uint8
+	MsgType     uint8
+	T1          uint32
+	T2          uint32
+	NAddresses  uint32 `struc:"sizeof=Addresses"`
+	Addresses   []DHCP6AddressInfo
+}
+
+func (*DHCP6SendClientMessage) GetMessageName() string {
+	return "dhcp6_send_client_message"
+}
+func (*DHCP6SendClientMessage) GetCrcString() string {
+	return "a13ae8c4"
+}
+func (*DHCP6SendClientMessage) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// DHCP6SendClientMessageReply represents VPP binary API message 'dhcp6_send_client_message_reply':
+//
+//	"dhcp6_send_client_message_reply",
 //	[
-//	    "u8",
-//	    "preference"
+//	    "u16",
+//	    "_vl_msg_id"
 //	],
 //	[
 //	    "u32",
-//	    "n_prefixes"
+//	    "context"
 //	],
 //	[
-//	    "vl_api_dhcp6_pd_prefix_info_t",
-//	    "prefixes",
-//	    0,
-//	    "n_prefixes"
+//	    "i32",
+//	    "retval"
 //	],
 //	{
-//	    "crc": "0x48e73c36"
+//	    "crc": "0xe8d4e804"
 //	}
 //
-type DHCP6PdReplyEvent struct {
-	PID             uint32
-	SwIfIndex       uint32
-	ServerIndex     uint32
-	MsgType         uint8
-	T1              uint32
-	T2              uint32
-	InnerStatusCode uint16
-	StatusCode      uint16
-	Preference      uint8
-	NPrefixes       uint32 `struc:"sizeof=Prefixes"`
-	Prefixes        []DHCP6PdPrefixInfo
+type DHCP6SendClientMessageReply struct {
+	Retval int32
 }
 
-func (*DHCP6PdReplyEvent) GetMessageName() string {
-	return "dhcp6_pd_reply_event"
+func (*DHCP6SendClientMessageReply) GetMessageName() string {
+	return "dhcp6_send_client_message_reply"
 }
-func (*DHCP6PdReplyEvent) GetCrcString() string {
-	return "48e73c36"
+func (*DHCP6SendClientMessageReply) GetCrcString() string {
+	return "e8d4e804"
 }
-func (*DHCP6PdReplyEvent) GetMessageType() api.MessageType {
+func (*DHCP6SendClientMessageReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// DHCPClientConfig represents VPP binary API message 'dhcp_client_config':
+//
+//	"dhcp_client_config",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "vl_api_dhcp_client_t",
+//	    "client"
+//	],
+//	{
+//	    "crc": "0xc32ccdfe"
+//	}
+//
+type DHCPClientConfig struct {
+	IsAdd  uint8
+	Client DHCPClient
+}
+
+func (*DHCPClientConfig) GetMessageName() string {
+	return "dhcp_client_config"
+}
+func (*DHCPClientConfig) GetCrcString() string {
+	return "c32ccdfe"
+}
+func (*DHCPClientConfig) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// DHCPClientConfigReply represents VPP binary API message 'dhcp_client_config_reply':
+//
+//	"dhcp_client_config_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type DHCPClientConfigReply struct {
+	Retval int32
+}
+
+func (*DHCPClientConfigReply) GetMessageName() string {
+	return "dhcp_client_config_reply"
+}
+func (*DHCPClientConfigReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*DHCPClientConfigReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// DHCPClientDetails represents VPP binary API message 'dhcp_client_details':
+//
+//	"dhcp_client_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_dhcp_client_t",
+//	    "client"
+//	],
+//	[
+//	    "vl_api_dhcp_lease_t",
+//	    "lease"
+//	],
+//	{
+//	    "crc": "0x7ea3a745"
+//	}
+//
+type DHCPClientDetails struct {
+	Client DHCPClient
+	Lease  DHCPLease
+}
+
+func (*DHCPClientDetails) GetMessageName() string {
+	return "dhcp_client_details"
+}
+func (*DHCPClientDetails) GetCrcString() string {
+	return "7ea3a745"
+}
+func (*DHCPClientDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// DHCPClientDump represents VPP binary API message 'dhcp_client_dump':
+//
+//	"dhcp_client_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type DHCPClientDump struct{}
+
+func (*DHCPClientDump) GetMessageName() string {
+	return "dhcp_client_dump"
+}
+func (*DHCPClientDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*DHCPClientDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// DHCPComplEvent represents VPP binary API message 'dhcp_compl_event':
+//
+//	"dhcp_compl_event",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "pid"
+//	],
+//	[
+//	    "vl_api_dhcp_lease_t",
+//	    "lease"
+//	],
+//	{
+//	    "crc": "0x2105c31b"
+//	}
+//
+type DHCPComplEvent struct {
+	PID   uint32
+	Lease DHCPLease
+}
+
+func (*DHCPComplEvent) GetMessageName() string {
+	return "dhcp_compl_event"
+}
+func (*DHCPComplEvent) GetCrcString() string {
+	return "2105c31b"
+}
+func (*DHCPComplEvent) GetMessageType() api.MessageType {
 	return api.EventMessage
 }
 
+// DHCPProxyConfig represents VPP binary API message 'dhcp_proxy_config':
+//
+//	"dhcp_proxy_config",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "rx_vrf_id"
+//	],
+//	[
+//	    "u32",
+//	    "server_vrf_id"
+//	],
+//	[
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "u8",
+//	    "dhcp_server",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "dhcp_src_address",
+//	    16
+//	],
+//	{
+//	    "crc": "0x6af4b645"
+//	}
+//
+type DHCPProxyConfig struct {
+	RxVrfID        uint32
+	ServerVrfID    uint32
+	IsIPv6         uint8
+	IsAdd          uint8
+	DHCPServer     []byte `struc:"[16]byte"`
+	DHCPSrcAddress []byte `struc:"[16]byte"`
+}
+
+func (*DHCPProxyConfig) GetMessageName() string {
+	return "dhcp_proxy_config"
+}
+func (*DHCPProxyConfig) GetCrcString() string {
+	return "6af4b645"
+}
+func (*DHCPProxyConfig) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// DHCPProxyConfigReply represents VPP binary API message 'dhcp_proxy_config_reply':
+//
+//	"dhcp_proxy_config_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type DHCPProxyConfigReply struct {
+	Retval int32
+}
+
+func (*DHCPProxyConfigReply) GetMessageName() string {
+	return "dhcp_proxy_config_reply"
+}
+func (*DHCPProxyConfigReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*DHCPProxyConfigReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// DHCPProxyDetails represents VPP binary API message 'dhcp_proxy_details':
+//
+//	"dhcp_proxy_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "rx_vrf_id"
+//	],
+//	[
+//	    "u32",
+//	    "vss_oui"
+//	],
+//	[
+//	    "u32",
+//	    "vss_fib_id"
+//	],
+//	[
+//	    "u8",
+//	    "vss_type"
+//	],
+//	[
+//	    "u8",
+//	    "vss_vpn_ascii_id",
+//	    129
+//	],
+//	[
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	[
+//	    "u8",
+//	    "dhcp_src_address",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "count"
+//	],
+//	[
+//	    "vl_api_dhcp_server_t",
+//	    "servers",
+//	    0,
+//	    "count"
+//	],
+//	{
+//	    "crc": "0xa5f2ad84"
+//	}
+//
+type DHCPProxyDetails struct {
+	RxVrfID        uint32
+	VssOui         uint32
+	VssFibID       uint32
+	VssType        uint8
+	VssVPNAsciiID  []byte `struc:"[129]byte"`
+	IsIPv6         uint8
+	DHCPSrcAddress []byte `struc:"[16]byte"`
+	Count          uint8  `struc:"sizeof=Servers"`
+	Servers        []DHCPServer
+}
+
+func (*DHCPProxyDetails) GetMessageName() string {
+	return "dhcp_proxy_details"
+}
+func (*DHCPProxyDetails) GetCrcString() string {
+	return "a5f2ad84"
+}
+func (*DHCPProxyDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// DHCPProxyDump represents VPP binary API message 'dhcp_proxy_dump':
+//
+//	"dhcp_proxy_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_ip6"
+//	],
+//	{
+//	    "crc": "0x6fe91190"
+//	}
+//
+type DHCPProxyDump struct {
+	IsIP6 uint8
+}
+
+func (*DHCPProxyDump) GetMessageName() string {
+	return "dhcp_proxy_dump"
+}
+func (*DHCPProxyDump) GetCrcString() string {
+	return "6fe91190"
+}
+func (*DHCPProxyDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// DHCPProxySetVss represents VPP binary API message 'dhcp_proxy_set_vss':
+//
+//	"dhcp_proxy_set_vss",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "tbl_id"
+//	],
+//	[
+//	    "u8",
+//	    "vss_type"
+//	],
+//	[
+//	    "u8",
+//	    "vpn_ascii_id",
+//	    129
+//	],
+//	[
+//	    "u32",
+//	    "oui"
+//	],
+//	[
+//	    "u32",
+//	    "vpn_index"
+//	],
+//	[
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	{
+//	    "crc": "0x606535aa"
+//	}
+//
+type DHCPProxySetVss struct {
+	TblID      uint32
+	VssType    uint8
+	VPNAsciiID []byte `struc:"[129]byte"`
+	Oui        uint32
+	VPNIndex   uint32
+	IsIPv6     uint8
+	IsAdd      uint8
+}
+
+func (*DHCPProxySetVss) GetMessageName() string {
+	return "dhcp_proxy_set_vss"
+}
+func (*DHCPProxySetVss) GetCrcString() string {
+	return "606535aa"
+}
+func (*DHCPProxySetVss) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// DHCPProxySetVssReply represents VPP binary API message 'dhcp_proxy_set_vss_reply':
+//
+//	"dhcp_proxy_set_vss_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type DHCPProxySetVssReply struct {
+	Retval int32
+}
+
+func (*DHCPProxySetVssReply) GetMessageName() string {
+	return "dhcp_proxy_set_vss_reply"
+}
+func (*DHCPProxySetVssReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*DHCPProxySetVssReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// WantDHCP6PdReplyEvents represents VPP binary API message 'want_dhcp6_pd_reply_events':
+//
+//	"want_dhcp6_pd_reply_events",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "enable_disable"
+//	],
+//	[
+//	    "u32",
+//	    "pid"
+//	],
+//	{
+//	    "crc": "0x05b454b5"
+//	}
+//
+type WantDHCP6PdReplyEvents struct {
+	EnableDisable uint8
+	PID           uint32
+}
+
+func (*WantDHCP6PdReplyEvents) GetMessageName() string {
+	return "want_dhcp6_pd_reply_events"
+}
+func (*WantDHCP6PdReplyEvents) GetCrcString() string {
+	return "05b454b5"
+}
+func (*WantDHCP6PdReplyEvents) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// WantDHCP6PdReplyEventsReply represents VPP binary API message 'want_dhcp6_pd_reply_events_reply':
+//
+//	"want_dhcp6_pd_reply_events_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type WantDHCP6PdReplyEventsReply struct {
+	Retval int32
+}
+
+func (*WantDHCP6PdReplyEventsReply) GetMessageName() string {
+	return "want_dhcp6_pd_reply_events_reply"
+}
+func (*WantDHCP6PdReplyEventsReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*WantDHCP6PdReplyEventsReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// WantDHCP6ReplyEvents represents VPP binary API message 'want_dhcp6_reply_events':
+//
+//	"want_dhcp6_reply_events",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "enable_disable"
+//	],
+//	[
+//	    "u32",
+//	    "pid"
+//	],
+//	{
+//	    "crc": "0x05b454b5"
+//	}
+//
+type WantDHCP6ReplyEvents struct {
+	EnableDisable uint8
+	PID           uint32
+}
+
+func (*WantDHCP6ReplyEvents) GetMessageName() string {
+	return "want_dhcp6_reply_events"
+}
+func (*WantDHCP6ReplyEvents) GetCrcString() string {
+	return "05b454b5"
+}
+func (*WantDHCP6ReplyEvents) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// WantDHCP6ReplyEventsReply represents VPP binary API message 'want_dhcp6_reply_events_reply':
+//
+//	"want_dhcp6_reply_events_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type WantDHCP6ReplyEventsReply struct {
+	Retval int32
+}
+
+func (*WantDHCP6ReplyEventsReply) GetMessageName() string {
+	return "want_dhcp6_reply_events_reply"
+}
+func (*WantDHCP6ReplyEventsReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*WantDHCP6ReplyEventsReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 func init() {
-	api.RegisterMessage((*DHCPProxyConfig)(nil), "dhcp.DHCPProxyConfig")
-	api.RegisterMessage((*DHCPProxyConfigReply)(nil), "dhcp.DHCPProxyConfigReply")
-	api.RegisterMessage((*DHCPProxySetVss)(nil), "dhcp.DHCPProxySetVss")
-	api.RegisterMessage((*DHCPProxySetVssReply)(nil), "dhcp.DHCPProxySetVssReply")
-	api.RegisterMessage((*DHCPClientConfig)(nil), "dhcp.DHCPClientConfig")
-	api.RegisterMessage((*DHCPClientConfigReply)(nil), "dhcp.DHCPClientConfigReply")
-	api.RegisterMessage((*DHCPComplEvent)(nil), "dhcp.DHCPComplEvent")
-	api.RegisterMessage((*DHCPClientDump)(nil), "dhcp.DHCPClientDump")
-	api.RegisterMessage((*DHCPClientDetails)(nil), "dhcp.DHCPClientDetails")
-	api.RegisterMessage((*DHCPProxyDump)(nil), "dhcp.DHCPProxyDump")
-	api.RegisterMessage((*DHCPProxyDetails)(nil), "dhcp.DHCPProxyDetails")
-	api.RegisterMessage((*DHCP6DuidLlSet)(nil), "dhcp.DHCP6DuidLlSet")
-	api.RegisterMessage((*DHCP6DuidLlSetReply)(nil), "dhcp.DHCP6DuidLlSetReply")
 	api.RegisterMessage((*DHCP6ClientsEnableDisable)(nil), "dhcp.DHCP6ClientsEnableDisable")
 	api.RegisterMessage((*DHCP6ClientsEnableDisableReply)(nil), "dhcp.DHCP6ClientsEnableDisableReply")
-	api.RegisterMessage((*DHCP6SendClientMessage)(nil), "dhcp.DHCP6SendClientMessage")
-	api.RegisterMessage((*DHCP6SendClientMessageReply)(nil), "dhcp.DHCP6SendClientMessageReply")
+	api.RegisterMessage((*DHCP6DuidLlSet)(nil), "dhcp.DHCP6DuidLlSet")
+	api.RegisterMessage((*DHCP6DuidLlSetReply)(nil), "dhcp.DHCP6DuidLlSetReply")
+	api.RegisterMessage((*DHCP6PdReplyEvent)(nil), "dhcp.DHCP6PdReplyEvent")
 	api.RegisterMessage((*DHCP6PdSendClientMessage)(nil), "dhcp.DHCP6PdSendClientMessage")
 	api.RegisterMessage((*DHCP6PdSendClientMessageReply)(nil), "dhcp.DHCP6PdSendClientMessageReply")
-	api.RegisterMessage((*WantDHCP6ReplyEvents)(nil), "dhcp.WantDHCP6ReplyEvents")
-	api.RegisterMessage((*WantDHCP6ReplyEventsReply)(nil), "dhcp.WantDHCP6ReplyEventsReply")
+	api.RegisterMessage((*DHCP6ReplyEvent)(nil), "dhcp.DHCP6ReplyEvent")
+	api.RegisterMessage((*DHCP6SendClientMessage)(nil), "dhcp.DHCP6SendClientMessage")
+	api.RegisterMessage((*DHCP6SendClientMessageReply)(nil), "dhcp.DHCP6SendClientMessageReply")
+	api.RegisterMessage((*DHCPClientConfig)(nil), "dhcp.DHCPClientConfig")
+	api.RegisterMessage((*DHCPClientConfigReply)(nil), "dhcp.DHCPClientConfigReply")
+	api.RegisterMessage((*DHCPClientDetails)(nil), "dhcp.DHCPClientDetails")
+	api.RegisterMessage((*DHCPClientDump)(nil), "dhcp.DHCPClientDump")
+	api.RegisterMessage((*DHCPComplEvent)(nil), "dhcp.DHCPComplEvent")
+	api.RegisterMessage((*DHCPProxyConfig)(nil), "dhcp.DHCPProxyConfig")
+	api.RegisterMessage((*DHCPProxyConfigReply)(nil), "dhcp.DHCPProxyConfigReply")
+	api.RegisterMessage((*DHCPProxyDetails)(nil), "dhcp.DHCPProxyDetails")
+	api.RegisterMessage((*DHCPProxyDump)(nil), "dhcp.DHCPProxyDump")
+	api.RegisterMessage((*DHCPProxySetVss)(nil), "dhcp.DHCPProxySetVss")
+	api.RegisterMessage((*DHCPProxySetVssReply)(nil), "dhcp.DHCPProxySetVssReply")
 	api.RegisterMessage((*WantDHCP6PdReplyEvents)(nil), "dhcp.WantDHCP6PdReplyEvents")
 	api.RegisterMessage((*WantDHCP6PdReplyEventsReply)(nil), "dhcp.WantDHCP6PdReplyEventsReply")
-	api.RegisterMessage((*DHCP6ReplyEvent)(nil), "dhcp.DHCP6ReplyEvent")
-	api.RegisterMessage((*DHCP6PdReplyEvent)(nil), "dhcp.DHCP6PdReplyEvent")
+	api.RegisterMessage((*WantDHCP6ReplyEvents)(nil), "dhcp.WantDHCP6ReplyEvents")
+	api.RegisterMessage((*WantDHCP6ReplyEventsReply)(nil), "dhcp.WantDHCP6ReplyEventsReply")
 }

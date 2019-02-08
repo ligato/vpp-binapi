@@ -5,9 +5,8 @@
  Package ipsec_gre is a generated from VPP binary API module 'ipsec_gre'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package ipsec_gre
 
@@ -139,43 +138,6 @@ func (*IpsecGreAddDelTunnelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// IpsecGreTunnelDump represents VPP binary API message 'ipsec_gre_tunnel_dump':
-//
-//	"ipsec_gre_tunnel_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type IpsecGreTunnelDump struct {
-	SwIfIndex uint32
-}
-
-func (*IpsecGreTunnelDump) GetMessageName() string {
-	return "ipsec_gre_tunnel_dump"
-}
-func (*IpsecGreTunnelDump) GetCrcString() string {
-	return "529cb13f"
-}
-func (*IpsecGreTunnelDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // IpsecGreTunnelDetails represents VPP binary API message 'ipsec_gre_tunnel_details':
 //
 //	"ipsec_gre_tunnel_details",
@@ -231,9 +193,46 @@ func (*IpsecGreTunnelDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// IpsecGreTunnelDump represents VPP binary API message 'ipsec_gre_tunnel_dump':
+//
+//	"ipsec_gre_tunnel_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type IpsecGreTunnelDump struct {
+	SwIfIndex uint32
+}
+
+func (*IpsecGreTunnelDump) GetMessageName() string {
+	return "ipsec_gre_tunnel_dump"
+}
+func (*IpsecGreTunnelDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*IpsecGreTunnelDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
 	api.RegisterMessage((*IpsecGreAddDelTunnel)(nil), "ipsec_gre.IpsecGreAddDelTunnel")
 	api.RegisterMessage((*IpsecGreAddDelTunnelReply)(nil), "ipsec_gre.IpsecGreAddDelTunnelReply")
-	api.RegisterMessage((*IpsecGreTunnelDump)(nil), "ipsec_gre.IpsecGreTunnelDump")
 	api.RegisterMessage((*IpsecGreTunnelDetails)(nil), "ipsec_gre.IpsecGreTunnelDetails")
+	api.RegisterMessage((*IpsecGreTunnelDump)(nil), "ipsec_gre.IpsecGreTunnelDump")
 }

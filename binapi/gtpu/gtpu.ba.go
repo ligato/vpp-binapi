@@ -5,9 +5,8 @@
  Package gtpu is a generated from VPP binary API module 'gtpu'.
 
  It contains following objects:
-	  6 messages
 	  3 services
-
+	  6 messages
 */
 package gtpu
 
@@ -158,43 +157,6 @@ func (*GtpuAddDelTunnelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GtpuTunnelDump represents VPP binary API message 'gtpu_tunnel_dump':
-//
-//	"gtpu_tunnel_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type GtpuTunnelDump struct {
-	SwIfIndex uint32
-}
-
-func (*GtpuTunnelDump) GetMessageName() string {
-	return "gtpu_tunnel_dump"
-}
-func (*GtpuTunnelDump) GetCrcString() string {
-	return "529cb13f"
-}
-func (*GtpuTunnelDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // GtpuTunnelDetails represents VPP binary API message 'gtpu_tunnel_details':
 //
 //	"gtpu_tunnel_details",
@@ -263,6 +225,43 @@ func (*GtpuTunnelDetails) GetCrcString() string {
 }
 func (*GtpuTunnelDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
+}
+
+// GtpuTunnelDump represents VPP binary API message 'gtpu_tunnel_dump':
+//
+//	"gtpu_tunnel_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type GtpuTunnelDump struct {
+	SwIfIndex uint32
+}
+
+func (*GtpuTunnelDump) GetMessageName() string {
+	return "gtpu_tunnel_dump"
+}
+func (*GtpuTunnelDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*GtpuTunnelDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
 }
 
 // SwInterfaceSetGtpuBypass represents VPP binary API message 'sw_interface_set_gtpu_bypass':
@@ -348,8 +347,8 @@ func (*SwInterfaceSetGtpuBypassReply) GetMessageType() api.MessageType {
 func init() {
 	api.RegisterMessage((*GtpuAddDelTunnel)(nil), "gtpu.GtpuAddDelTunnel")
 	api.RegisterMessage((*GtpuAddDelTunnelReply)(nil), "gtpu.GtpuAddDelTunnelReply")
-	api.RegisterMessage((*GtpuTunnelDump)(nil), "gtpu.GtpuTunnelDump")
 	api.RegisterMessage((*GtpuTunnelDetails)(nil), "gtpu.GtpuTunnelDetails")
+	api.RegisterMessage((*GtpuTunnelDump)(nil), "gtpu.GtpuTunnelDump")
 	api.RegisterMessage((*SwInterfaceSetGtpuBypass)(nil), "gtpu.SwInterfaceSetGtpuBypass")
 	api.RegisterMessage((*SwInterfaceSetGtpuBypassReply)(nil), "gtpu.SwInterfaceSetGtpuBypassReply")
 }

@@ -5,9 +5,8 @@
  Package dns is a generated from VPP binary API module 'dns'.
 
  It contains following objects:
-	  8 messages
 	  4 services
-
+	  8 messages
 */
 package dns
 
@@ -200,6 +199,88 @@ func (*DNSNameServerAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// DNSResolveIP represents VPP binary API message 'dns_resolve_ip':
+//
+//	"dns_resolve_ip",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_ip6"
+//	],
+//	[
+//	    "u8",
+//	    "address",
+//	    16
+//	],
+//	{
+//	    "crc": "0xae96a1a3"
+//	}
+//
+type DNSResolveIP struct {
+	IsIP6   uint8
+	Address []byte `struc:"[16]byte"`
+}
+
+func (*DNSResolveIP) GetMessageName() string {
+	return "dns_resolve_ip"
+}
+func (*DNSResolveIP) GetCrcString() string {
+	return "ae96a1a3"
+}
+func (*DNSResolveIP) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// DNSResolveIPReply represents VPP binary API message 'dns_resolve_ip_reply':
+//
+//	"dns_resolve_ip_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u8",
+//	    "name",
+//	    256
+//	],
+//	{
+//	    "crc": "0x49ed78d6"
+//	}
+//
+type DNSResolveIPReply struct {
+	Retval int32
+	Name   []byte `struc:"[256]byte"`
+}
+
+func (*DNSResolveIPReply) GetMessageName() string {
+	return "dns_resolve_ip_reply"
+}
+func (*DNSResolveIPReply) GetCrcString() string {
+	return "49ed78d6"
+}
+func (*DNSResolveIPReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // DNSResolveName represents VPP binary API message 'dns_resolve_name':
 //
 //	"dns_resolve_name",
@@ -293,95 +374,13 @@ func (*DNSResolveNameReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// DNSResolveIP represents VPP binary API message 'dns_resolve_ip':
-//
-//	"dns_resolve_ip",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_ip6"
-//	],
-//	[
-//	    "u8",
-//	    "address",
-//	    16
-//	],
-//	{
-//	    "crc": "0xae96a1a3"
-//	}
-//
-type DNSResolveIP struct {
-	IsIP6   uint8
-	Address []byte `struc:"[16]byte"`
-}
-
-func (*DNSResolveIP) GetMessageName() string {
-	return "dns_resolve_ip"
-}
-func (*DNSResolveIP) GetCrcString() string {
-	return "ae96a1a3"
-}
-func (*DNSResolveIP) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// DNSResolveIPReply represents VPP binary API message 'dns_resolve_ip_reply':
-//
-//	"dns_resolve_ip_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u8",
-//	    "name",
-//	    256
-//	],
-//	{
-//	    "crc": "0x49ed78d6"
-//	}
-//
-type DNSResolveIPReply struct {
-	Retval int32
-	Name   []byte `struc:"[256]byte"`
-}
-
-func (*DNSResolveIPReply) GetMessageName() string {
-	return "dns_resolve_ip_reply"
-}
-func (*DNSResolveIPReply) GetCrcString() string {
-	return "49ed78d6"
-}
-func (*DNSResolveIPReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 func init() {
 	api.RegisterMessage((*DNSEnableDisable)(nil), "dns.DNSEnableDisable")
 	api.RegisterMessage((*DNSEnableDisableReply)(nil), "dns.DNSEnableDisableReply")
 	api.RegisterMessage((*DNSNameServerAddDel)(nil), "dns.DNSNameServerAddDel")
 	api.RegisterMessage((*DNSNameServerAddDelReply)(nil), "dns.DNSNameServerAddDelReply")
-	api.RegisterMessage((*DNSResolveName)(nil), "dns.DNSResolveName")
-	api.RegisterMessage((*DNSResolveNameReply)(nil), "dns.DNSResolveNameReply")
 	api.RegisterMessage((*DNSResolveIP)(nil), "dns.DNSResolveIP")
 	api.RegisterMessage((*DNSResolveIPReply)(nil), "dns.DNSResolveIPReply")
+	api.RegisterMessage((*DNSResolveName)(nil), "dns.DNSResolveName")
+	api.RegisterMessage((*DNSResolveNameReply)(nil), "dns.DNSResolveNameReply")
 }

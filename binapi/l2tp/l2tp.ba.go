@@ -5,9 +5,8 @@
  Package l2tp is a generated from VPP binary API module 'l2tp'.
 
  It contains following objects:
-	 10 messages
 	  5 services
-
+	 10 messages
 */
 package l2tp
 
@@ -168,6 +167,151 @@ func (*L2tpv3CreateTunnelReply) GetCrcString() string {
 	return "fda5941f"
 }
 func (*L2tpv3CreateTunnelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// L2tpv3InterfaceEnableDisable represents VPP binary API message 'l2tpv3_interface_enable_disable':
+//
+//	"l2tpv3_interface_enable_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "enable_disable"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x57298519"
+//	}
+//
+type L2tpv3InterfaceEnableDisable struct {
+	EnableDisable uint8
+	SwIfIndex     uint32
+}
+
+func (*L2tpv3InterfaceEnableDisable) GetMessageName() string {
+	return "l2tpv3_interface_enable_disable"
+}
+func (*L2tpv3InterfaceEnableDisable) GetCrcString() string {
+	return "57298519"
+}
+func (*L2tpv3InterfaceEnableDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// L2tpv3InterfaceEnableDisableReply represents VPP binary API message 'l2tpv3_interface_enable_disable_reply':
+//
+//	"l2tpv3_interface_enable_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type L2tpv3InterfaceEnableDisableReply struct {
+	Retval int32
+}
+
+func (*L2tpv3InterfaceEnableDisableReply) GetMessageName() string {
+	return "l2tpv3_interface_enable_disable_reply"
+}
+func (*L2tpv3InterfaceEnableDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*L2tpv3InterfaceEnableDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// L2tpv3SetLookupKey represents VPP binary API message 'l2tpv3_set_lookup_key':
+//
+//	"l2tpv3_set_lookup_key",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "key"
+//	],
+//	{
+//	    "crc": "0xd7736d45"
+//	}
+//
+type L2tpv3SetLookupKey struct {
+	Key uint8
+}
+
+func (*L2tpv3SetLookupKey) GetMessageName() string {
+	return "l2tpv3_set_lookup_key"
+}
+func (*L2tpv3SetLookupKey) GetCrcString() string {
+	return "d7736d45"
+}
+func (*L2tpv3SetLookupKey) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// L2tpv3SetLookupKeyReply represents VPP binary API message 'l2tpv3_set_lookup_key_reply':
+//
+//	"l2tpv3_set_lookup_key_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type L2tpv3SetLookupKeyReply struct {
+	Retval int32
+}
+
+func (*L2tpv3SetLookupKeyReply) GetMessageName() string {
+	return "l2tpv3_set_lookup_key_reply"
+}
+func (*L2tpv3SetLookupKeyReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*L2tpv3SetLookupKeyReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -359,160 +503,15 @@ func (*SwIfL2tpv3TunnelDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// L2tpv3InterfaceEnableDisable represents VPP binary API message 'l2tpv3_interface_enable_disable':
-//
-//	"l2tpv3_interface_enable_disable",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "enable_disable"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x57298519"
-//	}
-//
-type L2tpv3InterfaceEnableDisable struct {
-	EnableDisable uint8
-	SwIfIndex     uint32
-}
-
-func (*L2tpv3InterfaceEnableDisable) GetMessageName() string {
-	return "l2tpv3_interface_enable_disable"
-}
-func (*L2tpv3InterfaceEnableDisable) GetCrcString() string {
-	return "57298519"
-}
-func (*L2tpv3InterfaceEnableDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// L2tpv3InterfaceEnableDisableReply represents VPP binary API message 'l2tpv3_interface_enable_disable_reply':
-//
-//	"l2tpv3_interface_enable_disable_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type L2tpv3InterfaceEnableDisableReply struct {
-	Retval int32
-}
-
-func (*L2tpv3InterfaceEnableDisableReply) GetMessageName() string {
-	return "l2tpv3_interface_enable_disable_reply"
-}
-func (*L2tpv3InterfaceEnableDisableReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*L2tpv3InterfaceEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// L2tpv3SetLookupKey represents VPP binary API message 'l2tpv3_set_lookup_key':
-//
-//	"l2tpv3_set_lookup_key",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "key"
-//	],
-//	{
-//	    "crc": "0xd7736d45"
-//	}
-//
-type L2tpv3SetLookupKey struct {
-	Key uint8
-}
-
-func (*L2tpv3SetLookupKey) GetMessageName() string {
-	return "l2tpv3_set_lookup_key"
-}
-func (*L2tpv3SetLookupKey) GetCrcString() string {
-	return "d7736d45"
-}
-func (*L2tpv3SetLookupKey) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// L2tpv3SetLookupKeyReply represents VPP binary API message 'l2tpv3_set_lookup_key_reply':
-//
-//	"l2tpv3_set_lookup_key_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type L2tpv3SetLookupKeyReply struct {
-	Retval int32
-}
-
-func (*L2tpv3SetLookupKeyReply) GetMessageName() string {
-	return "l2tpv3_set_lookup_key_reply"
-}
-func (*L2tpv3SetLookupKeyReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*L2tpv3SetLookupKeyReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 func init() {
 	api.RegisterMessage((*L2tpv3CreateTunnel)(nil), "l2tp.L2tpv3CreateTunnel")
 	api.RegisterMessage((*L2tpv3CreateTunnelReply)(nil), "l2tp.L2tpv3CreateTunnelReply")
-	api.RegisterMessage((*L2tpv3SetTunnelCookies)(nil), "l2tp.L2tpv3SetTunnelCookies")
-	api.RegisterMessage((*L2tpv3SetTunnelCookiesReply)(nil), "l2tp.L2tpv3SetTunnelCookiesReply")
-	api.RegisterMessage((*SwIfL2tpv3TunnelDetails)(nil), "l2tp.SwIfL2tpv3TunnelDetails")
-	api.RegisterMessage((*SwIfL2tpv3TunnelDump)(nil), "l2tp.SwIfL2tpv3TunnelDump")
 	api.RegisterMessage((*L2tpv3InterfaceEnableDisable)(nil), "l2tp.L2tpv3InterfaceEnableDisable")
 	api.RegisterMessage((*L2tpv3InterfaceEnableDisableReply)(nil), "l2tp.L2tpv3InterfaceEnableDisableReply")
 	api.RegisterMessage((*L2tpv3SetLookupKey)(nil), "l2tp.L2tpv3SetLookupKey")
 	api.RegisterMessage((*L2tpv3SetLookupKeyReply)(nil), "l2tp.L2tpv3SetLookupKeyReply")
+	api.RegisterMessage((*L2tpv3SetTunnelCookies)(nil), "l2tp.L2tpv3SetTunnelCookies")
+	api.RegisterMessage((*L2tpv3SetTunnelCookiesReply)(nil), "l2tp.L2tpv3SetTunnelCookiesReply")
+	api.RegisterMessage((*SwIfL2tpv3TunnelDetails)(nil), "l2tp.SwIfL2tpv3TunnelDetails")
+	api.RegisterMessage((*SwIfL2tpv3TunnelDump)(nil), "l2tp.SwIfL2tpv3TunnelDump")
 }

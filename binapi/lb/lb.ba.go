@@ -5,9 +5,8 @@
  Package lb is a generated from VPP binary API module 'lb'.
 
  It contains following objects:
-	  8 messages
 	  4 services
-
+	  8 messages
 */
 package lb
 
@@ -49,9 +48,9 @@ type Services interface {
 
 /* Messages */
 
-// LbConf represents VPP binary API message 'lb_conf':
+// LbAddDelAs represents VPP binary API message 'lb_add_del_as':
 //
-//	"lb_conf",
+//	"lb_add_del_as",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -65,46 +64,62 @@ type Services interface {
 //	    "context"
 //	],
 //	[
-//	    "u32",
-//	    "ip4_src_address"
-//	],
-//	[
 //	    "u8",
-//	    "ip6_src_address",
+//	    "vip_ip_prefix",
 //	    16
 //	],
 //	[
-//	    "u32",
-//	    "sticky_buckets_per_core"
+//	    "u8",
+//	    "vip_prefix_length"
 //	],
 //	[
-//	    "u32",
-//	    "flow_timeout"
+//	    "u8",
+//	    "protocol"
+//	],
+//	[
+//	    "u16",
+//	    "port"
+//	],
+//	[
+//	    "u8",
+//	    "as_address",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "is_del"
+//	],
+//	[
+//	    "u8",
+//	    "is_flush"
 //	],
 //	{
-//	    "crc": "0x4ae4f864"
+//	    "crc": "0xb2252622"
 //	}
 //
-type LbConf struct {
-	IP4SrcAddress        uint32
-	IP6SrcAddress        []byte `struc:"[16]byte"`
-	StickyBucketsPerCore uint32
-	FlowTimeout          uint32
+type LbAddDelAs struct {
+	VipIPPrefix     []byte `struc:"[16]byte"`
+	VipPrefixLength uint8
+	Protocol        uint8
+	Port            uint16
+	AsAddress       []byte `struc:"[16]byte"`
+	IsDel           uint8
+	IsFlush         uint8
 }
 
-func (*LbConf) GetMessageName() string {
-	return "lb_conf"
+func (*LbAddDelAs) GetMessageName() string {
+	return "lb_add_del_as"
 }
-func (*LbConf) GetCrcString() string {
-	return "4ae4f864"
+func (*LbAddDelAs) GetCrcString() string {
+	return "b2252622"
 }
-func (*LbConf) GetMessageType() api.MessageType {
+func (*LbAddDelAs) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// LbConfReply represents VPP binary API message 'lb_conf_reply':
+// LbAddDelAsReply represents VPP binary API message 'lb_add_del_as_reply':
 //
-//	"lb_conf_reply",
+//	"lb_add_del_as_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -121,17 +136,17 @@ func (*LbConf) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type LbConfReply struct {
+type LbAddDelAsReply struct {
 	Retval int32
 }
 
-func (*LbConfReply) GetMessageName() string {
-	return "lb_conf_reply"
+func (*LbAddDelAsReply) GetMessageName() string {
+	return "lb_add_del_as_reply"
 }
-func (*LbConfReply) GetCrcString() string {
+func (*LbAddDelAsReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*LbConfReply) GetMessageType() api.MessageType {
+func (*LbAddDelAsReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -256,9 +271,9 @@ func (*LbAddDelVipReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// LbAddDelAs represents VPP binary API message 'lb_add_del_as':
+// LbConf represents VPP binary API message 'lb_conf':
 //
-//	"lb_add_del_as",
+//	"lb_conf",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -272,62 +287,46 @@ func (*LbAddDelVipReply) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
+//	    "u32",
+//	    "ip4_src_address"
+//	],
+//	[
 //	    "u8",
-//	    "vip_ip_prefix",
+//	    "ip6_src_address",
 //	    16
 //	],
 //	[
-//	    "u8",
-//	    "vip_prefix_length"
+//	    "u32",
+//	    "sticky_buckets_per_core"
 //	],
 //	[
-//	    "u8",
-//	    "protocol"
-//	],
-//	[
-//	    "u16",
-//	    "port"
-//	],
-//	[
-//	    "u8",
-//	    "as_address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "is_del"
-//	],
-//	[
-//	    "u8",
-//	    "is_flush"
+//	    "u32",
+//	    "flow_timeout"
 //	],
 //	{
-//	    "crc": "0xb2252622"
+//	    "crc": "0x4ae4f864"
 //	}
 //
-type LbAddDelAs struct {
-	VipIPPrefix     []byte `struc:"[16]byte"`
-	VipPrefixLength uint8
-	Protocol        uint8
-	Port            uint16
-	AsAddress       []byte `struc:"[16]byte"`
-	IsDel           uint8
-	IsFlush         uint8
+type LbConf struct {
+	IP4SrcAddress        uint32
+	IP6SrcAddress        []byte `struc:"[16]byte"`
+	StickyBucketsPerCore uint32
+	FlowTimeout          uint32
 }
 
-func (*LbAddDelAs) GetMessageName() string {
-	return "lb_add_del_as"
+func (*LbConf) GetMessageName() string {
+	return "lb_conf"
 }
-func (*LbAddDelAs) GetCrcString() string {
-	return "b2252622"
+func (*LbConf) GetCrcString() string {
+	return "4ae4f864"
 }
-func (*LbAddDelAs) GetMessageType() api.MessageType {
+func (*LbConf) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// LbAddDelAsReply represents VPP binary API message 'lb_add_del_as_reply':
+// LbConfReply represents VPP binary API message 'lb_conf_reply':
 //
-//	"lb_add_del_as_reply",
+//	"lb_conf_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -344,17 +343,17 @@ func (*LbAddDelAs) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type LbAddDelAsReply struct {
+type LbConfReply struct {
 	Retval int32
 }
 
-func (*LbAddDelAsReply) GetMessageName() string {
-	return "lb_add_del_as_reply"
+func (*LbConfReply) GetMessageName() string {
+	return "lb_conf_reply"
 }
-func (*LbAddDelAsReply) GetCrcString() string {
+func (*LbConfReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*LbAddDelAsReply) GetMessageType() api.MessageType {
+func (*LbConfReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -445,12 +444,12 @@ func (*LbFlushVipReply) GetMessageType() api.MessageType {
 }
 
 func init() {
-	api.RegisterMessage((*LbConf)(nil), "lb.LbConf")
-	api.RegisterMessage((*LbConfReply)(nil), "lb.LbConfReply")
-	api.RegisterMessage((*LbAddDelVip)(nil), "lb.LbAddDelVip")
-	api.RegisterMessage((*LbAddDelVipReply)(nil), "lb.LbAddDelVipReply")
 	api.RegisterMessage((*LbAddDelAs)(nil), "lb.LbAddDelAs")
 	api.RegisterMessage((*LbAddDelAsReply)(nil), "lb.LbAddDelAsReply")
+	api.RegisterMessage((*LbAddDelVip)(nil), "lb.LbAddDelVip")
+	api.RegisterMessage((*LbAddDelVipReply)(nil), "lb.LbAddDelVipReply")
+	api.RegisterMessage((*LbConf)(nil), "lb.LbConf")
+	api.RegisterMessage((*LbConfReply)(nil), "lb.LbConfReply")
 	api.RegisterMessage((*LbFlushVip)(nil), "lb.LbFlushVip")
 	api.RegisterMessage((*LbFlushVipReply)(nil), "lb.LbFlushVipReply")
 }

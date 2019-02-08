@@ -5,10 +5,9 @@
  Package lisp is a generated from VPP binary API module 'lisp'.
 
  It contains following objects:
-	 60 messages
-	  3 types
 	 30 services
-
+	  3 types
+	 60 messages
 */
 package lisp
 
@@ -161,6 +160,50 @@ type Services interface {
 
 /* Types */
 
+// LispAdjacency represents VPP binary API type 'lisp_adjacency':
+//
+//	"lisp_adjacency",
+//	[
+//	    "u8",
+//	    "eid_type"
+//	],
+//	[
+//	    "u8",
+//	    "reid",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "leid",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "reid_prefix_len"
+//	],
+//	[
+//	    "u8",
+//	    "leid_prefix_len"
+//	],
+//	{
+//	    "crc": "0x1f885751"
+//	}
+//
+type LispAdjacency struct {
+	EidType       uint8
+	Reid          []byte `struc:"[16]byte"`
+	Leid          []byte `struc:"[16]byte"`
+	ReidPrefixLen uint8
+	LeidPrefixLen uint8
+}
+
+func (*LispAdjacency) GetTypeName() string {
+	return "lisp_adjacency"
+}
+func (*LispAdjacency) GetCrcString() string {
+	return "1f885751"
+}
+
 // LocalLocator represents VPP binary API type 'local_locator':
 //
 //	"local_locator",
@@ -231,9 +274,31 @@ func (*RemoteLocator) GetCrcString() string {
 	return "fc6f49a4"
 }
 
-// LispAdjacency represents VPP binary API type 'lisp_adjacency':
+/* Messages */
+
+// LispAddDelAdjacency represents VPP binary API message 'lisp_add_del_adjacency':
 //
-//	"lisp_adjacency",
+//	"lisp_add_del_adjacency",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "u32",
+//	    "vni"
+//	],
 //	[
 //	    "u8",
 //	    "eid_type"
@@ -250,187 +315,39 @@ func (*RemoteLocator) GetCrcString() string {
 //	],
 //	[
 //	    "u8",
-//	    "reid_prefix_len"
+//	    "reid_len"
 //	],
 //	[
 //	    "u8",
-//	    "leid_prefix_len"
+//	    "leid_len"
 //	],
 //	{
-//	    "crc": "0x1f885751"
+//	    "crc": "0xf047390d"
 //	}
 //
-type LispAdjacency struct {
-	EidType       uint8
-	Reid          []byte `struc:"[16]byte"`
-	Leid          []byte `struc:"[16]byte"`
-	ReidPrefixLen uint8
-	LeidPrefixLen uint8
+type LispAddDelAdjacency struct {
+	IsAdd   uint8
+	Vni     uint32
+	EidType uint8
+	Reid    []byte `struc:"[16]byte"`
+	Leid    []byte `struc:"[16]byte"`
+	ReidLen uint8
+	LeidLen uint8
 }
 
-func (*LispAdjacency) GetTypeName() string {
-	return "lisp_adjacency"
+func (*LispAddDelAdjacency) GetMessageName() string {
+	return "lisp_add_del_adjacency"
 }
-func (*LispAdjacency) GetCrcString() string {
-	return "1f885751"
+func (*LispAddDelAdjacency) GetCrcString() string {
+	return "f047390d"
 }
-
-/* Messages */
-
-// LispAddDelLocatorSet represents VPP binary API message 'lisp_add_del_locator_set':
-//
-//	"lisp_add_del_locator_set",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "u8",
-//	    "locator_set_name",
-//	    64
-//	],
-//	[
-//	    "u32",
-//	    "locator_num"
-//	],
-//	[
-//	    "vl_api_local_locator_t",
-//	    "locators",
-//	    0,
-//	    "locator_num"
-//	],
-//	{
-//	    "crc": "0x02efb3dd"
-//	}
-//
-type LispAddDelLocatorSet struct {
-	IsAdd          uint8
-	LocatorSetName []byte `struc:"[64]byte"`
-	LocatorNum     uint32 `struc:"sizeof=Locators"`
-	Locators       []LocalLocator
-}
-
-func (*LispAddDelLocatorSet) GetMessageName() string {
-	return "lisp_add_del_locator_set"
-}
-func (*LispAddDelLocatorSet) GetCrcString() string {
-	return "02efb3dd"
-}
-func (*LispAddDelLocatorSet) GetMessageType() api.MessageType {
+func (*LispAddDelAdjacency) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// LispAddDelLocatorSetReply represents VPP binary API message 'lisp_add_del_locator_set_reply':
+// LispAddDelAdjacencyReply represents VPP binary API message 'lisp_add_del_adjacency_reply':
 //
-//	"lisp_add_del_locator_set_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "ls_index"
-//	],
-//	{
-//	    "crc": "0xb6666db4"
-//	}
-//
-type LispAddDelLocatorSetReply struct {
-	Retval  int32
-	LsIndex uint32
-}
-
-func (*LispAddDelLocatorSetReply) GetMessageName() string {
-	return "lisp_add_del_locator_set_reply"
-}
-func (*LispAddDelLocatorSetReply) GetCrcString() string {
-	return "b6666db4"
-}
-func (*LispAddDelLocatorSetReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispAddDelLocator represents VPP binary API message 'lisp_add_del_locator':
-//
-//	"lisp_add_del_locator",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "u8",
-//	    "locator_set_name",
-//	    64
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "priority"
-//	],
-//	[
-//	    "u8",
-//	    "weight"
-//	],
-//	{
-//	    "crc": "0x006a4240"
-//	}
-//
-type LispAddDelLocator struct {
-	IsAdd          uint8
-	LocatorSetName []byte `struc:"[64]byte"`
-	SwIfIndex      uint32
-	Priority       uint8
-	Weight         uint8
-}
-
-func (*LispAddDelLocator) GetMessageName() string {
-	return "lisp_add_del_locator"
-}
-func (*LispAddDelLocator) GetCrcString() string {
-	return "006a4240"
-}
-func (*LispAddDelLocator) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispAddDelLocatorReply represents VPP binary API message 'lisp_add_del_locator_reply':
-//
-//	"lisp_add_del_locator_reply",
+//	"lisp_add_del_adjacency_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -447,17 +364,17 @@ func (*LispAddDelLocator) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type LispAddDelLocatorReply struct {
+type LispAddDelAdjacencyReply struct {
 	Retval int32
 }
 
-func (*LispAddDelLocatorReply) GetMessageName() string {
-	return "lisp_add_del_locator_reply"
+func (*LispAddDelAdjacencyReply) GetMessageName() string {
+	return "lisp_add_del_adjacency_reply"
 }
-func (*LispAddDelLocatorReply) GetCrcString() string {
+func (*LispAddDelAdjacencyReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*LispAddDelLocatorReply) GetMessageType() api.MessageType {
+func (*LispAddDelAdjacencyReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -569,9 +486,9 @@ func (*LispAddDelLocalEidReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// LispAddDelMapServer represents VPP binary API message 'lisp_add_del_map_server':
+// LispAddDelLocator represents VPP binary API message 'lisp_add_del_locator':
 //
-//	"lisp_add_del_map_server",
+//	"lisp_add_del_locator",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -590,36 +507,46 @@ func (*LispAddDelLocalEidReply) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u8",
-//	    "is_ipv6"
+//	    "locator_set_name",
+//	    64
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
 //	],
 //	[
 //	    "u8",
-//	    "ip_address",
-//	    16
+//	    "priority"
+//	],
+//	[
+//	    "u8",
+//	    "weight"
 //	],
 //	{
-//	    "crc": "0x0ebcd37d"
+//	    "crc": "0x006a4240"
 //	}
 //
-type LispAddDelMapServer struct {
-	IsAdd     uint8
-	IsIPv6    uint8
-	IPAddress []byte `struc:"[16]byte"`
+type LispAddDelLocator struct {
+	IsAdd          uint8
+	LocatorSetName []byte `struc:"[64]byte"`
+	SwIfIndex      uint32
+	Priority       uint8
+	Weight         uint8
 }
 
-func (*LispAddDelMapServer) GetMessageName() string {
-	return "lisp_add_del_map_server"
+func (*LispAddDelLocator) GetMessageName() string {
+	return "lisp_add_del_locator"
 }
-func (*LispAddDelMapServer) GetCrcString() string {
-	return "0ebcd37d"
+func (*LispAddDelLocator) GetCrcString() string {
+	return "006a4240"
 }
-func (*LispAddDelMapServer) GetMessageType() api.MessageType {
+func (*LispAddDelLocator) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// LispAddDelMapServerReply represents VPP binary API message 'lisp_add_del_map_server_reply':
+// LispAddDelLocatorReply represents VPP binary API message 'lisp_add_del_locator_reply':
 //
-//	"lisp_add_del_map_server_reply",
+//	"lisp_add_del_locator_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -636,17 +563,186 @@ func (*LispAddDelMapServer) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type LispAddDelMapServerReply struct {
+type LispAddDelLocatorReply struct {
 	Retval int32
 }
 
-func (*LispAddDelMapServerReply) GetMessageName() string {
-	return "lisp_add_del_map_server_reply"
+func (*LispAddDelLocatorReply) GetMessageName() string {
+	return "lisp_add_del_locator_reply"
 }
-func (*LispAddDelMapServerReply) GetCrcString() string {
+func (*LispAddDelLocatorReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*LispAddDelMapServerReply) GetMessageType() api.MessageType {
+func (*LispAddDelLocatorReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// LispAddDelLocatorSet represents VPP binary API message 'lisp_add_del_locator_set':
+//
+//	"lisp_add_del_locator_set",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "u8",
+//	    "locator_set_name",
+//	    64
+//	],
+//	[
+//	    "u32",
+//	    "locator_num"
+//	],
+//	[
+//	    "vl_api_local_locator_t",
+//	    "locators",
+//	    0,
+//	    "locator_num"
+//	],
+//	{
+//	    "crc": "0x02efb3dd"
+//	}
+//
+type LispAddDelLocatorSet struct {
+	IsAdd          uint8
+	LocatorSetName []byte `struc:"[64]byte"`
+	LocatorNum     uint32 `struc:"sizeof=Locators"`
+	Locators       []LocalLocator
+}
+
+func (*LispAddDelLocatorSet) GetMessageName() string {
+	return "lisp_add_del_locator_set"
+}
+func (*LispAddDelLocatorSet) GetCrcString() string {
+	return "02efb3dd"
+}
+func (*LispAddDelLocatorSet) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispAddDelLocatorSetReply represents VPP binary API message 'lisp_add_del_locator_set_reply':
+//
+//	"lisp_add_del_locator_set_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "ls_index"
+//	],
+//	{
+//	    "crc": "0xb6666db4"
+//	}
+//
+type LispAddDelLocatorSetReply struct {
+	Retval  int32
+	LsIndex uint32
+}
+
+func (*LispAddDelLocatorSetReply) GetMessageName() string {
+	return "lisp_add_del_locator_set_reply"
+}
+func (*LispAddDelLocatorSetReply) GetCrcString() string {
+	return "b6666db4"
+}
+func (*LispAddDelLocatorSetReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// LispAddDelMapRequestItrRlocs represents VPP binary API message 'lisp_add_del_map_request_itr_rlocs':
+//
+//	"lisp_add_del_map_request_itr_rlocs",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "u8",
+//	    "locator_set_name",
+//	    64
+//	],
+//	{
+//	    "crc": "0xc7c6cb2f"
+//	}
+//
+type LispAddDelMapRequestItrRlocs struct {
+	IsAdd          uint8
+	LocatorSetName []byte `struc:"[64]byte"`
+}
+
+func (*LispAddDelMapRequestItrRlocs) GetMessageName() string {
+	return "lisp_add_del_map_request_itr_rlocs"
+}
+func (*LispAddDelMapRequestItrRlocs) GetCrcString() string {
+	return "c7c6cb2f"
+}
+func (*LispAddDelMapRequestItrRlocs) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispAddDelMapRequestItrRlocsReply represents VPP binary API message 'lisp_add_del_map_request_itr_rlocs_reply':
+//
+//	"lisp_add_del_map_request_itr_rlocs_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type LispAddDelMapRequestItrRlocsReply struct {
+	Retval int32
+}
+
+func (*LispAddDelMapRequestItrRlocsReply) GetMessageName() string {
+	return "lisp_add_del_map_request_itr_rlocs_reply"
+}
+func (*LispAddDelMapRequestItrRlocsReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*LispAddDelMapRequestItrRlocsReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -731,79 +827,9 @@ func (*LispAddDelMapResolverReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// LispEnableDisable represents VPP binary API message 'lisp_enable_disable':
+// LispAddDelMapServer represents VPP binary API message 'lisp_add_del_map_server':
 //
-//	"lisp_enable_disable",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_en"
-//	],
-//	{
-//	    "crc": "0xeb0e943b"
-//	}
-//
-type LispEnableDisable struct {
-	IsEn uint8
-}
-
-func (*LispEnableDisable) GetMessageName() string {
-	return "lisp_enable_disable"
-}
-func (*LispEnableDisable) GetCrcString() string {
-	return "eb0e943b"
-}
-func (*LispEnableDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispEnableDisableReply represents VPP binary API message 'lisp_enable_disable_reply':
-//
-//	"lisp_enable_disable_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type LispEnableDisableReply struct {
-	Retval int32
-}
-
-func (*LispEnableDisableReply) GetMessageName() string {
-	return "lisp_enable_disable_reply"
-}
-func (*LispEnableDisableReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*LispEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispPitrSetLocatorSet represents VPP binary API message 'lisp_pitr_set_locator_set':
-//
-//	"lisp_pitr_set_locator_set",
+//	"lisp_add_del_map_server",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -822,331 +848,36 @@ func (*LispEnableDisableReply) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u8",
-//	    "ls_name",
-//	    64
-//	],
-//	{
-//	    "crc": "0x7aa022dd"
-//	}
-//
-type LispPitrSetLocatorSet struct {
-	IsAdd  uint8
-	LsName []byte `struc:"[64]byte"`
-}
-
-func (*LispPitrSetLocatorSet) GetMessageName() string {
-	return "lisp_pitr_set_locator_set"
-}
-func (*LispPitrSetLocatorSet) GetCrcString() string {
-	return "7aa022dd"
-}
-func (*LispPitrSetLocatorSet) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispPitrSetLocatorSetReply represents VPP binary API message 'lisp_pitr_set_locator_set_reply':
-//
-//	"lisp_pitr_set_locator_set_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type LispPitrSetLocatorSetReply struct {
-	Retval int32
-}
-
-func (*LispPitrSetLocatorSetReply) GetMessageName() string {
-	return "lisp_pitr_set_locator_set_reply"
-}
-func (*LispPitrSetLocatorSetReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*LispPitrSetLocatorSetReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispUsePetr represents VPP binary API message 'lisp_use_petr':
-//
-//	"lisp_use_petr",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
+//	    "is_ipv6"
 //	],
 //	[
 //	    "u8",
-//	    "is_ip4"
-//	],
-//	[
-//	    "u8",
-//	    "address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	{
-//	    "crc": "0x6910787d"
-//	}
-//
-type LispUsePetr struct {
-	IsIP4   uint8
-	Address []byte `struc:"[16]byte"`
-	IsAdd   uint8
-}
-
-func (*LispUsePetr) GetMessageName() string {
-	return "lisp_use_petr"
-}
-func (*LispUsePetr) GetCrcString() string {
-	return "6910787d"
-}
-func (*LispUsePetr) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispUsePetrReply represents VPP binary API message 'lisp_use_petr_reply':
-//
-//	"lisp_use_petr_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type LispUsePetrReply struct {
-	Retval int32
-}
-
-func (*LispUsePetrReply) GetMessageName() string {
-	return "lisp_use_petr_reply"
-}
-func (*LispUsePetrReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*LispUsePetrReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ShowLispUsePetr represents VPP binary API message 'show_lisp_use_petr':
-//
-//	"show_lisp_use_petr",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type ShowLispUsePetr struct{}
-
-func (*ShowLispUsePetr) GetMessageName() string {
-	return "show_lisp_use_petr"
-}
-func (*ShowLispUsePetr) GetCrcString() string {
-	return "51077d14"
-}
-func (*ShowLispUsePetr) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ShowLispUsePetrReply represents VPP binary API message 'show_lisp_use_petr_reply':
-//
-//	"show_lisp_use_petr_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u8",
-//	    "status"
-//	],
-//	[
-//	    "u8",
-//	    "is_ip4"
-//	],
-//	[
-//	    "u8",
-//	    "address",
+//	    "ip_address",
 //	    16
 //	],
 //	{
-//	    "crc": "0x1eb21916"
+//	    "crc": "0x0ebcd37d"
 //	}
 //
-type ShowLispUsePetrReply struct {
-	Retval  int32
-	Status  uint8
-	IsIP4   uint8
-	Address []byte `struc:"[16]byte"`
+type LispAddDelMapServer struct {
+	IsAdd     uint8
+	IsIPv6    uint8
+	IPAddress []byte `struc:"[16]byte"`
 }
 
-func (*ShowLispUsePetrReply) GetMessageName() string {
-	return "show_lisp_use_petr_reply"
+func (*LispAddDelMapServer) GetMessageName() string {
+	return "lisp_add_del_map_server"
 }
-func (*ShowLispUsePetrReply) GetCrcString() string {
-	return "1eb21916"
+func (*LispAddDelMapServer) GetCrcString() string {
+	return "0ebcd37d"
 }
-func (*ShowLispUsePetrReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ShowLispRlocProbeState represents VPP binary API message 'show_lisp_rloc_probe_state':
-//
-//	"show_lisp_rloc_probe_state",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type ShowLispRlocProbeState struct{}
-
-func (*ShowLispRlocProbeState) GetMessageName() string {
-	return "show_lisp_rloc_probe_state"
-}
-func (*ShowLispRlocProbeState) GetCrcString() string {
-	return "51077d14"
-}
-func (*ShowLispRlocProbeState) GetMessageType() api.MessageType {
+func (*LispAddDelMapServer) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// ShowLispRlocProbeStateReply represents VPP binary API message 'show_lisp_rloc_probe_state_reply':
+// LispAddDelMapServerReply represents VPP binary API message 'lisp_add_del_map_server_reply':
 //
-//	"show_lisp_rloc_probe_state_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u8",
-//	    "is_enabled"
-//	],
-//	{
-//	    "crc": "0x14304fbc"
-//	}
-//
-type ShowLispRlocProbeStateReply struct {
-	Retval    int32
-	IsEnabled uint8
-}
-
-func (*ShowLispRlocProbeStateReply) GetMessageName() string {
-	return "show_lisp_rloc_probe_state_reply"
-}
-func (*ShowLispRlocProbeStateReply) GetCrcString() string {
-	return "14304fbc"
-}
-func (*ShowLispRlocProbeStateReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispRlocProbeEnableDisable represents VPP binary API message 'lisp_rloc_probe_enable_disable':
-//
-//	"lisp_rloc_probe_enable_disable",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_enabled"
-//	],
-//	{
-//	    "crc": "0x294103d1"
-//	}
-//
-type LispRlocProbeEnableDisable struct {
-	IsEnabled uint8
-}
-
-func (*LispRlocProbeEnableDisable) GetMessageName() string {
-	return "lisp_rloc_probe_enable_disable"
-}
-func (*LispRlocProbeEnableDisable) GetCrcString() string {
-	return "294103d1"
-}
-func (*LispRlocProbeEnableDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispRlocProbeEnableDisableReply represents VPP binary API message 'lisp_rloc_probe_enable_disable_reply':
-//
-//	"lisp_rloc_probe_enable_disable_reply",
+//	"lisp_add_del_map_server_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1163,295 +894,17 @@ func (*LispRlocProbeEnableDisable) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type LispRlocProbeEnableDisableReply struct {
+type LispAddDelMapServerReply struct {
 	Retval int32
 }
 
-func (*LispRlocProbeEnableDisableReply) GetMessageName() string {
-	return "lisp_rloc_probe_enable_disable_reply"
+func (*LispAddDelMapServerReply) GetMessageName() string {
+	return "lisp_add_del_map_server_reply"
 }
-func (*LispRlocProbeEnableDisableReply) GetCrcString() string {
+func (*LispAddDelMapServerReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*LispRlocProbeEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispMapRegisterEnableDisable represents VPP binary API message 'lisp_map_register_enable_disable':
-//
-//	"lisp_map_register_enable_disable",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_enabled"
-//	],
-//	{
-//	    "crc": "0x294103d1"
-//	}
-//
-type LispMapRegisterEnableDisable struct {
-	IsEnabled uint8
-}
-
-func (*LispMapRegisterEnableDisable) GetMessageName() string {
-	return "lisp_map_register_enable_disable"
-}
-func (*LispMapRegisterEnableDisable) GetCrcString() string {
-	return "294103d1"
-}
-func (*LispMapRegisterEnableDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispMapRegisterEnableDisableReply represents VPP binary API message 'lisp_map_register_enable_disable_reply':
-//
-//	"lisp_map_register_enable_disable_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type LispMapRegisterEnableDisableReply struct {
-	Retval int32
-}
-
-func (*LispMapRegisterEnableDisableReply) GetMessageName() string {
-	return "lisp_map_register_enable_disable_reply"
-}
-func (*LispMapRegisterEnableDisableReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*LispMapRegisterEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ShowLispMapRegisterState represents VPP binary API message 'show_lisp_map_register_state':
-//
-//	"show_lisp_map_register_state",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type ShowLispMapRegisterState struct{}
-
-func (*ShowLispMapRegisterState) GetMessageName() string {
-	return "show_lisp_map_register_state"
-}
-func (*ShowLispMapRegisterState) GetCrcString() string {
-	return "51077d14"
-}
-func (*ShowLispMapRegisterState) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ShowLispMapRegisterStateReply represents VPP binary API message 'show_lisp_map_register_state_reply':
-//
-//	"show_lisp_map_register_state_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u8",
-//	    "is_enabled"
-//	],
-//	{
-//	    "crc": "0x14304fbc"
-//	}
-//
-type ShowLispMapRegisterStateReply struct {
-	Retval    int32
-	IsEnabled uint8
-}
-
-func (*ShowLispMapRegisterStateReply) GetMessageName() string {
-	return "show_lisp_map_register_state_reply"
-}
-func (*ShowLispMapRegisterStateReply) GetCrcString() string {
-	return "14304fbc"
-}
-func (*ShowLispMapRegisterStateReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispMapRequestMode represents VPP binary API message 'lisp_map_request_mode':
-//
-//	"lisp_map_request_mode",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "mode"
-//	],
-//	{
-//	    "crc": "0xf3f93ce9"
-//	}
-//
-type LispMapRequestMode struct {
-	Mode uint8
-}
-
-func (*LispMapRequestMode) GetMessageName() string {
-	return "lisp_map_request_mode"
-}
-func (*LispMapRequestMode) GetCrcString() string {
-	return "f3f93ce9"
-}
-func (*LispMapRequestMode) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispMapRequestModeReply represents VPP binary API message 'lisp_map_request_mode_reply':
-//
-//	"lisp_map_request_mode_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type LispMapRequestModeReply struct {
-	Retval int32
-}
-
-func (*LispMapRequestModeReply) GetMessageName() string {
-	return "lisp_map_request_mode_reply"
-}
-func (*LispMapRequestModeReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*LispMapRequestModeReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ShowLispMapRequestMode represents VPP binary API message 'show_lisp_map_request_mode':
-//
-//	"show_lisp_map_request_mode",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type ShowLispMapRequestMode struct{}
-
-func (*ShowLispMapRequestMode) GetMessageName() string {
-	return "show_lisp_map_request_mode"
-}
-func (*ShowLispMapRequestMode) GetCrcString() string {
-	return "51077d14"
-}
-func (*ShowLispMapRequestMode) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ShowLispMapRequestModeReply represents VPP binary API message 'show_lisp_map_request_mode_reply':
-//
-//	"show_lisp_map_request_mode_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u8",
-//	    "mode"
-//	],
-//	{
-//	    "crc": "0xd423107c"
-//	}
-//
-type ShowLispMapRequestModeReply struct {
-	Retval int32
-	Mode   uint8
-}
-
-func (*ShowLispMapRequestModeReply) GetMessageName() string {
-	return "show_lisp_map_request_mode_reply"
-}
-func (*ShowLispMapRequestModeReply) GetCrcString() string {
-	return "d423107c"
-}
-func (*ShowLispMapRequestModeReply) GetMessageType() api.MessageType {
+func (*LispAddDelMapServerReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -1584,9 +1037,9 @@ func (*LispAddDelRemoteMappingReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// LispAddDelAdjacency represents VPP binary API message 'lisp_add_del_adjacency':
+// LispAdjacenciesGet represents VPP binary API message 'lisp_adjacencies_get':
 //
-//	"lisp_add_del_adjacency",
+//	"lisp_adjacencies_get",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1598,64 +1051,32 @@ func (*LispAddDelRemoteMappingReply) GetMessageType() api.MessageType {
 //	[
 //	    "u32",
 //	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
 //	],
 //	[
 //	    "u32",
 //	    "vni"
 //	],
-//	[
-//	    "u8",
-//	    "eid_type"
-//	],
-//	[
-//	    "u8",
-//	    "reid",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "leid",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "reid_len"
-//	],
-//	[
-//	    "u8",
-//	    "leid_len"
-//	],
 //	{
-//	    "crc": "0xf047390d"
+//	    "crc": "0x8d1f2fe9"
 //	}
 //
-type LispAddDelAdjacency struct {
-	IsAdd   uint8
-	Vni     uint32
-	EidType uint8
-	Reid    []byte `struc:"[16]byte"`
-	Leid    []byte `struc:"[16]byte"`
-	ReidLen uint8
-	LeidLen uint8
+type LispAdjacenciesGet struct {
+	Vni uint32
 }
 
-func (*LispAddDelAdjacency) GetMessageName() string {
-	return "lisp_add_del_adjacency"
+func (*LispAdjacenciesGet) GetMessageName() string {
+	return "lisp_adjacencies_get"
 }
-func (*LispAddDelAdjacency) GetCrcString() string {
-	return "f047390d"
+func (*LispAdjacenciesGet) GetCrcString() string {
+	return "8d1f2fe9"
 }
-func (*LispAddDelAdjacency) GetMessageType() api.MessageType {
+func (*LispAdjacenciesGet) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// LispAddDelAdjacencyReply represents VPP binary API message 'lisp_add_del_adjacency_reply':
+// LispAdjacenciesGetReply represents VPP binary API message 'lisp_adjacencies_get_reply':
 //
-//	"lisp_add_del_adjacency_reply",
+//	"lisp_adjacencies_get_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1668,97 +1089,33 @@ func (*LispAddDelAdjacency) GetMessageType() api.MessageType {
 //	    "i32",
 //	    "retval"
 //	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type LispAddDelAdjacencyReply struct {
-	Retval int32
-}
-
-func (*LispAddDelAdjacencyReply) GetMessageName() string {
-	return "lisp_add_del_adjacency_reply"
-}
-func (*LispAddDelAdjacencyReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*LispAddDelAdjacencyReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispAddDelMapRequestItrRlocs represents VPP binary API message 'lisp_add_del_map_request_itr_rlocs':
-//
-//	"lisp_add_del_map_request_itr_rlocs",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
 //	[
 //	    "u32",
-//	    "client_index"
+//	    "count"
 //	],
 //	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "u8",
-//	    "locator_set_name",
-//	    64
+//	    "vl_api_lisp_adjacency_t",
+//	    "adjacencies",
+//	    0,
+//	    "count"
 //	],
 //	{
-//	    "crc": "0xc7c6cb2f"
+//	    "crc": "0x3c719b10"
 //	}
 //
-type LispAddDelMapRequestItrRlocs struct {
-	IsAdd          uint8
-	LocatorSetName []byte `struc:"[64]byte"`
+type LispAdjacenciesGetReply struct {
+	Retval      int32
+	Count       uint32 `struc:"sizeof=Adjacencies"`
+	Adjacencies []LispAdjacency
 }
 
-func (*LispAddDelMapRequestItrRlocs) GetMessageName() string {
-	return "lisp_add_del_map_request_itr_rlocs"
+func (*LispAdjacenciesGetReply) GetMessageName() string {
+	return "lisp_adjacencies_get_reply"
 }
-func (*LispAddDelMapRequestItrRlocs) GetCrcString() string {
-	return "c7c6cb2f"
+func (*LispAdjacenciesGetReply) GetCrcString() string {
+	return "3c719b10"
 }
-func (*LispAddDelMapRequestItrRlocs) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispAddDelMapRequestItrRlocsReply represents VPP binary API message 'lisp_add_del_map_request_itr_rlocs_reply':
-//
-//	"lisp_add_del_map_request_itr_rlocs_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type LispAddDelMapRequestItrRlocsReply struct {
-	Retval int32
-}
-
-func (*LispAddDelMapRequestItrRlocsReply) GetMessageName() string {
-	return "lisp_add_del_map_request_itr_rlocs_reply"
-}
-func (*LispAddDelMapRequestItrRlocsReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*LispAddDelMapRequestItrRlocsReply) GetMessageType() api.MessageType {
+func (*LispAdjacenciesGetReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -1845,189 +1202,6 @@ func (*LispEidTableAddDelMapReply) GetCrcString() string {
 }
 func (*LispEidTableAddDelMapReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
-}
-
-// LispLocatorDump represents VPP binary API message 'lisp_locator_dump':
-//
-//	"lisp_locator_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "ls_index"
-//	],
-//	[
-//	    "u8",
-//	    "ls_name",
-//	    64
-//	],
-//	[
-//	    "u8",
-//	    "is_index_set"
-//	],
-//	{
-//	    "crc": "0xf27d5050"
-//	}
-//
-type LispLocatorDump struct {
-	LsIndex    uint32
-	LsName     []byte `struc:"[64]byte"`
-	IsIndexSet uint8
-}
-
-func (*LispLocatorDump) GetMessageName() string {
-	return "lisp_locator_dump"
-}
-func (*LispLocatorDump) GetCrcString() string {
-	return "f27d5050"
-}
-func (*LispLocatorDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispLocatorDetails represents VPP binary API message 'lisp_locator_details':
-//
-//	"lisp_locator_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "local"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "ip_address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "priority"
-//	],
-//	[
-//	    "u8",
-//	    "weight"
-//	],
-//	{
-//	    "crc": "0xb3988a30"
-//	}
-//
-type LispLocatorDetails struct {
-	Local     uint8
-	SwIfIndex uint32
-	IsIPv6    uint8
-	IPAddress []byte `struc:"[16]byte"`
-	Priority  uint8
-	Weight    uint8
-}
-
-func (*LispLocatorDetails) GetMessageName() string {
-	return "lisp_locator_details"
-}
-func (*LispLocatorDetails) GetCrcString() string {
-	return "b3988a30"
-}
-func (*LispLocatorDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispLocatorSetDetails represents VPP binary API message 'lisp_locator_set_details':
-//
-//	"lisp_locator_set_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "ls_index"
-//	],
-//	[
-//	    "u8",
-//	    "ls_name",
-//	    64
-//	],
-//	{
-//	    "crc": "0x6b846882"
-//	}
-//
-type LispLocatorSetDetails struct {
-	LsIndex uint32
-	LsName  []byte `struc:"[64]byte"`
-}
-
-func (*LispLocatorSetDetails) GetMessageName() string {
-	return "lisp_locator_set_details"
-}
-func (*LispLocatorSetDetails) GetCrcString() string {
-	return "6b846882"
-}
-func (*LispLocatorSetDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispLocatorSetDump represents VPP binary API message 'lisp_locator_set_dump':
-//
-//	"lisp_locator_set_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "filter"
-//	],
-//	{
-//	    "crc": "0xc79e8ab0"
-//	}
-//
-type LispLocatorSetDump struct {
-	Filter uint8
-}
-
-func (*LispLocatorSetDump) GetMessageName() string {
-	return "lisp_locator_set_dump"
-}
-func (*LispLocatorSetDump) GetCrcString() string {
-	return "c79e8ab0"
-}
-func (*LispLocatorSetDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
 }
 
 // LispEidTableDetails represents VPP binary API message 'lisp_eid_table_details':
@@ -2194,88 +1368,6 @@ func (*LispEidTableDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// LispAdjacenciesGetReply represents VPP binary API message 'lisp_adjacencies_get_reply':
-//
-//	"lisp_adjacencies_get_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "count"
-//	],
-//	[
-//	    "vl_api_lisp_adjacency_t",
-//	    "adjacencies",
-//	    0,
-//	    "count"
-//	],
-//	{
-//	    "crc": "0x3c719b10"
-//	}
-//
-type LispAdjacenciesGetReply struct {
-	Retval      int32
-	Count       uint32 `struc:"sizeof=Adjacencies"`
-	Adjacencies []LispAdjacency
-}
-
-func (*LispAdjacenciesGetReply) GetMessageName() string {
-	return "lisp_adjacencies_get_reply"
-}
-func (*LispAdjacenciesGetReply) GetCrcString() string {
-	return "3c719b10"
-}
-func (*LispAdjacenciesGetReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispAdjacenciesGet represents VPP binary API message 'lisp_adjacencies_get':
-//
-//	"lisp_adjacencies_get",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "vni"
-//	],
-//	{
-//	    "crc": "0x8d1f2fe9"
-//	}
-//
-type LispAdjacenciesGet struct {
-	Vni uint32
-}
-
-func (*LispAdjacenciesGet) GetMessageName() string {
-	return "lisp_adjacencies_get"
-}
-func (*LispAdjacenciesGet) GetCrcString() string {
-	return "8d1f2fe9"
-}
-func (*LispAdjacenciesGet) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // LispEidTableMapDetails represents VPP binary API message 'lisp_eid_table_map_details':
 //
 //	"lisp_eid_table_map_details",
@@ -2351,6 +1443,39 @@ func (*LispEidTableMapDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
+// LispEidTableVniDetails represents VPP binary API message 'lisp_eid_table_vni_details':
+//
+//	"lisp_eid_table_vni_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "vni"
+//	],
+//	{
+//	    "crc": "0x64abc01e"
+//	}
+//
+type LispEidTableVniDetails struct {
+	Vni uint32
+}
+
+func (*LispEidTableVniDetails) GetMessageName() string {
+	return "lisp_eid_table_vni_details"
+}
+func (*LispEidTableVniDetails) GetCrcString() string {
+	return "64abc01e"
+}
+func (*LispEidTableVniDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // LispEidTableVniDump represents VPP binary API message 'lisp_eid_table_vni_dump':
 //
 //	"lisp_eid_table_vni_dump",
@@ -2382,9 +1507,256 @@ func (*LispEidTableVniDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// LispEidTableVniDetails represents VPP binary API message 'lisp_eid_table_vni_details':
+// LispEnableDisable represents VPP binary API message 'lisp_enable_disable':
 //
-//	"lisp_eid_table_vni_details",
+//	"lisp_enable_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_en"
+//	],
+//	{
+//	    "crc": "0xeb0e943b"
+//	}
+//
+type LispEnableDisable struct {
+	IsEn uint8
+}
+
+func (*LispEnableDisable) GetMessageName() string {
+	return "lisp_enable_disable"
+}
+func (*LispEnableDisable) GetCrcString() string {
+	return "eb0e943b"
+}
+func (*LispEnableDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispEnableDisableReply represents VPP binary API message 'lisp_enable_disable_reply':
+//
+//	"lisp_enable_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type LispEnableDisableReply struct {
+	Retval int32
+}
+
+func (*LispEnableDisableReply) GetMessageName() string {
+	return "lisp_enable_disable_reply"
+}
+func (*LispEnableDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*LispEnableDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// LispGetMapRequestItrRlocs represents VPP binary API message 'lisp_get_map_request_itr_rlocs':
+//
+//	"lisp_get_map_request_itr_rlocs",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type LispGetMapRequestItrRlocs struct{}
+
+func (*LispGetMapRequestItrRlocs) GetMessageName() string {
+	return "lisp_get_map_request_itr_rlocs"
+}
+func (*LispGetMapRequestItrRlocs) GetCrcString() string {
+	return "51077d14"
+}
+func (*LispGetMapRequestItrRlocs) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispGetMapRequestItrRlocsReply represents VPP binary API message 'lisp_get_map_request_itr_rlocs_reply':
+//
+//	"lisp_get_map_request_itr_rlocs_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u8",
+//	    "locator_set_name",
+//	    64
+//	],
+//	{
+//	    "crc": "0x9f56f6f7"
+//	}
+//
+type LispGetMapRequestItrRlocsReply struct {
+	Retval         int32
+	LocatorSetName []byte `struc:"[64]byte"`
+}
+
+func (*LispGetMapRequestItrRlocsReply) GetMessageName() string {
+	return "lisp_get_map_request_itr_rlocs_reply"
+}
+func (*LispGetMapRequestItrRlocsReply) GetCrcString() string {
+	return "9f56f6f7"
+}
+func (*LispGetMapRequestItrRlocsReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// LispLocatorDetails represents VPP binary API message 'lisp_locator_details':
+//
+//	"lisp_locator_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "local"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	[
+//	    "u8",
+//	    "ip_address",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "priority"
+//	],
+//	[
+//	    "u8",
+//	    "weight"
+//	],
+//	{
+//	    "crc": "0xb3988a30"
+//	}
+//
+type LispLocatorDetails struct {
+	Local     uint8
+	SwIfIndex uint32
+	IsIPv6    uint8
+	IPAddress []byte `struc:"[16]byte"`
+	Priority  uint8
+	Weight    uint8
+}
+
+func (*LispLocatorDetails) GetMessageName() string {
+	return "lisp_locator_details"
+}
+func (*LispLocatorDetails) GetCrcString() string {
+	return "b3988a30"
+}
+func (*LispLocatorDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// LispLocatorDump represents VPP binary API message 'lisp_locator_dump':
+//
+//	"lisp_locator_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "ls_index"
+//	],
+//	[
+//	    "u8",
+//	    "ls_name",
+//	    64
+//	],
+//	[
+//	    "u8",
+//	    "is_index_set"
+//	],
+//	{
+//	    "crc": "0xf27d5050"
+//	}
+//
+type LispLocatorDump struct {
+	LsIndex    uint32
+	LsName     []byte `struc:"[64]byte"`
+	IsIndexSet uint8
+}
+
+func (*LispLocatorDump) GetMessageName() string {
+	return "lisp_locator_dump"
+}
+func (*LispLocatorDump) GetCrcString() string {
+	return "f27d5050"
+}
+func (*LispLocatorDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispLocatorSetDetails represents VPP binary API message 'lisp_locator_set_details':
+//
+//	"lisp_locator_set_details",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -2395,23 +1767,206 @@ func (*LispEidTableVniDump) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u32",
-//	    "vni"
+//	    "ls_index"
+//	],
+//	[
+//	    "u8",
+//	    "ls_name",
+//	    64
 //	],
 //	{
-//	    "crc": "0x64abc01e"
+//	    "crc": "0x6b846882"
 //	}
 //
-type LispEidTableVniDetails struct {
-	Vni uint32
+type LispLocatorSetDetails struct {
+	LsIndex uint32
+	LsName  []byte `struc:"[64]byte"`
 }
 
-func (*LispEidTableVniDetails) GetMessageName() string {
-	return "lisp_eid_table_vni_details"
+func (*LispLocatorSetDetails) GetMessageName() string {
+	return "lisp_locator_set_details"
 }
-func (*LispEidTableVniDetails) GetCrcString() string {
-	return "64abc01e"
+func (*LispLocatorSetDetails) GetCrcString() string {
+	return "6b846882"
 }
-func (*LispEidTableVniDetails) GetMessageType() api.MessageType {
+func (*LispLocatorSetDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// LispLocatorSetDump represents VPP binary API message 'lisp_locator_set_dump':
+//
+//	"lisp_locator_set_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "filter"
+//	],
+//	{
+//	    "crc": "0xc79e8ab0"
+//	}
+//
+type LispLocatorSetDump struct {
+	Filter uint8
+}
+
+func (*LispLocatorSetDump) GetMessageName() string {
+	return "lisp_locator_set_dump"
+}
+func (*LispLocatorSetDump) GetCrcString() string {
+	return "c79e8ab0"
+}
+func (*LispLocatorSetDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispMapRegisterEnableDisable represents VPP binary API message 'lisp_map_register_enable_disable':
+//
+//	"lisp_map_register_enable_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_enabled"
+//	],
+//	{
+//	    "crc": "0x294103d1"
+//	}
+//
+type LispMapRegisterEnableDisable struct {
+	IsEnabled uint8
+}
+
+func (*LispMapRegisterEnableDisable) GetMessageName() string {
+	return "lisp_map_register_enable_disable"
+}
+func (*LispMapRegisterEnableDisable) GetCrcString() string {
+	return "294103d1"
+}
+func (*LispMapRegisterEnableDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispMapRegisterEnableDisableReply represents VPP binary API message 'lisp_map_register_enable_disable_reply':
+//
+//	"lisp_map_register_enable_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type LispMapRegisterEnableDisableReply struct {
+	Retval int32
+}
+
+func (*LispMapRegisterEnableDisableReply) GetMessageName() string {
+	return "lisp_map_register_enable_disable_reply"
+}
+func (*LispMapRegisterEnableDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*LispMapRegisterEnableDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// LispMapRequestMode represents VPP binary API message 'lisp_map_request_mode':
+//
+//	"lisp_map_request_mode",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "mode"
+//	],
+//	{
+//	    "crc": "0xf3f93ce9"
+//	}
+//
+type LispMapRequestMode struct {
+	Mode uint8
+}
+
+func (*LispMapRequestMode) GetMessageName() string {
+	return "lisp_map_request_mode"
+}
+func (*LispMapRequestMode) GetCrcString() string {
+	return "f3f93ce9"
+}
+func (*LispMapRequestMode) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispMapRequestModeReply represents VPP binary API message 'lisp_map_request_mode_reply':
+//
+//	"lisp_map_request_mode_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type LispMapRequestModeReply struct {
+	Retval int32
+}
+
+func (*LispMapRequestModeReply) GetMessageName() string {
+	return "lisp_map_request_mode_reply"
+}
+func (*LispMapRequestModeReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*LispMapRequestModeReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -2555,9 +2110,9 @@ func (*LispMapServerDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// ShowLispStatus represents VPP binary API message 'show_lisp_status':
+// LispPitrSetLocatorSet represents VPP binary API message 'lisp_pitr_set_locator_set':
 //
-//	"show_lisp_status",
+//	"lisp_pitr_set_locator_set",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -2570,132 +2125,353 @@ func (*LispMapServerDump) GetMessageType() api.MessageType {
 //	    "u32",
 //	    "context"
 //	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type ShowLispStatus struct{}
-
-func (*ShowLispStatus) GetMessageName() string {
-	return "show_lisp_status"
-}
-func (*ShowLispStatus) GetCrcString() string {
-	return "51077d14"
-}
-func (*ShowLispStatus) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ShowLispStatusReply represents VPP binary API message 'show_lisp_status_reply':
-//
-//	"show_lisp_status_reply",
 //	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
+//	    "u8",
+//	    "is_add"
 //	],
 //	[
 //	    "u8",
-//	    "feature_status"
-//	],
-//	[
-//	    "u8",
-//	    "gpe_status"
-//	],
-//	{
-//	    "crc": "0xddcf48ef"
-//	}
-//
-type ShowLispStatusReply struct {
-	Retval        int32
-	FeatureStatus uint8
-	GpeStatus     uint8
-}
-
-func (*ShowLispStatusReply) GetMessageName() string {
-	return "show_lisp_status_reply"
-}
-func (*ShowLispStatusReply) GetCrcString() string {
-	return "ddcf48ef"
-}
-func (*ShowLispStatusReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// LispGetMapRequestItrRlocs represents VPP binary API message 'lisp_get_map_request_itr_rlocs':
-//
-//	"lisp_get_map_request_itr_rlocs",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type LispGetMapRequestItrRlocs struct{}
-
-func (*LispGetMapRequestItrRlocs) GetMessageName() string {
-	return "lisp_get_map_request_itr_rlocs"
-}
-func (*LispGetMapRequestItrRlocs) GetCrcString() string {
-	return "51077d14"
-}
-func (*LispGetMapRequestItrRlocs) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// LispGetMapRequestItrRlocsReply represents VPP binary API message 'lisp_get_map_request_itr_rlocs_reply':
-//
-//	"lisp_get_map_request_itr_rlocs_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u8",
-//	    "locator_set_name",
+//	    "ls_name",
 //	    64
 //	],
 //	{
-//	    "crc": "0x9f56f6f7"
+//	    "crc": "0x7aa022dd"
 //	}
 //
-type LispGetMapRequestItrRlocsReply struct {
-	Retval         int32
-	LocatorSetName []byte `struc:"[64]byte"`
+type LispPitrSetLocatorSet struct {
+	IsAdd  uint8
+	LsName []byte `struc:"[64]byte"`
 }
 
-func (*LispGetMapRequestItrRlocsReply) GetMessageName() string {
-	return "lisp_get_map_request_itr_rlocs_reply"
+func (*LispPitrSetLocatorSet) GetMessageName() string {
+	return "lisp_pitr_set_locator_set"
 }
-func (*LispGetMapRequestItrRlocsReply) GetCrcString() string {
-	return "9f56f6f7"
+func (*LispPitrSetLocatorSet) GetCrcString() string {
+	return "7aa022dd"
 }
-func (*LispGetMapRequestItrRlocsReply) GetMessageType() api.MessageType {
+func (*LispPitrSetLocatorSet) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispPitrSetLocatorSetReply represents VPP binary API message 'lisp_pitr_set_locator_set_reply':
+//
+//	"lisp_pitr_set_locator_set_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type LispPitrSetLocatorSetReply struct {
+	Retval int32
+}
+
+func (*LispPitrSetLocatorSetReply) GetMessageName() string {
+	return "lisp_pitr_set_locator_set_reply"
+}
+func (*LispPitrSetLocatorSetReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*LispPitrSetLocatorSetReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// LispRlocProbeEnableDisable represents VPP binary API message 'lisp_rloc_probe_enable_disable':
+//
+//	"lisp_rloc_probe_enable_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_enabled"
+//	],
+//	{
+//	    "crc": "0x294103d1"
+//	}
+//
+type LispRlocProbeEnableDisable struct {
+	IsEnabled uint8
+}
+
+func (*LispRlocProbeEnableDisable) GetMessageName() string {
+	return "lisp_rloc_probe_enable_disable"
+}
+func (*LispRlocProbeEnableDisable) GetCrcString() string {
+	return "294103d1"
+}
+func (*LispRlocProbeEnableDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispRlocProbeEnableDisableReply represents VPP binary API message 'lisp_rloc_probe_enable_disable_reply':
+//
+//	"lisp_rloc_probe_enable_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type LispRlocProbeEnableDisableReply struct {
+	Retval int32
+}
+
+func (*LispRlocProbeEnableDisableReply) GetMessageName() string {
+	return "lisp_rloc_probe_enable_disable_reply"
+}
+func (*LispRlocProbeEnableDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*LispRlocProbeEnableDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// LispUsePetr represents VPP binary API message 'lisp_use_petr':
+//
+//	"lisp_use_petr",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_ip4"
+//	],
+//	[
+//	    "u8",
+//	    "address",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	{
+//	    "crc": "0x6910787d"
+//	}
+//
+type LispUsePetr struct {
+	IsIP4   uint8
+	Address []byte `struc:"[16]byte"`
+	IsAdd   uint8
+}
+
+func (*LispUsePetr) GetMessageName() string {
+	return "lisp_use_petr"
+}
+func (*LispUsePetr) GetCrcString() string {
+	return "6910787d"
+}
+func (*LispUsePetr) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// LispUsePetrReply represents VPP binary API message 'lisp_use_petr_reply':
+//
+//	"lisp_use_petr_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type LispUsePetrReply struct {
+	Retval int32
+}
+
+func (*LispUsePetrReply) GetMessageName() string {
+	return "lisp_use_petr_reply"
+}
+func (*LispUsePetrReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*LispUsePetrReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// ShowLispMapRegisterState represents VPP binary API message 'show_lisp_map_register_state':
+//
+//	"show_lisp_map_register_state",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type ShowLispMapRegisterState struct{}
+
+func (*ShowLispMapRegisterState) GetMessageName() string {
+	return "show_lisp_map_register_state"
+}
+func (*ShowLispMapRegisterState) GetCrcString() string {
+	return "51077d14"
+}
+func (*ShowLispMapRegisterState) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ShowLispMapRegisterStateReply represents VPP binary API message 'show_lisp_map_register_state_reply':
+//
+//	"show_lisp_map_register_state_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u8",
+//	    "is_enabled"
+//	],
+//	{
+//	    "crc": "0x14304fbc"
+//	}
+//
+type ShowLispMapRegisterStateReply struct {
+	Retval    int32
+	IsEnabled uint8
+}
+
+func (*ShowLispMapRegisterStateReply) GetMessageName() string {
+	return "show_lisp_map_register_state_reply"
+}
+func (*ShowLispMapRegisterStateReply) GetCrcString() string {
+	return "14304fbc"
+}
+func (*ShowLispMapRegisterStateReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// ShowLispMapRequestMode represents VPP binary API message 'show_lisp_map_request_mode':
+//
+//	"show_lisp_map_request_mode",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type ShowLispMapRequestMode struct{}
+
+func (*ShowLispMapRequestMode) GetMessageName() string {
+	return "show_lisp_map_request_mode"
+}
+func (*ShowLispMapRequestMode) GetCrcString() string {
+	return "51077d14"
+}
+func (*ShowLispMapRequestMode) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ShowLispMapRequestModeReply represents VPP binary API message 'show_lisp_map_request_mode_reply':
+//
+//	"show_lisp_map_request_mode_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u8",
+//	    "mode"
+//	],
+//	{
+//	    "crc": "0xd423107c"
+//	}
+//
+type ShowLispMapRequestModeReply struct {
+	Retval int32
+	Mode   uint8
+}
+
+func (*ShowLispMapRequestModeReply) GetMessageName() string {
+	return "show_lisp_map_request_mode_reply"
+}
+func (*ShowLispMapRequestModeReply) GetCrcString() string {
+	return "d423107c"
+}
+func (*ShowLispMapRequestModeReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -2774,65 +2550,288 @@ func (*ShowLispPitrReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// ShowLispRlocProbeState represents VPP binary API message 'show_lisp_rloc_probe_state':
+//
+//	"show_lisp_rloc_probe_state",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type ShowLispRlocProbeState struct{}
+
+func (*ShowLispRlocProbeState) GetMessageName() string {
+	return "show_lisp_rloc_probe_state"
+}
+func (*ShowLispRlocProbeState) GetCrcString() string {
+	return "51077d14"
+}
+func (*ShowLispRlocProbeState) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ShowLispRlocProbeStateReply represents VPP binary API message 'show_lisp_rloc_probe_state_reply':
+//
+//	"show_lisp_rloc_probe_state_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u8",
+//	    "is_enabled"
+//	],
+//	{
+//	    "crc": "0x14304fbc"
+//	}
+//
+type ShowLispRlocProbeStateReply struct {
+	Retval    int32
+	IsEnabled uint8
+}
+
+func (*ShowLispRlocProbeStateReply) GetMessageName() string {
+	return "show_lisp_rloc_probe_state_reply"
+}
+func (*ShowLispRlocProbeStateReply) GetCrcString() string {
+	return "14304fbc"
+}
+func (*ShowLispRlocProbeStateReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// ShowLispStatus represents VPP binary API message 'show_lisp_status':
+//
+//	"show_lisp_status",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type ShowLispStatus struct{}
+
+func (*ShowLispStatus) GetMessageName() string {
+	return "show_lisp_status"
+}
+func (*ShowLispStatus) GetCrcString() string {
+	return "51077d14"
+}
+func (*ShowLispStatus) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ShowLispStatusReply represents VPP binary API message 'show_lisp_status_reply':
+//
+//	"show_lisp_status_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u8",
+//	    "feature_status"
+//	],
+//	[
+//	    "u8",
+//	    "gpe_status"
+//	],
+//	{
+//	    "crc": "0xddcf48ef"
+//	}
+//
+type ShowLispStatusReply struct {
+	Retval        int32
+	FeatureStatus uint8
+	GpeStatus     uint8
+}
+
+func (*ShowLispStatusReply) GetMessageName() string {
+	return "show_lisp_status_reply"
+}
+func (*ShowLispStatusReply) GetCrcString() string {
+	return "ddcf48ef"
+}
+func (*ShowLispStatusReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// ShowLispUsePetr represents VPP binary API message 'show_lisp_use_petr':
+//
+//	"show_lisp_use_petr",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type ShowLispUsePetr struct{}
+
+func (*ShowLispUsePetr) GetMessageName() string {
+	return "show_lisp_use_petr"
+}
+func (*ShowLispUsePetr) GetCrcString() string {
+	return "51077d14"
+}
+func (*ShowLispUsePetr) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ShowLispUsePetrReply represents VPP binary API message 'show_lisp_use_petr_reply':
+//
+//	"show_lisp_use_petr_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u8",
+//	    "status"
+//	],
+//	[
+//	    "u8",
+//	    "is_ip4"
+//	],
+//	[
+//	    "u8",
+//	    "address",
+//	    16
+//	],
+//	{
+//	    "crc": "0x1eb21916"
+//	}
+//
+type ShowLispUsePetrReply struct {
+	Retval  int32
+	Status  uint8
+	IsIP4   uint8
+	Address []byte `struc:"[16]byte"`
+}
+
+func (*ShowLispUsePetrReply) GetMessageName() string {
+	return "show_lisp_use_petr_reply"
+}
+func (*ShowLispUsePetrReply) GetCrcString() string {
+	return "1eb21916"
+}
+func (*ShowLispUsePetrReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 func init() {
-	api.RegisterMessage((*LispAddDelLocatorSet)(nil), "lisp.LispAddDelLocatorSet")
-	api.RegisterMessage((*LispAddDelLocatorSetReply)(nil), "lisp.LispAddDelLocatorSetReply")
-	api.RegisterMessage((*LispAddDelLocator)(nil), "lisp.LispAddDelLocator")
-	api.RegisterMessage((*LispAddDelLocatorReply)(nil), "lisp.LispAddDelLocatorReply")
-	api.RegisterMessage((*LispAddDelLocalEid)(nil), "lisp.LispAddDelLocalEid")
-	api.RegisterMessage((*LispAddDelLocalEidReply)(nil), "lisp.LispAddDelLocalEidReply")
-	api.RegisterMessage((*LispAddDelMapServer)(nil), "lisp.LispAddDelMapServer")
-	api.RegisterMessage((*LispAddDelMapServerReply)(nil), "lisp.LispAddDelMapServerReply")
-	api.RegisterMessage((*LispAddDelMapResolver)(nil), "lisp.LispAddDelMapResolver")
-	api.RegisterMessage((*LispAddDelMapResolverReply)(nil), "lisp.LispAddDelMapResolverReply")
-	api.RegisterMessage((*LispEnableDisable)(nil), "lisp.LispEnableDisable")
-	api.RegisterMessage((*LispEnableDisableReply)(nil), "lisp.LispEnableDisableReply")
-	api.RegisterMessage((*LispPitrSetLocatorSet)(nil), "lisp.LispPitrSetLocatorSet")
-	api.RegisterMessage((*LispPitrSetLocatorSetReply)(nil), "lisp.LispPitrSetLocatorSetReply")
-	api.RegisterMessage((*LispUsePetr)(nil), "lisp.LispUsePetr")
-	api.RegisterMessage((*LispUsePetrReply)(nil), "lisp.LispUsePetrReply")
-	api.RegisterMessage((*ShowLispUsePetr)(nil), "lisp.ShowLispUsePetr")
-	api.RegisterMessage((*ShowLispUsePetrReply)(nil), "lisp.ShowLispUsePetrReply")
-	api.RegisterMessage((*ShowLispRlocProbeState)(nil), "lisp.ShowLispRlocProbeState")
-	api.RegisterMessage((*ShowLispRlocProbeStateReply)(nil), "lisp.ShowLispRlocProbeStateReply")
-	api.RegisterMessage((*LispRlocProbeEnableDisable)(nil), "lisp.LispRlocProbeEnableDisable")
-	api.RegisterMessage((*LispRlocProbeEnableDisableReply)(nil), "lisp.LispRlocProbeEnableDisableReply")
-	api.RegisterMessage((*LispMapRegisterEnableDisable)(nil), "lisp.LispMapRegisterEnableDisable")
-	api.RegisterMessage((*LispMapRegisterEnableDisableReply)(nil), "lisp.LispMapRegisterEnableDisableReply")
-	api.RegisterMessage((*ShowLispMapRegisterState)(nil), "lisp.ShowLispMapRegisterState")
-	api.RegisterMessage((*ShowLispMapRegisterStateReply)(nil), "lisp.ShowLispMapRegisterStateReply")
-	api.RegisterMessage((*LispMapRequestMode)(nil), "lisp.LispMapRequestMode")
-	api.RegisterMessage((*LispMapRequestModeReply)(nil), "lisp.LispMapRequestModeReply")
-	api.RegisterMessage((*ShowLispMapRequestMode)(nil), "lisp.ShowLispMapRequestMode")
-	api.RegisterMessage((*ShowLispMapRequestModeReply)(nil), "lisp.ShowLispMapRequestModeReply")
-	api.RegisterMessage((*LispAddDelRemoteMapping)(nil), "lisp.LispAddDelRemoteMapping")
-	api.RegisterMessage((*LispAddDelRemoteMappingReply)(nil), "lisp.LispAddDelRemoteMappingReply")
 	api.RegisterMessage((*LispAddDelAdjacency)(nil), "lisp.LispAddDelAdjacency")
 	api.RegisterMessage((*LispAddDelAdjacencyReply)(nil), "lisp.LispAddDelAdjacencyReply")
+	api.RegisterMessage((*LispAddDelLocalEid)(nil), "lisp.LispAddDelLocalEid")
+	api.RegisterMessage((*LispAddDelLocalEidReply)(nil), "lisp.LispAddDelLocalEidReply")
+	api.RegisterMessage((*LispAddDelLocator)(nil), "lisp.LispAddDelLocator")
+	api.RegisterMessage((*LispAddDelLocatorReply)(nil), "lisp.LispAddDelLocatorReply")
+	api.RegisterMessage((*LispAddDelLocatorSet)(nil), "lisp.LispAddDelLocatorSet")
+	api.RegisterMessage((*LispAddDelLocatorSetReply)(nil), "lisp.LispAddDelLocatorSetReply")
 	api.RegisterMessage((*LispAddDelMapRequestItrRlocs)(nil), "lisp.LispAddDelMapRequestItrRlocs")
 	api.RegisterMessage((*LispAddDelMapRequestItrRlocsReply)(nil), "lisp.LispAddDelMapRequestItrRlocsReply")
+	api.RegisterMessage((*LispAddDelMapResolver)(nil), "lisp.LispAddDelMapResolver")
+	api.RegisterMessage((*LispAddDelMapResolverReply)(nil), "lisp.LispAddDelMapResolverReply")
+	api.RegisterMessage((*LispAddDelMapServer)(nil), "lisp.LispAddDelMapServer")
+	api.RegisterMessage((*LispAddDelMapServerReply)(nil), "lisp.LispAddDelMapServerReply")
+	api.RegisterMessage((*LispAddDelRemoteMapping)(nil), "lisp.LispAddDelRemoteMapping")
+	api.RegisterMessage((*LispAddDelRemoteMappingReply)(nil), "lisp.LispAddDelRemoteMappingReply")
+	api.RegisterMessage((*LispAdjacenciesGet)(nil), "lisp.LispAdjacenciesGet")
+	api.RegisterMessage((*LispAdjacenciesGetReply)(nil), "lisp.LispAdjacenciesGetReply")
 	api.RegisterMessage((*LispEidTableAddDelMap)(nil), "lisp.LispEidTableAddDelMap")
 	api.RegisterMessage((*LispEidTableAddDelMapReply)(nil), "lisp.LispEidTableAddDelMapReply")
-	api.RegisterMessage((*LispLocatorDump)(nil), "lisp.LispLocatorDump")
-	api.RegisterMessage((*LispLocatorDetails)(nil), "lisp.LispLocatorDetails")
-	api.RegisterMessage((*LispLocatorSetDetails)(nil), "lisp.LispLocatorSetDetails")
-	api.RegisterMessage((*LispLocatorSetDump)(nil), "lisp.LispLocatorSetDump")
 	api.RegisterMessage((*LispEidTableDetails)(nil), "lisp.LispEidTableDetails")
 	api.RegisterMessage((*LispEidTableDump)(nil), "lisp.LispEidTableDump")
-	api.RegisterMessage((*LispAdjacenciesGetReply)(nil), "lisp.LispAdjacenciesGetReply")
-	api.RegisterMessage((*LispAdjacenciesGet)(nil), "lisp.LispAdjacenciesGet")
 	api.RegisterMessage((*LispEidTableMapDetails)(nil), "lisp.LispEidTableMapDetails")
 	api.RegisterMessage((*LispEidTableMapDump)(nil), "lisp.LispEidTableMapDump")
-	api.RegisterMessage((*LispEidTableVniDump)(nil), "lisp.LispEidTableVniDump")
 	api.RegisterMessage((*LispEidTableVniDetails)(nil), "lisp.LispEidTableVniDetails")
+	api.RegisterMessage((*LispEidTableVniDump)(nil), "lisp.LispEidTableVniDump")
+	api.RegisterMessage((*LispEnableDisable)(nil), "lisp.LispEnableDisable")
+	api.RegisterMessage((*LispEnableDisableReply)(nil), "lisp.LispEnableDisableReply")
+	api.RegisterMessage((*LispGetMapRequestItrRlocs)(nil), "lisp.LispGetMapRequestItrRlocs")
+	api.RegisterMessage((*LispGetMapRequestItrRlocsReply)(nil), "lisp.LispGetMapRequestItrRlocsReply")
+	api.RegisterMessage((*LispLocatorDetails)(nil), "lisp.LispLocatorDetails")
+	api.RegisterMessage((*LispLocatorDump)(nil), "lisp.LispLocatorDump")
+	api.RegisterMessage((*LispLocatorSetDetails)(nil), "lisp.LispLocatorSetDetails")
+	api.RegisterMessage((*LispLocatorSetDump)(nil), "lisp.LispLocatorSetDump")
+	api.RegisterMessage((*LispMapRegisterEnableDisable)(nil), "lisp.LispMapRegisterEnableDisable")
+	api.RegisterMessage((*LispMapRegisterEnableDisableReply)(nil), "lisp.LispMapRegisterEnableDisableReply")
+	api.RegisterMessage((*LispMapRequestMode)(nil), "lisp.LispMapRequestMode")
+	api.RegisterMessage((*LispMapRequestModeReply)(nil), "lisp.LispMapRequestModeReply")
 	api.RegisterMessage((*LispMapResolverDetails)(nil), "lisp.LispMapResolverDetails")
 	api.RegisterMessage((*LispMapResolverDump)(nil), "lisp.LispMapResolverDump")
 	api.RegisterMessage((*LispMapServerDetails)(nil), "lisp.LispMapServerDetails")
 	api.RegisterMessage((*LispMapServerDump)(nil), "lisp.LispMapServerDump")
-	api.RegisterMessage((*ShowLispStatus)(nil), "lisp.ShowLispStatus")
-	api.RegisterMessage((*ShowLispStatusReply)(nil), "lisp.ShowLispStatusReply")
-	api.RegisterMessage((*LispGetMapRequestItrRlocs)(nil), "lisp.LispGetMapRequestItrRlocs")
-	api.RegisterMessage((*LispGetMapRequestItrRlocsReply)(nil), "lisp.LispGetMapRequestItrRlocsReply")
+	api.RegisterMessage((*LispPitrSetLocatorSet)(nil), "lisp.LispPitrSetLocatorSet")
+	api.RegisterMessage((*LispPitrSetLocatorSetReply)(nil), "lisp.LispPitrSetLocatorSetReply")
+	api.RegisterMessage((*LispRlocProbeEnableDisable)(nil), "lisp.LispRlocProbeEnableDisable")
+	api.RegisterMessage((*LispRlocProbeEnableDisableReply)(nil), "lisp.LispRlocProbeEnableDisableReply")
+	api.RegisterMessage((*LispUsePetr)(nil), "lisp.LispUsePetr")
+	api.RegisterMessage((*LispUsePetrReply)(nil), "lisp.LispUsePetrReply")
+	api.RegisterMessage((*ShowLispMapRegisterState)(nil), "lisp.ShowLispMapRegisterState")
+	api.RegisterMessage((*ShowLispMapRegisterStateReply)(nil), "lisp.ShowLispMapRegisterStateReply")
+	api.RegisterMessage((*ShowLispMapRequestMode)(nil), "lisp.ShowLispMapRequestMode")
+	api.RegisterMessage((*ShowLispMapRequestModeReply)(nil), "lisp.ShowLispMapRequestModeReply")
 	api.RegisterMessage((*ShowLispPitr)(nil), "lisp.ShowLispPitr")
 	api.RegisterMessage((*ShowLispPitrReply)(nil), "lisp.ShowLispPitrReply")
+	api.RegisterMessage((*ShowLispRlocProbeState)(nil), "lisp.ShowLispRlocProbeState")
+	api.RegisterMessage((*ShowLispRlocProbeStateReply)(nil), "lisp.ShowLispRlocProbeStateReply")
+	api.RegisterMessage((*ShowLispStatus)(nil), "lisp.ShowLispStatus")
+	api.RegisterMessage((*ShowLispStatusReply)(nil), "lisp.ShowLispStatusReply")
+	api.RegisterMessage((*ShowLispUsePetr)(nil), "lisp.ShowLispUsePetr")
+	api.RegisterMessage((*ShowLispUsePetrReply)(nil), "lisp.ShowLispUsePetrReply")
 }

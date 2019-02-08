@@ -5,13 +5,12 @@
  Package gbp is a generated from VPP binary API module 'gbp'.
 
  It contains following objects:
-	 50 messages
-	 18 types
-	  3 aliases
-	  7 enums
-	  1 union
 	 24 services
-
+	  7 enums
+	  3 aliases
+	 18 types
+	  1 union
+	 50 messages
 */
 package gbp
 
@@ -228,38 +227,6 @@ const (
 	GBP_API_ENDPOINT_FLAG_EXTERNAL      GbpEndpointFlags = 8
 )
 
-// GbpSubnetType represents VPP binary API enum 'gbp_subnet_type':
-//
-//	"gbp_subnet_type",
-//	[
-//	    "GBP_API_SUBNET_TRANSPORT",
-//	    1
-//	],
-//	[
-//	    "GBP_API_SUBNET_STITCHED_INTERNAL",
-//	    2
-//	],
-//	[
-//	    "GBP_API_SUBNET_STITCHED_EXTERNAL",
-//	    3
-//	],
-//	[
-//	    "GBP_API_SUBNET_L3_OUT",
-//	    4
-//	],
-//	{
-//	    "enumtype": "u32"
-//	}
-//
-type GbpSubnetType uint32
-
-const (
-	GBP_API_SUBNET_TRANSPORT         GbpSubnetType = 1
-	GBP_API_SUBNET_STITCHED_INTERNAL GbpSubnetType = 2
-	GBP_API_SUBNET_STITCHED_EXTERNAL GbpSubnetType = 3
-	GBP_API_SUBNET_L3_OUT            GbpSubnetType = 4
-)
-
 // GbpHashMode represents VPP binary API enum 'gbp_hash_mode':
 //
 //	"gbp_hash_mode",
@@ -312,6 +279,38 @@ const (
 	GBP_API_RULE_PERMIT   GbpRuleAction = 1
 	GBP_API_RULE_DENY     GbpRuleAction = 2
 	GBP_API_RULE_REDIRECT GbpRuleAction = 3
+)
+
+// GbpSubnetType represents VPP binary API enum 'gbp_subnet_type':
+//
+//	"gbp_subnet_type",
+//	[
+//	    "GBP_API_SUBNET_TRANSPORT",
+//	    1
+//	],
+//	[
+//	    "GBP_API_SUBNET_STITCHED_INTERNAL",
+//	    2
+//	],
+//	[
+//	    "GBP_API_SUBNET_STITCHED_EXTERNAL",
+//	    3
+//	],
+//	[
+//	    "GBP_API_SUBNET_L3_OUT",
+//	    4
+//	],
+//	{
+//	    "enumtype": "u32"
+//	}
+//
+type GbpSubnetType uint32
+
+const (
+	GBP_API_SUBNET_TRANSPORT         GbpSubnetType = 1
+	GBP_API_SUBNET_STITCHED_INTERNAL GbpSubnetType = 2
+	GBP_API_SUBNET_STITCHED_EXTERNAL GbpSubnetType = 3
+	GBP_API_SUBNET_L3_OUT            GbpSubnetType = 4
 )
 
 // GbpVxlanTunnelMode represents VPP binary API enum 'gbp_vxlan_tunnel_mode':
@@ -394,124 +393,6 @@ func (*Address) GetCrcString() string {
 	return "09f11671"
 }
 
-// Prefix represents VPP binary API type 'prefix':
-//
-//	"prefix",
-//	[
-//	    "vl_api_address_t",
-//	    "address"
-//	],
-//	[
-//	    "u8",
-//	    "address_length"
-//	],
-//	{
-//	    "crc": "0x0403aebc"
-//	}
-//
-type Prefix struct {
-	Address       Address
-	AddressLength uint8
-}
-
-func (*Prefix) GetTypeName() string {
-	return "prefix"
-}
-func (*Prefix) GetCrcString() string {
-	return "0403aebc"
-}
-
-// Mprefix represents VPP binary API type 'mprefix':
-//
-//	"mprefix",
-//	[
-//	    "vl_api_address_family_t",
-//	    "af"
-//	],
-//	[
-//	    "u16",
-//	    "grp_address_length"
-//	],
-//	[
-//	    "vl_api_address_union_t",
-//	    "grp_address"
-//	],
-//	[
-//	    "vl_api_address_union_t",
-//	    "src_address"
-//	],
-//	{
-//	    "crc": "0x1c4cba05"
-//	}
-//
-type Mprefix struct {
-	Af               AddressFamily
-	GrpAddressLength uint16
-	GrpAddress       AddressUnion
-	SrcAddress       AddressUnion
-}
-
-func (*Mprefix) GetTypeName() string {
-	return "mprefix"
-}
-func (*Mprefix) GetCrcString() string {
-	return "1c4cba05"
-}
-
-// IP6Prefix represents VPP binary API type 'ip6_prefix':
-//
-//	"ip6_prefix",
-//	[
-//	    "vl_api_ip6_address_t",
-//	    "prefix"
-//	],
-//	[
-//	    "u8",
-//	    "len"
-//	],
-//	{
-//	    "crc": "0x779fd64f"
-//	}
-//
-type IP6Prefix struct {
-	Prefix IP6Address
-	Len    uint8
-}
-
-func (*IP6Prefix) GetTypeName() string {
-	return "ip6_prefix"
-}
-func (*IP6Prefix) GetCrcString() string {
-	return "779fd64f"
-}
-
-// IP4Prefix represents VPP binary API type 'ip4_prefix':
-//
-//	"ip4_prefix",
-//	[
-//	    "vl_api_ip4_address_t",
-//	    "prefix"
-//	],
-//	[
-//	    "u8",
-//	    "len"
-//	],
-//	{
-//	    "crc": "0xea8dc11d"
-//	}
-//
-type IP4Prefix struct {
-	Prefix IP4Address
-	Len    uint8
-}
-
-func (*IP4Prefix) GetTypeName() string {
-	return "ip4_prefix"
-}
-func (*IP4Prefix) GetCrcString() string {
-	return "ea8dc11d"
-}
-
 // GbpBridgeDomain represents VPP binary API type 'gbp_bridge_domain':
 //
 //	"gbp_bridge_domain",
@@ -549,73 +430,60 @@ func (*GbpBridgeDomain) GetCrcString() string {
 	return "acd57302"
 }
 
-// GbpRouteDomain represents VPP binary API type 'gbp_route_domain':
+// GbpContract represents VPP binary API type 'gbp_contract':
 //
-//	"gbp_route_domain",
+//	"gbp_contract",
 //	[
-//	    "u32",
-//	    "rd_id"
+//	    "u16",
+//	    "src_epg"
+//	],
+//	[
+//	    "u16",
+//	    "dst_epg"
 //	],
 //	[
 //	    "u32",
-//	    "ip4_table_id"
+//	    "acl_index"
 //	],
 //	[
-//	    "u32",
-//	    "ip6_table_id"
+//	    "u8",
+//	    "n_rules"
 //	],
 //	[
-//	    "u32",
-//	    "ip4_uu_sw_if_index"
+//	    "vl_api_gbp_rule_t",
+//	    "rules",
+//	    0,
+//	    "n_rules"
 //	],
 //	[
-//	    "u32",
-//	    "ip6_uu_sw_if_index"
+//	    "u8",
+//	    "n_ether_types"
+//	],
+//	[
+//	    "u16",
+//	    "allowed_ethertypes",
+//	    0,
+//	    "n_ether_types"
 //	],
 //	{
-//	    "crc": "0x542e926e"
+//	    "crc": "0xdc8898ce"
 //	}
 //
-type GbpRouteDomain struct {
-	RdID           uint32
-	IP4TableID     uint32
-	IP6TableID     uint32
-	IP4UuSwIfIndex uint32
-	IP6UuSwIfIndex uint32
+type GbpContract struct {
+	SrcEpg            uint16
+	DstEpg            uint16
+	ACLIndex          uint32
+	NRules            uint8 `struc:"sizeof=Rules"`
+	Rules             []GbpRule
+	NEtherTypes       uint8 `struc:"sizeof=AllowedEthertypes"`
+	AllowedEthertypes []uint16
 }
 
-func (*GbpRouteDomain) GetTypeName() string {
-	return "gbp_route_domain"
+func (*GbpContract) GetTypeName() string {
+	return "gbp_contract"
 }
-func (*GbpRouteDomain) GetCrcString() string {
-	return "542e926e"
-}
-
-// GbpEndpointTun represents VPP binary API type 'gbp_endpoint_tun':
-//
-//	"gbp_endpoint_tun",
-//	[
-//	    "vl_api_address_t",
-//	    "src"
-//	],
-//	[
-//	    "vl_api_address_t",
-//	    "dst"
-//	],
-//	{
-//	    "crc": "0x7e78c6c1"
-//	}
-//
-type GbpEndpointTun struct {
-	Src Address
-	Dst Address
-}
-
-func (*GbpEndpointTun) GetTypeName() string {
-	return "gbp_endpoint_tun"
-}
-func (*GbpEndpointTun) GetCrcString() string {
-	return "7e78c6c1"
+func (*GbpContract) GetCrcString() string {
+	return "dc8898ce"
 }
 
 // GbpEndpoint represents VPP binary API type 'gbp_endpoint':
@@ -709,78 +577,63 @@ func (*GbpEndpointGroup) GetCrcString() string {
 	return "1a85aac3"
 }
 
-// GbpRecirc represents VPP binary API type 'gbp_recirc':
+// GbpEndpointTun represents VPP binary API type 'gbp_endpoint_tun':
 //
-//	"gbp_recirc",
+//	"gbp_endpoint_tun",
+//	[
+//	    "vl_api_address_t",
+//	    "src"
+//	],
+//	[
+//	    "vl_api_address_t",
+//	    "dst"
+//	],
+//	{
+//	    "crc": "0x7e78c6c1"
+//	}
+//
+type GbpEndpointTun struct {
+	Src Address
+	Dst Address
+}
+
+func (*GbpEndpointTun) GetTypeName() string {
+	return "gbp_endpoint_tun"
+}
+func (*GbpEndpointTun) GetCrcString() string {
+	return "7e78c6c1"
+}
+
+// GbpExtItf represents VPP binary API type 'gbp_ext_itf':
+//
+//	"gbp_ext_itf",
 //	[
 //	    "u32",
 //	    "sw_if_index"
 //	],
 //	[
-//	    "u16",
-//	    "epg_id"
+//	    "u32",
+//	    "bd_id"
 //	],
-//	[
-//	    "u8",
-//	    "is_ext"
-//	],
-//	{
-//	    "crc": "0xbfeac561"
-//	}
-//
-type GbpRecirc struct {
-	SwIfIndex uint32
-	EpgID     uint16
-	IsExt     uint8
-}
-
-func (*GbpRecirc) GetTypeName() string {
-	return "gbp_recirc"
-}
-func (*GbpRecirc) GetCrcString() string {
-	return "bfeac561"
-}
-
-// GbpSubnet represents VPP binary API type 'gbp_subnet':
-//
-//	"gbp_subnet",
 //	[
 //	    "u32",
 //	    "rd_id"
 //	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u16",
-//	    "epg_id"
-//	],
-//	[
-//	    "vl_api_gbp_subnet_type_t",
-//	    "type"
-//	],
-//	[
-//	    "vl_api_prefix_t",
-//	    "prefix"
-//	],
 //	{
-//	    "crc": "0x0a141d3b"
+//	    "crc": "0x4ddbf9b9"
 //	}
 //
-type GbpSubnet struct {
-	RdID      uint32
+type GbpExtItf struct {
 	SwIfIndex uint32
-	EpgID     uint16
-	Type      GbpSubnetType
-	Prefix    Prefix
+	BdID      uint32
+	RdID      uint32
 }
 
-func (*GbpSubnet) GetTypeName() string {
-	return "gbp_subnet"
+func (*GbpExtItf) GetTypeName() string {
+	return "gbp_ext_itf"
 }
-func (*GbpSubnet) GetCrcString() string {
-	return "0a141d3b"
+func (*GbpExtItf) GetCrcString() string {
+	return "4ddbf9b9"
 }
 
 // GbpNextHop represents VPP binary API type 'gbp_next_hop':
@@ -853,6 +706,80 @@ func (*GbpNextHopSet) GetCrcString() string {
 	return "bc6d504e"
 }
 
+// GbpRecirc represents VPP binary API type 'gbp_recirc':
+//
+//	"gbp_recirc",
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u16",
+//	    "epg_id"
+//	],
+//	[
+//	    "u8",
+//	    "is_ext"
+//	],
+//	{
+//	    "crc": "0xbfeac561"
+//	}
+//
+type GbpRecirc struct {
+	SwIfIndex uint32
+	EpgID     uint16
+	IsExt     uint8
+}
+
+func (*GbpRecirc) GetTypeName() string {
+	return "gbp_recirc"
+}
+func (*GbpRecirc) GetCrcString() string {
+	return "bfeac561"
+}
+
+// GbpRouteDomain represents VPP binary API type 'gbp_route_domain':
+//
+//	"gbp_route_domain",
+//	[
+//	    "u32",
+//	    "rd_id"
+//	],
+//	[
+//	    "u32",
+//	    "ip4_table_id"
+//	],
+//	[
+//	    "u32",
+//	    "ip6_table_id"
+//	],
+//	[
+//	    "u32",
+//	    "ip4_uu_sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "ip6_uu_sw_if_index"
+//	],
+//	{
+//	    "crc": "0x542e926e"
+//	}
+//
+type GbpRouteDomain struct {
+	RdID           uint32
+	IP4TableID     uint32
+	IP6TableID     uint32
+	IP4UuSwIfIndex uint32
+	IP6UuSwIfIndex uint32
+}
+
+func (*GbpRouteDomain) GetTypeName() string {
+	return "gbp_route_domain"
+}
+func (*GbpRouteDomain) GetCrcString() string {
+	return "542e926e"
+}
+
 // GbpRule represents VPP binary API type 'gbp_rule':
 //
 //	"gbp_rule",
@@ -880,60 +807,46 @@ func (*GbpRule) GetCrcString() string {
 	return "5e208b03"
 }
 
-// GbpContract represents VPP binary API type 'gbp_contract':
+// GbpSubnet represents VPP binary API type 'gbp_subnet':
 //
-//	"gbp_contract",
+//	"gbp_subnet",
 //	[
-//	    "u16",
-//	    "src_epg"
-//	],
-//	[
-//	    "u16",
-//	    "dst_epg"
+//	    "u32",
+//	    "rd_id"
 //	],
 //	[
 //	    "u32",
-//	    "acl_index"
-//	],
-//	[
-//	    "u8",
-//	    "n_rules"
-//	],
-//	[
-//	    "vl_api_gbp_rule_t",
-//	    "rules",
-//	    0,
-//	    "n_rules"
-//	],
-//	[
-//	    "u8",
-//	    "n_ether_types"
+//	    "sw_if_index"
 //	],
 //	[
 //	    "u16",
-//	    "allowed_ethertypes",
-//	    0,
-//	    "n_ether_types"
+//	    "epg_id"
+//	],
+//	[
+//	    "vl_api_gbp_subnet_type_t",
+//	    "type"
+//	],
+//	[
+//	    "vl_api_prefix_t",
+//	    "prefix"
 //	],
 //	{
-//	    "crc": "0xdc8898ce"
+//	    "crc": "0x0a141d3b"
 //	}
 //
-type GbpContract struct {
-	SrcEpg            uint16
-	DstEpg            uint16
-	ACLIndex          uint32
-	NRules            uint8 `struc:"sizeof=Rules"`
-	Rules             []GbpRule
-	NEtherTypes       uint8 `struc:"sizeof=AllowedEthertypes"`
-	AllowedEthertypes []uint16
+type GbpSubnet struct {
+	RdID      uint32
+	SwIfIndex uint32
+	EpgID     uint16
+	Type      GbpSubnetType
+	Prefix    Prefix
 }
 
-func (*GbpContract) GetTypeName() string {
-	return "gbp_contract"
+func (*GbpSubnet) GetTypeName() string {
+	return "gbp_subnet"
 }
-func (*GbpContract) GetCrcString() string {
-	return "dc8898ce"
+func (*GbpSubnet) GetCrcString() string {
+	return "0a141d3b"
 }
 
 // GbpVxlanTunnel represents VPP binary API type 'gbp_vxlan_tunnel':
@@ -968,36 +881,122 @@ func (*GbpVxlanTunnel) GetCrcString() string {
 	return "6c8090b7"
 }
 
-// GbpExtItf represents VPP binary API type 'gbp_ext_itf':
+// IP4Prefix represents VPP binary API type 'ip4_prefix':
 //
-//	"gbp_ext_itf",
+//	"ip4_prefix",
 //	[
-//	    "u32",
-//	    "sw_if_index"
+//	    "vl_api_ip4_address_t",
+//	    "prefix"
 //	],
 //	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	[
-//	    "u32",
-//	    "rd_id"
+//	    "u8",
+//	    "len"
 //	],
 //	{
-//	    "crc": "0x4ddbf9b9"
+//	    "crc": "0xea8dc11d"
 //	}
 //
-type GbpExtItf struct {
-	SwIfIndex uint32
-	BdID      uint32
-	RdID      uint32
+type IP4Prefix struct {
+	Prefix IP4Address
+	Len    uint8
 }
 
-func (*GbpExtItf) GetTypeName() string {
-	return "gbp_ext_itf"
+func (*IP4Prefix) GetTypeName() string {
+	return "ip4_prefix"
 }
-func (*GbpExtItf) GetCrcString() string {
-	return "4ddbf9b9"
+func (*IP4Prefix) GetCrcString() string {
+	return "ea8dc11d"
+}
+
+// IP6Prefix represents VPP binary API type 'ip6_prefix':
+//
+//	"ip6_prefix",
+//	[
+//	    "vl_api_ip6_address_t",
+//	    "prefix"
+//	],
+//	[
+//	    "u8",
+//	    "len"
+//	],
+//	{
+//	    "crc": "0x779fd64f"
+//	}
+//
+type IP6Prefix struct {
+	Prefix IP6Address
+	Len    uint8
+}
+
+func (*IP6Prefix) GetTypeName() string {
+	return "ip6_prefix"
+}
+func (*IP6Prefix) GetCrcString() string {
+	return "779fd64f"
+}
+
+// Mprefix represents VPP binary API type 'mprefix':
+//
+//	"mprefix",
+//	[
+//	    "vl_api_address_family_t",
+//	    "af"
+//	],
+//	[
+//	    "u16",
+//	    "grp_address_length"
+//	],
+//	[
+//	    "vl_api_address_union_t",
+//	    "grp_address"
+//	],
+//	[
+//	    "vl_api_address_union_t",
+//	    "src_address"
+//	],
+//	{
+//	    "crc": "0x1c4cba05"
+//	}
+//
+type Mprefix struct {
+	Af               AddressFamily
+	GrpAddressLength uint16
+	GrpAddress       AddressUnion
+	SrcAddress       AddressUnion
+}
+
+func (*Mprefix) GetTypeName() string {
+	return "mprefix"
+}
+func (*Mprefix) GetCrcString() string {
+	return "1c4cba05"
+}
+
+// Prefix represents VPP binary API type 'prefix':
+//
+//	"prefix",
+//	[
+//	    "vl_api_address_t",
+//	    "address"
+//	],
+//	[
+//	    "u8",
+//	    "address_length"
+//	],
+//	{
+//	    "crc": "0x0403aebc"
+//	}
+//
+type Prefix struct {
+	Address       Address
+	AddressLength uint8
+}
+
+func (*Prefix) GetTypeName() string {
+	return "prefix"
+}
+func (*Prefix) GetCrcString() string {
+	return "0403aebc"
 }
 
 /* Unions */
@@ -1028,6 +1027,10 @@ func (*AddressUnion) GetCrcString() string {
 	return "d68a2fb4"
 }
 
+func AddressUnionIP4(a IP4Address) (u AddressUnion) {
+	u.SetIP4(a)
+	return
+}
 func (u *AddressUnion) SetIP4(a IP4Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -1041,6 +1044,10 @@ func (u *AddressUnion) GetIP4() (a IP4Address) {
 	return
 }
 
+func AddressUnionIP6(a IP6Address) (u AddressUnion) {
+	u.SetIP6(a)
+	return
+}
 func (u *AddressUnion) SetIP6(a IP6Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -1196,6 +1203,39 @@ func (*GbpBridgeDomainDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// GbpBridgeDomainDetails represents VPP binary API message 'gbp_bridge_domain_details':
+//
+//	"gbp_bridge_domain_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_gbp_bridge_domain_t",
+//	    "bd"
+//	],
+//	{
+//	    "crc": "0xcd7dfbfc"
+//	}
+//
+type GbpBridgeDomainDetails struct {
+	Bd GbpBridgeDomain
+}
+
+func (*GbpBridgeDomainDetails) GetMessageName() string {
+	return "gbp_bridge_domain_details"
+}
+func (*GbpBridgeDomainDetails) GetCrcString() string {
+	return "cd7dfbfc"
+}
+func (*GbpBridgeDomainDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // GbpBridgeDomainDump represents VPP binary API message 'gbp_bridge_domain_dump':
 //
 //	"gbp_bridge_domain_dump",
@@ -1260,42 +1300,9 @@ func (*GbpBridgeDomainDumpReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GbpBridgeDomainDetails represents VPP binary API message 'gbp_bridge_domain_details':
+// GbpContractAddDel represents VPP binary API message 'gbp_contract_add_del':
 //
-//	"gbp_bridge_domain_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_gbp_bridge_domain_t",
-//	    "bd"
-//	],
-//	{
-//	    "crc": "0xcd7dfbfc"
-//	}
-//
-type GbpBridgeDomainDetails struct {
-	Bd GbpBridgeDomain
-}
-
-func (*GbpBridgeDomainDetails) GetMessageName() string {
-	return "gbp_bridge_domain_details"
-}
-func (*GbpBridgeDomainDetails) GetCrcString() string {
-	return "cd7dfbfc"
-}
-func (*GbpBridgeDomainDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GbpRouteDomainAdd represents VPP binary API message 'gbp_route_domain_add':
-//
-//	"gbp_route_domain_add",
+//	"gbp_contract_add_del",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1309,30 +1316,35 @@ func (*GbpBridgeDomainDetails) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "vl_api_gbp_route_domain_t",
-//	    "rd"
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "vl_api_gbp_contract_t",
+//	    "contract"
 //	],
 //	{
-//	    "crc": "0x505cfa81"
+//	    "crc": "0xb28a2af5"
 //	}
 //
-type GbpRouteDomainAdd struct {
-	Rd GbpRouteDomain
+type GbpContractAddDel struct {
+	IsAdd    uint8
+	Contract GbpContract
 }
 
-func (*GbpRouteDomainAdd) GetMessageName() string {
-	return "gbp_route_domain_add"
+func (*GbpContractAddDel) GetMessageName() string {
+	return "gbp_contract_add_del"
 }
-func (*GbpRouteDomainAdd) GetCrcString() string {
-	return "505cfa81"
+func (*GbpContractAddDel) GetCrcString() string {
+	return "b28a2af5"
 }
-func (*GbpRouteDomainAdd) GetMessageType() api.MessageType {
+func (*GbpContractAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// GbpRouteDomainAddReply represents VPP binary API message 'gbp_route_domain_add_reply':
+// GbpContractAddDelReply represents VPP binary API message 'gbp_contract_add_del_reply':
 //
-//	"gbp_route_domain_add_reply",
+//	"gbp_contract_add_del_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1349,60 +1361,23 @@ func (*GbpRouteDomainAdd) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type GbpRouteDomainAddReply struct {
+type GbpContractAddDelReply struct {
 	Retval int32
 }
 
-func (*GbpRouteDomainAddReply) GetMessageName() string {
-	return "gbp_route_domain_add_reply"
+func (*GbpContractAddDelReply) GetMessageName() string {
+	return "gbp_contract_add_del_reply"
 }
-func (*GbpRouteDomainAddReply) GetCrcString() string {
+func (*GbpContractAddDelReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*GbpRouteDomainAddReply) GetMessageType() api.MessageType {
+func (*GbpContractAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GbpRouteDomainDel represents VPP binary API message 'gbp_route_domain_del':
+// GbpContractDetails represents VPP binary API message 'gbp_contract_details':
 //
-//	"gbp_route_domain_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "rd_id"
-//	],
-//	{
-//	    "crc": "0xbee4edcd"
-//	}
-//
-type GbpRouteDomainDel struct {
-	RdID uint32
-}
-
-func (*GbpRouteDomainDel) GetMessageName() string {
-	return "gbp_route_domain_del"
-}
-func (*GbpRouteDomainDel) GetCrcString() string {
-	return "bee4edcd"
-}
-func (*GbpRouteDomainDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GbpRouteDomainDelReply represents VPP binary API message 'gbp_route_domain_del_reply':
-//
-//	"gbp_route_domain_del_reply",
+//	"gbp_contract_details",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1412,30 +1387,30 @@ func (*GbpRouteDomainDel) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "i32",
-//	    "retval"
+//	    "vl_api_gbp_contract_t",
+//	    "contract"
 //	],
 //	{
-//	    "crc": "0xe8d4e804"
+//	    "crc": "0x9baf26e3"
 //	}
 //
-type GbpRouteDomainDelReply struct {
-	Retval int32
+type GbpContractDetails struct {
+	Contract GbpContract
 }
 
-func (*GbpRouteDomainDelReply) GetMessageName() string {
-	return "gbp_route_domain_del_reply"
+func (*GbpContractDetails) GetMessageName() string {
+	return "gbp_contract_details"
 }
-func (*GbpRouteDomainDelReply) GetCrcString() string {
-	return "e8d4e804"
+func (*GbpContractDetails) GetCrcString() string {
+	return "9baf26e3"
 }
-func (*GbpRouteDomainDelReply) GetMessageType() api.MessageType {
+func (*GbpContractDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GbpRouteDomainDump represents VPP binary API message 'gbp_route_domain_dump':
+// GbpContractDump represents VPP binary API message 'gbp_contract_dump':
 //
-//	"gbp_route_domain_dump",
+//	"gbp_contract_dump",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1452,82 +1427,16 @@ func (*GbpRouteDomainDelReply) GetMessageType() api.MessageType {
 //	    "crc": "0x51077d14"
 //	}
 //
-type GbpRouteDomainDump struct{}
+type GbpContractDump struct{}
 
-func (*GbpRouteDomainDump) GetMessageName() string {
-	return "gbp_route_domain_dump"
+func (*GbpContractDump) GetMessageName() string {
+	return "gbp_contract_dump"
 }
-func (*GbpRouteDomainDump) GetCrcString() string {
+func (*GbpContractDump) GetCrcString() string {
 	return "51077d14"
 }
-func (*GbpRouteDomainDump) GetMessageType() api.MessageType {
+func (*GbpContractDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
-}
-
-// GbpRouteDomainDumpReply represents VPP binary API message 'gbp_route_domain_dump_reply':
-//
-//	"gbp_route_domain_dump_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type GbpRouteDomainDumpReply struct {
-	Retval int32
-}
-
-func (*GbpRouteDomainDumpReply) GetMessageName() string {
-	return "gbp_route_domain_dump_reply"
-}
-func (*GbpRouteDomainDumpReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*GbpRouteDomainDumpReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GbpRouteDomainDetails represents VPP binary API message 'gbp_route_domain_details':
-//
-//	"gbp_route_domain_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_gbp_route_domain_t",
-//	    "rd"
-//	],
-//	{
-//	    "crc": "0xecb3f53f"
-//	}
-//
-type GbpRouteDomainDetails struct {
-	Rd GbpRouteDomain
-}
-
-func (*GbpRouteDomainDetails) GetMessageName() string {
-	return "gbp_route_domain_details"
-}
-func (*GbpRouteDomainDetails) GetCrcString() string {
-	return "ecb3f53f"
-}
-func (*GbpRouteDomainDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
 }
 
 // GbpEndpointAdd represents VPP binary API message 'gbp_endpoint_add':
@@ -1675,37 +1584,6 @@ func (*GbpEndpointDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GbpEndpointDump represents VPP binary API message 'gbp_endpoint_dump':
-//
-//	"gbp_endpoint_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type GbpEndpointDump struct{}
-
-func (*GbpEndpointDump) GetMessageName() string {
-	return "gbp_endpoint_dump"
-}
-func (*GbpEndpointDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*GbpEndpointDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // GbpEndpointDetails represents VPP binary API message 'gbp_endpoint_details':
 //
 //	"gbp_endpoint_details",
@@ -1747,6 +1625,37 @@ func (*GbpEndpointDetails) GetCrcString() string {
 }
 func (*GbpEndpointDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
+}
+
+// GbpEndpointDump represents VPP binary API message 'gbp_endpoint_dump':
+//
+//	"gbp_endpoint_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type GbpEndpointDump struct{}
+
+func (*GbpEndpointDump) GetMessageName() string {
+	return "gbp_endpoint_dump"
+}
+func (*GbpEndpointDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*GbpEndpointDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
 }
 
 // GbpEndpointGroupAdd represents VPP binary API message 'gbp_endpoint_group_add':
@@ -1889,37 +1798,6 @@ func (*GbpEndpointGroupDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GbpEndpointGroupDump represents VPP binary API message 'gbp_endpoint_group_dump':
-//
-//	"gbp_endpoint_group_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type GbpEndpointGroupDump struct{}
-
-func (*GbpEndpointGroupDump) GetMessageName() string {
-	return "gbp_endpoint_group_dump"
-}
-func (*GbpEndpointGroupDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*GbpEndpointGroupDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // GbpEndpointGroupDetails represents VPP binary API message 'gbp_endpoint_group_details':
 //
 //	"gbp_endpoint_group_details",
@@ -1951,6 +1829,246 @@ func (*GbpEndpointGroupDetails) GetCrcString() string {
 }
 func (*GbpEndpointGroupDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
+}
+
+// GbpEndpointGroupDump represents VPP binary API message 'gbp_endpoint_group_dump':
+//
+//	"gbp_endpoint_group_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type GbpEndpointGroupDump struct{}
+
+func (*GbpEndpointGroupDump) GetMessageName() string {
+	return "gbp_endpoint_group_dump"
+}
+func (*GbpEndpointGroupDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*GbpEndpointGroupDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GbpEndpointLearnSetInactiveThreshold represents VPP binary API message 'gbp_endpoint_learn_set_inactive_threshold':
+//
+//	"gbp_endpoint_learn_set_inactive_threshold",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "threshold"
+//	],
+//	{
+//	    "crc": "0x29657a57"
+//	}
+//
+type GbpEndpointLearnSetInactiveThreshold struct {
+	Threshold uint32
+}
+
+func (*GbpEndpointLearnSetInactiveThreshold) GetMessageName() string {
+	return "gbp_endpoint_learn_set_inactive_threshold"
+}
+func (*GbpEndpointLearnSetInactiveThreshold) GetCrcString() string {
+	return "29657a57"
+}
+func (*GbpEndpointLearnSetInactiveThreshold) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GbpEndpointLearnSetInactiveThresholdReply represents VPP binary API message 'gbp_endpoint_learn_set_inactive_threshold_reply':
+//
+//	"gbp_endpoint_learn_set_inactive_threshold_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type GbpEndpointLearnSetInactiveThresholdReply struct {
+	Retval int32
+}
+
+func (*GbpEndpointLearnSetInactiveThresholdReply) GetMessageName() string {
+	return "gbp_endpoint_learn_set_inactive_threshold_reply"
+}
+func (*GbpEndpointLearnSetInactiveThresholdReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*GbpEndpointLearnSetInactiveThresholdReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GbpExtItfAddDel represents VPP binary API message 'gbp_ext_itf_add_del':
+//
+//	"gbp_ext_itf_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "vl_api_gbp_ext_itf_t",
+//	    "ext_itf"
+//	],
+//	{
+//	    "crc": "0xa67d6707"
+//	}
+//
+type GbpExtItfAddDel struct {
+	IsAdd  uint8
+	ExtItf GbpExtItf
+}
+
+func (*GbpExtItfAddDel) GetMessageName() string {
+	return "gbp_ext_itf_add_del"
+}
+func (*GbpExtItfAddDel) GetCrcString() string {
+	return "a67d6707"
+}
+func (*GbpExtItfAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GbpExtItfAddDelReply represents VPP binary API message 'gbp_ext_itf_add_del_reply':
+//
+//	"gbp_ext_itf_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type GbpExtItfAddDelReply struct {
+	Retval int32
+}
+
+func (*GbpExtItfAddDelReply) GetMessageName() string {
+	return "gbp_ext_itf_add_del_reply"
+}
+func (*GbpExtItfAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*GbpExtItfAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GbpExtItfDetails represents VPP binary API message 'gbp_ext_itf_details':
+//
+//	"gbp_ext_itf_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_gbp_ext_itf_t",
+//	    "ext_itf"
+//	],
+//	{
+//	    "crc": "0xda7b625c"
+//	}
+//
+type GbpExtItfDetails struct {
+	ExtItf GbpExtItf
+}
+
+func (*GbpExtItfDetails) GetMessageName() string {
+	return "gbp_ext_itf_details"
+}
+func (*GbpExtItfDetails) GetCrcString() string {
+	return "da7b625c"
+}
+func (*GbpExtItfDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GbpExtItfDump represents VPP binary API message 'gbp_ext_itf_dump':
+//
+//	"gbp_ext_itf_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type GbpExtItfDump struct{}
+
+func (*GbpExtItfDump) GetMessageName() string {
+	return "gbp_ext_itf_dump"
+}
+func (*GbpExtItfDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*GbpExtItfDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
 }
 
 // GbpRecircAddDel represents VPP binary API message 'gbp_recirc_add_del':
@@ -2028,6 +2146,39 @@ func (*GbpRecircAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// GbpRecircDetails represents VPP binary API message 'gbp_recirc_details':
+//
+//	"gbp_recirc_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_gbp_recirc_t",
+//	    "recirc"
+//	],
+//	{
+//	    "crc": "0x140307d5"
+//	}
+//
+type GbpRecircDetails struct {
+	Recirc GbpRecirc
+}
+
+func (*GbpRecircDetails) GetMessageName() string {
+	return "gbp_recirc_details"
+}
+func (*GbpRecircDetails) GetCrcString() string {
+	return "140307d5"
+}
+func (*GbpRecircDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // GbpRecircDump represents VPP binary API message 'gbp_recirc_dump':
 //
 //	"gbp_recirc_dump",
@@ -2059,9 +2210,46 @@ func (*GbpRecircDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// GbpRecircDetails represents VPP binary API message 'gbp_recirc_details':
+// GbpRouteDomainAdd represents VPP binary API message 'gbp_route_domain_add':
 //
-//	"gbp_recirc_details",
+//	"gbp_route_domain_add",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_gbp_route_domain_t",
+//	    "rd"
+//	],
+//	{
+//	    "crc": "0x505cfa81"
+//	}
+//
+type GbpRouteDomainAdd struct {
+	Rd GbpRouteDomain
+}
+
+func (*GbpRouteDomainAdd) GetMessageName() string {
+	return "gbp_route_domain_add"
+}
+func (*GbpRouteDomainAdd) GetCrcString() string {
+	return "505cfa81"
+}
+func (*GbpRouteDomainAdd) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GbpRouteDomainAddReply represents VPP binary API message 'gbp_route_domain_add_reply':
+//
+//	"gbp_route_domain_add_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -2071,24 +2259,191 @@ func (*GbpRecircDump) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "vl_api_gbp_recirc_t",
-//	    "recirc"
+//	    "i32",
+//	    "retval"
 //	],
 //	{
-//	    "crc": "0x140307d5"
+//	    "crc": "0xe8d4e804"
 //	}
 //
-type GbpRecircDetails struct {
-	Recirc GbpRecirc
+type GbpRouteDomainAddReply struct {
+	Retval int32
 }
 
-func (*GbpRecircDetails) GetMessageName() string {
-	return "gbp_recirc_details"
+func (*GbpRouteDomainAddReply) GetMessageName() string {
+	return "gbp_route_domain_add_reply"
 }
-func (*GbpRecircDetails) GetCrcString() string {
-	return "140307d5"
+func (*GbpRouteDomainAddReply) GetCrcString() string {
+	return "e8d4e804"
 }
-func (*GbpRecircDetails) GetMessageType() api.MessageType {
+func (*GbpRouteDomainAddReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GbpRouteDomainDel represents VPP binary API message 'gbp_route_domain_del':
+//
+//	"gbp_route_domain_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "rd_id"
+//	],
+//	{
+//	    "crc": "0xbee4edcd"
+//	}
+//
+type GbpRouteDomainDel struct {
+	RdID uint32
+}
+
+func (*GbpRouteDomainDel) GetMessageName() string {
+	return "gbp_route_domain_del"
+}
+func (*GbpRouteDomainDel) GetCrcString() string {
+	return "bee4edcd"
+}
+func (*GbpRouteDomainDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GbpRouteDomainDelReply represents VPP binary API message 'gbp_route_domain_del_reply':
+//
+//	"gbp_route_domain_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type GbpRouteDomainDelReply struct {
+	Retval int32
+}
+
+func (*GbpRouteDomainDelReply) GetMessageName() string {
+	return "gbp_route_domain_del_reply"
+}
+func (*GbpRouteDomainDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*GbpRouteDomainDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GbpRouteDomainDetails represents VPP binary API message 'gbp_route_domain_details':
+//
+//	"gbp_route_domain_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_gbp_route_domain_t",
+//	    "rd"
+//	],
+//	{
+//	    "crc": "0xecb3f53f"
+//	}
+//
+type GbpRouteDomainDetails struct {
+	Rd GbpRouteDomain
+}
+
+func (*GbpRouteDomainDetails) GetMessageName() string {
+	return "gbp_route_domain_details"
+}
+func (*GbpRouteDomainDetails) GetCrcString() string {
+	return "ecb3f53f"
+}
+func (*GbpRouteDomainDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GbpRouteDomainDump represents VPP binary API message 'gbp_route_domain_dump':
+//
+//	"gbp_route_domain_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type GbpRouteDomainDump struct{}
+
+func (*GbpRouteDomainDump) GetMessageName() string {
+	return "gbp_route_domain_dump"
+}
+func (*GbpRouteDomainDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*GbpRouteDomainDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GbpRouteDomainDumpReply represents VPP binary API message 'gbp_route_domain_dump_reply':
+//
+//	"gbp_route_domain_dump_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type GbpRouteDomainDumpReply struct {
+	Retval int32
+}
+
+func (*GbpRouteDomainDumpReply) GetMessageName() string {
+	return "gbp_route_domain_dump_reply"
+}
+func (*GbpRouteDomainDumpReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*GbpRouteDomainDumpReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -2167,37 +2522,6 @@ func (*GbpSubnetAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GbpSubnetDump represents VPP binary API message 'gbp_subnet_dump':
-//
-//	"gbp_subnet_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type GbpSubnetDump struct{}
-
-func (*GbpSubnetDump) GetMessageName() string {
-	return "gbp_subnet_dump"
-}
-func (*GbpSubnetDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*GbpSubnetDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // GbpSubnetDetails represents VPP binary API message 'gbp_subnet_details':
 //
 //	"gbp_subnet_details",
@@ -2231,84 +2555,9 @@ func (*GbpSubnetDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GbpContractAddDel represents VPP binary API message 'gbp_contract_add_del':
+// GbpSubnetDump represents VPP binary API message 'gbp_subnet_dump':
 //
-//	"gbp_contract_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "vl_api_gbp_contract_t",
-//	    "contract"
-//	],
-//	{
-//	    "crc": "0xb28a2af5"
-//	}
-//
-type GbpContractAddDel struct {
-	IsAdd    uint8
-	Contract GbpContract
-}
-
-func (*GbpContractAddDel) GetMessageName() string {
-	return "gbp_contract_add_del"
-}
-func (*GbpContractAddDel) GetCrcString() string {
-	return "b28a2af5"
-}
-func (*GbpContractAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GbpContractAddDelReply represents VPP binary API message 'gbp_contract_add_del_reply':
-//
-//	"gbp_contract_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type GbpContractAddDelReply struct {
-	Retval int32
-}
-
-func (*GbpContractAddDelReply) GetMessageName() string {
-	return "gbp_contract_add_del_reply"
-}
-func (*GbpContractAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*GbpContractAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GbpContractDump represents VPP binary API message 'gbp_contract_dump':
-//
-//	"gbp_contract_dump",
+//	"gbp_subnet_dump",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -2325,119 +2574,16 @@ func (*GbpContractAddDelReply) GetMessageType() api.MessageType {
 //	    "crc": "0x51077d14"
 //	}
 //
-type GbpContractDump struct{}
+type GbpSubnetDump struct{}
 
-func (*GbpContractDump) GetMessageName() string {
-	return "gbp_contract_dump"
+func (*GbpSubnetDump) GetMessageName() string {
+	return "gbp_subnet_dump"
 }
-func (*GbpContractDump) GetCrcString() string {
+func (*GbpSubnetDump) GetCrcString() string {
 	return "51077d14"
 }
-func (*GbpContractDump) GetMessageType() api.MessageType {
+func (*GbpSubnetDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
-}
-
-// GbpContractDetails represents VPP binary API message 'gbp_contract_details':
-//
-//	"gbp_contract_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_gbp_contract_t",
-//	    "contract"
-//	],
-//	{
-//	    "crc": "0x9baf26e3"
-//	}
-//
-type GbpContractDetails struct {
-	Contract GbpContract
-}
-
-func (*GbpContractDetails) GetMessageName() string {
-	return "gbp_contract_details"
-}
-func (*GbpContractDetails) GetCrcString() string {
-	return "9baf26e3"
-}
-func (*GbpContractDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GbpEndpointLearnSetInactiveThreshold represents VPP binary API message 'gbp_endpoint_learn_set_inactive_threshold':
-//
-//	"gbp_endpoint_learn_set_inactive_threshold",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "threshold"
-//	],
-//	{
-//	    "crc": "0x29657a57"
-//	}
-//
-type GbpEndpointLearnSetInactiveThreshold struct {
-	Threshold uint32
-}
-
-func (*GbpEndpointLearnSetInactiveThreshold) GetMessageName() string {
-	return "gbp_endpoint_learn_set_inactive_threshold"
-}
-func (*GbpEndpointLearnSetInactiveThreshold) GetCrcString() string {
-	return "29657a57"
-}
-func (*GbpEndpointLearnSetInactiveThreshold) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GbpEndpointLearnSetInactiveThresholdReply represents VPP binary API message 'gbp_endpoint_learn_set_inactive_threshold_reply':
-//
-//	"gbp_endpoint_learn_set_inactive_threshold_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type GbpEndpointLearnSetInactiveThresholdReply struct {
-	Retval int32
-}
-
-func (*GbpEndpointLearnSetInactiveThresholdReply) GetMessageName() string {
-	return "gbp_endpoint_learn_set_inactive_threshold_reply"
-}
-func (*GbpEndpointLearnSetInactiveThresholdReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*GbpEndpointLearnSetInactiveThresholdReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
 }
 
 // GbpVxlanTunnelAdd represents VPP binary API message 'gbp_vxlan_tunnel_add':
@@ -2585,37 +2731,6 @@ func (*GbpVxlanTunnelDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GbpVxlanTunnelDump represents VPP binary API message 'gbp_vxlan_tunnel_dump':
-//
-//	"gbp_vxlan_tunnel_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type GbpVxlanTunnelDump struct{}
-
-func (*GbpVxlanTunnelDump) GetMessageName() string {
-	return "gbp_vxlan_tunnel_dump"
-}
-func (*GbpVxlanTunnelDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*GbpVxlanTunnelDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // GbpVxlanTunnelDetails represents VPP binary API message 'gbp_vxlan_tunnel_details':
 //
 //	"gbp_vxlan_tunnel_details",
@@ -2649,84 +2764,9 @@ func (*GbpVxlanTunnelDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GbpExtItfAddDel represents VPP binary API message 'gbp_ext_itf_add_del':
+// GbpVxlanTunnelDump represents VPP binary API message 'gbp_vxlan_tunnel_dump':
 //
-//	"gbp_ext_itf_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "vl_api_gbp_ext_itf_t",
-//	    "ext_itf"
-//	],
-//	{
-//	    "crc": "0xa67d6707"
-//	}
-//
-type GbpExtItfAddDel struct {
-	IsAdd  uint8
-	ExtItf GbpExtItf
-}
-
-func (*GbpExtItfAddDel) GetMessageName() string {
-	return "gbp_ext_itf_add_del"
-}
-func (*GbpExtItfAddDel) GetCrcString() string {
-	return "a67d6707"
-}
-func (*GbpExtItfAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GbpExtItfAddDelReply represents VPP binary API message 'gbp_ext_itf_add_del_reply':
-//
-//	"gbp_ext_itf_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type GbpExtItfAddDelReply struct {
-	Retval int32
-}
-
-func (*GbpExtItfAddDelReply) GetMessageName() string {
-	return "gbp_ext_itf_add_del_reply"
-}
-func (*GbpExtItfAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*GbpExtItfAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GbpExtItfDump represents VPP binary API message 'gbp_ext_itf_dump':
-//
-//	"gbp_ext_itf_dump",
+//	"gbp_vxlan_tunnel_dump",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -2743,49 +2783,16 @@ func (*GbpExtItfAddDelReply) GetMessageType() api.MessageType {
 //	    "crc": "0x51077d14"
 //	}
 //
-type GbpExtItfDump struct{}
+type GbpVxlanTunnelDump struct{}
 
-func (*GbpExtItfDump) GetMessageName() string {
-	return "gbp_ext_itf_dump"
+func (*GbpVxlanTunnelDump) GetMessageName() string {
+	return "gbp_vxlan_tunnel_dump"
 }
-func (*GbpExtItfDump) GetCrcString() string {
+func (*GbpVxlanTunnelDump) GetCrcString() string {
 	return "51077d14"
 }
-func (*GbpExtItfDump) GetMessageType() api.MessageType {
+func (*GbpVxlanTunnelDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
-}
-
-// GbpExtItfDetails represents VPP binary API message 'gbp_ext_itf_details':
-//
-//	"gbp_ext_itf_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_gbp_ext_itf_t",
-//	    "ext_itf"
-//	],
-//	{
-//	    "crc": "0xda7b625c"
-//	}
-//
-type GbpExtItfDetails struct {
-	ExtItf GbpExtItf
-}
-
-func (*GbpExtItfDetails) GetMessageName() string {
-	return "gbp_ext_itf_details"
-}
-func (*GbpExtItfDetails) GetCrcString() string {
-	return "da7b625c"
-}
-func (*GbpExtItfDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
 }
 
 func init() {
@@ -2793,50 +2800,50 @@ func init() {
 	api.RegisterMessage((*GbpBridgeDomainAddReply)(nil), "gbp.GbpBridgeDomainAddReply")
 	api.RegisterMessage((*GbpBridgeDomainDel)(nil), "gbp.GbpBridgeDomainDel")
 	api.RegisterMessage((*GbpBridgeDomainDelReply)(nil), "gbp.GbpBridgeDomainDelReply")
+	api.RegisterMessage((*GbpBridgeDomainDetails)(nil), "gbp.GbpBridgeDomainDetails")
 	api.RegisterMessage((*GbpBridgeDomainDump)(nil), "gbp.GbpBridgeDomainDump")
 	api.RegisterMessage((*GbpBridgeDomainDumpReply)(nil), "gbp.GbpBridgeDomainDumpReply")
-	api.RegisterMessage((*GbpBridgeDomainDetails)(nil), "gbp.GbpBridgeDomainDetails")
-	api.RegisterMessage((*GbpRouteDomainAdd)(nil), "gbp.GbpRouteDomainAdd")
-	api.RegisterMessage((*GbpRouteDomainAddReply)(nil), "gbp.GbpRouteDomainAddReply")
-	api.RegisterMessage((*GbpRouteDomainDel)(nil), "gbp.GbpRouteDomainDel")
-	api.RegisterMessage((*GbpRouteDomainDelReply)(nil), "gbp.GbpRouteDomainDelReply")
-	api.RegisterMessage((*GbpRouteDomainDump)(nil), "gbp.GbpRouteDomainDump")
-	api.RegisterMessage((*GbpRouteDomainDumpReply)(nil), "gbp.GbpRouteDomainDumpReply")
-	api.RegisterMessage((*GbpRouteDomainDetails)(nil), "gbp.GbpRouteDomainDetails")
+	api.RegisterMessage((*GbpContractAddDel)(nil), "gbp.GbpContractAddDel")
+	api.RegisterMessage((*GbpContractAddDelReply)(nil), "gbp.GbpContractAddDelReply")
+	api.RegisterMessage((*GbpContractDetails)(nil), "gbp.GbpContractDetails")
+	api.RegisterMessage((*GbpContractDump)(nil), "gbp.GbpContractDump")
 	api.RegisterMessage((*GbpEndpointAdd)(nil), "gbp.GbpEndpointAdd")
 	api.RegisterMessage((*GbpEndpointAddReply)(nil), "gbp.GbpEndpointAddReply")
 	api.RegisterMessage((*GbpEndpointDel)(nil), "gbp.GbpEndpointDel")
 	api.RegisterMessage((*GbpEndpointDelReply)(nil), "gbp.GbpEndpointDelReply")
-	api.RegisterMessage((*GbpEndpointDump)(nil), "gbp.GbpEndpointDump")
 	api.RegisterMessage((*GbpEndpointDetails)(nil), "gbp.GbpEndpointDetails")
+	api.RegisterMessage((*GbpEndpointDump)(nil), "gbp.GbpEndpointDump")
 	api.RegisterMessage((*GbpEndpointGroupAdd)(nil), "gbp.GbpEndpointGroupAdd")
 	api.RegisterMessage((*GbpEndpointGroupAddReply)(nil), "gbp.GbpEndpointGroupAddReply")
 	api.RegisterMessage((*GbpEndpointGroupDel)(nil), "gbp.GbpEndpointGroupDel")
 	api.RegisterMessage((*GbpEndpointGroupDelReply)(nil), "gbp.GbpEndpointGroupDelReply")
-	api.RegisterMessage((*GbpEndpointGroupDump)(nil), "gbp.GbpEndpointGroupDump")
 	api.RegisterMessage((*GbpEndpointGroupDetails)(nil), "gbp.GbpEndpointGroupDetails")
-	api.RegisterMessage((*GbpRecircAddDel)(nil), "gbp.GbpRecircAddDel")
-	api.RegisterMessage((*GbpRecircAddDelReply)(nil), "gbp.GbpRecircAddDelReply")
-	api.RegisterMessage((*GbpRecircDump)(nil), "gbp.GbpRecircDump")
-	api.RegisterMessage((*GbpRecircDetails)(nil), "gbp.GbpRecircDetails")
-	api.RegisterMessage((*GbpSubnetAddDel)(nil), "gbp.GbpSubnetAddDel")
-	api.RegisterMessage((*GbpSubnetAddDelReply)(nil), "gbp.GbpSubnetAddDelReply")
-	api.RegisterMessage((*GbpSubnetDump)(nil), "gbp.GbpSubnetDump")
-	api.RegisterMessage((*GbpSubnetDetails)(nil), "gbp.GbpSubnetDetails")
-	api.RegisterMessage((*GbpContractAddDel)(nil), "gbp.GbpContractAddDel")
-	api.RegisterMessage((*GbpContractAddDelReply)(nil), "gbp.GbpContractAddDelReply")
-	api.RegisterMessage((*GbpContractDump)(nil), "gbp.GbpContractDump")
-	api.RegisterMessage((*GbpContractDetails)(nil), "gbp.GbpContractDetails")
+	api.RegisterMessage((*GbpEndpointGroupDump)(nil), "gbp.GbpEndpointGroupDump")
 	api.RegisterMessage((*GbpEndpointLearnSetInactiveThreshold)(nil), "gbp.GbpEndpointLearnSetInactiveThreshold")
 	api.RegisterMessage((*GbpEndpointLearnSetInactiveThresholdReply)(nil), "gbp.GbpEndpointLearnSetInactiveThresholdReply")
+	api.RegisterMessage((*GbpExtItfAddDel)(nil), "gbp.GbpExtItfAddDel")
+	api.RegisterMessage((*GbpExtItfAddDelReply)(nil), "gbp.GbpExtItfAddDelReply")
+	api.RegisterMessage((*GbpExtItfDetails)(nil), "gbp.GbpExtItfDetails")
+	api.RegisterMessage((*GbpExtItfDump)(nil), "gbp.GbpExtItfDump")
+	api.RegisterMessage((*GbpRecircAddDel)(nil), "gbp.GbpRecircAddDel")
+	api.RegisterMessage((*GbpRecircAddDelReply)(nil), "gbp.GbpRecircAddDelReply")
+	api.RegisterMessage((*GbpRecircDetails)(nil), "gbp.GbpRecircDetails")
+	api.RegisterMessage((*GbpRecircDump)(nil), "gbp.GbpRecircDump")
+	api.RegisterMessage((*GbpRouteDomainAdd)(nil), "gbp.GbpRouteDomainAdd")
+	api.RegisterMessage((*GbpRouteDomainAddReply)(nil), "gbp.GbpRouteDomainAddReply")
+	api.RegisterMessage((*GbpRouteDomainDel)(nil), "gbp.GbpRouteDomainDel")
+	api.RegisterMessage((*GbpRouteDomainDelReply)(nil), "gbp.GbpRouteDomainDelReply")
+	api.RegisterMessage((*GbpRouteDomainDetails)(nil), "gbp.GbpRouteDomainDetails")
+	api.RegisterMessage((*GbpRouteDomainDump)(nil), "gbp.GbpRouteDomainDump")
+	api.RegisterMessage((*GbpRouteDomainDumpReply)(nil), "gbp.GbpRouteDomainDumpReply")
+	api.RegisterMessage((*GbpSubnetAddDel)(nil), "gbp.GbpSubnetAddDel")
+	api.RegisterMessage((*GbpSubnetAddDelReply)(nil), "gbp.GbpSubnetAddDelReply")
+	api.RegisterMessage((*GbpSubnetDetails)(nil), "gbp.GbpSubnetDetails")
+	api.RegisterMessage((*GbpSubnetDump)(nil), "gbp.GbpSubnetDump")
 	api.RegisterMessage((*GbpVxlanTunnelAdd)(nil), "gbp.GbpVxlanTunnelAdd")
 	api.RegisterMessage((*GbpVxlanTunnelAddReply)(nil), "gbp.GbpVxlanTunnelAddReply")
 	api.RegisterMessage((*GbpVxlanTunnelDel)(nil), "gbp.GbpVxlanTunnelDel")
 	api.RegisterMessage((*GbpVxlanTunnelDelReply)(nil), "gbp.GbpVxlanTunnelDelReply")
-	api.RegisterMessage((*GbpVxlanTunnelDump)(nil), "gbp.GbpVxlanTunnelDump")
 	api.RegisterMessage((*GbpVxlanTunnelDetails)(nil), "gbp.GbpVxlanTunnelDetails")
-	api.RegisterMessage((*GbpExtItfAddDel)(nil), "gbp.GbpExtItfAddDel")
-	api.RegisterMessage((*GbpExtItfAddDelReply)(nil), "gbp.GbpExtItfAddDelReply")
-	api.RegisterMessage((*GbpExtItfDump)(nil), "gbp.GbpExtItfDump")
-	api.RegisterMessage((*GbpExtItfDetails)(nil), "gbp.GbpExtItfDetails")
+	api.RegisterMessage((*GbpVxlanTunnelDump)(nil), "gbp.GbpVxlanTunnelDump")
 }

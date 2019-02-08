@@ -5,9 +5,8 @@
  Package sr_mpls is a generated from VPP binary API module 'sr_mpls'.
 
  It contains following objects:
-	 10 messages
 	  5 services
-
+	 10 messages
 */
 package sr_mpls
 
@@ -145,6 +144,162 @@ func (*SrMplsPolicyAddReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// SrMplsPolicyAssignEndpointColor represents VPP binary API message 'sr_mpls_policy_assign_endpoint_color':
+//
+//	"sr_mpls_policy_assign_endpoint_color",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bsid"
+//	],
+//	[
+//	    "u8",
+//	    "endpoint",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "endpoint_type"
+//	],
+//	[
+//	    "u32",
+//	    "color"
+//	],
+//	{
+//	    "crc": "0x6c82a6da"
+//	}
+//
+type SrMplsPolicyAssignEndpointColor struct {
+	Bsid         uint32
+	Endpoint     []byte `struc:"[16]byte"`
+	EndpointType uint8
+	Color        uint32
+}
+
+func (*SrMplsPolicyAssignEndpointColor) GetMessageName() string {
+	return "sr_mpls_policy_assign_endpoint_color"
+}
+func (*SrMplsPolicyAssignEndpointColor) GetCrcString() string {
+	return "6c82a6da"
+}
+func (*SrMplsPolicyAssignEndpointColor) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// SrMplsPolicyAssignEndpointColorReply represents VPP binary API message 'sr_mpls_policy_assign_endpoint_color_reply':
+//
+//	"sr_mpls_policy_assign_endpoint_color_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type SrMplsPolicyAssignEndpointColorReply struct {
+	Retval int32
+}
+
+func (*SrMplsPolicyAssignEndpointColorReply) GetMessageName() string {
+	return "sr_mpls_policy_assign_endpoint_color_reply"
+}
+func (*SrMplsPolicyAssignEndpointColorReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*SrMplsPolicyAssignEndpointColorReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// SrMplsPolicyDel represents VPP binary API message 'sr_mpls_policy_del':
+//
+//	"sr_mpls_policy_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bsid"
+//	],
+//	{
+//	    "crc": "0xe29d34fa"
+//	}
+//
+type SrMplsPolicyDel struct {
+	Bsid uint32
+}
+
+func (*SrMplsPolicyDel) GetMessageName() string {
+	return "sr_mpls_policy_del"
+}
+func (*SrMplsPolicyDel) GetCrcString() string {
+	return "e29d34fa"
+}
+func (*SrMplsPolicyDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// SrMplsPolicyDelReply represents VPP binary API message 'sr_mpls_policy_del_reply':
+//
+//	"sr_mpls_policy_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type SrMplsPolicyDelReply struct {
+	Retval int32
+}
+
+func (*SrMplsPolicyDelReply) GetMessageName() string {
+	return "sr_mpls_policy_del_reply"
+}
+func (*SrMplsPolicyDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*SrMplsPolicyDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // SrMplsPolicyMod represents VPP binary API message 'sr_mpls_policy_mod':
 //
 //	"sr_mpls_policy_mod",
@@ -239,76 +394,6 @@ func (*SrMplsPolicyModReply) GetCrcString() string {
 	return "e8d4e804"
 }
 func (*SrMplsPolicyModReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// SrMplsPolicyDel represents VPP binary API message 'sr_mpls_policy_del':
-//
-//	"sr_mpls_policy_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bsid"
-//	],
-//	{
-//	    "crc": "0xe29d34fa"
-//	}
-//
-type SrMplsPolicyDel struct {
-	Bsid uint32
-}
-
-func (*SrMplsPolicyDel) GetMessageName() string {
-	return "sr_mpls_policy_del"
-}
-func (*SrMplsPolicyDel) GetCrcString() string {
-	return "e29d34fa"
-}
-func (*SrMplsPolicyDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SrMplsPolicyDelReply represents VPP binary API message 'sr_mpls_policy_del_reply':
-//
-//	"sr_mpls_policy_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type SrMplsPolicyDelReply struct {
-	Retval int32
-}
-
-func (*SrMplsPolicyDelReply) GetMessageName() string {
-	return "sr_mpls_policy_del_reply"
-}
-func (*SrMplsPolicyDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*SrMplsPolicyDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -434,101 +519,15 @@ func (*SrMplsSteeringAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// SrMplsPolicyAssignEndpointColor represents VPP binary API message 'sr_mpls_policy_assign_endpoint_color':
-//
-//	"sr_mpls_policy_assign_endpoint_color",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bsid"
-//	],
-//	[
-//	    "u8",
-//	    "endpoint",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "endpoint_type"
-//	],
-//	[
-//	    "u32",
-//	    "color"
-//	],
-//	{
-//	    "crc": "0x6c82a6da"
-//	}
-//
-type SrMplsPolicyAssignEndpointColor struct {
-	Bsid         uint32
-	Endpoint     []byte `struc:"[16]byte"`
-	EndpointType uint8
-	Color        uint32
-}
-
-func (*SrMplsPolicyAssignEndpointColor) GetMessageName() string {
-	return "sr_mpls_policy_assign_endpoint_color"
-}
-func (*SrMplsPolicyAssignEndpointColor) GetCrcString() string {
-	return "6c82a6da"
-}
-func (*SrMplsPolicyAssignEndpointColor) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SrMplsPolicyAssignEndpointColorReply represents VPP binary API message 'sr_mpls_policy_assign_endpoint_color_reply':
-//
-//	"sr_mpls_policy_assign_endpoint_color_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type SrMplsPolicyAssignEndpointColorReply struct {
-	Retval int32
-}
-
-func (*SrMplsPolicyAssignEndpointColorReply) GetMessageName() string {
-	return "sr_mpls_policy_assign_endpoint_color_reply"
-}
-func (*SrMplsPolicyAssignEndpointColorReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*SrMplsPolicyAssignEndpointColorReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 func init() {
 	api.RegisterMessage((*SrMplsPolicyAdd)(nil), "sr_mpls.SrMplsPolicyAdd")
 	api.RegisterMessage((*SrMplsPolicyAddReply)(nil), "sr_mpls.SrMplsPolicyAddReply")
-	api.RegisterMessage((*SrMplsPolicyMod)(nil), "sr_mpls.SrMplsPolicyMod")
-	api.RegisterMessage((*SrMplsPolicyModReply)(nil), "sr_mpls.SrMplsPolicyModReply")
-	api.RegisterMessage((*SrMplsPolicyDel)(nil), "sr_mpls.SrMplsPolicyDel")
-	api.RegisterMessage((*SrMplsPolicyDelReply)(nil), "sr_mpls.SrMplsPolicyDelReply")
-	api.RegisterMessage((*SrMplsSteeringAddDel)(nil), "sr_mpls.SrMplsSteeringAddDel")
-	api.RegisterMessage((*SrMplsSteeringAddDelReply)(nil), "sr_mpls.SrMplsSteeringAddDelReply")
 	api.RegisterMessage((*SrMplsPolicyAssignEndpointColor)(nil), "sr_mpls.SrMplsPolicyAssignEndpointColor")
 	api.RegisterMessage((*SrMplsPolicyAssignEndpointColorReply)(nil), "sr_mpls.SrMplsPolicyAssignEndpointColorReply")
+	api.RegisterMessage((*SrMplsPolicyDel)(nil), "sr_mpls.SrMplsPolicyDel")
+	api.RegisterMessage((*SrMplsPolicyDelReply)(nil), "sr_mpls.SrMplsPolicyDelReply")
+	api.RegisterMessage((*SrMplsPolicyMod)(nil), "sr_mpls.SrMplsPolicyMod")
+	api.RegisterMessage((*SrMplsPolicyModReply)(nil), "sr_mpls.SrMplsPolicyModReply")
+	api.RegisterMessage((*SrMplsSteeringAddDel)(nil), "sr_mpls.SrMplsSteeringAddDel")
+	api.RegisterMessage((*SrMplsSteeringAddDelReply)(nil), "sr_mpls.SrMplsSteeringAddDelReply")
 }

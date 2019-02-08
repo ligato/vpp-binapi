@@ -5,13 +5,12 @@
  Package vxlan_gbp is a generated from VPP binary API module 'vxlan_gbp'.
 
  It contains following objects:
-	  6 messages
-	  6 types
-	  2 aliases
-	  1 enum
-	  1 union
 	  3 services
-
+	  1 enum
+	  2 aliases
+	  6 types
+	  1 union
+	  6 messages
 */
 package vxlan_gbp
 
@@ -121,31 +120,58 @@ func (*Address) GetCrcString() string {
 	return "09f11671"
 }
 
-// Prefix represents VPP binary API type 'prefix':
+// IP4Prefix represents VPP binary API type 'ip4_prefix':
 //
-//	"prefix",
+//	"ip4_prefix",
 //	[
-//	    "vl_api_address_t",
-//	    "address"
+//	    "vl_api_ip4_address_t",
+//	    "prefix"
 //	],
 //	[
 //	    "u8",
-//	    "address_length"
+//	    "len"
 //	],
 //	{
-//	    "crc": "0x0403aebc"
+//	    "crc": "0xea8dc11d"
 //	}
 //
-type Prefix struct {
-	Address       Address
-	AddressLength uint8
+type IP4Prefix struct {
+	Prefix IP4Address
+	Len    uint8
 }
 
-func (*Prefix) GetTypeName() string {
-	return "prefix"
+func (*IP4Prefix) GetTypeName() string {
+	return "ip4_prefix"
 }
-func (*Prefix) GetCrcString() string {
-	return "0403aebc"
+func (*IP4Prefix) GetCrcString() string {
+	return "ea8dc11d"
+}
+
+// IP6Prefix represents VPP binary API type 'ip6_prefix':
+//
+//	"ip6_prefix",
+//	[
+//	    "vl_api_ip6_address_t",
+//	    "prefix"
+//	],
+//	[
+//	    "u8",
+//	    "len"
+//	],
+//	{
+//	    "crc": "0x779fd64f"
+//	}
+//
+type IP6Prefix struct {
+	Prefix IP6Address
+	Len    uint8
+}
+
+func (*IP6Prefix) GetTypeName() string {
+	return "ip6_prefix"
+}
+func (*IP6Prefix) GetCrcString() string {
+	return "779fd64f"
 }
 
 // Mprefix represents VPP binary API type 'mprefix':
@@ -185,58 +211,31 @@ func (*Mprefix) GetCrcString() string {
 	return "1c4cba05"
 }
 
-// IP6Prefix represents VPP binary API type 'ip6_prefix':
+// Prefix represents VPP binary API type 'prefix':
 //
-//	"ip6_prefix",
+//	"prefix",
 //	[
-//	    "vl_api_ip6_address_t",
-//	    "prefix"
+//	    "vl_api_address_t",
+//	    "address"
 //	],
 //	[
 //	    "u8",
-//	    "len"
+//	    "address_length"
 //	],
 //	{
-//	    "crc": "0x779fd64f"
+//	    "crc": "0x0403aebc"
 //	}
 //
-type IP6Prefix struct {
-	Prefix IP6Address
-	Len    uint8
+type Prefix struct {
+	Address       Address
+	AddressLength uint8
 }
 
-func (*IP6Prefix) GetTypeName() string {
-	return "ip6_prefix"
+func (*Prefix) GetTypeName() string {
+	return "prefix"
 }
-func (*IP6Prefix) GetCrcString() string {
-	return "779fd64f"
-}
-
-// IP4Prefix represents VPP binary API type 'ip4_prefix':
-//
-//	"ip4_prefix",
-//	[
-//	    "vl_api_ip4_address_t",
-//	    "prefix"
-//	],
-//	[
-//	    "u8",
-//	    "len"
-//	],
-//	{
-//	    "crc": "0xea8dc11d"
-//	}
-//
-type IP4Prefix struct {
-	Prefix IP4Address
-	Len    uint8
-}
-
-func (*IP4Prefix) GetTypeName() string {
-	return "ip4_prefix"
-}
-func (*IP4Prefix) GetCrcString() string {
-	return "ea8dc11d"
+func (*Prefix) GetCrcString() string {
+	return "0403aebc"
 }
 
 // VxlanGbpTunnel represents VPP binary API type 'vxlan_gbp_tunnel':
@@ -319,6 +318,10 @@ func (*AddressUnion) GetCrcString() string {
 	return "d68a2fb4"
 }
 
+func AddressUnionIP4(a IP4Address) (u AddressUnion) {
+	u.SetIP4(a)
+	return
+}
 func (u *AddressUnion) SetIP4(a IP4Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -332,6 +335,10 @@ func (u *AddressUnion) GetIP4() (a IP4Address) {
 	return
 }
 
+func AddressUnionIP6(a IP6Address) (u AddressUnion) {
+	u.SetIP6(a)
+	return
+}
 func (u *AddressUnion) SetIP6(a IP6Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -346,156 +353,6 @@ func (u *AddressUnion) GetIP6() (a IP6Address) {
 }
 
 /* Messages */
-
-// VxlanGbpTunnelAddDel represents VPP binary API message 'vxlan_gbp_tunnel_add_del':
-//
-//	"vxlan_gbp_tunnel_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "vl_api_vxlan_gbp_tunnel_t",
-//	    "tunnel"
-//	],
-//	{
-//	    "crc": "0x6ac4b80e"
-//	}
-//
-type VxlanGbpTunnelAddDel struct {
-	IsAdd  uint8
-	Tunnel VxlanGbpTunnel
-}
-
-func (*VxlanGbpTunnelAddDel) GetMessageName() string {
-	return "vxlan_gbp_tunnel_add_del"
-}
-func (*VxlanGbpTunnelAddDel) GetCrcString() string {
-	return "6ac4b80e"
-}
-func (*VxlanGbpTunnelAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// VxlanGbpTunnelAddDelReply represents VPP binary API message 'vxlan_gbp_tunnel_add_del_reply':
-//
-//	"vxlan_gbp_tunnel_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0xfda5941f"
-//	}
-//
-type VxlanGbpTunnelAddDelReply struct {
-	Retval    int32
-	SwIfIndex uint32
-}
-
-func (*VxlanGbpTunnelAddDelReply) GetMessageName() string {
-	return "vxlan_gbp_tunnel_add_del_reply"
-}
-func (*VxlanGbpTunnelAddDelReply) GetCrcString() string {
-	return "fda5941f"
-}
-func (*VxlanGbpTunnelAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// VxlanGbpTunnelDump represents VPP binary API message 'vxlan_gbp_tunnel_dump':
-//
-//	"vxlan_gbp_tunnel_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type VxlanGbpTunnelDump struct {
-	SwIfIndex uint32
-}
-
-func (*VxlanGbpTunnelDump) GetMessageName() string {
-	return "vxlan_gbp_tunnel_dump"
-}
-func (*VxlanGbpTunnelDump) GetCrcString() string {
-	return "529cb13f"
-}
-func (*VxlanGbpTunnelDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// VxlanGbpTunnelDetails represents VPP binary API message 'vxlan_gbp_tunnel_details':
-//
-//	"vxlan_gbp_tunnel_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_vxlan_gbp_tunnel_t",
-//	    "tunnel"
-//	],
-//	{
-//	    "crc": "0x7fea68d7"
-//	}
-//
-type VxlanGbpTunnelDetails struct {
-	Tunnel VxlanGbpTunnel
-}
-
-func (*VxlanGbpTunnelDetails) GetMessageName() string {
-	return "vxlan_gbp_tunnel_details"
-}
-func (*VxlanGbpTunnelDetails) GetCrcString() string {
-	return "7fea68d7"
-}
-func (*VxlanGbpTunnelDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
 
 // SwInterfaceSetVxlanGbpBypass represents VPP binary API message 'sw_interface_set_vxlan_gbp_bypass':
 //
@@ -577,11 +434,161 @@ func (*SwInterfaceSetVxlanGbpBypassReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// VxlanGbpTunnelAddDel represents VPP binary API message 'vxlan_gbp_tunnel_add_del':
+//
+//	"vxlan_gbp_tunnel_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "vl_api_vxlan_gbp_tunnel_t",
+//	    "tunnel"
+//	],
+//	{
+//	    "crc": "0x6ac4b80e"
+//	}
+//
+type VxlanGbpTunnelAddDel struct {
+	IsAdd  uint8
+	Tunnel VxlanGbpTunnel
+}
+
+func (*VxlanGbpTunnelAddDel) GetMessageName() string {
+	return "vxlan_gbp_tunnel_add_del"
+}
+func (*VxlanGbpTunnelAddDel) GetCrcString() string {
+	return "6ac4b80e"
+}
+func (*VxlanGbpTunnelAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// VxlanGbpTunnelAddDelReply represents VPP binary API message 'vxlan_gbp_tunnel_add_del_reply':
+//
+//	"vxlan_gbp_tunnel_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0xfda5941f"
+//	}
+//
+type VxlanGbpTunnelAddDelReply struct {
+	Retval    int32
+	SwIfIndex uint32
+}
+
+func (*VxlanGbpTunnelAddDelReply) GetMessageName() string {
+	return "vxlan_gbp_tunnel_add_del_reply"
+}
+func (*VxlanGbpTunnelAddDelReply) GetCrcString() string {
+	return "fda5941f"
+}
+func (*VxlanGbpTunnelAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// VxlanGbpTunnelDetails represents VPP binary API message 'vxlan_gbp_tunnel_details':
+//
+//	"vxlan_gbp_tunnel_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_vxlan_gbp_tunnel_t",
+//	    "tunnel"
+//	],
+//	{
+//	    "crc": "0x7fea68d7"
+//	}
+//
+type VxlanGbpTunnelDetails struct {
+	Tunnel VxlanGbpTunnel
+}
+
+func (*VxlanGbpTunnelDetails) GetMessageName() string {
+	return "vxlan_gbp_tunnel_details"
+}
+func (*VxlanGbpTunnelDetails) GetCrcString() string {
+	return "7fea68d7"
+}
+func (*VxlanGbpTunnelDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// VxlanGbpTunnelDump represents VPP binary API message 'vxlan_gbp_tunnel_dump':
+//
+//	"vxlan_gbp_tunnel_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type VxlanGbpTunnelDump struct {
+	SwIfIndex uint32
+}
+
+func (*VxlanGbpTunnelDump) GetMessageName() string {
+	return "vxlan_gbp_tunnel_dump"
+}
+func (*VxlanGbpTunnelDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*VxlanGbpTunnelDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
-	api.RegisterMessage((*VxlanGbpTunnelAddDel)(nil), "vxlan_gbp.VxlanGbpTunnelAddDel")
-	api.RegisterMessage((*VxlanGbpTunnelAddDelReply)(nil), "vxlan_gbp.VxlanGbpTunnelAddDelReply")
-	api.RegisterMessage((*VxlanGbpTunnelDump)(nil), "vxlan_gbp.VxlanGbpTunnelDump")
-	api.RegisterMessage((*VxlanGbpTunnelDetails)(nil), "vxlan_gbp.VxlanGbpTunnelDetails")
 	api.RegisterMessage((*SwInterfaceSetVxlanGbpBypass)(nil), "vxlan_gbp.SwInterfaceSetVxlanGbpBypass")
 	api.RegisterMessage((*SwInterfaceSetVxlanGbpBypassReply)(nil), "vxlan_gbp.SwInterfaceSetVxlanGbpBypassReply")
+	api.RegisterMessage((*VxlanGbpTunnelAddDel)(nil), "vxlan_gbp.VxlanGbpTunnelAddDel")
+	api.RegisterMessage((*VxlanGbpTunnelAddDelReply)(nil), "vxlan_gbp.VxlanGbpTunnelAddDelReply")
+	api.RegisterMessage((*VxlanGbpTunnelDetails)(nil), "vxlan_gbp.VxlanGbpTunnelDetails")
+	api.RegisterMessage((*VxlanGbpTunnelDump)(nil), "vxlan_gbp.VxlanGbpTunnelDump")
 }

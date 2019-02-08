@@ -5,9 +5,8 @@
  Package ioam_vxlan_gpe is a generated from VPP binary API module 'ioam_vxlan_gpe'.
 
  It contains following objects:
-	 12 messages
 	  6 services
-
+	 12 messages
 */
 package ioam_vxlan_gpe
 
@@ -56,6 +55,76 @@ type Services interface {
 }
 
 /* Messages */
+
+// VxlanGpeIoamDisable represents VPP binary API message 'vxlan_gpe_ioam_disable':
+//
+//	"vxlan_gpe_ioam_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u16",
+//	    "id"
+//	],
+//	{
+//	    "crc": "0x6b16a45e"
+//	}
+//
+type VxlanGpeIoamDisable struct {
+	ID uint16
+}
+
+func (*VxlanGpeIoamDisable) GetMessageName() string {
+	return "vxlan_gpe_ioam_disable"
+}
+func (*VxlanGpeIoamDisable) GetCrcString() string {
+	return "6b16a45e"
+}
+func (*VxlanGpeIoamDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// VxlanGpeIoamDisableReply represents VPP binary API message 'vxlan_gpe_ioam_disable_reply':
+//
+//	"vxlan_gpe_ioam_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type VxlanGpeIoamDisableReply struct {
+	Retval int32
+}
+
+func (*VxlanGpeIoamDisableReply) GetMessageName() string {
+	return "vxlan_gpe_ioam_disable_reply"
+}
+func (*VxlanGpeIoamDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*VxlanGpeIoamDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
 
 // VxlanGpeIoamEnable represents VPP binary API message 'vxlan_gpe_ioam_enable':
 //
@@ -142,79 +211,9 @@ func (*VxlanGpeIoamEnableReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// VxlanGpeIoamDisable represents VPP binary API message 'vxlan_gpe_ioam_disable':
+// VxlanGpeIoamTransitDisable represents VPP binary API message 'vxlan_gpe_ioam_transit_disable':
 //
-//	"vxlan_gpe_ioam_disable",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u16",
-//	    "id"
-//	],
-//	{
-//	    "crc": "0x6b16a45e"
-//	}
-//
-type VxlanGpeIoamDisable struct {
-	ID uint16
-}
-
-func (*VxlanGpeIoamDisable) GetMessageName() string {
-	return "vxlan_gpe_ioam_disable"
-}
-func (*VxlanGpeIoamDisable) GetCrcString() string {
-	return "6b16a45e"
-}
-func (*VxlanGpeIoamDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// VxlanGpeIoamDisableReply represents VPP binary API message 'vxlan_gpe_ioam_disable_reply':
-//
-//	"vxlan_gpe_ioam_disable_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type VxlanGpeIoamDisableReply struct {
-	Retval int32
-}
-
-func (*VxlanGpeIoamDisableReply) GetMessageName() string {
-	return "vxlan_gpe_ioam_disable_reply"
-}
-func (*VxlanGpeIoamDisableReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*VxlanGpeIoamDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// VxlanGpeIoamVniEnable represents VPP binary API message 'vxlan_gpe_ioam_vni_enable':
-//
-//	"vxlan_gpe_ioam_vni_enable",
+//	"vxlan_gpe_ioam_transit_disable",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -229,16 +228,11 @@ func (*VxlanGpeIoamDisableReply) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u32",
-//	    "vni"
+//	    "outer_fib_index"
 //	],
 //	[
 //	    "u8",
-//	    "local",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "remote",
+//	    "dst_addr",
 //	    16
 //	],
 //	[
@@ -246,29 +240,28 @@ func (*VxlanGpeIoamDisableReply) GetMessageType() api.MessageType {
 //	    "is_ipv6"
 //	],
 //	{
-//	    "crc": "0x6d93fc5d"
+//	    "crc": "0x7c6ff202"
 //	}
 //
-type VxlanGpeIoamVniEnable struct {
-	Vni    uint32
-	Local  []byte `struc:"[16]byte"`
-	Remote []byte `struc:"[16]byte"`
-	IsIPv6 uint8
+type VxlanGpeIoamTransitDisable struct {
+	OuterFibIndex uint32
+	DstAddr       []byte `struc:"[16]byte"`
+	IsIPv6        uint8
 }
 
-func (*VxlanGpeIoamVniEnable) GetMessageName() string {
-	return "vxlan_gpe_ioam_vni_enable"
+func (*VxlanGpeIoamTransitDisable) GetMessageName() string {
+	return "vxlan_gpe_ioam_transit_disable"
 }
-func (*VxlanGpeIoamVniEnable) GetCrcString() string {
-	return "6d93fc5d"
+func (*VxlanGpeIoamTransitDisable) GetCrcString() string {
+	return "7c6ff202"
 }
-func (*VxlanGpeIoamVniEnable) GetMessageType() api.MessageType {
+func (*VxlanGpeIoamTransitDisable) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// VxlanGpeIoamVniEnableReply represents VPP binary API message 'vxlan_gpe_ioam_vni_enable_reply':
+// VxlanGpeIoamTransitDisableReply represents VPP binary API message 'vxlan_gpe_ioam_transit_disable_reply':
 //
-//	"vxlan_gpe_ioam_vni_enable_reply",
+//	"vxlan_gpe_ioam_transit_disable_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -285,17 +278,98 @@ func (*VxlanGpeIoamVniEnable) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type VxlanGpeIoamVniEnableReply struct {
+type VxlanGpeIoamTransitDisableReply struct {
 	Retval int32
 }
 
-func (*VxlanGpeIoamVniEnableReply) GetMessageName() string {
-	return "vxlan_gpe_ioam_vni_enable_reply"
+func (*VxlanGpeIoamTransitDisableReply) GetMessageName() string {
+	return "vxlan_gpe_ioam_transit_disable_reply"
 }
-func (*VxlanGpeIoamVniEnableReply) GetCrcString() string {
+func (*VxlanGpeIoamTransitDisableReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*VxlanGpeIoamVniEnableReply) GetMessageType() api.MessageType {
+func (*VxlanGpeIoamTransitDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// VxlanGpeIoamTransitEnable represents VPP binary API message 'vxlan_gpe_ioam_transit_enable':
+//
+//	"vxlan_gpe_ioam_transit_enable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "outer_fib_index"
+//	],
+//	[
+//	    "u8",
+//	    "dst_addr",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	{
+//	    "crc": "0x7c6ff202"
+//	}
+//
+type VxlanGpeIoamTransitEnable struct {
+	OuterFibIndex uint32
+	DstAddr       []byte `struc:"[16]byte"`
+	IsIPv6        uint8
+}
+
+func (*VxlanGpeIoamTransitEnable) GetMessageName() string {
+	return "vxlan_gpe_ioam_transit_enable"
+}
+func (*VxlanGpeIoamTransitEnable) GetCrcString() string {
+	return "7c6ff202"
+}
+func (*VxlanGpeIoamTransitEnable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// VxlanGpeIoamTransitEnableReply represents VPP binary API message 'vxlan_gpe_ioam_transit_enable_reply':
+//
+//	"vxlan_gpe_ioam_transit_enable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type VxlanGpeIoamTransitEnableReply struct {
+	Retval int32
+}
+
+func (*VxlanGpeIoamTransitEnableReply) GetMessageName() string {
+	return "vxlan_gpe_ioam_transit_enable_reply"
+}
+func (*VxlanGpeIoamTransitEnableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*VxlanGpeIoamTransitEnableReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -386,9 +460,9 @@ func (*VxlanGpeIoamVniDisableReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// VxlanGpeIoamTransitEnable represents VPP binary API message 'vxlan_gpe_ioam_transit_enable':
+// VxlanGpeIoamVniEnable represents VPP binary API message 'vxlan_gpe_ioam_vni_enable':
 //
-//	"vxlan_gpe_ioam_transit_enable",
+//	"vxlan_gpe_ioam_vni_enable",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -403,11 +477,16 @@ func (*VxlanGpeIoamVniDisableReply) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u32",
-//	    "outer_fib_index"
+//	    "vni"
 //	],
 //	[
 //	    "u8",
-//	    "dst_addr",
+//	    "local",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "remote",
 //	    16
 //	],
 //	[
@@ -415,28 +494,29 @@ func (*VxlanGpeIoamVniDisableReply) GetMessageType() api.MessageType {
 //	    "is_ipv6"
 //	],
 //	{
-//	    "crc": "0x7c6ff202"
+//	    "crc": "0x6d93fc5d"
 //	}
 //
-type VxlanGpeIoamTransitEnable struct {
-	OuterFibIndex uint32
-	DstAddr       []byte `struc:"[16]byte"`
-	IsIPv6        uint8
+type VxlanGpeIoamVniEnable struct {
+	Vni    uint32
+	Local  []byte `struc:"[16]byte"`
+	Remote []byte `struc:"[16]byte"`
+	IsIPv6 uint8
 }
 
-func (*VxlanGpeIoamTransitEnable) GetMessageName() string {
-	return "vxlan_gpe_ioam_transit_enable"
+func (*VxlanGpeIoamVniEnable) GetMessageName() string {
+	return "vxlan_gpe_ioam_vni_enable"
 }
-func (*VxlanGpeIoamTransitEnable) GetCrcString() string {
-	return "7c6ff202"
+func (*VxlanGpeIoamVniEnable) GetCrcString() string {
+	return "6d93fc5d"
 }
-func (*VxlanGpeIoamTransitEnable) GetMessageType() api.MessageType {
+func (*VxlanGpeIoamVniEnable) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// VxlanGpeIoamTransitEnableReply represents VPP binary API message 'vxlan_gpe_ioam_transit_enable_reply':
+// VxlanGpeIoamVniEnableReply represents VPP binary API message 'vxlan_gpe_ioam_vni_enable_reply':
 //
-//	"vxlan_gpe_ioam_transit_enable_reply",
+//	"vxlan_gpe_ioam_vni_enable_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -453,112 +533,31 @@ func (*VxlanGpeIoamTransitEnable) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type VxlanGpeIoamTransitEnableReply struct {
+type VxlanGpeIoamVniEnableReply struct {
 	Retval int32
 }
 
-func (*VxlanGpeIoamTransitEnableReply) GetMessageName() string {
-	return "vxlan_gpe_ioam_transit_enable_reply"
+func (*VxlanGpeIoamVniEnableReply) GetMessageName() string {
+	return "vxlan_gpe_ioam_vni_enable_reply"
 }
-func (*VxlanGpeIoamTransitEnableReply) GetCrcString() string {
+func (*VxlanGpeIoamVniEnableReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*VxlanGpeIoamTransitEnableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// VxlanGpeIoamTransitDisable represents VPP binary API message 'vxlan_gpe_ioam_transit_disable':
-//
-//	"vxlan_gpe_ioam_transit_disable",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "outer_fib_index"
-//	],
-//	[
-//	    "u8",
-//	    "dst_addr",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	{
-//	    "crc": "0x7c6ff202"
-//	}
-//
-type VxlanGpeIoamTransitDisable struct {
-	OuterFibIndex uint32
-	DstAddr       []byte `struc:"[16]byte"`
-	IsIPv6        uint8
-}
-
-func (*VxlanGpeIoamTransitDisable) GetMessageName() string {
-	return "vxlan_gpe_ioam_transit_disable"
-}
-func (*VxlanGpeIoamTransitDisable) GetCrcString() string {
-	return "7c6ff202"
-}
-func (*VxlanGpeIoamTransitDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// VxlanGpeIoamTransitDisableReply represents VPP binary API message 'vxlan_gpe_ioam_transit_disable_reply':
-//
-//	"vxlan_gpe_ioam_transit_disable_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type VxlanGpeIoamTransitDisableReply struct {
-	Retval int32
-}
-
-func (*VxlanGpeIoamTransitDisableReply) GetMessageName() string {
-	return "vxlan_gpe_ioam_transit_disable_reply"
-}
-func (*VxlanGpeIoamTransitDisableReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*VxlanGpeIoamTransitDisableReply) GetMessageType() api.MessageType {
+func (*VxlanGpeIoamVniEnableReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
 func init() {
-	api.RegisterMessage((*VxlanGpeIoamEnable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamEnable")
-	api.RegisterMessage((*VxlanGpeIoamEnableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamEnableReply")
 	api.RegisterMessage((*VxlanGpeIoamDisable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamDisable")
 	api.RegisterMessage((*VxlanGpeIoamDisableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamDisableReply")
-	api.RegisterMessage((*VxlanGpeIoamVniEnable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamVniEnable")
-	api.RegisterMessage((*VxlanGpeIoamVniEnableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamVniEnableReply")
-	api.RegisterMessage((*VxlanGpeIoamVniDisable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamVniDisable")
-	api.RegisterMessage((*VxlanGpeIoamVniDisableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamVniDisableReply")
-	api.RegisterMessage((*VxlanGpeIoamTransitEnable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamTransitEnable")
-	api.RegisterMessage((*VxlanGpeIoamTransitEnableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamTransitEnableReply")
+	api.RegisterMessage((*VxlanGpeIoamEnable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamEnable")
+	api.RegisterMessage((*VxlanGpeIoamEnableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamEnableReply")
 	api.RegisterMessage((*VxlanGpeIoamTransitDisable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamTransitDisable")
 	api.RegisterMessage((*VxlanGpeIoamTransitDisableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamTransitDisableReply")
+	api.RegisterMessage((*VxlanGpeIoamTransitEnable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamTransitEnable")
+	api.RegisterMessage((*VxlanGpeIoamTransitEnableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamTransitEnableReply")
+	api.RegisterMessage((*VxlanGpeIoamVniDisable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamVniDisable")
+	api.RegisterMessage((*VxlanGpeIoamVniDisableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamVniDisableReply")
+	api.RegisterMessage((*VxlanGpeIoamVniEnable)(nil), "ioam_vxlan_gpe.VxlanGpeIoamVniEnable")
+	api.RegisterMessage((*VxlanGpeIoamVniEnableReply)(nil), "ioam_vxlan_gpe.VxlanGpeIoamVniEnableReply")
 }

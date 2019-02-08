@@ -5,9 +5,8 @@
  Package ioam_export is a generated from VPP binary API module 'ioam_export'.
 
  It contains following objects:
-	  2 messages
 	  1 service
-
+	  2 messages
 */
 package ioam_export
 

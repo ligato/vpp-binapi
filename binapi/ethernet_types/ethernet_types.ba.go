@@ -6,7 +6,6 @@
 
  It contains following objects:
 	  1 alias
-
 */
 package ethernet_types
 
@@ -32,6 +31,3 @@ const VlAPIVersion = 0xd4ff2808
 //	}
 //
 type MacAddress [6]uint8
-
-func init() {
-}

@@ -5,9 +5,8 @@
  Package trace is a generated from VPP binary API module 'trace'.
 
  It contains following objects:
-	  6 messages
 	  3 services
-
+	  6 messages
 */
 package trace
 

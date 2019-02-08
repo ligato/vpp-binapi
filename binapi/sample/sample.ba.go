@@ -5,9 +5,8 @@
  Package sample is a generated from VPP binary API module 'sample'.
 
  It contains following objects:
-	  2 messages
 	  1 service
-
+	  2 messages
 */
 package sample
 

@@ -5,10 +5,9 @@
  Package mactime is a generated from VPP binary API module 'mactime'.
 
  It contains following objects:
-	  4 messages
-	  1 type
 	  2 services
-
+	  1 type
+	  4 messages
 */
 package mactime
 
@@ -70,81 +69,6 @@ func (*TimeRange) GetCrcString() string {
 }
 
 /* Messages */
-
-// MactimeEnableDisable represents VPP binary API message 'mactime_enable_disable':
-//
-//	"mactime_enable_disable",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "enable_disable"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x57298519"
-//	}
-//
-type MactimeEnableDisable struct {
-	EnableDisable uint8
-	SwIfIndex     uint32
-}
-
-func (*MactimeEnableDisable) GetMessageName() string {
-	return "mactime_enable_disable"
-}
-func (*MactimeEnableDisable) GetCrcString() string {
-	return "57298519"
-}
-func (*MactimeEnableDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// MactimeEnableDisableReply represents VPP binary API message 'mactime_enable_disable_reply':
-//
-//	"mactime_enable_disable_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type MactimeEnableDisableReply struct {
-	Retval int32
-}
-
-func (*MactimeEnableDisableReply) GetMessageName() string {
-	return "mactime_enable_disable_reply"
-}
-func (*MactimeEnableDisableReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*MactimeEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
 
 // MactimeAddDelRange represents VPP binary API message 'mactime_add_del_range':
 //
@@ -250,9 +174,84 @@ func (*MactimeAddDelRangeReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// MactimeEnableDisable represents VPP binary API message 'mactime_enable_disable':
+//
+//	"mactime_enable_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "enable_disable"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x57298519"
+//	}
+//
+type MactimeEnableDisable struct {
+	EnableDisable uint8
+	SwIfIndex     uint32
+}
+
+func (*MactimeEnableDisable) GetMessageName() string {
+	return "mactime_enable_disable"
+}
+func (*MactimeEnableDisable) GetCrcString() string {
+	return "57298519"
+}
+func (*MactimeEnableDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// MactimeEnableDisableReply represents VPP binary API message 'mactime_enable_disable_reply':
+//
+//	"mactime_enable_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type MactimeEnableDisableReply struct {
+	Retval int32
+}
+
+func (*MactimeEnableDisableReply) GetMessageName() string {
+	return "mactime_enable_disable_reply"
+}
+func (*MactimeEnableDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*MactimeEnableDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 func init() {
-	api.RegisterMessage((*MactimeEnableDisable)(nil), "mactime.MactimeEnableDisable")
-	api.RegisterMessage((*MactimeEnableDisableReply)(nil), "mactime.MactimeEnableDisableReply")
 	api.RegisterMessage((*MactimeAddDelRange)(nil), "mactime.MactimeAddDelRange")
 	api.RegisterMessage((*MactimeAddDelRangeReply)(nil), "mactime.MactimeAddDelRangeReply")
+	api.RegisterMessage((*MactimeEnableDisable)(nil), "mactime.MactimeEnableDisable")
+	api.RegisterMessage((*MactimeEnableDisableReply)(nil), "mactime.MactimeEnableDisableReply")
 }

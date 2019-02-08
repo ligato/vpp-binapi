@@ -5,9 +5,8 @@
  Package vhost_user is a generated from VPP binary API module 'vhost_user'.
 
  It contains following objects:
-	  8 messages
 	  4 services
-
+	  8 messages
 */
 package vhost_user
 
@@ -168,6 +167,76 @@ func (*CreateVhostUserIfReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// DeleteVhostUserIf represents VPP binary API message 'delete_vhost_user_if':
+//
+//	"delete_vhost_user_if",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type DeleteVhostUserIf struct {
+	SwIfIndex uint32
+}
+
+func (*DeleteVhostUserIf) GetMessageName() string {
+	return "delete_vhost_user_if"
+}
+func (*DeleteVhostUserIf) GetCrcString() string {
+	return "529cb13f"
+}
+func (*DeleteVhostUserIf) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// DeleteVhostUserIfReply represents VPP binary API message 'delete_vhost_user_if_reply':
+//
+//	"delete_vhost_user_if_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type DeleteVhostUserIfReply struct {
+	Retval int32
+}
+
+func (*DeleteVhostUserIfReply) GetMessageName() string {
+	return "delete_vhost_user_if_reply"
+}
+func (*DeleteVhostUserIfReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*DeleteVhostUserIfReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // ModifyVhostUserIf represents VPP binary API message 'modify_vhost_user_if':
 //
 //	"modify_vhost_user_if",
@@ -256,76 +325,6 @@ func (*ModifyVhostUserIfReply) GetCrcString() string {
 	return "e8d4e804"
 }
 func (*ModifyVhostUserIfReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// DeleteVhostUserIf represents VPP binary API message 'delete_vhost_user_if':
-//
-//	"delete_vhost_user_if",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type DeleteVhostUserIf struct {
-	SwIfIndex uint32
-}
-
-func (*DeleteVhostUserIf) GetMessageName() string {
-	return "delete_vhost_user_if"
-}
-func (*DeleteVhostUserIf) GetCrcString() string {
-	return "529cb13f"
-}
-func (*DeleteVhostUserIf) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// DeleteVhostUserIfReply represents VPP binary API message 'delete_vhost_user_if_reply':
-//
-//	"delete_vhost_user_if_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type DeleteVhostUserIfReply struct {
-	Retval int32
-}
-
-func (*DeleteVhostUserIfReply) GetMessageName() string {
-	return "delete_vhost_user_if_reply"
-}
-func (*DeleteVhostUserIfReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*DeleteVhostUserIfReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -433,10 +432,10 @@ func (*SwInterfaceVhostUserDump) GetMessageType() api.MessageType {
 func init() {
 	api.RegisterMessage((*CreateVhostUserIf)(nil), "vhost_user.CreateVhostUserIf")
 	api.RegisterMessage((*CreateVhostUserIfReply)(nil), "vhost_user.CreateVhostUserIfReply")
-	api.RegisterMessage((*ModifyVhostUserIf)(nil), "vhost_user.ModifyVhostUserIf")
-	api.RegisterMessage((*ModifyVhostUserIfReply)(nil), "vhost_user.ModifyVhostUserIfReply")
 	api.RegisterMessage((*DeleteVhostUserIf)(nil), "vhost_user.DeleteVhostUserIf")
 	api.RegisterMessage((*DeleteVhostUserIfReply)(nil), "vhost_user.DeleteVhostUserIfReply")
+	api.RegisterMessage((*ModifyVhostUserIf)(nil), "vhost_user.ModifyVhostUserIf")
+	api.RegisterMessage((*ModifyVhostUserIfReply)(nil), "vhost_user.ModifyVhostUserIfReply")
 	api.RegisterMessage((*SwInterfaceVhostUserDetails)(nil), "vhost_user.SwInterfaceVhostUserDetails")
 	api.RegisterMessage((*SwInterfaceVhostUserDump)(nil), "vhost_user.SwInterfaceVhostUserDump")
 }

@@ -5,9 +5,8 @@
  Package sctp is a generated from VPP binary API module 'sctp'.
 
  It contains following objects:
-	  6 messages
 	  3 services
-
+	  6 messages
 */
 package sctp
 
@@ -132,6 +131,81 @@ func (*SctpAddSrcDstConnectionReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// SctpConfig represents VPP binary API message 'sctp_config':
+//
+//	"sctp_config",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "never_delay_sack"
+//	],
+//	[
+//	    "u8",
+//	    "never_bundle"
+//	],
+//	{
+//	    "crc": "0x7617eced"
+//	}
+//
+type SctpConfig struct {
+	NeverDelaySack uint8
+	NeverBundle    uint8
+}
+
+func (*SctpConfig) GetMessageName() string {
+	return "sctp_config"
+}
+func (*SctpConfig) GetCrcString() string {
+	return "7617eced"
+}
+func (*SctpConfig) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// SctpConfigReply represents VPP binary API message 'sctp_config_reply':
+//
+//	"sctp_config_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type SctpConfigReply struct {
+	Retval int32
+}
+
+func (*SctpConfigReply) GetMessageName() string {
+	return "sctp_config_reply"
+}
+func (*SctpConfigReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*SctpConfigReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // SctpDelSrcDstConnection represents VPP binary API message 'sctp_del_src_dst_connection':
 //
 //	"sctp_del_src_dst_connection",
@@ -219,86 +293,11 @@ func (*SctpDelSrcDstConnectionReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// SctpConfig represents VPP binary API message 'sctp_config':
-//
-//	"sctp_config",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "never_delay_sack"
-//	],
-//	[
-//	    "u8",
-//	    "never_bundle"
-//	],
-//	{
-//	    "crc": "0x7617eced"
-//	}
-//
-type SctpConfig struct {
-	NeverDelaySack uint8
-	NeverBundle    uint8
-}
-
-func (*SctpConfig) GetMessageName() string {
-	return "sctp_config"
-}
-func (*SctpConfig) GetCrcString() string {
-	return "7617eced"
-}
-func (*SctpConfig) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SctpConfigReply represents VPP binary API message 'sctp_config_reply':
-//
-//	"sctp_config_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type SctpConfigReply struct {
-	Retval int32
-}
-
-func (*SctpConfigReply) GetMessageName() string {
-	return "sctp_config_reply"
-}
-func (*SctpConfigReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*SctpConfigReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 func init() {
 	api.RegisterMessage((*SctpAddSrcDstConnection)(nil), "sctp.SctpAddSrcDstConnection")
 	api.RegisterMessage((*SctpAddSrcDstConnectionReply)(nil), "sctp.SctpAddSrcDstConnectionReply")
-	api.RegisterMessage((*SctpDelSrcDstConnection)(nil), "sctp.SctpDelSrcDstConnection")
-	api.RegisterMessage((*SctpDelSrcDstConnectionReply)(nil), "sctp.SctpDelSrcDstConnectionReply")
 	api.RegisterMessage((*SctpConfig)(nil), "sctp.SctpConfig")
 	api.RegisterMessage((*SctpConfigReply)(nil), "sctp.SctpConfigReply")
+	api.RegisterMessage((*SctpDelSrcDstConnection)(nil), "sctp.SctpDelSrcDstConnection")
+	api.RegisterMessage((*SctpDelSrcDstConnectionReply)(nil), "sctp.SctpDelSrcDstConnectionReply")
 }

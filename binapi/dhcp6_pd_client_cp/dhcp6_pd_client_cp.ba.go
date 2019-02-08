@@ -5,9 +5,8 @@
  Package dhcp6_pd_client_cp is a generated from VPP binary API module 'dhcp6_pd_client_cp'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package dhcp6_pd_client_cp
 

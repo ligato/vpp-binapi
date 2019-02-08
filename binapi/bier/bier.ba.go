@@ -5,10 +5,9 @@
  Package bier is a generated from VPP binary API module 'bier'.
 
  It contains following objects:
-	 22 messages
-	  3 types
 	 11 services
-
+	  3 types
+	 22 messages
 */
 package bier
 
@@ -82,6 +81,38 @@ type Services interface {
 }
 
 /* Types */
+
+// BierTableID represents VPP binary API type 'bier_table_id':
+//
+//	"bier_table_id",
+//	[
+//	    "u8",
+//	    "bt_set"
+//	],
+//	[
+//	    "u8",
+//	    "bt_sub_domain"
+//	],
+//	[
+//	    "u8",
+//	    "bt_hdr_len_id"
+//	],
+//	{
+//	    "crc": "0x435c691d"
+//	}
+//
+type BierTableID struct {
+	BtSet       uint8
+	BtSubDomain uint8
+	BtHdrLenID  uint8
+}
+
+func (*BierTableID) GetTypeName() string {
+	return "bier_table_id"
+}
+func (*BierTableID) GetCrcString() string {
+	return "435c691d"
+}
 
 // FibMplsLabel represents VPP binary API type 'fib_mpls_label':
 //
@@ -244,43 +275,11 @@ func (*FibPath) GetCrcString() string {
 	return "ba7a81f0"
 }
 
-// BierTableID represents VPP binary API type 'bier_table_id':
-//
-//	"bier_table_id",
-//	[
-//	    "u8",
-//	    "bt_set"
-//	],
-//	[
-//	    "u8",
-//	    "bt_sub_domain"
-//	],
-//	[
-//	    "u8",
-//	    "bt_hdr_len_id"
-//	],
-//	{
-//	    "crc": "0x435c691d"
-//	}
-//
-type BierTableID struct {
-	BtSet       uint8
-	BtSubDomain uint8
-	BtHdrLenID  uint8
-}
-
-func (*BierTableID) GetTypeName() string {
-	return "bier_table_id"
-}
-func (*BierTableID) GetCrcString() string {
-	return "435c691d"
-}
-
 /* Messages */
 
-// BierTableAddDel represents VPP binary API message 'bier_table_add_del':
+// BierDispEntryAddDel represents VPP binary API message 'bier_disp_entry_add_del':
 //
-//	"bier_table_add_del",
+//	"bier_disp_entry_add_del",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -294,40 +293,57 @@ func (*BierTableID) GetCrcString() string {
 //	    "context"
 //	],
 //	[
-//	    "vl_api_bier_table_id_t",
-//	    "bt_tbl_id"
+//	    "u16",
+//	    "bde_bp"
 //	],
 //	[
 //	    "u32",
-//	    "bt_label"
+//	    "bde_tbl_id"
 //	],
 //	[
 //	    "u8",
-//	    "bt_is_add"
+//	    "bde_is_add"
+//	],
+//	[
+//	    "u8",
+//	    "bde_payload_proto"
+//	],
+//	[
+//	    "u8",
+//	    "bde_n_paths"
+//	],
+//	[
+//	    "vl_api_fib_path_t",
+//	    "bde_paths",
+//	    0,
+//	    "bde_n_paths"
 //	],
 //	{
-//	    "crc": "0x4f7963b6"
+//	    "crc": "0x4260a077"
 //	}
 //
-type BierTableAddDel struct {
-	BtTblID BierTableID
-	BtLabel uint32
-	BtIsAdd uint8
+type BierDispEntryAddDel struct {
+	BdeBp           uint16
+	BdeTblID        uint32
+	BdeIsAdd        uint8
+	BdePayloadProto uint8
+	BdeNPaths       uint8 `struc:"sizeof=BdePaths"`
+	BdePaths        []FibPath
 }
 
-func (*BierTableAddDel) GetMessageName() string {
-	return "bier_table_add_del"
+func (*BierDispEntryAddDel) GetMessageName() string {
+	return "bier_disp_entry_add_del"
 }
-func (*BierTableAddDel) GetCrcString() string {
-	return "4f7963b6"
+func (*BierDispEntryAddDel) GetCrcString() string {
+	return "4260a077"
 }
-func (*BierTableAddDel) GetMessageType() api.MessageType {
+func (*BierDispEntryAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// BierTableAddDelReply represents VPP binary API message 'bier_table_add_del_reply':
+// BierDispEntryAddDelReply represents VPP binary API message 'bier_disp_entry_add_del_reply':
 //
-//	"bier_table_add_del_reply",
+//	"bier_disp_entry_add_del_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -344,23 +360,228 @@ func (*BierTableAddDel) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type BierTableAddDelReply struct {
+type BierDispEntryAddDelReply struct {
 	Retval int32
 }
 
-func (*BierTableAddDelReply) GetMessageName() string {
-	return "bier_table_add_del_reply"
+func (*BierDispEntryAddDelReply) GetMessageName() string {
+	return "bier_disp_entry_add_del_reply"
 }
-func (*BierTableAddDelReply) GetCrcString() string {
+func (*BierDispEntryAddDelReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*BierTableAddDelReply) GetMessageType() api.MessageType {
+func (*BierDispEntryAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// BierTableDump represents VPP binary API message 'bier_table_dump':
+// BierDispEntryDetails represents VPP binary API message 'bier_disp_entry_details':
 //
-//	"bier_table_dump",
+//	"bier_disp_entry_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u16",
+//	    "bde_bp"
+//	],
+//	[
+//	    "u32",
+//	    "bde_tbl_id"
+//	],
+//	[
+//	    "u8",
+//	    "bde_is_add"
+//	],
+//	[
+//	    "u8",
+//	    "bde_payload_proto"
+//	],
+//	[
+//	    "u8",
+//	    "bde_n_paths"
+//	],
+//	[
+//	    "vl_api_fib_path_t",
+//	    "bde_paths",
+//	    0,
+//	    "bde_n_paths"
+//	],
+//	{
+//	    "crc": "0xb9b10a59"
+//	}
+//
+type BierDispEntryDetails struct {
+	BdeBp           uint16
+	BdeTblID        uint32
+	BdeIsAdd        uint8
+	BdePayloadProto uint8
+	BdeNPaths       uint8 `struc:"sizeof=BdePaths"`
+	BdePaths        []FibPath
+}
+
+func (*BierDispEntryDetails) GetMessageName() string {
+	return "bier_disp_entry_details"
+}
+func (*BierDispEntryDetails) GetCrcString() string {
+	return "b9b10a59"
+}
+func (*BierDispEntryDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BierDispEntryDump represents VPP binary API message 'bier_disp_entry_dump':
+//
+//	"bier_disp_entry_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bde_tbl_id"
+//	],
+//	{
+//	    "crc": "0xb5fa54ad"
+//	}
+//
+type BierDispEntryDump struct {
+	BdeTblID uint32
+}
+
+func (*BierDispEntryDump) GetMessageName() string {
+	return "bier_disp_entry_dump"
+}
+func (*BierDispEntryDump) GetCrcString() string {
+	return "b5fa54ad"
+}
+func (*BierDispEntryDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BierDispTableAddDel represents VPP binary API message 'bier_disp_table_add_del':
+//
+//	"bier_disp_table_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bdt_tbl_id"
+//	],
+//	[
+//	    "u8",
+//	    "bdt_is_add"
+//	],
+//	{
+//	    "crc": "0x7671b2cb"
+//	}
+//
+type BierDispTableAddDel struct {
+	BdtTblID uint32
+	BdtIsAdd uint8
+}
+
+func (*BierDispTableAddDel) GetMessageName() string {
+	return "bier_disp_table_add_del"
+}
+func (*BierDispTableAddDel) GetCrcString() string {
+	return "7671b2cb"
+}
+func (*BierDispTableAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BierDispTableAddDelReply represents VPP binary API message 'bier_disp_table_add_del_reply':
+//
+//	"bier_disp_table_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type BierDispTableAddDelReply struct {
+	Retval int32
+}
+
+func (*BierDispTableAddDelReply) GetMessageName() string {
+	return "bier_disp_table_add_del_reply"
+}
+func (*BierDispTableAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*BierDispTableAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BierDispTableDetails represents VPP binary API message 'bier_disp_table_details':
+//
+//	"bier_disp_table_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bdt_tbl_id"
+//	],
+//	{
+//	    "crc": "0xd27942c0"
+//	}
+//
+type BierDispTableDetails struct {
+	BdtTblID uint32
+}
+
+func (*BierDispTableDetails) GetMessageName() string {
+	return "bier_disp_table_details"
+}
+func (*BierDispTableDetails) GetCrcString() string {
+	return "d27942c0"
+}
+func (*BierDispTableDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BierDispTableDump represents VPP binary API message 'bier_disp_table_dump':
+//
+//	"bier_disp_table_dump",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -377,238 +598,16 @@ func (*BierTableAddDelReply) GetMessageType() api.MessageType {
 //	    "crc": "0x51077d14"
 //	}
 //
-type BierTableDump struct{}
+type BierDispTableDump struct{}
 
-func (*BierTableDump) GetMessageName() string {
-	return "bier_table_dump"
+func (*BierDispTableDump) GetMessageName() string {
+	return "bier_disp_table_dump"
 }
-func (*BierTableDump) GetCrcString() string {
+func (*BierDispTableDump) GetCrcString() string {
 	return "51077d14"
 }
-func (*BierTableDump) GetMessageType() api.MessageType {
+func (*BierDispTableDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
-}
-
-// BierTableDetails represents VPP binary API message 'bier_table_details':
-//
-//	"bier_table_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bt_label"
-//	],
-//	[
-//	    "vl_api_bier_table_id_t",
-//	    "bt_tbl_id"
-//	],
-//	{
-//	    "crc": "0xb7a41e40"
-//	}
-//
-type BierTableDetails struct {
-	BtLabel uint32
-	BtTblID BierTableID
-}
-
-func (*BierTableDetails) GetMessageName() string {
-	return "bier_table_details"
-}
-func (*BierTableDetails) GetCrcString() string {
-	return "b7a41e40"
-}
-func (*BierTableDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BierRouteAddDel represents VPP binary API message 'bier_route_add_del':
-//
-//	"bier_route_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "br_bp"
-//	],
-//	[
-//	    "u8",
-//	    "br_is_add"
-//	],
-//	[
-//	    "u8",
-//	    "br_is_replace"
-//	],
-//	[
-//	    "vl_api_bier_table_id_t",
-//	    "br_tbl_id"
-//	],
-//	[
-//	    "u8",
-//	    "br_n_paths"
-//	],
-//	[
-//	    "vl_api_fib_path_t",
-//	    "br_paths",
-//	    0,
-//	    "br_n_paths"
-//	],
-//	{
-//	    "crc": "0x0b83f5d2"
-//	}
-//
-type BierRouteAddDel struct {
-	BrBp        uint32
-	BrIsAdd     uint8
-	BrIsReplace uint8
-	BrTblID     BierTableID
-	BrNPaths    uint8 `struc:"sizeof=BrPaths"`
-	BrPaths     []FibPath
-}
-
-func (*BierRouteAddDel) GetMessageName() string {
-	return "bier_route_add_del"
-}
-func (*BierRouteAddDel) GetCrcString() string {
-	return "0b83f5d2"
-}
-func (*BierRouteAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BierRouteAddDelReply represents VPP binary API message 'bier_route_add_del_reply':
-//
-//	"bier_route_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type BierRouteAddDelReply struct {
-	Retval int32
-}
-
-func (*BierRouteAddDelReply) GetMessageName() string {
-	return "bier_route_add_del_reply"
-}
-func (*BierRouteAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*BierRouteAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BierRouteDump represents VPP binary API message 'bier_route_dump':
-//
-//	"bier_route_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_bier_table_id_t",
-//	    "br_tbl_id"
-//	],
-//	{
-//	    "crc": "0x43af6370"
-//	}
-//
-type BierRouteDump struct {
-	BrTblID BierTableID
-}
-
-func (*BierRouteDump) GetMessageName() string {
-	return "bier_route_dump"
-}
-func (*BierRouteDump) GetCrcString() string {
-	return "43af6370"
-}
-func (*BierRouteDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BierRouteDetails represents VPP binary API message 'bier_route_details':
-//
-//	"bier_route_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u16",
-//	    "br_bp"
-//	],
-//	[
-//	    "vl_api_bier_table_id_t",
-//	    "br_tbl_id"
-//	],
-//	[
-//	    "u32",
-//	    "br_n_paths"
-//	],
-//	[
-//	    "vl_api_fib_path_t",
-//	    "br_paths",
-//	    0,
-//	    "br_n_paths"
-//	],
-//	{
-//	    "crc": "0x82c4087b"
-//	}
-//
-type BierRouteDetails struct {
-	BrBp     uint16
-	BrTblID  BierTableID
-	BrNPaths uint32 `struc:"sizeof=BrPaths"`
-	BrPaths  []FibPath
-}
-
-func (*BierRouteDetails) GetMessageName() string {
-	return "bier_route_details"
-}
-func (*BierRouteDetails) GetCrcString() string {
-	return "82c4087b"
-}
-func (*BierRouteDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
 }
 
 // BierImpAdd represents VPP binary API message 'bier_imp_add':
@@ -773,37 +772,6 @@ func (*BierImpDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// BierImpDump represents VPP binary API message 'bier_imp_dump':
-//
-//	"bier_imp_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type BierImpDump struct{}
-
-func (*BierImpDump) GetMessageName() string {
-	return "bier_imp_dump"
-}
-func (*BierImpDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*BierImpDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // BierImpDetails represents VPP binary API message 'bier_imp_details':
 //
 //	"bier_imp_details",
@@ -854,84 +822,9 @@ func (*BierImpDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// BierDispTableAddDel represents VPP binary API message 'bier_disp_table_add_del':
+// BierImpDump represents VPP binary API message 'bier_imp_dump':
 //
-//	"bier_disp_table_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bdt_tbl_id"
-//	],
-//	[
-//	    "u8",
-//	    "bdt_is_add"
-//	],
-//	{
-//	    "crc": "0x7671b2cb"
-//	}
-//
-type BierDispTableAddDel struct {
-	BdtTblID uint32
-	BdtIsAdd uint8
-}
-
-func (*BierDispTableAddDel) GetMessageName() string {
-	return "bier_disp_table_add_del"
-}
-func (*BierDispTableAddDel) GetCrcString() string {
-	return "7671b2cb"
-}
-func (*BierDispTableAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BierDispTableAddDelReply represents VPP binary API message 'bier_disp_table_add_del_reply':
-//
-//	"bier_disp_table_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type BierDispTableAddDelReply struct {
-	Retval int32
-}
-
-func (*BierDispTableAddDelReply) GetMessageName() string {
-	return "bier_disp_table_add_del_reply"
-}
-func (*BierDispTableAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*BierDispTableAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BierDispTableDump represents VPP binary API message 'bier_disp_table_dump':
-//
-//	"bier_disp_table_dump",
+//	"bier_imp_dump",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -948,54 +841,21 @@ func (*BierDispTableAddDelReply) GetMessageType() api.MessageType {
 //	    "crc": "0x51077d14"
 //	}
 //
-type BierDispTableDump struct{}
+type BierImpDump struct{}
 
-func (*BierDispTableDump) GetMessageName() string {
-	return "bier_disp_table_dump"
+func (*BierImpDump) GetMessageName() string {
+	return "bier_imp_dump"
 }
-func (*BierDispTableDump) GetCrcString() string {
+func (*BierImpDump) GetCrcString() string {
 	return "51077d14"
 }
-func (*BierDispTableDump) GetMessageType() api.MessageType {
+func (*BierImpDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// BierDispTableDetails represents VPP binary API message 'bier_disp_table_details':
+// BierRouteAddDel represents VPP binary API message 'bier_route_add_del':
 //
-//	"bier_disp_table_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bdt_tbl_id"
-//	],
-//	{
-//	    "crc": "0xd27942c0"
-//	}
-//
-type BierDispTableDetails struct {
-	BdtTblID uint32
-}
-
-func (*BierDispTableDetails) GetMessageName() string {
-	return "bier_disp_table_details"
-}
-func (*BierDispTableDetails) GetCrcString() string {
-	return "d27942c0"
-}
-func (*BierDispTableDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BierDispEntryAddDel represents VPP binary API message 'bier_disp_entry_add_del':
-//
-//	"bier_disp_entry_add_del",
+//	"bier_route_add_del",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1009,57 +869,57 @@ func (*BierDispTableDetails) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "u16",
-//	    "bde_bp"
-//	],
-//	[
 //	    "u32",
-//	    "bde_tbl_id"
+//	    "br_bp"
 //	],
 //	[
 //	    "u8",
-//	    "bde_is_add"
+//	    "br_is_add"
 //	],
 //	[
 //	    "u8",
-//	    "bde_payload_proto"
+//	    "br_is_replace"
+//	],
+//	[
+//	    "vl_api_bier_table_id_t",
+//	    "br_tbl_id"
 //	],
 //	[
 //	    "u8",
-//	    "bde_n_paths"
+//	    "br_n_paths"
 //	],
 //	[
 //	    "vl_api_fib_path_t",
-//	    "bde_paths",
+//	    "br_paths",
 //	    0,
-//	    "bde_n_paths"
+//	    "br_n_paths"
 //	],
 //	{
-//	    "crc": "0x4260a077"
+//	    "crc": "0x0b83f5d2"
 //	}
 //
-type BierDispEntryAddDel struct {
-	BdeBp           uint16
-	BdeTblID        uint32
-	BdeIsAdd        uint8
-	BdePayloadProto uint8
-	BdeNPaths       uint8 `struc:"sizeof=BdePaths"`
-	BdePaths        []FibPath
+type BierRouteAddDel struct {
+	BrBp        uint32
+	BrIsAdd     uint8
+	BrIsReplace uint8
+	BrTblID     BierTableID
+	BrNPaths    uint8 `struc:"sizeof=BrPaths"`
+	BrPaths     []FibPath
 }
 
-func (*BierDispEntryAddDel) GetMessageName() string {
-	return "bier_disp_entry_add_del"
+func (*BierRouteAddDel) GetMessageName() string {
+	return "bier_route_add_del"
 }
-func (*BierDispEntryAddDel) GetCrcString() string {
-	return "4260a077"
+func (*BierRouteAddDel) GetCrcString() string {
+	return "0b83f5d2"
 }
-func (*BierDispEntryAddDel) GetMessageType() api.MessageType {
+func (*BierRouteAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// BierDispEntryAddDelReply represents VPP binary API message 'bier_disp_entry_add_del_reply':
+// BierRouteAddDelReply represents VPP binary API message 'bier_route_add_del_reply':
 //
-//	"bier_disp_entry_add_del_reply",
+//	"bier_route_add_del_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1076,23 +936,73 @@ func (*BierDispEntryAddDel) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type BierDispEntryAddDelReply struct {
+type BierRouteAddDelReply struct {
 	Retval int32
 }
 
-func (*BierDispEntryAddDelReply) GetMessageName() string {
-	return "bier_disp_entry_add_del_reply"
+func (*BierRouteAddDelReply) GetMessageName() string {
+	return "bier_route_add_del_reply"
 }
-func (*BierDispEntryAddDelReply) GetCrcString() string {
+func (*BierRouteAddDelReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*BierDispEntryAddDelReply) GetMessageType() api.MessageType {
+func (*BierRouteAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// BierDispEntryDump represents VPP binary API message 'bier_disp_entry_dump':
+// BierRouteDetails represents VPP binary API message 'bier_route_details':
 //
-//	"bier_disp_entry_dump",
+//	"bier_route_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u16",
+//	    "br_bp"
+//	],
+//	[
+//	    "vl_api_bier_table_id_t",
+//	    "br_tbl_id"
+//	],
+//	[
+//	    "u32",
+//	    "br_n_paths"
+//	],
+//	[
+//	    "vl_api_fib_path_t",
+//	    "br_paths",
+//	    0,
+//	    "br_n_paths"
+//	],
+//	{
+//	    "crc": "0x82c4087b"
+//	}
+//
+type BierRouteDetails struct {
+	BrBp     uint16
+	BrTblID  BierTableID
+	BrNPaths uint32 `struc:"sizeof=BrPaths"`
+	BrPaths  []FibPath
+}
+
+func (*BierRouteDetails) GetMessageName() string {
+	return "bier_route_details"
+}
+func (*BierRouteDetails) GetCrcString() string {
+	return "82c4087b"
+}
+func (*BierRouteDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BierRouteDump represents VPP binary API message 'bier_route_dump':
+//
+//	"bier_route_dump",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1106,30 +1016,77 @@ func (*BierDispEntryAddDelReply) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "u32",
-//	    "bde_tbl_id"
+//	    "vl_api_bier_table_id_t",
+//	    "br_tbl_id"
 //	],
 //	{
-//	    "crc": "0xb5fa54ad"
+//	    "crc": "0x43af6370"
 //	}
 //
-type BierDispEntryDump struct {
-	BdeTblID uint32
+type BierRouteDump struct {
+	BrTblID BierTableID
 }
 
-func (*BierDispEntryDump) GetMessageName() string {
-	return "bier_disp_entry_dump"
+func (*BierRouteDump) GetMessageName() string {
+	return "bier_route_dump"
 }
-func (*BierDispEntryDump) GetCrcString() string {
-	return "b5fa54ad"
+func (*BierRouteDump) GetCrcString() string {
+	return "43af6370"
 }
-func (*BierDispEntryDump) GetMessageType() api.MessageType {
+func (*BierRouteDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// BierDispEntryDetails represents VPP binary API message 'bier_disp_entry_details':
+// BierTableAddDel represents VPP binary API message 'bier_table_add_del':
 //
-//	"bier_disp_entry_details",
+//	"bier_table_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_bier_table_id_t",
+//	    "bt_tbl_id"
+//	],
+//	[
+//	    "u32",
+//	    "bt_label"
+//	],
+//	[
+//	    "u8",
+//	    "bt_is_add"
+//	],
+//	{
+//	    "crc": "0x4f7963b6"
+//	}
+//
+type BierTableAddDel struct {
+	BtTblID BierTableID
+	BtLabel uint32
+	BtIsAdd uint8
+}
+
+func (*BierTableAddDel) GetMessageName() string {
+	return "bier_table_add_del"
+}
+func (*BierTableAddDel) GetCrcString() string {
+	return "4f7963b6"
+}
+func (*BierTableAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BierTableAddDelReply represents VPP binary API message 'bier_table_add_del_reply':
+//
+//	"bier_table_add_del_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1139,75 +1096,117 @@ func (*BierDispEntryDump) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "u16",
-//	    "bde_bp"
-//	],
-//	[
-//	    "u32",
-//	    "bde_tbl_id"
-//	],
-//	[
-//	    "u8",
-//	    "bde_is_add"
-//	],
-//	[
-//	    "u8",
-//	    "bde_payload_proto"
-//	],
-//	[
-//	    "u8",
-//	    "bde_n_paths"
-//	],
-//	[
-//	    "vl_api_fib_path_t",
-//	    "bde_paths",
-//	    0,
-//	    "bde_n_paths"
+//	    "i32",
+//	    "retval"
 //	],
 //	{
-//	    "crc": "0xb9b10a59"
+//	    "crc": "0xe8d4e804"
 //	}
 //
-type BierDispEntryDetails struct {
-	BdeBp           uint16
-	BdeTblID        uint32
-	BdeIsAdd        uint8
-	BdePayloadProto uint8
-	BdeNPaths       uint8 `struc:"sizeof=BdePaths"`
-	BdePaths        []FibPath
+type BierTableAddDelReply struct {
+	Retval int32
 }
 
-func (*BierDispEntryDetails) GetMessageName() string {
-	return "bier_disp_entry_details"
+func (*BierTableAddDelReply) GetMessageName() string {
+	return "bier_table_add_del_reply"
 }
-func (*BierDispEntryDetails) GetCrcString() string {
-	return "b9b10a59"
+func (*BierTableAddDelReply) GetCrcString() string {
+	return "e8d4e804"
 }
-func (*BierDispEntryDetails) GetMessageType() api.MessageType {
+func (*BierTableAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// BierTableDetails represents VPP binary API message 'bier_table_details':
+//
+//	"bier_table_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bt_label"
+//	],
+//	[
+//	    "vl_api_bier_table_id_t",
+//	    "bt_tbl_id"
+//	],
+//	{
+//	    "crc": "0xb7a41e40"
+//	}
+//
+type BierTableDetails struct {
+	BtLabel uint32
+	BtTblID BierTableID
+}
+
+func (*BierTableDetails) GetMessageName() string {
+	return "bier_table_details"
+}
+func (*BierTableDetails) GetCrcString() string {
+	return "b7a41e40"
+}
+func (*BierTableDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BierTableDump represents VPP binary API message 'bier_table_dump':
+//
+//	"bier_table_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type BierTableDump struct{}
+
+func (*BierTableDump) GetMessageName() string {
+	return "bier_table_dump"
+}
+func (*BierTableDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*BierTableDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
-	api.RegisterMessage((*BierTableAddDel)(nil), "bier.BierTableAddDel")
-	api.RegisterMessage((*BierTableAddDelReply)(nil), "bier.BierTableAddDelReply")
-	api.RegisterMessage((*BierTableDump)(nil), "bier.BierTableDump")
-	api.RegisterMessage((*BierTableDetails)(nil), "bier.BierTableDetails")
-	api.RegisterMessage((*BierRouteAddDel)(nil), "bier.BierRouteAddDel")
-	api.RegisterMessage((*BierRouteAddDelReply)(nil), "bier.BierRouteAddDelReply")
-	api.RegisterMessage((*BierRouteDump)(nil), "bier.BierRouteDump")
-	api.RegisterMessage((*BierRouteDetails)(nil), "bier.BierRouteDetails")
+	api.RegisterMessage((*BierDispEntryAddDel)(nil), "bier.BierDispEntryAddDel")
+	api.RegisterMessage((*BierDispEntryAddDelReply)(nil), "bier.BierDispEntryAddDelReply")
+	api.RegisterMessage((*BierDispEntryDetails)(nil), "bier.BierDispEntryDetails")
+	api.RegisterMessage((*BierDispEntryDump)(nil), "bier.BierDispEntryDump")
+	api.RegisterMessage((*BierDispTableAddDel)(nil), "bier.BierDispTableAddDel")
+	api.RegisterMessage((*BierDispTableAddDelReply)(nil), "bier.BierDispTableAddDelReply")
+	api.RegisterMessage((*BierDispTableDetails)(nil), "bier.BierDispTableDetails")
+	api.RegisterMessage((*BierDispTableDump)(nil), "bier.BierDispTableDump")
 	api.RegisterMessage((*BierImpAdd)(nil), "bier.BierImpAdd")
 	api.RegisterMessage((*BierImpAddReply)(nil), "bier.BierImpAddReply")
 	api.RegisterMessage((*BierImpDel)(nil), "bier.BierImpDel")
 	api.RegisterMessage((*BierImpDelReply)(nil), "bier.BierImpDelReply")
-	api.RegisterMessage((*BierImpDump)(nil), "bier.BierImpDump")
 	api.RegisterMessage((*BierImpDetails)(nil), "bier.BierImpDetails")
-	api.RegisterMessage((*BierDispTableAddDel)(nil), "bier.BierDispTableAddDel")
-	api.RegisterMessage((*BierDispTableAddDelReply)(nil), "bier.BierDispTableAddDelReply")
-	api.RegisterMessage((*BierDispTableDump)(nil), "bier.BierDispTableDump")
-	api.RegisterMessage((*BierDispTableDetails)(nil), "bier.BierDispTableDetails")
-	api.RegisterMessage((*BierDispEntryAddDel)(nil), "bier.BierDispEntryAddDel")
-	api.RegisterMessage((*BierDispEntryAddDelReply)(nil), "bier.BierDispEntryAddDelReply")
-	api.RegisterMessage((*BierDispEntryDump)(nil), "bier.BierDispEntryDump")
-	api.RegisterMessage((*BierDispEntryDetails)(nil), "bier.BierDispEntryDetails")
+	api.RegisterMessage((*BierImpDump)(nil), "bier.BierImpDump")
+	api.RegisterMessage((*BierRouteAddDel)(nil), "bier.BierRouteAddDel")
+	api.RegisterMessage((*BierRouteAddDelReply)(nil), "bier.BierRouteAddDelReply")
+	api.RegisterMessage((*BierRouteDetails)(nil), "bier.BierRouteDetails")
+	api.RegisterMessage((*BierRouteDump)(nil), "bier.BierRouteDump")
+	api.RegisterMessage((*BierTableAddDel)(nil), "bier.BierTableAddDel")
+	api.RegisterMessage((*BierTableAddDelReply)(nil), "bier.BierTableAddDelReply")
+	api.RegisterMessage((*BierTableDetails)(nil), "bier.BierTableDetails")
+	api.RegisterMessage((*BierTableDump)(nil), "bier.BierTableDump")
 }

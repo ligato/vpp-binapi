@@ -5,9 +5,8 @@
  Package avf is a generated from VPP binary API module 'avf'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package avf
 

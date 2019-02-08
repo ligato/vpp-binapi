@@ -6,7 +6,6 @@
 
  It contains following objects:
 	  2 types
-
 */
 package fib_types
 
@@ -183,7 +182,4 @@ func (*FibPath) GetTypeName() string {
 }
 func (*FibPath) GetCrcString() string {
 	return "ba7a81f0"
-}
-
-func init() {
 }

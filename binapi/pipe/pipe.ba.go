@@ -5,9 +5,8 @@
  Package pipe is a generated from VPP binary API module 'pipe'.
 
  It contains following objects:
-	  6 messages
 	  3 services
-
+	  6 messages
 */
 package pipe
 
@@ -202,37 +201,6 @@ func (*PipeDeleteReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// PipeDump represents VPP binary API message 'pipe_dump':
-//
-//	"pipe_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type PipeDump struct{}
-
-func (*PipeDump) GetMessageName() string {
-	return "pipe_dump"
-}
-func (*PipeDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*PipeDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // PipeDetails represents VPP binary API message 'pipe_details':
 //
 //	"pipe_details",
@@ -277,11 +245,42 @@ func (*PipeDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// PipeDump represents VPP binary API message 'pipe_dump':
+//
+//	"pipe_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type PipeDump struct{}
+
+func (*PipeDump) GetMessageName() string {
+	return "pipe_dump"
+}
+func (*PipeDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*PipeDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
 	api.RegisterMessage((*PipeCreate)(nil), "pipe.PipeCreate")
 	api.RegisterMessage((*PipeCreateReply)(nil), "pipe.PipeCreateReply")
 	api.RegisterMessage((*PipeDelete)(nil), "pipe.PipeDelete")
 	api.RegisterMessage((*PipeDeleteReply)(nil), "pipe.PipeDeleteReply")
-	api.RegisterMessage((*PipeDump)(nil), "pipe.PipeDump")
 	api.RegisterMessage((*PipeDetails)(nil), "pipe.PipeDetails")
+	api.RegisterMessage((*PipeDump)(nil), "pipe.PipeDump")
 }

@@ -5,9 +5,8 @@
  Package span is a generated from VPP binary API module 'span'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package span
 
@@ -41,6 +40,91 @@ type Services interface {
 }
 
 /* Messages */
+
+// SwInterfaceSpanDetails represents VPP binary API message 'sw_interface_span_details':
+//
+//	"sw_interface_span_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index_from"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index_to"
+//	],
+//	[
+//	    "u8",
+//	    "state"
+//	],
+//	[
+//	    "u8",
+//	    "is_l2"
+//	],
+//	{
+//	    "crc": "0x23966371"
+//	}
+//
+type SwInterfaceSpanDetails struct {
+	SwIfIndexFrom uint32
+	SwIfIndexTo   uint32
+	State         uint8
+	IsL2          uint8
+}
+
+func (*SwInterfaceSpanDetails) GetMessageName() string {
+	return "sw_interface_span_details"
+}
+func (*SwInterfaceSpanDetails) GetCrcString() string {
+	return "23966371"
+}
+func (*SwInterfaceSpanDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// SwInterfaceSpanDump represents VPP binary API message 'sw_interface_span_dump':
+//
+//	"sw_interface_span_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_l2"
+//	],
+//	{
+//	    "crc": "0x67c54650"
+//	}
+//
+type SwInterfaceSpanDump struct {
+	IsL2 uint8
+}
+
+func (*SwInterfaceSpanDump) GetMessageName() string {
+	return "sw_interface_span_dump"
+}
+func (*SwInterfaceSpanDump) GetCrcString() string {
+	return "67c54650"
+}
+func (*SwInterfaceSpanDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
 
 // SwInterfaceSpanEnableDisable represents VPP binary API message 'sw_interface_span_enable_disable':
 //
@@ -127,94 +211,9 @@ func (*SwInterfaceSpanEnableDisableReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// SwInterfaceSpanDump represents VPP binary API message 'sw_interface_span_dump':
-//
-//	"sw_interface_span_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_l2"
-//	],
-//	{
-//	    "crc": "0x67c54650"
-//	}
-//
-type SwInterfaceSpanDump struct {
-	IsL2 uint8
-}
-
-func (*SwInterfaceSpanDump) GetMessageName() string {
-	return "sw_interface_span_dump"
-}
-func (*SwInterfaceSpanDump) GetCrcString() string {
-	return "67c54650"
-}
-func (*SwInterfaceSpanDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SwInterfaceSpanDetails represents VPP binary API message 'sw_interface_span_details':
-//
-//	"sw_interface_span_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index_from"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index_to"
-//	],
-//	[
-//	    "u8",
-//	    "state"
-//	],
-//	[
-//	    "u8",
-//	    "is_l2"
-//	],
-//	{
-//	    "crc": "0x23966371"
-//	}
-//
-type SwInterfaceSpanDetails struct {
-	SwIfIndexFrom uint32
-	SwIfIndexTo   uint32
-	State         uint8
-	IsL2          uint8
-}
-
-func (*SwInterfaceSpanDetails) GetMessageName() string {
-	return "sw_interface_span_details"
-}
-func (*SwInterfaceSpanDetails) GetCrcString() string {
-	return "23966371"
-}
-func (*SwInterfaceSpanDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 func init() {
+	api.RegisterMessage((*SwInterfaceSpanDetails)(nil), "span.SwInterfaceSpanDetails")
+	api.RegisterMessage((*SwInterfaceSpanDump)(nil), "span.SwInterfaceSpanDump")
 	api.RegisterMessage((*SwInterfaceSpanEnableDisable)(nil), "span.SwInterfaceSpanEnableDisable")
 	api.RegisterMessage((*SwInterfaceSpanEnableDisableReply)(nil), "span.SwInterfaceSpanEnableDisableReply")
-	api.RegisterMessage((*SwInterfaceSpanDump)(nil), "span.SwInterfaceSpanDump")
-	api.RegisterMessage((*SwInterfaceSpanDetails)(nil), "span.SwInterfaceSpanDetails")
 }

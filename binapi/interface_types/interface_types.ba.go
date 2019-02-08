@@ -6,7 +6,6 @@
 
  It contains following objects:
 	  1 alias
-
 */
 package interface_types
 
@@ -31,6 +30,3 @@ const VlAPIVersion = 0xfa73ea25
 //	}
 //
 type InterfaceIndex uint32
-
-func init() {
-}

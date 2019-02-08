@@ -5,9 +5,8 @@
  Package gre is a generated from VPP binary API module 'gre'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package gre
 
@@ -154,43 +153,6 @@ func (*GreAddDelTunnelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GreTunnelDump represents VPP binary API message 'gre_tunnel_dump':
-//
-//	"gre_tunnel_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type GreTunnelDump struct {
-	SwIfIndex uint32
-}
-
-func (*GreTunnelDump) GetMessageName() string {
-	return "gre_tunnel_dump"
-}
-func (*GreTunnelDump) GetCrcString() string {
-	return "529cb13f"
-}
-func (*GreTunnelDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // GreTunnelDetails represents VPP binary API message 'gre_tunnel_details':
 //
 //	"gre_tunnel_details",
@@ -261,9 +223,46 @@ func (*GreTunnelDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// GreTunnelDump represents VPP binary API message 'gre_tunnel_dump':
+//
+//	"gre_tunnel_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type GreTunnelDump struct {
+	SwIfIndex uint32
+}
+
+func (*GreTunnelDump) GetMessageName() string {
+	return "gre_tunnel_dump"
+}
+func (*GreTunnelDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*GreTunnelDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
 	api.RegisterMessage((*GreAddDelTunnel)(nil), "gre.GreAddDelTunnel")
 	api.RegisterMessage((*GreAddDelTunnelReply)(nil), "gre.GreAddDelTunnelReply")
-	api.RegisterMessage((*GreTunnelDump)(nil), "gre.GreTunnelDump")
 	api.RegisterMessage((*GreTunnelDetails)(nil), "gre.GreTunnelDetails")
+	api.RegisterMessage((*GreTunnelDump)(nil), "gre.GreTunnelDump")
 }

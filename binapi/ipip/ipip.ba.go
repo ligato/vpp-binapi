@@ -5,10 +5,9 @@
  Package ipip is a generated from VPP binary API module 'ipip'.
 
  It contains following objects:
-	 10 messages
-	  1 alias
 	  5 services
-
+	  1 alias
+	 10 messages
 */
 package ipip
 
@@ -64,178 +63,6 @@ type Services interface {
 type InterfaceIndex uint32
 
 /* Messages */
-
-// IpipAddTunnel represents VPP binary API message 'ipip_add_tunnel':
-//
-//	"ipip_add_tunnel",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u32",
-//	    "instance"
-//	],
-//	[
-//	    "u8",
-//	    "src_address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "dst_address",
-//	    16
-//	],
-//	[
-//	    "u32",
-//	    "table_id"
-//	],
-//	[
-//	    "u8",
-//	    "tc_tos"
-//	],
-//	{
-//	    "crc": "0x5c80fd36"
-//	}
-//
-type IpipAddTunnel struct {
-	IsIPv6     uint8
-	Instance   uint32
-	SrcAddress []byte `struc:"[16]byte"`
-	DstAddress []byte `struc:"[16]byte"`
-	TableID    uint32
-	TcTos      uint8
-}
-
-func (*IpipAddTunnel) GetMessageName() string {
-	return "ipip_add_tunnel"
-}
-func (*IpipAddTunnel) GetCrcString() string {
-	return "5c80fd36"
-}
-func (*IpipAddTunnel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// IpipAddTunnelReply represents VPP binary API message 'ipip_add_tunnel_reply':
-//
-//	"ipip_add_tunnel_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "vl_api_interface_index_t",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x903324db"
-//	}
-//
-type IpipAddTunnelReply struct {
-	Retval    int32
-	SwIfIndex InterfaceIndex
-}
-
-func (*IpipAddTunnelReply) GetMessageName() string {
-	return "ipip_add_tunnel_reply"
-}
-func (*IpipAddTunnelReply) GetCrcString() string {
-	return "903324db"
-}
-func (*IpipAddTunnelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// IpipDelTunnel represents VPP binary API message 'ipip_del_tunnel':
-//
-//	"ipip_del_tunnel",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_interface_index_t",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0xd85aab0d"
-//	}
-//
-type IpipDelTunnel struct {
-	SwIfIndex InterfaceIndex
-}
-
-func (*IpipDelTunnel) GetMessageName() string {
-	return "ipip_del_tunnel"
-}
-func (*IpipDelTunnel) GetCrcString() string {
-	return "d85aab0d"
-}
-func (*IpipDelTunnel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// IpipDelTunnelReply represents VPP binary API message 'ipip_del_tunnel_reply':
-//
-//	"ipip_del_tunnel_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type IpipDelTunnelReply struct {
-	Retval int32
-}
-
-func (*IpipDelTunnelReply) GetMessageName() string {
-	return "ipip_del_tunnel_reply"
-}
-func (*IpipDelTunnelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*IpipDelTunnelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
 
 // Ipip6rdAddTunnel represents VPP binary API message 'ipip_6rd_add_tunnel':
 //
@@ -425,9 +252,111 @@ func (*Ipip6rdDelTunnelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// IpipTunnelDump represents VPP binary API message 'ipip_tunnel_dump':
+// IpipAddTunnel represents VPP binary API message 'ipip_add_tunnel':
 //
-//	"ipip_tunnel_dump",
+//	"ipip_add_tunnel",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	[
+//	    "u32",
+//	    "instance"
+//	],
+//	[
+//	    "u8",
+//	    "src_address",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "dst_address",
+//	    16
+//	],
+//	[
+//	    "u32",
+//	    "table_id"
+//	],
+//	[
+//	    "u8",
+//	    "tc_tos"
+//	],
+//	{
+//	    "crc": "0x5c80fd36"
+//	}
+//
+type IpipAddTunnel struct {
+	IsIPv6     uint8
+	Instance   uint32
+	SrcAddress []byte `struc:"[16]byte"`
+	DstAddress []byte `struc:"[16]byte"`
+	TableID    uint32
+	TcTos      uint8
+}
+
+func (*IpipAddTunnel) GetMessageName() string {
+	return "ipip_add_tunnel"
+}
+func (*IpipAddTunnel) GetCrcString() string {
+	return "5c80fd36"
+}
+func (*IpipAddTunnel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// IpipAddTunnelReply represents VPP binary API message 'ipip_add_tunnel_reply':
+//
+//	"ipip_add_tunnel_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "vl_api_interface_index_t",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x903324db"
+//	}
+//
+type IpipAddTunnelReply struct {
+	Retval    int32
+	SwIfIndex InterfaceIndex
+}
+
+func (*IpipAddTunnelReply) GetMessageName() string {
+	return "ipip_add_tunnel_reply"
+}
+func (*IpipAddTunnelReply) GetCrcString() string {
+	return "903324db"
+}
+func (*IpipAddTunnelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// IpipDelTunnel represents VPP binary API message 'ipip_del_tunnel':
+//
+//	"ipip_del_tunnel",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -448,18 +377,51 @@ func (*Ipip6rdDelTunnelReply) GetMessageType() api.MessageType {
 //	    "crc": "0xd85aab0d"
 //	}
 //
-type IpipTunnelDump struct {
+type IpipDelTunnel struct {
 	SwIfIndex InterfaceIndex
 }
 
-func (*IpipTunnelDump) GetMessageName() string {
-	return "ipip_tunnel_dump"
+func (*IpipDelTunnel) GetMessageName() string {
+	return "ipip_del_tunnel"
 }
-func (*IpipTunnelDump) GetCrcString() string {
+func (*IpipDelTunnel) GetCrcString() string {
 	return "d85aab0d"
 }
-func (*IpipTunnelDump) GetMessageType() api.MessageType {
+func (*IpipDelTunnel) GetMessageType() api.MessageType {
 	return api.RequestMessage
+}
+
+// IpipDelTunnelReply represents VPP binary API message 'ipip_del_tunnel_reply':
+//
+//	"ipip_del_tunnel_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type IpipDelTunnelReply struct {
+	Retval int32
+}
+
+func (*IpipDelTunnelReply) GetMessageName() string {
+	return "ipip_del_tunnel_reply"
+}
+func (*IpipDelTunnelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*IpipDelTunnelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
 }
 
 // IpipTunnelDetails represents VPP binary API message 'ipip_tunnel_details':
@@ -527,15 +489,52 @@ func (*IpipTunnelDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// IpipTunnelDump represents VPP binary API message 'ipip_tunnel_dump':
+//
+//	"ipip_tunnel_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_interface_index_t",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0xd85aab0d"
+//	}
+//
+type IpipTunnelDump struct {
+	SwIfIndex InterfaceIndex
+}
+
+func (*IpipTunnelDump) GetMessageName() string {
+	return "ipip_tunnel_dump"
+}
+func (*IpipTunnelDump) GetCrcString() string {
+	return "d85aab0d"
+}
+func (*IpipTunnelDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
-	api.RegisterMessage((*IpipAddTunnel)(nil), "ipip.IpipAddTunnel")
-	api.RegisterMessage((*IpipAddTunnelReply)(nil), "ipip.IpipAddTunnelReply")
-	api.RegisterMessage((*IpipDelTunnel)(nil), "ipip.IpipDelTunnel")
-	api.RegisterMessage((*IpipDelTunnelReply)(nil), "ipip.IpipDelTunnelReply")
 	api.RegisterMessage((*Ipip6rdAddTunnel)(nil), "ipip.Ipip6rdAddTunnel")
 	api.RegisterMessage((*Ipip6rdAddTunnelReply)(nil), "ipip.Ipip6rdAddTunnelReply")
 	api.RegisterMessage((*Ipip6rdDelTunnel)(nil), "ipip.Ipip6rdDelTunnel")
 	api.RegisterMessage((*Ipip6rdDelTunnelReply)(nil), "ipip.Ipip6rdDelTunnelReply")
-	api.RegisterMessage((*IpipTunnelDump)(nil), "ipip.IpipTunnelDump")
+	api.RegisterMessage((*IpipAddTunnel)(nil), "ipip.IpipAddTunnel")
+	api.RegisterMessage((*IpipAddTunnelReply)(nil), "ipip.IpipAddTunnelReply")
+	api.RegisterMessage((*IpipDelTunnel)(nil), "ipip.IpipDelTunnel")
+	api.RegisterMessage((*IpipDelTunnelReply)(nil), "ipip.IpipDelTunnelReply")
 	api.RegisterMessage((*IpipTunnelDetails)(nil), "ipip.IpipTunnelDetails")
+	api.RegisterMessage((*IpipTunnelDump)(nil), "ipip.IpipTunnelDump")
 }

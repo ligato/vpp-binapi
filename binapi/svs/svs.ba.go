@@ -5,13 +5,12 @@
  Package svs is a generated from VPP binary API module 'svs'.
 
  It contains following objects:
-	 10 messages
-	  5 types
-	  2 aliases
-	  1 enum
-	  1 union
 	  5 services
-
+	  1 enum
+	  2 aliases
+	  5 types
+	  1 union
+	 10 messages
 */
 package svs
 
@@ -129,31 +128,58 @@ func (*Address) GetCrcString() string {
 	return "09f11671"
 }
 
-// Prefix represents VPP binary API type 'prefix':
+// IP4Prefix represents VPP binary API type 'ip4_prefix':
 //
-//	"prefix",
+//	"ip4_prefix",
 //	[
-//	    "vl_api_address_t",
-//	    "address"
+//	    "vl_api_ip4_address_t",
+//	    "prefix"
 //	],
 //	[
 //	    "u8",
-//	    "address_length"
+//	    "len"
 //	],
 //	{
-//	    "crc": "0x0403aebc"
+//	    "crc": "0xea8dc11d"
 //	}
 //
-type Prefix struct {
-	Address       Address
-	AddressLength uint8
+type IP4Prefix struct {
+	Prefix IP4Address
+	Len    uint8
 }
 
-func (*Prefix) GetTypeName() string {
-	return "prefix"
+func (*IP4Prefix) GetTypeName() string {
+	return "ip4_prefix"
 }
-func (*Prefix) GetCrcString() string {
-	return "0403aebc"
+func (*IP4Prefix) GetCrcString() string {
+	return "ea8dc11d"
+}
+
+// IP6Prefix represents VPP binary API type 'ip6_prefix':
+//
+//	"ip6_prefix",
+//	[
+//	    "vl_api_ip6_address_t",
+//	    "prefix"
+//	],
+//	[
+//	    "u8",
+//	    "len"
+//	],
+//	{
+//	    "crc": "0x779fd64f"
+//	}
+//
+type IP6Prefix struct {
+	Prefix IP6Address
+	Len    uint8
+}
+
+func (*IP6Prefix) GetTypeName() string {
+	return "ip6_prefix"
+}
+func (*IP6Prefix) GetCrcString() string {
+	return "779fd64f"
 }
 
 // Mprefix represents VPP binary API type 'mprefix':
@@ -193,58 +219,31 @@ func (*Mprefix) GetCrcString() string {
 	return "1c4cba05"
 }
 
-// IP6Prefix represents VPP binary API type 'ip6_prefix':
+// Prefix represents VPP binary API type 'prefix':
 //
-//	"ip6_prefix",
+//	"prefix",
 //	[
-//	    "vl_api_ip6_address_t",
-//	    "prefix"
+//	    "vl_api_address_t",
+//	    "address"
 //	],
 //	[
 //	    "u8",
-//	    "len"
+//	    "address_length"
 //	],
 //	{
-//	    "crc": "0x779fd64f"
+//	    "crc": "0x0403aebc"
 //	}
 //
-type IP6Prefix struct {
-	Prefix IP6Address
-	Len    uint8
+type Prefix struct {
+	Address       Address
+	AddressLength uint8
 }
 
-func (*IP6Prefix) GetTypeName() string {
-	return "ip6_prefix"
+func (*Prefix) GetTypeName() string {
+	return "prefix"
 }
-func (*IP6Prefix) GetCrcString() string {
-	return "779fd64f"
-}
-
-// IP4Prefix represents VPP binary API type 'ip4_prefix':
-//
-//	"ip4_prefix",
-//	[
-//	    "vl_api_ip4_address_t",
-//	    "prefix"
-//	],
-//	[
-//	    "u8",
-//	    "len"
-//	],
-//	{
-//	    "crc": "0xea8dc11d"
-//	}
-//
-type IP4Prefix struct {
-	Prefix IP4Address
-	Len    uint8
-}
-
-func (*IP4Prefix) GetTypeName() string {
-	return "ip4_prefix"
-}
-func (*IP4Prefix) GetCrcString() string {
-	return "ea8dc11d"
+func (*Prefix) GetCrcString() string {
+	return "0403aebc"
 }
 
 /* Unions */
@@ -275,6 +274,10 @@ func (*AddressUnion) GetCrcString() string {
 	return "d68a2fb4"
 }
 
+func AddressUnionIP4(a IP4Address) (u AddressUnion) {
+	u.SetIP4(a)
+	return
+}
 func (u *AddressUnion) SetIP4(a IP4Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -288,6 +291,10 @@ func (u *AddressUnion) GetIP4() (a IP4Address) {
 	return
 }
 
+func AddressUnionIP6(a IP6Address) (u AddressUnion) {
+	u.SetIP6(a)
+	return
+}
 func (u *AddressUnion) SetIP6(a IP6Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -302,6 +309,165 @@ func (u *AddressUnion) GetIP6() (a IP6Address) {
 }
 
 /* Messages */
+
+// SvsDetails represents VPP binary API message 'svs_details':
+//
+//	"svs_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "table_id"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "vl_api_address_family_t",
+//	    "af"
+//	],
+//	{
+//	    "crc": "0x2a7c7411"
+//	}
+//
+type SvsDetails struct {
+	TableID   uint32
+	SwIfIndex uint32
+	Af        AddressFamily
+}
+
+func (*SvsDetails) GetMessageName() string {
+	return "svs_details"
+}
+func (*SvsDetails) GetCrcString() string {
+	return "2a7c7411"
+}
+func (*SvsDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// SvsDump represents VPP binary API message 'svs_dump':
+//
+//	"svs_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type SvsDump struct{}
+
+func (*SvsDump) GetMessageName() string {
+	return "svs_dump"
+}
+func (*SvsDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*SvsDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// SvsEnableDisable represents VPP binary API message 'svs_enable_disable':
+//
+//	"svs_enable_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_enable"
+//	],
+//	[
+//	    "vl_api_address_family_t",
+//	    "af"
+//	],
+//	[
+//	    "u32",
+//	    "table_id"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0xbfd387a2"
+//	}
+//
+type SvsEnableDisable struct {
+	IsEnable  uint8
+	Af        AddressFamily
+	TableID   uint32
+	SwIfIndex uint32
+}
+
+func (*SvsEnableDisable) GetMessageName() string {
+	return "svs_enable_disable"
+}
+func (*SvsEnableDisable) GetCrcString() string {
+	return "bfd387a2"
+}
+func (*SvsEnableDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// SvsEnableDisableReply represents VPP binary API message 'svs_enable_disable_reply':
+//
+//	"svs_enable_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type SvsEnableDisableReply struct {
+	Retval int32
+}
+
+func (*SvsEnableDisableReply) GetMessageName() string {
+	return "svs_enable_disable_reply"
+}
+func (*SvsEnableDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*SvsEnableDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
 
 // SvsPluginGetVersion represents VPP binary API message 'svs_plugin_get_version':
 //
@@ -369,86 +535,6 @@ func (*SvsPluginGetVersionReply) GetCrcString() string {
 	return "9b32cf86"
 }
 func (*SvsPluginGetVersionReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// SvsTableAddDel represents VPP binary API message 'svs_table_add_del':
-//
-//	"svs_table_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "vl_api_address_family_t",
-//	    "af"
-//	],
-//	[
-//	    "u32",
-//	    "table_id"
-//	],
-//	{
-//	    "crc": "0x3b28c790"
-//	}
-//
-type SvsTableAddDel struct {
-	IsAdd   uint8
-	Af      AddressFamily
-	TableID uint32
-}
-
-func (*SvsTableAddDel) GetMessageName() string {
-	return "svs_table_add_del"
-}
-func (*SvsTableAddDel) GetCrcString() string {
-	return "3b28c790"
-}
-func (*SvsTableAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SvsTableAddDelReply represents VPP binary API message 'svs_table_add_del_reply':
-//
-//	"svs_table_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type SvsTableAddDelReply struct {
-	Retval int32
-}
-
-func (*SvsTableAddDelReply) GetMessageName() string {
-	return "svs_table_add_del_reply"
-}
-func (*SvsTableAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*SvsTableAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -537,9 +623,9 @@ func (*SvsRouteAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// SvsEnableDisable represents VPP binary API message 'svs_enable_disable':
+// SvsTableAddDel represents VPP binary API message 'svs_table_add_del':
 //
-//	"svs_enable_disable",
+//	"svs_table_add_del",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -554,7 +640,7 @@ func (*SvsRouteAddDelReply) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u8",
-//	    "is_enable"
+//	    "is_add"
 //	],
 //	[
 //	    "vl_api_address_family_t",
@@ -564,34 +650,29 @@ func (*SvsRouteAddDelReply) GetMessageType() api.MessageType {
 //	    "u32",
 //	    "table_id"
 //	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
 //	{
-//	    "crc": "0xbfd387a2"
+//	    "crc": "0x3b28c790"
 //	}
 //
-type SvsEnableDisable struct {
-	IsEnable  uint8
-	Af        AddressFamily
-	TableID   uint32
-	SwIfIndex uint32
+type SvsTableAddDel struct {
+	IsAdd   uint8
+	Af      AddressFamily
+	TableID uint32
 }
 
-func (*SvsEnableDisable) GetMessageName() string {
-	return "svs_enable_disable"
+func (*SvsTableAddDel) GetMessageName() string {
+	return "svs_table_add_del"
 }
-func (*SvsEnableDisable) GetCrcString() string {
-	return "bfd387a2"
+func (*SvsTableAddDel) GetCrcString() string {
+	return "3b28c790"
 }
-func (*SvsEnableDisable) GetMessageType() api.MessageType {
+func (*SvsTableAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// SvsEnableDisableReply represents VPP binary API message 'svs_enable_disable_reply':
+// SvsTableAddDelReply represents VPP binary API message 'svs_table_add_del_reply':
 //
-//	"svs_enable_disable_reply",
+//	"svs_table_add_del_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -608,103 +689,29 @@ func (*SvsEnableDisable) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type SvsEnableDisableReply struct {
+type SvsTableAddDelReply struct {
 	Retval int32
 }
 
-func (*SvsEnableDisableReply) GetMessageName() string {
-	return "svs_enable_disable_reply"
+func (*SvsTableAddDelReply) GetMessageName() string {
+	return "svs_table_add_del_reply"
 }
-func (*SvsEnableDisableReply) GetCrcString() string {
+func (*SvsTableAddDelReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*SvsEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// SvsDump represents VPP binary API message 'svs_dump':
-//
-//	"svs_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type SvsDump struct{}
-
-func (*SvsDump) GetMessageName() string {
-	return "svs_dump"
-}
-func (*SvsDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*SvsDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SvsDetails represents VPP binary API message 'svs_details':
-//
-//	"svs_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "table_id"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "vl_api_address_family_t",
-//	    "af"
-//	],
-//	{
-//	    "crc": "0x2a7c7411"
-//	}
-//
-type SvsDetails struct {
-	TableID   uint32
-	SwIfIndex uint32
-	Af        AddressFamily
-}
-
-func (*SvsDetails) GetMessageName() string {
-	return "svs_details"
-}
-func (*SvsDetails) GetCrcString() string {
-	return "2a7c7411"
-}
-func (*SvsDetails) GetMessageType() api.MessageType {
+func (*SvsTableAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
 func init() {
-	api.RegisterMessage((*SvsPluginGetVersion)(nil), "svs.SvsPluginGetVersion")
-	api.RegisterMessage((*SvsPluginGetVersionReply)(nil), "svs.SvsPluginGetVersionReply")
-	api.RegisterMessage((*SvsTableAddDel)(nil), "svs.SvsTableAddDel")
-	api.RegisterMessage((*SvsTableAddDelReply)(nil), "svs.SvsTableAddDelReply")
-	api.RegisterMessage((*SvsRouteAddDel)(nil), "svs.SvsRouteAddDel")
-	api.RegisterMessage((*SvsRouteAddDelReply)(nil), "svs.SvsRouteAddDelReply")
+	api.RegisterMessage((*SvsDetails)(nil), "svs.SvsDetails")
+	api.RegisterMessage((*SvsDump)(nil), "svs.SvsDump")
 	api.RegisterMessage((*SvsEnableDisable)(nil), "svs.SvsEnableDisable")
 	api.RegisterMessage((*SvsEnableDisableReply)(nil), "svs.SvsEnableDisableReply")
-	api.RegisterMessage((*SvsDump)(nil), "svs.SvsDump")
-	api.RegisterMessage((*SvsDetails)(nil), "svs.SvsDetails")
+	api.RegisterMessage((*SvsPluginGetVersion)(nil), "svs.SvsPluginGetVersion")
+	api.RegisterMessage((*SvsPluginGetVersionReply)(nil), "svs.SvsPluginGetVersionReply")
+	api.RegisterMessage((*SvsRouteAddDel)(nil), "svs.SvsRouteAddDel")
+	api.RegisterMessage((*SvsRouteAddDelReply)(nil), "svs.SvsRouteAddDelReply")
+	api.RegisterMessage((*SvsTableAddDel)(nil), "svs.SvsTableAddDel")
+	api.RegisterMessage((*SvsTableAddDelReply)(nil), "svs.SvsTableAddDelReply")
 }

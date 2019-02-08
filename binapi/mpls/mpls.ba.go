@@ -5,10 +5,9 @@
  Package mpls is a generated from VPP binary API module 'mpls'.
 
  It contains following objects:
-	 14 messages
-	  2 types
 	  7 services
-
+	  2 types
+	 14 messages
 */
 package mpls
 
@@ -227,6 +226,98 @@ func (*FibPath) GetCrcString() string {
 
 /* Messages */
 
+// MplsFibDetails represents VPP binary API message 'mpls_fib_details':
+//
+//	"mpls_fib_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "table_id"
+//	],
+//	[
+//	    "u8",
+//	    "table_name",
+//	    64
+//	],
+//	[
+//	    "u8",
+//	    "eos_bit"
+//	],
+//	[
+//	    "u32",
+//	    "label"
+//	],
+//	[
+//	    "u32",
+//	    "count"
+//	],
+//	[
+//	    "vl_api_fib_path_t",
+//	    "path",
+//	    0,
+//	    "count"
+//	],
+//	{
+//	    "crc": "0x4404bf64"
+//	}
+//
+type MplsFibDetails struct {
+	TableID   uint32
+	TableName []byte `struc:"[64]byte"`
+	EosBit    uint8
+	Label     uint32
+	Count     uint32 `struc:"sizeof=Path"`
+	Path      []FibPath
+}
+
+func (*MplsFibDetails) GetMessageName() string {
+	return "mpls_fib_details"
+}
+func (*MplsFibDetails) GetCrcString() string {
+	return "4404bf64"
+}
+func (*MplsFibDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// MplsFibDump represents VPP binary API message 'mpls_fib_dump':
+//
+//	"mpls_fib_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type MplsFibDump struct{}
+
+func (*MplsFibDump) GetMessageName() string {
+	return "mpls_fib_dump"
+}
+func (*MplsFibDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*MplsFibDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 // MplsIPBindUnbind represents VPP binary API message 'mpls_ip_bind_unbind':
 //
 //	"mpls_ip_bind_unbind",
@@ -325,327 +416,6 @@ func (*MplsIPBindUnbindReply) GetCrcString() string {
 	return "e8d4e804"
 }
 func (*MplsIPBindUnbindReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// MplsTunnelAddDel represents VPP binary API message 'mpls_tunnel_add_del':
-//
-//	"mpls_tunnel_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "mt_sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "mt_is_add"
-//	],
-//	[
-//	    "u8",
-//	    "mt_l2_only"
-//	],
-//	[
-//	    "u8",
-//	    "mt_is_multicast"
-//	],
-//	[
-//	    "u8",
-//	    "mt_next_hop_proto_is_ip4"
-//	],
-//	[
-//	    "u8",
-//	    "mt_next_hop_weight"
-//	],
-//	[
-//	    "u8",
-//	    "mt_next_hop_preference"
-//	],
-//	[
-//	    "u8",
-//	    "mt_next_hop",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "mt_next_hop_n_out_labels"
-//	],
-//	[
-//	    "u32",
-//	    "mt_next_hop_via_label"
-//	],
-//	[
-//	    "u32",
-//	    "mt_next_hop_sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "mt_next_hop_table_id"
-//	],
-//	[
-//	    "vl_api_fib_mpls_label_t",
-//	    "mt_next_hop_out_label_stack",
-//	    0,
-//	    "mt_next_hop_n_out_labels"
-//	],
-//	{
-//	    "crc": "0xd02d9e06"
-//	}
-//
-type MplsTunnelAddDel struct {
-	MtSwIfIndex            uint32
-	MtIsAdd                uint8
-	MtL2Only               uint8
-	MtIsMulticast          uint8
-	MtNextHopProtoIsIP4    uint8
-	MtNextHopWeight        uint8
-	MtNextHopPreference    uint8
-	MtNextHop              []byte `struc:"[16]byte"`
-	MtNextHopNOutLabels    uint8  `struc:"sizeof=MtNextHopOutLabelStack"`
-	MtNextHopViaLabel      uint32
-	MtNextHopSwIfIndex     uint32
-	MtNextHopTableID       uint32
-	MtNextHopOutLabelStack []FibMplsLabel
-}
-
-func (*MplsTunnelAddDel) GetMessageName() string {
-	return "mpls_tunnel_add_del"
-}
-func (*MplsTunnelAddDel) GetCrcString() string {
-	return "d02d9e06"
-}
-func (*MplsTunnelAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// MplsTunnelAddDelReply represents VPP binary API message 'mpls_tunnel_add_del_reply':
-//
-//	"mpls_tunnel_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "tunnel_index"
-//	],
-//	{
-//	    "crc": "0xcc62a1ce"
-//	}
-//
-type MplsTunnelAddDelReply struct {
-	Retval      int32
-	SwIfIndex   uint32
-	TunnelIndex uint32
-}
-
-func (*MplsTunnelAddDelReply) GetMessageName() string {
-	return "mpls_tunnel_add_del_reply"
-}
-func (*MplsTunnelAddDelReply) GetCrcString() string {
-	return "cc62a1ce"
-}
-func (*MplsTunnelAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// MplsTunnelDump represents VPP binary API message 'mpls_tunnel_dump':
-//
-//	"mpls_tunnel_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type MplsTunnelDump struct {
-	SwIfIndex uint32
-}
-
-func (*MplsTunnelDump) GetMessageName() string {
-	return "mpls_tunnel_dump"
-}
-func (*MplsTunnelDump) GetCrcString() string {
-	return "529cb13f"
-}
-func (*MplsTunnelDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// MplsTunnelDetails represents VPP binary API message 'mpls_tunnel_details':
-//
-//	"mpls_tunnel_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "mt_sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "mt_tunnel_index"
-//	],
-//	[
-//	    "u8",
-//	    "mt_l2_only"
-//	],
-//	[
-//	    "u8",
-//	    "mt_is_multicast"
-//	],
-//	[
-//	    "u32",
-//	    "mt_count"
-//	],
-//	[
-//	    "vl_api_fib_path_t",
-//	    "mt_paths",
-//	    0,
-//	    "mt_count"
-//	],
-//	{
-//	    "crc": "0x7c2070cf"
-//	}
-//
-type MplsTunnelDetails struct {
-	MtSwIfIndex   uint32
-	MtTunnelIndex uint32
-	MtL2Only      uint8
-	MtIsMulticast uint8
-	MtCount       uint32 `struc:"sizeof=MtPaths"`
-	MtPaths       []FibPath
-}
-
-func (*MplsTunnelDetails) GetMessageName() string {
-	return "mpls_tunnel_details"
-}
-func (*MplsTunnelDetails) GetCrcString() string {
-	return "7c2070cf"
-}
-func (*MplsTunnelDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// MplsTableAddDel represents VPP binary API message 'mpls_table_add_del':
-//
-//	"mpls_table_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "mt_table_id"
-//	],
-//	[
-//	    "u8",
-//	    "mt_is_add"
-//	],
-//	[
-//	    "u8",
-//	    "mt_name",
-//	    64
-//	],
-//	{
-//	    "crc": "0x83cf0340"
-//	}
-//
-type MplsTableAddDel struct {
-	MtTableID uint32
-	MtIsAdd   uint8
-	MtName    []byte `struc:"[64]byte"`
-}
-
-func (*MplsTableAddDel) GetMessageName() string {
-	return "mpls_table_add_del"
-}
-func (*MplsTableAddDel) GetCrcString() string {
-	return "83cf0340"
-}
-func (*MplsTableAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// MplsTableAddDelReply represents VPP binary API message 'mpls_table_add_del_reply':
-//
-//	"mpls_table_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type MplsTableAddDelReply struct {
-	Retval int32
-}
-
-func (*MplsTableAddDelReply) GetMessageName() string {
-	return "mpls_table_add_del_reply"
-}
-func (*MplsTableAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*MplsTableAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -827,9 +597,9 @@ func (*MplsRouteAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// MplsFibDump represents VPP binary API message 'mpls_fib_dump':
+// MplsTableAddDel represents VPP binary API message 'mpls_table_add_del':
 //
-//	"mpls_fib_dump",
+//	"mpls_table_add_del",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -842,25 +612,218 @@ func (*MplsRouteAddDelReply) GetMessageType() api.MessageType {
 //	    "u32",
 //	    "context"
 //	],
+//	[
+//	    "u32",
+//	    "mt_table_id"
+//	],
+//	[
+//	    "u8",
+//	    "mt_is_add"
+//	],
+//	[
+//	    "u8",
+//	    "mt_name",
+//	    64
+//	],
 //	{
-//	    "crc": "0x51077d14"
+//	    "crc": "0x83cf0340"
 //	}
 //
-type MplsFibDump struct{}
+type MplsTableAddDel struct {
+	MtTableID uint32
+	MtIsAdd   uint8
+	MtName    []byte `struc:"[64]byte"`
+}
 
-func (*MplsFibDump) GetMessageName() string {
-	return "mpls_fib_dump"
+func (*MplsTableAddDel) GetMessageName() string {
+	return "mpls_table_add_del"
 }
-func (*MplsFibDump) GetCrcString() string {
-	return "51077d14"
+func (*MplsTableAddDel) GetCrcString() string {
+	return "83cf0340"
 }
-func (*MplsFibDump) GetMessageType() api.MessageType {
+func (*MplsTableAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// MplsFibDetails represents VPP binary API message 'mpls_fib_details':
+// MplsTableAddDelReply represents VPP binary API message 'mpls_table_add_del_reply':
 //
-//	"mpls_fib_details",
+//	"mpls_table_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type MplsTableAddDelReply struct {
+	Retval int32
+}
+
+func (*MplsTableAddDelReply) GetMessageName() string {
+	return "mpls_table_add_del_reply"
+}
+func (*MplsTableAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*MplsTableAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// MplsTunnelAddDel represents VPP binary API message 'mpls_tunnel_add_del':
+//
+//	"mpls_tunnel_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "mt_sw_if_index"
+//	],
+//	[
+//	    "u8",
+//	    "mt_is_add"
+//	],
+//	[
+//	    "u8",
+//	    "mt_l2_only"
+//	],
+//	[
+//	    "u8",
+//	    "mt_is_multicast"
+//	],
+//	[
+//	    "u8",
+//	    "mt_next_hop_proto_is_ip4"
+//	],
+//	[
+//	    "u8",
+//	    "mt_next_hop_weight"
+//	],
+//	[
+//	    "u8",
+//	    "mt_next_hop_preference"
+//	],
+//	[
+//	    "u8",
+//	    "mt_next_hop",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "mt_next_hop_n_out_labels"
+//	],
+//	[
+//	    "u32",
+//	    "mt_next_hop_via_label"
+//	],
+//	[
+//	    "u32",
+//	    "mt_next_hop_sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "mt_next_hop_table_id"
+//	],
+//	[
+//	    "vl_api_fib_mpls_label_t",
+//	    "mt_next_hop_out_label_stack",
+//	    0,
+//	    "mt_next_hop_n_out_labels"
+//	],
+//	{
+//	    "crc": "0xd02d9e06"
+//	}
+//
+type MplsTunnelAddDel struct {
+	MtSwIfIndex            uint32
+	MtIsAdd                uint8
+	MtL2Only               uint8
+	MtIsMulticast          uint8
+	MtNextHopProtoIsIP4    uint8
+	MtNextHopWeight        uint8
+	MtNextHopPreference    uint8
+	MtNextHop              []byte `struc:"[16]byte"`
+	MtNextHopNOutLabels    uint8  `struc:"sizeof=MtNextHopOutLabelStack"`
+	MtNextHopViaLabel      uint32
+	MtNextHopSwIfIndex     uint32
+	MtNextHopTableID       uint32
+	MtNextHopOutLabelStack []FibMplsLabel
+}
+
+func (*MplsTunnelAddDel) GetMessageName() string {
+	return "mpls_tunnel_add_del"
+}
+func (*MplsTunnelAddDel) GetCrcString() string {
+	return "d02d9e06"
+}
+func (*MplsTunnelAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// MplsTunnelAddDelReply represents VPP binary API message 'mpls_tunnel_add_del_reply':
+//
+//	"mpls_tunnel_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "tunnel_index"
+//	],
+//	{
+//	    "crc": "0xcc62a1ce"
+//	}
+//
+type MplsTunnelAddDelReply struct {
+	Retval      int32
+	SwIfIndex   uint32
+	TunnelIndex uint32
+}
+
+func (*MplsTunnelAddDelReply) GetMessageName() string {
+	return "mpls_tunnel_add_del_reply"
+}
+func (*MplsTunnelAddDelReply) GetCrcString() string {
+	return "cc62a1ce"
+}
+func (*MplsTunnelAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// MplsTunnelDetails represents VPP binary API message 'mpls_tunnel_details':
+//
+//	"mpls_tunnel_details",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -871,52 +834,88 @@ func (*MplsFibDump) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u32",
-//	    "table_id"
-//	],
-//	[
-//	    "u8",
-//	    "table_name",
-//	    64
-//	],
-//	[
-//	    "u8",
-//	    "eos_bit"
+//	    "mt_sw_if_index"
 //	],
 //	[
 //	    "u32",
-//	    "label"
+//	    "mt_tunnel_index"
+//	],
+//	[
+//	    "u8",
+//	    "mt_l2_only"
+//	],
+//	[
+//	    "u8",
+//	    "mt_is_multicast"
 //	],
 //	[
 //	    "u32",
-//	    "count"
+//	    "mt_count"
 //	],
 //	[
 //	    "vl_api_fib_path_t",
-//	    "path",
+//	    "mt_paths",
 //	    0,
-//	    "count"
+//	    "mt_count"
 //	],
 //	{
-//	    "crc": "0x4404bf64"
+//	    "crc": "0x7c2070cf"
 //	}
 //
-type MplsFibDetails struct {
-	TableID   uint32
-	TableName []byte `struc:"[64]byte"`
-	EosBit    uint8
-	Label     uint32
-	Count     uint32 `struc:"sizeof=Path"`
-	Path      []FibPath
+type MplsTunnelDetails struct {
+	MtSwIfIndex   uint32
+	MtTunnelIndex uint32
+	MtL2Only      uint8
+	MtIsMulticast uint8
+	MtCount       uint32 `struc:"sizeof=MtPaths"`
+	MtPaths       []FibPath
 }
 
-func (*MplsFibDetails) GetMessageName() string {
-	return "mpls_fib_details"
+func (*MplsTunnelDetails) GetMessageName() string {
+	return "mpls_tunnel_details"
 }
-func (*MplsFibDetails) GetCrcString() string {
-	return "4404bf64"
+func (*MplsTunnelDetails) GetCrcString() string {
+	return "7c2070cf"
 }
-func (*MplsFibDetails) GetMessageType() api.MessageType {
+func (*MplsTunnelDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
+}
+
+// MplsTunnelDump represents VPP binary API message 'mpls_tunnel_dump':
+//
+//	"mpls_tunnel_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type MplsTunnelDump struct {
+	SwIfIndex uint32
+}
+
+func (*MplsTunnelDump) GetMessageName() string {
+	return "mpls_tunnel_dump"
+}
+func (*MplsTunnelDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*MplsTunnelDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
 }
 
 // SwInterfaceSetMplsEnable represents VPP binary API message 'sw_interface_set_mpls_enable':
@@ -995,18 +994,18 @@ func (*SwInterfaceSetMplsEnableReply) GetMessageType() api.MessageType {
 }
 
 func init() {
+	api.RegisterMessage((*MplsFibDetails)(nil), "mpls.MplsFibDetails")
+	api.RegisterMessage((*MplsFibDump)(nil), "mpls.MplsFibDump")
 	api.RegisterMessage((*MplsIPBindUnbind)(nil), "mpls.MplsIPBindUnbind")
 	api.RegisterMessage((*MplsIPBindUnbindReply)(nil), "mpls.MplsIPBindUnbindReply")
-	api.RegisterMessage((*MplsTunnelAddDel)(nil), "mpls.MplsTunnelAddDel")
-	api.RegisterMessage((*MplsTunnelAddDelReply)(nil), "mpls.MplsTunnelAddDelReply")
-	api.RegisterMessage((*MplsTunnelDump)(nil), "mpls.MplsTunnelDump")
-	api.RegisterMessage((*MplsTunnelDetails)(nil), "mpls.MplsTunnelDetails")
-	api.RegisterMessage((*MplsTableAddDel)(nil), "mpls.MplsTableAddDel")
-	api.RegisterMessage((*MplsTableAddDelReply)(nil), "mpls.MplsTableAddDelReply")
 	api.RegisterMessage((*MplsRouteAddDel)(nil), "mpls.MplsRouteAddDel")
 	api.RegisterMessage((*MplsRouteAddDelReply)(nil), "mpls.MplsRouteAddDelReply")
-	api.RegisterMessage((*MplsFibDump)(nil), "mpls.MplsFibDump")
-	api.RegisterMessage((*MplsFibDetails)(nil), "mpls.MplsFibDetails")
+	api.RegisterMessage((*MplsTableAddDel)(nil), "mpls.MplsTableAddDel")
+	api.RegisterMessage((*MplsTableAddDelReply)(nil), "mpls.MplsTableAddDelReply")
+	api.RegisterMessage((*MplsTunnelAddDel)(nil), "mpls.MplsTunnelAddDel")
+	api.RegisterMessage((*MplsTunnelAddDelReply)(nil), "mpls.MplsTunnelAddDelReply")
+	api.RegisterMessage((*MplsTunnelDetails)(nil), "mpls.MplsTunnelDetails")
+	api.RegisterMessage((*MplsTunnelDump)(nil), "mpls.MplsTunnelDump")
 	api.RegisterMessage((*SwInterfaceSetMplsEnable)(nil), "mpls.SwInterfaceSetMplsEnable")
 	api.RegisterMessage((*SwInterfaceSetMplsEnableReply)(nil), "mpls.SwInterfaceSetMplsEnableReply")
 }

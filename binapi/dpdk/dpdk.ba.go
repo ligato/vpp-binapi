@@ -5,9 +5,8 @@
  Package dpdk is a generated from VPP binary API module 'dpdk'.
 
  It contains following objects:
-	  6 messages
 	  3 services
-
+	  6 messages
 */
 package dpdk
 

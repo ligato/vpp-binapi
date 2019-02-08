@@ -5,10 +5,9 @@
  Package memclnt is a generated from VPP binary API module 'memclnt'.
 
  It contains following objects:
-	 22 messages
-	  2 types
 	 13 services
-
+	  2 types
+	 22 messages
 */
 package memclnt
 
@@ -86,6 +85,34 @@ type Services interface {
 
 /* Types */
 
+// MessageTableEntry represents VPP binary API type 'message_table_entry':
+//
+//	"message_table_entry",
+//	[
+//	    "u16",
+//	    "index"
+//	],
+//	[
+//	    "u8",
+//	    "name",
+//	    64
+//	],
+//	{
+//	    "crc": "0x913bf1c6"
+//	}
+//
+type MessageTableEntry struct {
+	Index uint16
+	Name  []byte `struc:"[64]byte"`
+}
+
+func (*MessageTableEntry) GetTypeName() string {
+	return "message_table_entry"
+}
+func (*MessageTableEntry) GetCrcString() string {
+	return "913bf1c6"
+}
+
 // ModuleVersion represents VPP binary API type 'module_version':
 //
 //	"module_version",
@@ -124,12 +151,84 @@ func (*ModuleVersion) GetCrcString() string {
 	return "4b6da11a"
 }
 
-// MessageTableEntry represents VPP binary API type 'message_table_entry':
+/* Messages */
+
+// APIVersions represents VPP binary API message 'api_versions':
 //
-//	"message_table_entry",
+//	"api_versions",
+//	8
+//
+type APIVersions struct{}
+
+func (*APIVersions) GetMessageName() string {
+	return "api_versions"
+}
+func (*APIVersions) GetCrcString() string {
+	return "51077d14"
+}
+func (*APIVersions) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// APIVersionsReply represents VPP binary API message 'api_versions_reply':
+//
+//	"api_versions_reply",
 //	[
 //	    "u16",
-//	    "index"
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "count"
+//	],
+//	[
+//	    "vl_api_module_version_t",
+//	    "api_versions",
+//	    0,
+//	    "count"
+//	],
+//	{
+//	    "crc": "0x90a39195"
+//	}
+//
+type APIVersionsReply struct {
+	Retval      int32
+	Count       uint32 `struc:"sizeof=APIVersions"`
+	APIVersions []ModuleVersion
+}
+
+func (*APIVersionsReply) GetMessageName() string {
+	return "api_versions_reply"
+}
+func (*APIVersionsReply) GetCrcString() string {
+	return "90a39195"
+}
+func (*APIVersionsReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GetFirstMsgID represents VPP binary API message 'get_first_msg_id':
+//
+//	"get_first_msg_id",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
 //	],
 //	[
 //	    "u8",
@@ -137,22 +236,60 @@ func (*ModuleVersion) GetCrcString() string {
 //	    64
 //	],
 //	{
-//	    "crc": "0x913bf1c6"
+//	    "crc": "0x0cb71b0e"
 //	}
 //
-type MessageTableEntry struct {
-	Index uint16
-	Name  []byte `struc:"[64]byte"`
+type GetFirstMsgID struct {
+	Name []byte `struc:"[64]byte"`
 }
 
-func (*MessageTableEntry) GetTypeName() string {
-	return "message_table_entry"
+func (*GetFirstMsgID) GetMessageName() string {
+	return "get_first_msg_id"
 }
-func (*MessageTableEntry) GetCrcString() string {
-	return "913bf1c6"
+func (*GetFirstMsgID) GetCrcString() string {
+	return "0cb71b0e"
+}
+func (*GetFirstMsgID) GetMessageType() api.MessageType {
+	return api.RequestMessage
 }
 
-/* Messages */
+// GetFirstMsgIDReply represents VPP binary API message 'get_first_msg_id_reply':
+//
+//	"get_first_msg_id_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u16",
+//	    "first_msg_id"
+//	],
+//	{
+//	    "crc": "0x7d337472"
+//	}
+//
+type GetFirstMsgIDReply struct {
+	Retval     int32
+	FirstMsgID uint16
+}
+
+func (*GetFirstMsgIDReply) GetMessageName() string {
+	return "get_first_msg_id_reply"
+}
+func (*GetFirstMsgIDReply) GetCrcString() string {
+	return "7d337472"
+}
+func (*GetFirstMsgIDReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
 
 // MemclntCreate represents VPP binary API message 'memclnt_create':
 //
@@ -325,9 +462,73 @@ func (*MemclntDeleteReply) GetMessageType() api.MessageType {
 	return api.OtherMessage
 }
 
-// RxThreadExit represents VPP binary API message 'rx_thread_exit':
+// MemclntKeepalive represents VPP binary API message 'memclnt_keepalive':
 //
-//	"rx_thread_exit",
+//	"memclnt_keepalive",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type MemclntKeepalive struct{}
+
+func (*MemclntKeepalive) GetMessageName() string {
+	return "memclnt_keepalive"
+}
+func (*MemclntKeepalive) GetCrcString() string {
+	return "51077d14"
+}
+func (*MemclntKeepalive) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// MemclntKeepaliveReply represents VPP binary API message 'memclnt_keepalive_reply':
+//
+//	"memclnt_keepalive_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type MemclntKeepaliveReply struct {
+	Retval int32
+}
+
+func (*MemclntKeepaliveReply) GetMessageName() string {
+	return "memclnt_keepalive_reply"
+}
+func (*MemclntKeepaliveReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*MemclntKeepaliveReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// MemclntReadTimeout represents VPP binary API message 'memclnt_read_timeout':
+//
+//	"memclnt_read_timeout",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -340,17 +541,17 @@ func (*MemclntDeleteReply) GetMessageType() api.MessageType {
 //	    "crc": "0xc3a3a452"
 //	}
 //
-type RxThreadExit struct {
+type MemclntReadTimeout struct {
 	Dummy uint8
 }
 
-func (*RxThreadExit) GetMessageName() string {
-	return "rx_thread_exit"
+func (*MemclntReadTimeout) GetMessageName() string {
+	return "memclnt_read_timeout"
 }
-func (*RxThreadExit) GetCrcString() string {
+func (*MemclntReadTimeout) GetCrcString() string {
 	return "c3a3a452"
 }
-func (*RxThreadExit) GetMessageType() api.MessageType {
+func (*MemclntReadTimeout) GetMessageType() api.MessageType {
 	return api.OtherMessage
 }
 
@@ -380,35 +581,6 @@ func (*MemclntRxThreadSuspend) GetCrcString() string {
 	return "c3a3a452"
 }
 func (*MemclntRxThreadSuspend) GetMessageType() api.MessageType {
-	return api.OtherMessage
-}
-
-// MemclntReadTimeout represents VPP binary API message 'memclnt_read_timeout':
-//
-//	"memclnt_read_timeout",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u8",
-//	    "dummy"
-//	],
-//	{
-//	    "crc": "0xc3a3a452"
-//	}
-//
-type MemclntReadTimeout struct {
-	Dummy uint8
-}
-
-func (*MemclntReadTimeout) GetMessageName() string {
-	return "memclnt_read_timeout"
-}
-func (*MemclntReadTimeout) GetCrcString() string {
-	return "c3a3a452"
-}
-func (*MemclntReadTimeout) GetMessageType() api.MessageType {
 	return api.OtherMessage
 }
 
@@ -509,9 +681,38 @@ func (*RPCCallReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GetFirstMsgID represents VPP binary API message 'get_first_msg_id':
+// RxThreadExit represents VPP binary API message 'rx_thread_exit':
 //
-//	"get_first_msg_id",
+//	"rx_thread_exit",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u8",
+//	    "dummy"
+//	],
+//	{
+//	    "crc": "0xc3a3a452"
+//	}
+//
+type RxThreadExit struct {
+	Dummy uint8
+}
+
+func (*RxThreadExit) GetMessageName() string {
+	return "rx_thread_exit"
+}
+func (*RxThreadExit) GetCrcString() string {
+	return "c3a3a452"
+}
+func (*RxThreadExit) GetMessageType() api.MessageType {
+	return api.OtherMessage
+}
+
+// SockInitShm represents VPP binary API message 'sock_init_shm':
+//
+//	"sock_init_shm",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -525,174 +726,70 @@ func (*RPCCallReply) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
+//	    "u32",
+//	    "requested_size"
+//	],
+//	[
 //	    "u8",
-//	    "name",
-//	    64
-//	],
-//	{
-//	    "crc": "0x0cb71b0e"
-//	}
-//
-type GetFirstMsgID struct {
-	Name []byte `struc:"[64]byte"`
-}
-
-func (*GetFirstMsgID) GetMessageName() string {
-	return "get_first_msg_id"
-}
-func (*GetFirstMsgID) GetCrcString() string {
-	return "0cb71b0e"
-}
-func (*GetFirstMsgID) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GetFirstMsgIDReply represents VPP binary API message 'get_first_msg_id_reply':
-//
-//	"get_first_msg_id_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
+//	    "nitems"
 //	],
 //	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u16",
-//	    "first_msg_id"
-//	],
-//	{
-//	    "crc": "0x7d337472"
-//	}
-//
-type GetFirstMsgIDReply struct {
-	Retval     int32
-	FirstMsgID uint16
-}
-
-func (*GetFirstMsgIDReply) GetMessageName() string {
-	return "get_first_msg_id_reply"
-}
-func (*GetFirstMsgIDReply) GetCrcString() string {
-	return "7d337472"
-}
-func (*GetFirstMsgIDReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// APIVersions represents VPP binary API message 'api_versions':
-//
-//	"api_versions",
-//	8
-//
-type APIVersions struct{}
-
-func (*APIVersions) GetMessageName() string {
-	return "api_versions"
-}
-func (*APIVersions) GetCrcString() string {
-	return "51077d14"
-}
-func (*APIVersions) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// APIVersionsReply represents VPP binary API message 'api_versions_reply':
-//
-//	"api_versions_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "count"
-//	],
-//	[
-//	    "vl_api_module_version_t",
-//	    "api_versions",
+//	    "u64",
+//	    "configs",
 //	    0,
-//	    "count"
+//	    "nitems"
 //	],
 //	{
-//	    "crc": "0x90a39195"
+//	    "crc": "0x51646d92"
 //	}
 //
-type APIVersionsReply struct {
-	Retval      int32
-	Count       uint32 `struc:"sizeof=APIVersions"`
-	APIVersions []ModuleVersion
+type SockInitShm struct {
+	RequestedSize uint32
+	Nitems        uint8 `struc:"sizeof=Configs"`
+	Configs       []uint64
 }
 
-func (*APIVersionsReply) GetMessageName() string {
-	return "api_versions_reply"
+func (*SockInitShm) GetMessageName() string {
+	return "sock_init_shm"
 }
-func (*APIVersionsReply) GetCrcString() string {
-	return "90a39195"
+func (*SockInitShm) GetCrcString() string {
+	return "51646d92"
 }
-func (*APIVersionsReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
+func (*SockInitShm) GetMessageType() api.MessageType {
+	return api.RequestMessage
 }
 
-// TracePluginMsgIds represents VPP binary API message 'trace_plugin_msg_ids':
+// SockInitShmReply represents VPP binary API message 'sock_init_shm_reply':
 //
-//	"trace_plugin_msg_ids",
+//	"sock_init_shm_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
 //	],
 //	[
 //	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
 //	    "context"
 //	],
 //	[
-//	    "u8",
-//	    "plugin_name",
-//	    128
-//	],
-//	[
-//	    "u16",
-//	    "first_msg_id"
-//	],
-//	[
-//	    "u16",
-//	    "last_msg_id"
+//	    "i32",
+//	    "retval"
 //	],
 //	{
-//	    "crc": "0x64af79f9"
+//	    "crc": "0xe8d4e804"
 //	}
 //
-type TracePluginMsgIds struct {
-	PluginName []byte `struc:"[128]byte"`
-	FirstMsgID uint16
-	LastMsgID  uint16
+type SockInitShmReply struct {
+	Retval int32
 }
 
-func (*TracePluginMsgIds) GetMessageName() string {
-	return "trace_plugin_msg_ids"
+func (*SockInitShmReply) GetMessageName() string {
+	return "sock_init_shm_reply"
 }
-func (*TracePluginMsgIds) GetCrcString() string {
-	return "64af79f9"
+func (*SockInitShmReply) GetCrcString() string {
+	return "e8d4e804"
 }
-func (*TracePluginMsgIds) GetMessageType() api.MessageType {
-	return api.RequestMessage
+func (*SockInitShmReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
 }
 
 // SockclntCreate represents VPP binary API message 'sockclnt_create':
@@ -853,9 +950,9 @@ func (*SockclntDeleteReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// SockInitShm represents VPP binary API message 'sock_init_shm':
+// TracePluginMsgIds represents VPP binary API message 'trace_plugin_msg_ids':
 //
-//	"sock_init_shm",
+//	"trace_plugin_msg_ids",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -867,159 +964,61 @@ func (*SockclntDeleteReply) GetMessageType() api.MessageType {
 //	[
 //	    "u32",
 //	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "requested_size"
 //	],
 //	[
 //	    "u8",
-//	    "nitems"
+//	    "plugin_name",
+//	    128
 //	],
 //	[
-//	    "u64",
-//	    "configs",
-//	    0,
-//	    "nitems"
+//	    "u16",
+//	    "first_msg_id"
+//	],
+//	[
+//	    "u16",
+//	    "last_msg_id"
 //	],
 //	{
-//	    "crc": "0x51646d92"
+//	    "crc": "0x64af79f9"
 //	}
 //
-type SockInitShm struct {
-	RequestedSize uint32
-	Nitems        uint8 `struc:"sizeof=Configs"`
-	Configs       []uint64
+type TracePluginMsgIds struct {
+	PluginName []byte `struc:"[128]byte"`
+	FirstMsgID uint16
+	LastMsgID  uint16
 }
 
-func (*SockInitShm) GetMessageName() string {
-	return "sock_init_shm"
+func (*TracePluginMsgIds) GetMessageName() string {
+	return "trace_plugin_msg_ids"
 }
-func (*SockInitShm) GetCrcString() string {
-	return "51646d92"
+func (*TracePluginMsgIds) GetCrcString() string {
+	return "64af79f9"
 }
-func (*SockInitShm) GetMessageType() api.MessageType {
+func (*TracePluginMsgIds) GetMessageType() api.MessageType {
 	return api.RequestMessage
-}
-
-// SockInitShmReply represents VPP binary API message 'sock_init_shm_reply':
-//
-//	"sock_init_shm_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type SockInitShmReply struct {
-	Retval int32
-}
-
-func (*SockInitShmReply) GetMessageName() string {
-	return "sock_init_shm_reply"
-}
-func (*SockInitShmReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*SockInitShmReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// MemclntKeepalive represents VPP binary API message 'memclnt_keepalive':
-//
-//	"memclnt_keepalive",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type MemclntKeepalive struct{}
-
-func (*MemclntKeepalive) GetMessageName() string {
-	return "memclnt_keepalive"
-}
-func (*MemclntKeepalive) GetCrcString() string {
-	return "51077d14"
-}
-func (*MemclntKeepalive) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// MemclntKeepaliveReply represents VPP binary API message 'memclnt_keepalive_reply':
-//
-//	"memclnt_keepalive_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type MemclntKeepaliveReply struct {
-	Retval int32
-}
-
-func (*MemclntKeepaliveReply) GetMessageName() string {
-	return "memclnt_keepalive_reply"
-}
-func (*MemclntKeepaliveReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*MemclntKeepaliveReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
 }
 
 func init() {
+	api.RegisterMessage((*APIVersions)(nil), "memclnt.APIVersions")
+	api.RegisterMessage((*APIVersionsReply)(nil), "memclnt.APIVersionsReply")
+	api.RegisterMessage((*GetFirstMsgID)(nil), "memclnt.GetFirstMsgID")
+	api.RegisterMessage((*GetFirstMsgIDReply)(nil), "memclnt.GetFirstMsgIDReply")
 	api.RegisterMessage((*MemclntCreate)(nil), "memclnt.MemclntCreate")
 	api.RegisterMessage((*MemclntCreateReply)(nil), "memclnt.MemclntCreateReply")
 	api.RegisterMessage((*MemclntDelete)(nil), "memclnt.MemclntDelete")
 	api.RegisterMessage((*MemclntDeleteReply)(nil), "memclnt.MemclntDeleteReply")
-	api.RegisterMessage((*RxThreadExit)(nil), "memclnt.RxThreadExit")
-	api.RegisterMessage((*MemclntRxThreadSuspend)(nil), "memclnt.MemclntRxThreadSuspend")
+	api.RegisterMessage((*MemclntKeepalive)(nil), "memclnt.MemclntKeepalive")
+	api.RegisterMessage((*MemclntKeepaliveReply)(nil), "memclnt.MemclntKeepaliveReply")
 	api.RegisterMessage((*MemclntReadTimeout)(nil), "memclnt.MemclntReadTimeout")
+	api.RegisterMessage((*MemclntRxThreadSuspend)(nil), "memclnt.MemclntRxThreadSuspend")
 	api.RegisterMessage((*RPCCall)(nil), "memclnt.RPCCall")
 	api.RegisterMessage((*RPCCallReply)(nil), "memclnt.RPCCallReply")
-	api.RegisterMessage((*GetFirstMsgID)(nil), "memclnt.GetFirstMsgID")
-	api.RegisterMessage((*GetFirstMsgIDReply)(nil), "memclnt.GetFirstMsgIDReply")
-	api.RegisterMessage((*APIVersions)(nil), "memclnt.APIVersions")
-	api.RegisterMessage((*APIVersionsReply)(nil), "memclnt.APIVersionsReply")
-	api.RegisterMessage((*TracePluginMsgIds)(nil), "memclnt.TracePluginMsgIds")
+	api.RegisterMessage((*RxThreadExit)(nil), "memclnt.RxThreadExit")
+	api.RegisterMessage((*SockInitShm)(nil), "memclnt.SockInitShm")
+	api.RegisterMessage((*SockInitShmReply)(nil), "memclnt.SockInitShmReply")
 	api.RegisterMessage((*SockclntCreate)(nil), "memclnt.SockclntCreate")
 	api.RegisterMessage((*SockclntCreateReply)(nil), "memclnt.SockclntCreateReply")
 	api.RegisterMessage((*SockclntDelete)(nil), "memclnt.SockclntDelete")
 	api.RegisterMessage((*SockclntDeleteReply)(nil), "memclnt.SockclntDeleteReply")
-	api.RegisterMessage((*SockInitShm)(nil), "memclnt.SockInitShm")
-	api.RegisterMessage((*SockInitShmReply)(nil), "memclnt.SockInitShmReply")
-	api.RegisterMessage((*MemclntKeepalive)(nil), "memclnt.MemclntKeepalive")
-	api.RegisterMessage((*MemclntKeepaliveReply)(nil), "memclnt.MemclntKeepaliveReply")
+	api.RegisterMessage((*TracePluginMsgIds)(nil), "memclnt.TracePluginMsgIds")
 }

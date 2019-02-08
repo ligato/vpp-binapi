@@ -5,9 +5,8 @@
  Package pg is a generated from VPP binary API module 'pg'.
 
  It contains following objects:
-	  6 messages
 	  3 services
-
+	  6 messages
 */
 package pg
 
@@ -44,81 +43,6 @@ type Services interface {
 }
 
 /* Messages */
-
-// PgCreateInterface represents VPP binary API message 'pg_create_interface':
-//
-//	"pg_create_interface",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "interface_id"
-//	],
-//	{
-//	    "crc": "0xef1dc980"
-//	}
-//
-type PgCreateInterface struct {
-	InterfaceID uint32
-}
-
-func (*PgCreateInterface) GetMessageName() string {
-	return "pg_create_interface"
-}
-func (*PgCreateInterface) GetCrcString() string {
-	return "ef1dc980"
-}
-func (*PgCreateInterface) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// PgCreateInterfaceReply represents VPP binary API message 'pg_create_interface_reply':
-//
-//	"pg_create_interface_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0xfda5941f"
-//	}
-//
-type PgCreateInterfaceReply struct {
-	Retval    int32
-	SwIfIndex uint32
-}
-
-func (*PgCreateInterfaceReply) GetMessageName() string {
-	return "pg_create_interface_reply"
-}
-func (*PgCreateInterfaceReply) GetCrcString() string {
-	return "fda5941f"
-}
-func (*PgCreateInterfaceReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
 
 // PgCapture represents VPP binary API message 'pg_capture':
 //
@@ -212,6 +136,81 @@ func (*PgCaptureReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// PgCreateInterface represents VPP binary API message 'pg_create_interface':
+//
+//	"pg_create_interface",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "interface_id"
+//	],
+//	{
+//	    "crc": "0xef1dc980"
+//	}
+//
+type PgCreateInterface struct {
+	InterfaceID uint32
+}
+
+func (*PgCreateInterface) GetMessageName() string {
+	return "pg_create_interface"
+}
+func (*PgCreateInterface) GetCrcString() string {
+	return "ef1dc980"
+}
+func (*PgCreateInterface) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// PgCreateInterfaceReply represents VPP binary API message 'pg_create_interface_reply':
+//
+//	"pg_create_interface_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0xfda5941f"
+//	}
+//
+type PgCreateInterfaceReply struct {
+	Retval    int32
+	SwIfIndex uint32
+}
+
+func (*PgCreateInterfaceReply) GetMessageName() string {
+	return "pg_create_interface_reply"
+}
+func (*PgCreateInterfaceReply) GetCrcString() string {
+	return "fda5941f"
+}
+func (*PgCreateInterfaceReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // PgEnableDisable represents VPP binary API message 'pg_enable_disable':
 //
 //	"pg_enable_disable",
@@ -295,10 +294,10 @@ func (*PgEnableDisableReply) GetMessageType() api.MessageType {
 }
 
 func init() {
-	api.RegisterMessage((*PgCreateInterface)(nil), "pg.PgCreateInterface")
-	api.RegisterMessage((*PgCreateInterfaceReply)(nil), "pg.PgCreateInterfaceReply")
 	api.RegisterMessage((*PgCapture)(nil), "pg.PgCapture")
 	api.RegisterMessage((*PgCaptureReply)(nil), "pg.PgCaptureReply")
+	api.RegisterMessage((*PgCreateInterface)(nil), "pg.PgCreateInterface")
+	api.RegisterMessage((*PgCreateInterfaceReply)(nil), "pg.PgCreateInterfaceReply")
 	api.RegisterMessage((*PgEnableDisable)(nil), "pg.PgEnableDisable")
 	api.RegisterMessage((*PgEnableDisableReply)(nil), "pg.PgEnableDisableReply")
 }

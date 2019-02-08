@@ -5,9 +5,8 @@
  Package vmxnet3 is a generated from VPP binary API module 'vmxnet3'.
 
  It contains following objects:
-	  6 messages
 	  3 services
-
+	  6 messages
 */
 package vmxnet3
 

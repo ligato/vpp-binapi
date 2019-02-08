@@ -5,9 +5,8 @@
  Package pppoe is a generated from VPP binary API module 'pppoe'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package pppoe
 
@@ -144,43 +143,6 @@ func (*PppoeAddDelSessionReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// PppoeSessionDump represents VPP binary API message 'pppoe_session_dump':
-//
-//	"pppoe_session_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type PppoeSessionDump struct {
-	SwIfIndex uint32
-}
-
-func (*PppoeSessionDump) GetMessageName() string {
-	return "pppoe_session_dump"
-}
-func (*PppoeSessionDump) GetCrcString() string {
-	return "529cb13f"
-}
-func (*PppoeSessionDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // PppoeSessionDetails represents VPP binary API message 'pppoe_session_details':
 //
 //	"pppoe_session_details",
@@ -252,9 +214,46 @@ func (*PppoeSessionDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// PppoeSessionDump represents VPP binary API message 'pppoe_session_dump':
+//
+//	"pppoe_session_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type PppoeSessionDump struct {
+	SwIfIndex uint32
+}
+
+func (*PppoeSessionDump) GetMessageName() string {
+	return "pppoe_session_dump"
+}
+func (*PppoeSessionDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*PppoeSessionDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
 	api.RegisterMessage((*PppoeAddDelSession)(nil), "pppoe.PppoeAddDelSession")
 	api.RegisterMessage((*PppoeAddDelSessionReply)(nil), "pppoe.PppoeAddDelSessionReply")
-	api.RegisterMessage((*PppoeSessionDump)(nil), "pppoe.PppoeSessionDump")
 	api.RegisterMessage((*PppoeSessionDetails)(nil), "pppoe.PppoeSessionDetails")
+	api.RegisterMessage((*PppoeSessionDump)(nil), "pppoe.PppoeSessionDump")
 }

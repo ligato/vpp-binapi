@@ -5,9 +5,8 @@
  Package p2p_ethernet is a generated from VPP binary API module 'p2p_ethernet'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package p2p_ethernet
 

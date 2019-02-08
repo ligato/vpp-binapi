@@ -5,9 +5,8 @@
  Package nsh is a generated from VPP binary API module 'nsh'.
 
  It contains following objects:
-	  8 messages
 	  4 services
-
+	  8 messages
 */
 package nsh
 
@@ -187,137 +186,6 @@ func (*NshAddDelEntryReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// NshEntryDump represents VPP binary API message 'nsh_entry_dump':
-//
-//	"nsh_entry_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "entry_index"
-//	],
-//	{
-//	    "crc": "0xcdaf8ccb"
-//	}
-//
-type NshEntryDump struct {
-	EntryIndex uint32
-}
-
-func (*NshEntryDump) GetMessageName() string {
-	return "nsh_entry_dump"
-}
-func (*NshEntryDump) GetCrcString() string {
-	return "cdaf8ccb"
-}
-func (*NshEntryDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// NshEntryDetails represents VPP binary API message 'nsh_entry_details':
-//
-//	"nsh_entry_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "entry_index"
-//	],
-//	[
-//	    "u32",
-//	    "nsp_nsi"
-//	],
-//	[
-//	    "u8",
-//	    "md_type"
-//	],
-//	[
-//	    "u8",
-//	    "ver_o_c"
-//	],
-//	[
-//	    "u8",
-//	    "ttl"
-//	],
-//	[
-//	    "u8",
-//	    "length"
-//	],
-//	[
-//	    "u8",
-//	    "next_protocol"
-//	],
-//	[
-//	    "u32",
-//	    "c1"
-//	],
-//	[
-//	    "u32",
-//	    "c2"
-//	],
-//	[
-//	    "u32",
-//	    "c3"
-//	],
-//	[
-//	    "u32",
-//	    "c4"
-//	],
-//	[
-//	    "u8",
-//	    "tlv_length"
-//	],
-//	[
-//	    "u8",
-//	    "tlv",
-//	    248
-//	],
-//	{
-//	    "crc": "0x046fb556"
-//	}
-//
-type NshEntryDetails struct {
-	EntryIndex   uint32
-	NspNsi       uint32
-	MdType       uint8
-	VerOC        uint8
-	TTL          uint8
-	Length       uint8
-	NextProtocol uint8
-	C1           uint32
-	C2           uint32
-	C3           uint32
-	C4           uint32
-	TlvLength    uint8
-	Tlv          []byte `struc:"[248]byte"`
-}
-
-func (*NshEntryDetails) GetMessageName() string {
-	return "nsh_entry_details"
-}
-func (*NshEntryDetails) GetCrcString() string {
-	return "046fb556"
-}
-func (*NshEntryDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 // NshAddDelMap represents VPP binary API message 'nsh_add_del_map':
 //
 //	"nsh_add_del_map",
@@ -423,9 +291,103 @@ func (*NshAddDelMapReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// NshMapDump represents VPP binary API message 'nsh_map_dump':
+// NshEntryDetails represents VPP binary API message 'nsh_entry_details':
 //
-//	"nsh_map_dump",
+//	"nsh_entry_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "entry_index"
+//	],
+//	[
+//	    "u32",
+//	    "nsp_nsi"
+//	],
+//	[
+//	    "u8",
+//	    "md_type"
+//	],
+//	[
+//	    "u8",
+//	    "ver_o_c"
+//	],
+//	[
+//	    "u8",
+//	    "ttl"
+//	],
+//	[
+//	    "u8",
+//	    "length"
+//	],
+//	[
+//	    "u8",
+//	    "next_protocol"
+//	],
+//	[
+//	    "u32",
+//	    "c1"
+//	],
+//	[
+//	    "u32",
+//	    "c2"
+//	],
+//	[
+//	    "u32",
+//	    "c3"
+//	],
+//	[
+//	    "u32",
+//	    "c4"
+//	],
+//	[
+//	    "u8",
+//	    "tlv_length"
+//	],
+//	[
+//	    "u8",
+//	    "tlv",
+//	    248
+//	],
+//	{
+//	    "crc": "0x046fb556"
+//	}
+//
+type NshEntryDetails struct {
+	EntryIndex   uint32
+	NspNsi       uint32
+	MdType       uint8
+	VerOC        uint8
+	TTL          uint8
+	Length       uint8
+	NextProtocol uint8
+	C1           uint32
+	C2           uint32
+	C3           uint32
+	C4           uint32
+	TlvLength    uint8
+	Tlv          []byte `struc:"[248]byte"`
+}
+
+func (*NshEntryDetails) GetMessageName() string {
+	return "nsh_entry_details"
+}
+func (*NshEntryDetails) GetCrcString() string {
+	return "046fb556"
+}
+func (*NshEntryDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// NshEntryDump represents VPP binary API message 'nsh_entry_dump':
+//
+//	"nsh_entry_dump",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -440,23 +402,23 @@ func (*NshAddDelMapReply) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u32",
-//	    "map_index"
+//	    "entry_index"
 //	],
 //	{
-//	    "crc": "0x8fc06b82"
+//	    "crc": "0xcdaf8ccb"
 //	}
 //
-type NshMapDump struct {
-	MapIndex uint32
+type NshEntryDump struct {
+	EntryIndex uint32
 }
 
-func (*NshMapDump) GetMessageName() string {
-	return "nsh_map_dump"
+func (*NshEntryDump) GetMessageName() string {
+	return "nsh_entry_dump"
 }
-func (*NshMapDump) GetCrcString() string {
-	return "8fc06b82"
+func (*NshEntryDump) GetCrcString() string {
+	return "cdaf8ccb"
 }
-func (*NshMapDump) GetMessageType() api.MessageType {
+func (*NshEntryDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
@@ -523,13 +485,50 @@ func (*NshMapDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// NshMapDump represents VPP binary API message 'nsh_map_dump':
+//
+//	"nsh_map_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "map_index"
+//	],
+//	{
+//	    "crc": "0x8fc06b82"
+//	}
+//
+type NshMapDump struct {
+	MapIndex uint32
+}
+
+func (*NshMapDump) GetMessageName() string {
+	return "nsh_map_dump"
+}
+func (*NshMapDump) GetCrcString() string {
+	return "8fc06b82"
+}
+func (*NshMapDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
 	api.RegisterMessage((*NshAddDelEntry)(nil), "nsh.NshAddDelEntry")
 	api.RegisterMessage((*NshAddDelEntryReply)(nil), "nsh.NshAddDelEntryReply")
-	api.RegisterMessage((*NshEntryDump)(nil), "nsh.NshEntryDump")
-	api.RegisterMessage((*NshEntryDetails)(nil), "nsh.NshEntryDetails")
 	api.RegisterMessage((*NshAddDelMap)(nil), "nsh.NshAddDelMap")
 	api.RegisterMessage((*NshAddDelMapReply)(nil), "nsh.NshAddDelMapReply")
-	api.RegisterMessage((*NshMapDump)(nil), "nsh.NshMapDump")
+	api.RegisterMessage((*NshEntryDetails)(nil), "nsh.NshEntryDetails")
+	api.RegisterMessage((*NshEntryDump)(nil), "nsh.NshEntryDump")
 	api.RegisterMessage((*NshMapDetails)(nil), "nsh.NshMapDetails")
+	api.RegisterMessage((*NshMapDump)(nil), "nsh.NshMapDump")
 }

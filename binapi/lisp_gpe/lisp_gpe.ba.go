@@ -5,10 +5,9 @@
  Package lisp_gpe is a generated from VPP binary API module 'lisp_gpe'.
 
  It contains following objects:
-	 20 messages
-	  3 types
 	 10 services
-
+	  3 types
+	 20 messages
 */
 package lisp_gpe
 
@@ -75,39 +74,6 @@ type Services interface {
 
 /* Types */
 
-// GpeLocator represents VPP binary API type 'gpe_locator':
-//
-//	"gpe_locator",
-//	[
-//	    "u8",
-//	    "is_ip4"
-//	],
-//	[
-//	    "u8",
-//	    "weight"
-//	],
-//	[
-//	    "u8",
-//	    "addr",
-//	    16
-//	],
-//	{
-//	    "crc": "0xfbdac862"
-//	}
-//
-type GpeLocator struct {
-	IsIP4  uint8
-	Weight uint8
-	Addr   []byte `struc:"[16]byte"`
-}
-
-func (*GpeLocator) GetTypeName() string {
-	return "gpe_locator"
-}
-func (*GpeLocator) GetCrcString() string {
-	return "fbdac862"
-}
-
 // GpeFwdEntry represents VPP binary API type 'gpe_fwd_entry':
 //
 //	"gpe_fwd_entry",
@@ -170,6 +136,39 @@ func (*GpeFwdEntry) GetTypeName() string {
 }
 func (*GpeFwdEntry) GetCrcString() string {
 	return "fc78db40"
+}
+
+// GpeLocator represents VPP binary API type 'gpe_locator':
+//
+//	"gpe_locator",
+//	[
+//	    "u8",
+//	    "is_ip4"
+//	],
+//	[
+//	    "u8",
+//	    "weight"
+//	],
+//	[
+//	    "u8",
+//	    "addr",
+//	    16
+//	],
+//	{
+//	    "crc": "0xfbdac862"
+//	}
+//
+type GpeLocator struct {
+	IsIP4  uint8
+	Weight uint8
+	Addr   []byte `struc:"[16]byte"`
+}
+
+func (*GpeLocator) GetTypeName() string {
+	return "gpe_locator"
+}
+func (*GpeLocator) GetCrcString() string {
+	return "fbdac862"
 }
 
 // GpeNativeFwdRpath represents VPP binary API type 'gpe_native_fwd_rpath':
@@ -341,76 +340,6 @@ func (*GpeAddDelFwdEntryReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GpeEnableDisable represents VPP binary API message 'gpe_enable_disable':
-//
-//	"gpe_enable_disable",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_en"
-//	],
-//	{
-//	    "crc": "0xeb0e943b"
-//	}
-//
-type GpeEnableDisable struct {
-	IsEn uint8
-}
-
-func (*GpeEnableDisable) GetMessageName() string {
-	return "gpe_enable_disable"
-}
-func (*GpeEnableDisable) GetCrcString() string {
-	return "eb0e943b"
-}
-func (*GpeEnableDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GpeEnableDisableReply represents VPP binary API message 'gpe_enable_disable_reply':
-//
-//	"gpe_enable_disable_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type GpeEnableDisableReply struct {
-	Retval int32
-}
-
-func (*GpeEnableDisableReply) GetMessageName() string {
-	return "gpe_enable_disable_reply"
-}
-func (*GpeEnableDisableReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*GpeEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 // GpeAddDelIface represents VPP binary API message 'gpe_add_del_iface':
 //
 //	"gpe_add_del_iface",
@@ -493,378 +422,6 @@ func (*GpeAddDelIfaceReply) GetCrcString() string {
 	return "e8d4e804"
 }
 func (*GpeAddDelIfaceReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GpeFwdEntryVnisGet represents VPP binary API message 'gpe_fwd_entry_vnis_get':
-//
-//	"gpe_fwd_entry_vnis_get",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type GpeFwdEntryVnisGet struct{}
-
-func (*GpeFwdEntryVnisGet) GetMessageName() string {
-	return "gpe_fwd_entry_vnis_get"
-}
-func (*GpeFwdEntryVnisGet) GetCrcString() string {
-	return "51077d14"
-}
-func (*GpeFwdEntryVnisGet) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GpeFwdEntryVnisGetReply represents VPP binary API message 'gpe_fwd_entry_vnis_get_reply':
-//
-//	"gpe_fwd_entry_vnis_get_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "count"
-//	],
-//	[
-//	    "u32",
-//	    "vnis",
-//	    0,
-//	    "count"
-//	],
-//	{
-//	    "crc": "0xaa70da20"
-//	}
-//
-type GpeFwdEntryVnisGetReply struct {
-	Retval int32
-	Count  uint32 `struc:"sizeof=Vnis"`
-	Vnis   []uint32
-}
-
-func (*GpeFwdEntryVnisGetReply) GetMessageName() string {
-	return "gpe_fwd_entry_vnis_get_reply"
-}
-func (*GpeFwdEntryVnisGetReply) GetCrcString() string {
-	return "aa70da20"
-}
-func (*GpeFwdEntryVnisGetReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GpeFwdEntriesGet represents VPP binary API message 'gpe_fwd_entries_get':
-//
-//	"gpe_fwd_entries_get",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "vni"
-//	],
-//	{
-//	    "crc": "0x8d1f2fe9"
-//	}
-//
-type GpeFwdEntriesGet struct {
-	Vni uint32
-}
-
-func (*GpeFwdEntriesGet) GetMessageName() string {
-	return "gpe_fwd_entries_get"
-}
-func (*GpeFwdEntriesGet) GetCrcString() string {
-	return "8d1f2fe9"
-}
-func (*GpeFwdEntriesGet) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GpeFwdEntriesGetReply represents VPP binary API message 'gpe_fwd_entries_get_reply':
-//
-//	"gpe_fwd_entries_get_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "count"
-//	],
-//	[
-//	    "vl_api_gpe_fwd_entry_t",
-//	    "entries",
-//	    0,
-//	    "count"
-//	],
-//	{
-//	    "crc": "0x8cb2ff89"
-//	}
-//
-type GpeFwdEntriesGetReply struct {
-	Retval  int32
-	Count   uint32 `struc:"sizeof=Entries"`
-	Entries []GpeFwdEntry
-}
-
-func (*GpeFwdEntriesGetReply) GetMessageName() string {
-	return "gpe_fwd_entries_get_reply"
-}
-func (*GpeFwdEntriesGetReply) GetCrcString() string {
-	return "8cb2ff89"
-}
-func (*GpeFwdEntriesGetReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GpeFwdEntryPathDump represents VPP binary API message 'gpe_fwd_entry_path_dump':
-//
-//	"gpe_fwd_entry_path_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "fwd_entry_index"
-//	],
-//	{
-//	    "crc": "0x39bce980"
-//	}
-//
-type GpeFwdEntryPathDump struct {
-	FwdEntryIndex uint32
-}
-
-func (*GpeFwdEntryPathDump) GetMessageName() string {
-	return "gpe_fwd_entry_path_dump"
-}
-func (*GpeFwdEntryPathDump) GetCrcString() string {
-	return "39bce980"
-}
-func (*GpeFwdEntryPathDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GpeFwdEntryPathDetails represents VPP binary API message 'gpe_fwd_entry_path_details':
-//
-//	"gpe_fwd_entry_path_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_gpe_locator_t",
-//	    "lcl_loc"
-//	],
-//	[
-//	    "vl_api_gpe_locator_t",
-//	    "rmt_loc"
-//	],
-//	{
-//	    "crc": "0xf6700d70"
-//	}
-//
-type GpeFwdEntryPathDetails struct {
-	LclLoc GpeLocator
-	RmtLoc GpeLocator
-}
-
-func (*GpeFwdEntryPathDetails) GetMessageName() string {
-	return "gpe_fwd_entry_path_details"
-}
-func (*GpeFwdEntryPathDetails) GetCrcString() string {
-	return "f6700d70"
-}
-func (*GpeFwdEntryPathDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GpeSetEncapMode represents VPP binary API message 'gpe_set_encap_mode':
-//
-//	"gpe_set_encap_mode",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "mode"
-//	],
-//	{
-//	    "crc": "0xf3f93ce9"
-//	}
-//
-type GpeSetEncapMode struct {
-	Mode uint8
-}
-
-func (*GpeSetEncapMode) GetMessageName() string {
-	return "gpe_set_encap_mode"
-}
-func (*GpeSetEncapMode) GetCrcString() string {
-	return "f3f93ce9"
-}
-func (*GpeSetEncapMode) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GpeSetEncapModeReply represents VPP binary API message 'gpe_set_encap_mode_reply':
-//
-//	"gpe_set_encap_mode_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type GpeSetEncapModeReply struct {
-	Retval int32
-}
-
-func (*GpeSetEncapModeReply) GetMessageName() string {
-	return "gpe_set_encap_mode_reply"
-}
-func (*GpeSetEncapModeReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*GpeSetEncapModeReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// GpeGetEncapMode represents VPP binary API message 'gpe_get_encap_mode':
-//
-//	"gpe_get_encap_mode",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type GpeGetEncapMode struct{}
-
-func (*GpeGetEncapMode) GetMessageName() string {
-	return "gpe_get_encap_mode"
-}
-func (*GpeGetEncapMode) GetCrcString() string {
-	return "51077d14"
-}
-func (*GpeGetEncapMode) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// GpeGetEncapModeReply represents VPP binary API message 'gpe_get_encap_mode_reply':
-//
-//	"gpe_get_encap_mode_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u8",
-//	    "encap_mode"
-//	],
-//	{
-//	    "crc": "0x36e3f7ca"
-//	}
-//
-type GpeGetEncapModeReply struct {
-	Retval    int32
-	EncapMode uint8
-}
-
-func (*GpeGetEncapModeReply) GetMessageName() string {
-	return "gpe_get_encap_mode_reply"
-}
-func (*GpeGetEncapModeReply) GetCrcString() string {
-	return "36e3f7ca"
-}
-func (*GpeGetEncapModeReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -959,6 +516,378 @@ func (*GpeAddDelNativeFwdRpathReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// GpeEnableDisable represents VPP binary API message 'gpe_enable_disable':
+//
+//	"gpe_enable_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_en"
+//	],
+//	{
+//	    "crc": "0xeb0e943b"
+//	}
+//
+type GpeEnableDisable struct {
+	IsEn uint8
+}
+
+func (*GpeEnableDisable) GetMessageName() string {
+	return "gpe_enable_disable"
+}
+func (*GpeEnableDisable) GetCrcString() string {
+	return "eb0e943b"
+}
+func (*GpeEnableDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GpeEnableDisableReply represents VPP binary API message 'gpe_enable_disable_reply':
+//
+//	"gpe_enable_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type GpeEnableDisableReply struct {
+	Retval int32
+}
+
+func (*GpeEnableDisableReply) GetMessageName() string {
+	return "gpe_enable_disable_reply"
+}
+func (*GpeEnableDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*GpeEnableDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GpeFwdEntriesGet represents VPP binary API message 'gpe_fwd_entries_get':
+//
+//	"gpe_fwd_entries_get",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "vni"
+//	],
+//	{
+//	    "crc": "0x8d1f2fe9"
+//	}
+//
+type GpeFwdEntriesGet struct {
+	Vni uint32
+}
+
+func (*GpeFwdEntriesGet) GetMessageName() string {
+	return "gpe_fwd_entries_get"
+}
+func (*GpeFwdEntriesGet) GetCrcString() string {
+	return "8d1f2fe9"
+}
+func (*GpeFwdEntriesGet) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GpeFwdEntriesGetReply represents VPP binary API message 'gpe_fwd_entries_get_reply':
+//
+//	"gpe_fwd_entries_get_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "count"
+//	],
+//	[
+//	    "vl_api_gpe_fwd_entry_t",
+//	    "entries",
+//	    0,
+//	    "count"
+//	],
+//	{
+//	    "crc": "0x8cb2ff89"
+//	}
+//
+type GpeFwdEntriesGetReply struct {
+	Retval  int32
+	Count   uint32 `struc:"sizeof=Entries"`
+	Entries []GpeFwdEntry
+}
+
+func (*GpeFwdEntriesGetReply) GetMessageName() string {
+	return "gpe_fwd_entries_get_reply"
+}
+func (*GpeFwdEntriesGetReply) GetCrcString() string {
+	return "8cb2ff89"
+}
+func (*GpeFwdEntriesGetReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GpeFwdEntryPathDetails represents VPP binary API message 'gpe_fwd_entry_path_details':
+//
+//	"gpe_fwd_entry_path_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_gpe_locator_t",
+//	    "lcl_loc"
+//	],
+//	[
+//	    "vl_api_gpe_locator_t",
+//	    "rmt_loc"
+//	],
+//	{
+//	    "crc": "0xf6700d70"
+//	}
+//
+type GpeFwdEntryPathDetails struct {
+	LclLoc GpeLocator
+	RmtLoc GpeLocator
+}
+
+func (*GpeFwdEntryPathDetails) GetMessageName() string {
+	return "gpe_fwd_entry_path_details"
+}
+func (*GpeFwdEntryPathDetails) GetCrcString() string {
+	return "f6700d70"
+}
+func (*GpeFwdEntryPathDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GpeFwdEntryPathDump represents VPP binary API message 'gpe_fwd_entry_path_dump':
+//
+//	"gpe_fwd_entry_path_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "fwd_entry_index"
+//	],
+//	{
+//	    "crc": "0x39bce980"
+//	}
+//
+type GpeFwdEntryPathDump struct {
+	FwdEntryIndex uint32
+}
+
+func (*GpeFwdEntryPathDump) GetMessageName() string {
+	return "gpe_fwd_entry_path_dump"
+}
+func (*GpeFwdEntryPathDump) GetCrcString() string {
+	return "39bce980"
+}
+func (*GpeFwdEntryPathDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GpeFwdEntryVnisGet represents VPP binary API message 'gpe_fwd_entry_vnis_get':
+//
+//	"gpe_fwd_entry_vnis_get",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type GpeFwdEntryVnisGet struct{}
+
+func (*GpeFwdEntryVnisGet) GetMessageName() string {
+	return "gpe_fwd_entry_vnis_get"
+}
+func (*GpeFwdEntryVnisGet) GetCrcString() string {
+	return "51077d14"
+}
+func (*GpeFwdEntryVnisGet) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GpeFwdEntryVnisGetReply represents VPP binary API message 'gpe_fwd_entry_vnis_get_reply':
+//
+//	"gpe_fwd_entry_vnis_get_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "count"
+//	],
+//	[
+//	    "u32",
+//	    "vnis",
+//	    0,
+//	    "count"
+//	],
+//	{
+//	    "crc": "0xaa70da20"
+//	}
+//
+type GpeFwdEntryVnisGetReply struct {
+	Retval int32
+	Count  uint32 `struc:"sizeof=Vnis"`
+	Vnis   []uint32
+}
+
+func (*GpeFwdEntryVnisGetReply) GetMessageName() string {
+	return "gpe_fwd_entry_vnis_get_reply"
+}
+func (*GpeFwdEntryVnisGetReply) GetCrcString() string {
+	return "aa70da20"
+}
+func (*GpeFwdEntryVnisGetReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// GpeGetEncapMode represents VPP binary API message 'gpe_get_encap_mode':
+//
+//	"gpe_get_encap_mode",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type GpeGetEncapMode struct{}
+
+func (*GpeGetEncapMode) GetMessageName() string {
+	return "gpe_get_encap_mode"
+}
+func (*GpeGetEncapMode) GetCrcString() string {
+	return "51077d14"
+}
+func (*GpeGetEncapMode) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GpeGetEncapModeReply represents VPP binary API message 'gpe_get_encap_mode_reply':
+//
+//	"gpe_get_encap_mode_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u8",
+//	    "encap_mode"
+//	],
+//	{
+//	    "crc": "0x36e3f7ca"
+//	}
+//
+type GpeGetEncapModeReply struct {
+	Retval    int32
+	EncapMode uint8
+}
+
+func (*GpeGetEncapModeReply) GetMessageName() string {
+	return "gpe_get_encap_mode_reply"
+}
+func (*GpeGetEncapModeReply) GetCrcString() string {
+	return "36e3f7ca"
+}
+func (*GpeGetEncapModeReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // GpeNativeFwdRpathsGet represents VPP binary API message 'gpe_native_fwd_rpaths_get':
 //
 //	"gpe_native_fwd_rpaths_get",
@@ -1041,25 +970,95 @@ func (*GpeNativeFwdRpathsGetReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// GpeSetEncapMode represents VPP binary API message 'gpe_set_encap_mode':
+//
+//	"gpe_set_encap_mode",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "mode"
+//	],
+//	{
+//	    "crc": "0xf3f93ce9"
+//	}
+//
+type GpeSetEncapMode struct {
+	Mode uint8
+}
+
+func (*GpeSetEncapMode) GetMessageName() string {
+	return "gpe_set_encap_mode"
+}
+func (*GpeSetEncapMode) GetCrcString() string {
+	return "f3f93ce9"
+}
+func (*GpeSetEncapMode) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// GpeSetEncapModeReply represents VPP binary API message 'gpe_set_encap_mode_reply':
+//
+//	"gpe_set_encap_mode_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type GpeSetEncapModeReply struct {
+	Retval int32
+}
+
+func (*GpeSetEncapModeReply) GetMessageName() string {
+	return "gpe_set_encap_mode_reply"
+}
+func (*GpeSetEncapModeReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*GpeSetEncapModeReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 func init() {
 	api.RegisterMessage((*GpeAddDelFwdEntry)(nil), "lisp_gpe.GpeAddDelFwdEntry")
 	api.RegisterMessage((*GpeAddDelFwdEntryReply)(nil), "lisp_gpe.GpeAddDelFwdEntryReply")
-	api.RegisterMessage((*GpeEnableDisable)(nil), "lisp_gpe.GpeEnableDisable")
-	api.RegisterMessage((*GpeEnableDisableReply)(nil), "lisp_gpe.GpeEnableDisableReply")
 	api.RegisterMessage((*GpeAddDelIface)(nil), "lisp_gpe.GpeAddDelIface")
 	api.RegisterMessage((*GpeAddDelIfaceReply)(nil), "lisp_gpe.GpeAddDelIfaceReply")
-	api.RegisterMessage((*GpeFwdEntryVnisGet)(nil), "lisp_gpe.GpeFwdEntryVnisGet")
-	api.RegisterMessage((*GpeFwdEntryVnisGetReply)(nil), "lisp_gpe.GpeFwdEntryVnisGetReply")
-	api.RegisterMessage((*GpeFwdEntriesGet)(nil), "lisp_gpe.GpeFwdEntriesGet")
-	api.RegisterMessage((*GpeFwdEntriesGetReply)(nil), "lisp_gpe.GpeFwdEntriesGetReply")
-	api.RegisterMessage((*GpeFwdEntryPathDump)(nil), "lisp_gpe.GpeFwdEntryPathDump")
-	api.RegisterMessage((*GpeFwdEntryPathDetails)(nil), "lisp_gpe.GpeFwdEntryPathDetails")
-	api.RegisterMessage((*GpeSetEncapMode)(nil), "lisp_gpe.GpeSetEncapMode")
-	api.RegisterMessage((*GpeSetEncapModeReply)(nil), "lisp_gpe.GpeSetEncapModeReply")
-	api.RegisterMessage((*GpeGetEncapMode)(nil), "lisp_gpe.GpeGetEncapMode")
-	api.RegisterMessage((*GpeGetEncapModeReply)(nil), "lisp_gpe.GpeGetEncapModeReply")
 	api.RegisterMessage((*GpeAddDelNativeFwdRpath)(nil), "lisp_gpe.GpeAddDelNativeFwdRpath")
 	api.RegisterMessage((*GpeAddDelNativeFwdRpathReply)(nil), "lisp_gpe.GpeAddDelNativeFwdRpathReply")
+	api.RegisterMessage((*GpeEnableDisable)(nil), "lisp_gpe.GpeEnableDisable")
+	api.RegisterMessage((*GpeEnableDisableReply)(nil), "lisp_gpe.GpeEnableDisableReply")
+	api.RegisterMessage((*GpeFwdEntriesGet)(nil), "lisp_gpe.GpeFwdEntriesGet")
+	api.RegisterMessage((*GpeFwdEntriesGetReply)(nil), "lisp_gpe.GpeFwdEntriesGetReply")
+	api.RegisterMessage((*GpeFwdEntryPathDetails)(nil), "lisp_gpe.GpeFwdEntryPathDetails")
+	api.RegisterMessage((*GpeFwdEntryPathDump)(nil), "lisp_gpe.GpeFwdEntryPathDump")
+	api.RegisterMessage((*GpeFwdEntryVnisGet)(nil), "lisp_gpe.GpeFwdEntryVnisGet")
+	api.RegisterMessage((*GpeFwdEntryVnisGetReply)(nil), "lisp_gpe.GpeFwdEntryVnisGetReply")
+	api.RegisterMessage((*GpeGetEncapMode)(nil), "lisp_gpe.GpeGetEncapMode")
+	api.RegisterMessage((*GpeGetEncapModeReply)(nil), "lisp_gpe.GpeGetEncapModeReply")
 	api.RegisterMessage((*GpeNativeFwdRpathsGet)(nil), "lisp_gpe.GpeNativeFwdRpathsGet")
 	api.RegisterMessage((*GpeNativeFwdRpathsGetReply)(nil), "lisp_gpe.GpeNativeFwdRpathsGetReply")
+	api.RegisterMessage((*GpeSetEncapMode)(nil), "lisp_gpe.GpeSetEncapMode")
+	api.RegisterMessage((*GpeSetEncapModeReply)(nil), "lisp_gpe.GpeSetEncapModeReply")
 }

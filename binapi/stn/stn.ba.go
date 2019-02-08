@@ -5,9 +5,8 @@
  Package stn is a generated from VPP binary API module 'stn'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package stn
 
@@ -128,37 +127,6 @@ func (*StnAddDelRuleReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// StnRulesDump represents VPP binary API message 'stn_rules_dump':
-//
-//	"stn_rules_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type StnRulesDump struct{}
-
-func (*StnRulesDump) GetMessageName() string {
-	return "stn_rules_dump"
-}
-func (*StnRulesDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*StnRulesDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // StnRulesDetails represents VPP binary API message 'stn_rules_details':
 //
 //	"stn_rules_details",
@@ -203,9 +171,40 @@ func (*StnRulesDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// StnRulesDump represents VPP binary API message 'stn_rules_dump':
+//
+//	"stn_rules_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type StnRulesDump struct{}
+
+func (*StnRulesDump) GetMessageName() string {
+	return "stn_rules_dump"
+}
+func (*StnRulesDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*StnRulesDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
 	api.RegisterMessage((*StnAddDelRule)(nil), "stn.StnAddDelRule")
 	api.RegisterMessage((*StnAddDelRuleReply)(nil), "stn.StnAddDelRuleReply")
-	api.RegisterMessage((*StnRulesDump)(nil), "stn.StnRulesDump")
 	api.RegisterMessage((*StnRulesDetails)(nil), "stn.StnRulesDetails")
+	api.RegisterMessage((*StnRulesDump)(nil), "stn.StnRulesDump")
 }

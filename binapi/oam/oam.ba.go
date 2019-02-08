@@ -5,9 +5,8 @@
  Package oam is a generated from VPP binary API module 'oam'.
 
  It contains following objects:
-	  5 messages
 	  2 services
-
+	  5 messages
 */
 package oam
 
@@ -43,6 +42,93 @@ type Services interface {
 }
 
 /* Messages */
+
+// OamAddDel represents VPP binary API message 'oam_add_del':
+//
+//	"oam_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "vrf_id"
+//	],
+//	[
+//	    "u8",
+//	    "src_address",
+//	    4
+//	],
+//	[
+//	    "u8",
+//	    "dst_address",
+//	    4
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	{
+//	    "crc": "0x3d7fcf96"
+//	}
+//
+type OamAddDel struct {
+	VrfID      uint32
+	SrcAddress []byte `struc:"[4]byte"`
+	DstAddress []byte `struc:"[4]byte"`
+	IsAdd      uint8
+}
+
+func (*OamAddDel) GetMessageName() string {
+	return "oam_add_del"
+}
+func (*OamAddDel) GetCrcString() string {
+	return "3d7fcf96"
+}
+func (*OamAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// OamAddDelReply represents VPP binary API message 'oam_add_del_reply':
+//
+//	"oam_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type OamAddDelReply struct {
+	Retval int32
+}
+
+func (*OamAddDelReply) GetMessageName() string {
+	return "oam_add_del_reply"
+}
+func (*OamAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*OamAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
 
 // OamEvent represents VPP binary API message 'oam_event':
 //
@@ -154,97 +240,10 @@ func (*WantOamEventsReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// OamAddDel represents VPP binary API message 'oam_add_del':
-//
-//	"oam_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "vrf_id"
-//	],
-//	[
-//	    "u8",
-//	    "src_address",
-//	    4
-//	],
-//	[
-//	    "u8",
-//	    "dst_address",
-//	    4
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	{
-//	    "crc": "0x3d7fcf96"
-//	}
-//
-type OamAddDel struct {
-	VrfID      uint32
-	SrcAddress []byte `struc:"[4]byte"`
-	DstAddress []byte `struc:"[4]byte"`
-	IsAdd      uint8
-}
-
-func (*OamAddDel) GetMessageName() string {
-	return "oam_add_del"
-}
-func (*OamAddDel) GetCrcString() string {
-	return "3d7fcf96"
-}
-func (*OamAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// OamAddDelReply represents VPP binary API message 'oam_add_del_reply':
-//
-//	"oam_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type OamAddDelReply struct {
-	Retval int32
-}
-
-func (*OamAddDelReply) GetMessageName() string {
-	return "oam_add_del_reply"
-}
-func (*OamAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*OamAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 func init() {
+	api.RegisterMessage((*OamAddDel)(nil), "oam.OamAddDel")
+	api.RegisterMessage((*OamAddDelReply)(nil), "oam.OamAddDelReply")
 	api.RegisterMessage((*OamEvent)(nil), "oam.OamEvent")
 	api.RegisterMessage((*WantOamEvents)(nil), "oam.WantOamEvents")
 	api.RegisterMessage((*WantOamEventsReply)(nil), "oam.WantOamEventsReply")
-	api.RegisterMessage((*OamAddDel)(nil), "oam.OamAddDel")
-	api.RegisterMessage((*OamAddDelReply)(nil), "oam.OamAddDelReply")
 }

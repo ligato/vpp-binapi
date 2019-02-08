@@ -5,9 +5,8 @@
  Package classify is a generated from VPP binary API module 'classify'.
 
  It contains following objects:
-	 28 messages
 	 14 services
-
+	 28 messages
 */
 package classify
 
@@ -91,6 +90,118 @@ type Services interface {
 }
 
 /* Messages */
+
+// ClassifyAddDelSession represents VPP binary API message 'classify_add_del_session':
+//
+//	"classify_add_del_session",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "u32",
+//	    "table_index"
+//	],
+//	[
+//	    "u32",
+//	    "hit_next_index"
+//	],
+//	[
+//	    "u32",
+//	    "opaque_index"
+//	],
+//	[
+//	    "i32",
+//	    "advance"
+//	],
+//	[
+//	    "u8",
+//	    "action"
+//	],
+//	[
+//	    "u32",
+//	    "metadata"
+//	],
+//	[
+//	    "u32",
+//	    "match_len"
+//	],
+//	[
+//	    "u8",
+//	    "match",
+//	    0,
+//	    "match_len"
+//	],
+//	{
+//	    "crc": "0x85fd79f4"
+//	}
+//
+type ClassifyAddDelSession struct {
+	IsAdd        uint8
+	TableIndex   uint32
+	HitNextIndex uint32
+	OpaqueIndex  uint32
+	Advance      int32
+	Action       uint8
+	Metadata     uint32
+	MatchLen     uint32 `struc:"sizeof=Match"`
+	Match        []byte
+}
+
+func (*ClassifyAddDelSession) GetMessageName() string {
+	return "classify_add_del_session"
+}
+func (*ClassifyAddDelSession) GetCrcString() string {
+	return "85fd79f4"
+}
+func (*ClassifyAddDelSession) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ClassifyAddDelSessionReply represents VPP binary API message 'classify_add_del_session_reply':
+//
+//	"classify_add_del_session_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type ClassifyAddDelSessionReply struct {
+	Retval int32
+}
+
+func (*ClassifyAddDelSessionReply) GetMessageName() string {
+	return "classify_add_del_session_reply"
+}
+func (*ClassifyAddDelSessionReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*ClassifyAddDelSessionReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
 
 // ClassifyAddDelTable represents VPP binary API message 'classify_add_del_table':
 //
@@ -239,603 +350,6 @@ func (*ClassifyAddDelTableReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// ClassifyAddDelSession represents VPP binary API message 'classify_add_del_session':
-//
-//	"classify_add_del_session",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "u32",
-//	    "table_index"
-//	],
-//	[
-//	    "u32",
-//	    "hit_next_index"
-//	],
-//	[
-//	    "u32",
-//	    "opaque_index"
-//	],
-//	[
-//	    "i32",
-//	    "advance"
-//	],
-//	[
-//	    "u8",
-//	    "action"
-//	],
-//	[
-//	    "u32",
-//	    "metadata"
-//	],
-//	[
-//	    "u32",
-//	    "match_len"
-//	],
-//	[
-//	    "u8",
-//	    "match",
-//	    0,
-//	    "match_len"
-//	],
-//	{
-//	    "crc": "0x85fd79f4"
-//	}
-//
-type ClassifyAddDelSession struct {
-	IsAdd        uint8
-	TableIndex   uint32
-	HitNextIndex uint32
-	OpaqueIndex  uint32
-	Advance      int32
-	Action       uint8
-	Metadata     uint32
-	MatchLen     uint32 `struc:"sizeof=Match"`
-	Match        []byte
-}
-
-func (*ClassifyAddDelSession) GetMessageName() string {
-	return "classify_add_del_session"
-}
-func (*ClassifyAddDelSession) GetCrcString() string {
-	return "85fd79f4"
-}
-func (*ClassifyAddDelSession) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ClassifyAddDelSessionReply represents VPP binary API message 'classify_add_del_session_reply':
-//
-//	"classify_add_del_session_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type ClassifyAddDelSessionReply struct {
-	Retval int32
-}
-
-func (*ClassifyAddDelSessionReply) GetMessageName() string {
-	return "classify_add_del_session_reply"
-}
-func (*ClassifyAddDelSessionReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*ClassifyAddDelSessionReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// PolicerClassifySetInterface represents VPP binary API message 'policer_classify_set_interface':
-//
-//	"policer_classify_set_interface",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "ip4_table_index"
-//	],
-//	[
-//	    "u32",
-//	    "ip6_table_index"
-//	],
-//	[
-//	    "u32",
-//	    "l2_table_index"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	{
-//	    "crc": "0xe09537b0"
-//	}
-//
-type PolicerClassifySetInterface struct {
-	SwIfIndex     uint32
-	IP4TableIndex uint32
-	IP6TableIndex uint32
-	L2TableIndex  uint32
-	IsAdd         uint8
-}
-
-func (*PolicerClassifySetInterface) GetMessageName() string {
-	return "policer_classify_set_interface"
-}
-func (*PolicerClassifySetInterface) GetCrcString() string {
-	return "e09537b0"
-}
-func (*PolicerClassifySetInterface) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// PolicerClassifySetInterfaceReply represents VPP binary API message 'policer_classify_set_interface_reply':
-//
-//	"policer_classify_set_interface_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type PolicerClassifySetInterfaceReply struct {
-	Retval int32
-}
-
-func (*PolicerClassifySetInterfaceReply) GetMessageName() string {
-	return "policer_classify_set_interface_reply"
-}
-func (*PolicerClassifySetInterfaceReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*PolicerClassifySetInterfaceReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// PolicerClassifyDump represents VPP binary API message 'policer_classify_dump':
-//
-//	"policer_classify_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "type"
-//	],
-//	{
-//	    "crc": "0x41503530"
-//	}
-//
-type PolicerClassifyDump struct {
-	Type uint8
-}
-
-func (*PolicerClassifyDump) GetMessageName() string {
-	return "policer_classify_dump"
-}
-func (*PolicerClassifyDump) GetCrcString() string {
-	return "41503530"
-}
-func (*PolicerClassifyDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// PolicerClassifyDetails represents VPP binary API message 'policer_classify_details':
-//
-//	"policer_classify_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "table_index"
-//	],
-//	{
-//	    "crc": "0xcc3461ad"
-//	}
-//
-type PolicerClassifyDetails struct {
-	SwIfIndex  uint32
-	TableIndex uint32
-}
-
-func (*PolicerClassifyDetails) GetMessageName() string {
-	return "policer_classify_details"
-}
-func (*PolicerClassifyDetails) GetCrcString() string {
-	return "cc3461ad"
-}
-func (*PolicerClassifyDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ClassifyTableIds represents VPP binary API message 'classify_table_ids':
-//
-//	"classify_table_ids",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type ClassifyTableIds struct{}
-
-func (*ClassifyTableIds) GetMessageName() string {
-	return "classify_table_ids"
-}
-func (*ClassifyTableIds) GetCrcString() string {
-	return "51077d14"
-}
-func (*ClassifyTableIds) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ClassifyTableIdsReply represents VPP binary API message 'classify_table_ids_reply':
-//
-//	"classify_table_ids_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "count"
-//	],
-//	[
-//	    "u32",
-//	    "ids",
-//	    0,
-//	    "count"
-//	],
-//	{
-//	    "crc": "0xd1d20e1d"
-//	}
-//
-type ClassifyTableIdsReply struct {
-	Retval int32
-	Count  uint32 `struc:"sizeof=Ids"`
-	Ids    []uint32
-}
-
-func (*ClassifyTableIdsReply) GetMessageName() string {
-	return "classify_table_ids_reply"
-}
-func (*ClassifyTableIdsReply) GetCrcString() string {
-	return "d1d20e1d"
-}
-func (*ClassifyTableIdsReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ClassifyTableByInterface represents VPP binary API message 'classify_table_by_interface':
-//
-//	"classify_table_by_interface",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type ClassifyTableByInterface struct {
-	SwIfIndex uint32
-}
-
-func (*ClassifyTableByInterface) GetMessageName() string {
-	return "classify_table_by_interface"
-}
-func (*ClassifyTableByInterface) GetCrcString() string {
-	return "529cb13f"
-}
-func (*ClassifyTableByInterface) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ClassifyTableByInterfaceReply represents VPP binary API message 'classify_table_by_interface_reply':
-//
-//	"classify_table_by_interface_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "l2_table_id"
-//	],
-//	[
-//	    "u32",
-//	    "ip4_table_id"
-//	],
-//	[
-//	    "u32",
-//	    "ip6_table_id"
-//	],
-//	{
-//	    "crc": "0xeccde823"
-//	}
-//
-type ClassifyTableByInterfaceReply struct {
-	Retval     int32
-	SwIfIndex  uint32
-	L2TableID  uint32
-	IP4TableID uint32
-	IP6TableID uint32
-}
-
-func (*ClassifyTableByInterfaceReply) GetMessageName() string {
-	return "classify_table_by_interface_reply"
-}
-func (*ClassifyTableByInterfaceReply) GetCrcString() string {
-	return "eccde823"
-}
-func (*ClassifyTableByInterfaceReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ClassifyTableInfo represents VPP binary API message 'classify_table_info':
-//
-//	"classify_table_info",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "table_id"
-//	],
-//	{
-//	    "crc": "0x0cca2cd9"
-//	}
-//
-type ClassifyTableInfo struct {
-	TableID uint32
-}
-
-func (*ClassifyTableInfo) GetMessageName() string {
-	return "classify_table_info"
-}
-func (*ClassifyTableInfo) GetCrcString() string {
-	return "0cca2cd9"
-}
-func (*ClassifyTableInfo) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ClassifyTableInfoReply represents VPP binary API message 'classify_table_info_reply':
-//
-//	"classify_table_info_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "table_id"
-//	],
-//	[
-//	    "u32",
-//	    "nbuckets"
-//	],
-//	[
-//	    "u32",
-//	    "match_n_vectors"
-//	],
-//	[
-//	    "u32",
-//	    "skip_n_vectors"
-//	],
-//	[
-//	    "u32",
-//	    "active_sessions"
-//	],
-//	[
-//	    "u32",
-//	    "next_table_index"
-//	],
-//	[
-//	    "u32",
-//	    "miss_next_index"
-//	],
-//	[
-//	    "u32",
-//	    "mask_length"
-//	],
-//	[
-//	    "u8",
-//	    "mask",
-//	    0,
-//	    "mask_length"
-//	],
-//	{
-//	    "crc": "0x4a573c0e"
-//	}
-//
-type ClassifyTableInfoReply struct {
-	Retval         int32
-	TableID        uint32
-	Nbuckets       uint32
-	MatchNVectors  uint32
-	SkipNVectors   uint32
-	ActiveSessions uint32
-	NextTableIndex uint32
-	MissNextIndex  uint32
-	MaskLength     uint32 `struc:"sizeof=Mask"`
-	Mask           []byte
-}
-
-func (*ClassifyTableInfoReply) GetMessageName() string {
-	return "classify_table_info_reply"
-}
-func (*ClassifyTableInfoReply) GetCrcString() string {
-	return "4a573c0e"
-}
-func (*ClassifyTableInfoReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ClassifySessionDump represents VPP binary API message 'classify_session_dump':
-//
-//	"classify_session_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "table_id"
-//	],
-//	{
-//	    "crc": "0x0cca2cd9"
-//	}
-//
-type ClassifySessionDump struct {
-	TableID uint32
-}
-
-func (*ClassifySessionDump) GetMessageName() string {
-	return "classify_session_dump"
-}
-func (*ClassifySessionDump) GetCrcString() string {
-	return "0cca2cd9"
-}
-func (*ClassifySessionDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // ClassifySessionDetails represents VPP binary API message 'classify_session_details':
 //
 //	"classify_session_details",
@@ -901,9 +415,9 @@ func (*ClassifySessionDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// FlowClassifySetInterface represents VPP binary API message 'flow_classify_set_interface':
+// ClassifySessionDump represents VPP binary API message 'classify_session_dump':
 //
-//	"flow_classify_set_interface",
+//	"classify_session_dump",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -918,147 +432,24 @@ func (*ClassifySessionDetails) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "ip4_table_index"
-//	],
-//	[
-//	    "u32",
-//	    "ip6_table_index"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
+//	    "table_id"
 //	],
 //	{
-//	    "crc": "0x275fa12c"
+//	    "crc": "0x0cca2cd9"
 //	}
 //
-type FlowClassifySetInterface struct {
-	SwIfIndex     uint32
-	IP4TableIndex uint32
-	IP6TableIndex uint32
-	IsAdd         uint8
+type ClassifySessionDump struct {
+	TableID uint32
 }
 
-func (*FlowClassifySetInterface) GetMessageName() string {
-	return "flow_classify_set_interface"
+func (*ClassifySessionDump) GetMessageName() string {
+	return "classify_session_dump"
 }
-func (*FlowClassifySetInterface) GetCrcString() string {
-	return "275fa12c"
+func (*ClassifySessionDump) GetCrcString() string {
+	return "0cca2cd9"
 }
-func (*FlowClassifySetInterface) GetMessageType() api.MessageType {
+func (*ClassifySessionDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
-}
-
-// FlowClassifySetInterfaceReply represents VPP binary API message 'flow_classify_set_interface_reply':
-//
-//	"flow_classify_set_interface_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type FlowClassifySetInterfaceReply struct {
-	Retval int32
-}
-
-func (*FlowClassifySetInterfaceReply) GetMessageName() string {
-	return "flow_classify_set_interface_reply"
-}
-func (*FlowClassifySetInterfaceReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*FlowClassifySetInterfaceReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// FlowClassifyDump represents VPP binary API message 'flow_classify_dump':
-//
-//	"flow_classify_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "type"
-//	],
-//	{
-//	    "crc": "0x41503530"
-//	}
-//
-type FlowClassifyDump struct {
-	Type uint8
-}
-
-func (*FlowClassifyDump) GetMessageName() string {
-	return "flow_classify_dump"
-}
-func (*FlowClassifyDump) GetCrcString() string {
-	return "41503530"
-}
-func (*FlowClassifyDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// FlowClassifyDetails represents VPP binary API message 'flow_classify_details':
-//
-//	"flow_classify_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "table_index"
-//	],
-//	{
-//	    "crc": "0xcc3461ad"
-//	}
-//
-type FlowClassifyDetails struct {
-	SwIfIndex  uint32
-	TableIndex uint32
-}
-
-func (*FlowClassifyDetails) GetMessageName() string {
-	return "flow_classify_details"
-}
-func (*FlowClassifyDetails) GetCrcString() string {
-	return "cc3461ad"
-}
-func (*FlowClassifyDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
 }
 
 // ClassifySetInterfaceIPTable represents VPP binary API message 'classify_set_interface_ip_table':
@@ -1228,6 +619,449 @@ func (*ClassifySetInterfaceL2TablesReply) GetCrcString() string {
 	return "e8d4e804"
 }
 func (*ClassifySetInterfaceL2TablesReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// ClassifyTableByInterface represents VPP binary API message 'classify_table_by_interface':
+//
+//	"classify_table_by_interface",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type ClassifyTableByInterface struct {
+	SwIfIndex uint32
+}
+
+func (*ClassifyTableByInterface) GetMessageName() string {
+	return "classify_table_by_interface"
+}
+func (*ClassifyTableByInterface) GetCrcString() string {
+	return "529cb13f"
+}
+func (*ClassifyTableByInterface) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ClassifyTableByInterfaceReply represents VPP binary API message 'classify_table_by_interface_reply':
+//
+//	"classify_table_by_interface_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "l2_table_id"
+//	],
+//	[
+//	    "u32",
+//	    "ip4_table_id"
+//	],
+//	[
+//	    "u32",
+//	    "ip6_table_id"
+//	],
+//	{
+//	    "crc": "0xeccde823"
+//	}
+//
+type ClassifyTableByInterfaceReply struct {
+	Retval     int32
+	SwIfIndex  uint32
+	L2TableID  uint32
+	IP4TableID uint32
+	IP6TableID uint32
+}
+
+func (*ClassifyTableByInterfaceReply) GetMessageName() string {
+	return "classify_table_by_interface_reply"
+}
+func (*ClassifyTableByInterfaceReply) GetCrcString() string {
+	return "eccde823"
+}
+func (*ClassifyTableByInterfaceReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// ClassifyTableIds represents VPP binary API message 'classify_table_ids':
+//
+//	"classify_table_ids",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type ClassifyTableIds struct{}
+
+func (*ClassifyTableIds) GetMessageName() string {
+	return "classify_table_ids"
+}
+func (*ClassifyTableIds) GetCrcString() string {
+	return "51077d14"
+}
+func (*ClassifyTableIds) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ClassifyTableIdsReply represents VPP binary API message 'classify_table_ids_reply':
+//
+//	"classify_table_ids_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "count"
+//	],
+//	[
+//	    "u32",
+//	    "ids",
+//	    0,
+//	    "count"
+//	],
+//	{
+//	    "crc": "0xd1d20e1d"
+//	}
+//
+type ClassifyTableIdsReply struct {
+	Retval int32
+	Count  uint32 `struc:"sizeof=Ids"`
+	Ids    []uint32
+}
+
+func (*ClassifyTableIdsReply) GetMessageName() string {
+	return "classify_table_ids_reply"
+}
+func (*ClassifyTableIdsReply) GetCrcString() string {
+	return "d1d20e1d"
+}
+func (*ClassifyTableIdsReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// ClassifyTableInfo represents VPP binary API message 'classify_table_info':
+//
+//	"classify_table_info",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "table_id"
+//	],
+//	{
+//	    "crc": "0x0cca2cd9"
+//	}
+//
+type ClassifyTableInfo struct {
+	TableID uint32
+}
+
+func (*ClassifyTableInfo) GetMessageName() string {
+	return "classify_table_info"
+}
+func (*ClassifyTableInfo) GetCrcString() string {
+	return "0cca2cd9"
+}
+func (*ClassifyTableInfo) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ClassifyTableInfoReply represents VPP binary API message 'classify_table_info_reply':
+//
+//	"classify_table_info_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "table_id"
+//	],
+//	[
+//	    "u32",
+//	    "nbuckets"
+//	],
+//	[
+//	    "u32",
+//	    "match_n_vectors"
+//	],
+//	[
+//	    "u32",
+//	    "skip_n_vectors"
+//	],
+//	[
+//	    "u32",
+//	    "active_sessions"
+//	],
+//	[
+//	    "u32",
+//	    "next_table_index"
+//	],
+//	[
+//	    "u32",
+//	    "miss_next_index"
+//	],
+//	[
+//	    "u32",
+//	    "mask_length"
+//	],
+//	[
+//	    "u8",
+//	    "mask",
+//	    0,
+//	    "mask_length"
+//	],
+//	{
+//	    "crc": "0x4a573c0e"
+//	}
+//
+type ClassifyTableInfoReply struct {
+	Retval         int32
+	TableID        uint32
+	Nbuckets       uint32
+	MatchNVectors  uint32
+	SkipNVectors   uint32
+	ActiveSessions uint32
+	NextTableIndex uint32
+	MissNextIndex  uint32
+	MaskLength     uint32 `struc:"sizeof=Mask"`
+	Mask           []byte
+}
+
+func (*ClassifyTableInfoReply) GetMessageName() string {
+	return "classify_table_info_reply"
+}
+func (*ClassifyTableInfoReply) GetCrcString() string {
+	return "4a573c0e"
+}
+func (*ClassifyTableInfoReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// FlowClassifyDetails represents VPP binary API message 'flow_classify_details':
+//
+//	"flow_classify_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "table_index"
+//	],
+//	{
+//	    "crc": "0xcc3461ad"
+//	}
+//
+type FlowClassifyDetails struct {
+	SwIfIndex  uint32
+	TableIndex uint32
+}
+
+func (*FlowClassifyDetails) GetMessageName() string {
+	return "flow_classify_details"
+}
+func (*FlowClassifyDetails) GetCrcString() string {
+	return "cc3461ad"
+}
+func (*FlowClassifyDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// FlowClassifyDump represents VPP binary API message 'flow_classify_dump':
+//
+//	"flow_classify_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "type"
+//	],
+//	{
+//	    "crc": "0x41503530"
+//	}
+//
+type FlowClassifyDump struct {
+	Type uint8
+}
+
+func (*FlowClassifyDump) GetMessageName() string {
+	return "flow_classify_dump"
+}
+func (*FlowClassifyDump) GetCrcString() string {
+	return "41503530"
+}
+func (*FlowClassifyDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// FlowClassifySetInterface represents VPP binary API message 'flow_classify_set_interface':
+//
+//	"flow_classify_set_interface",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "ip4_table_index"
+//	],
+//	[
+//	    "u32",
+//	    "ip6_table_index"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	{
+//	    "crc": "0x275fa12c"
+//	}
+//
+type FlowClassifySetInterface struct {
+	SwIfIndex     uint32
+	IP4TableIndex uint32
+	IP6TableIndex uint32
+	IsAdd         uint8
+}
+
+func (*FlowClassifySetInterface) GetMessageName() string {
+	return "flow_classify_set_interface"
+}
+func (*FlowClassifySetInterface) GetCrcString() string {
+	return "275fa12c"
+}
+func (*FlowClassifySetInterface) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// FlowClassifySetInterfaceReply represents VPP binary API message 'flow_classify_set_interface_reply':
+//
+//	"flow_classify_set_interface_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type FlowClassifySetInterfaceReply struct {
+	Retval int32
+}
+
+func (*FlowClassifySetInterfaceReply) GetMessageName() string {
+	return "flow_classify_set_interface_reply"
+}
+func (*FlowClassifySetInterfaceReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*FlowClassifySetInterfaceReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -1411,33 +1245,198 @@ func (*OutputACLSetInterfaceReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// PolicerClassifyDetails represents VPP binary API message 'policer_classify_details':
+//
+//	"policer_classify_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "table_index"
+//	],
+//	{
+//	    "crc": "0xcc3461ad"
+//	}
+//
+type PolicerClassifyDetails struct {
+	SwIfIndex  uint32
+	TableIndex uint32
+}
+
+func (*PolicerClassifyDetails) GetMessageName() string {
+	return "policer_classify_details"
+}
+func (*PolicerClassifyDetails) GetCrcString() string {
+	return "cc3461ad"
+}
+func (*PolicerClassifyDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// PolicerClassifyDump represents VPP binary API message 'policer_classify_dump':
+//
+//	"policer_classify_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "type"
+//	],
+//	{
+//	    "crc": "0x41503530"
+//	}
+//
+type PolicerClassifyDump struct {
+	Type uint8
+}
+
+func (*PolicerClassifyDump) GetMessageName() string {
+	return "policer_classify_dump"
+}
+func (*PolicerClassifyDump) GetCrcString() string {
+	return "41503530"
+}
+func (*PolicerClassifyDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// PolicerClassifySetInterface represents VPP binary API message 'policer_classify_set_interface':
+//
+//	"policer_classify_set_interface",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "ip4_table_index"
+//	],
+//	[
+//	    "u32",
+//	    "ip6_table_index"
+//	],
+//	[
+//	    "u32",
+//	    "l2_table_index"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	{
+//	    "crc": "0xe09537b0"
+//	}
+//
+type PolicerClassifySetInterface struct {
+	SwIfIndex     uint32
+	IP4TableIndex uint32
+	IP6TableIndex uint32
+	L2TableIndex  uint32
+	IsAdd         uint8
+}
+
+func (*PolicerClassifySetInterface) GetMessageName() string {
+	return "policer_classify_set_interface"
+}
+func (*PolicerClassifySetInterface) GetCrcString() string {
+	return "e09537b0"
+}
+func (*PolicerClassifySetInterface) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// PolicerClassifySetInterfaceReply represents VPP binary API message 'policer_classify_set_interface_reply':
+//
+//	"policer_classify_set_interface_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type PolicerClassifySetInterfaceReply struct {
+	Retval int32
+}
+
+func (*PolicerClassifySetInterfaceReply) GetMessageName() string {
+	return "policer_classify_set_interface_reply"
+}
+func (*PolicerClassifySetInterfaceReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*PolicerClassifySetInterfaceReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 func init() {
-	api.RegisterMessage((*ClassifyAddDelTable)(nil), "classify.ClassifyAddDelTable")
-	api.RegisterMessage((*ClassifyAddDelTableReply)(nil), "classify.ClassifyAddDelTableReply")
 	api.RegisterMessage((*ClassifyAddDelSession)(nil), "classify.ClassifyAddDelSession")
 	api.RegisterMessage((*ClassifyAddDelSessionReply)(nil), "classify.ClassifyAddDelSessionReply")
-	api.RegisterMessage((*PolicerClassifySetInterface)(nil), "classify.PolicerClassifySetInterface")
-	api.RegisterMessage((*PolicerClassifySetInterfaceReply)(nil), "classify.PolicerClassifySetInterfaceReply")
-	api.RegisterMessage((*PolicerClassifyDump)(nil), "classify.PolicerClassifyDump")
-	api.RegisterMessage((*PolicerClassifyDetails)(nil), "classify.PolicerClassifyDetails")
-	api.RegisterMessage((*ClassifyTableIds)(nil), "classify.ClassifyTableIds")
-	api.RegisterMessage((*ClassifyTableIdsReply)(nil), "classify.ClassifyTableIdsReply")
-	api.RegisterMessage((*ClassifyTableByInterface)(nil), "classify.ClassifyTableByInterface")
-	api.RegisterMessage((*ClassifyTableByInterfaceReply)(nil), "classify.ClassifyTableByInterfaceReply")
-	api.RegisterMessage((*ClassifyTableInfo)(nil), "classify.ClassifyTableInfo")
-	api.RegisterMessage((*ClassifyTableInfoReply)(nil), "classify.ClassifyTableInfoReply")
-	api.RegisterMessage((*ClassifySessionDump)(nil), "classify.ClassifySessionDump")
+	api.RegisterMessage((*ClassifyAddDelTable)(nil), "classify.ClassifyAddDelTable")
+	api.RegisterMessage((*ClassifyAddDelTableReply)(nil), "classify.ClassifyAddDelTableReply")
 	api.RegisterMessage((*ClassifySessionDetails)(nil), "classify.ClassifySessionDetails")
-	api.RegisterMessage((*FlowClassifySetInterface)(nil), "classify.FlowClassifySetInterface")
-	api.RegisterMessage((*FlowClassifySetInterfaceReply)(nil), "classify.FlowClassifySetInterfaceReply")
-	api.RegisterMessage((*FlowClassifyDump)(nil), "classify.FlowClassifyDump")
-	api.RegisterMessage((*FlowClassifyDetails)(nil), "classify.FlowClassifyDetails")
+	api.RegisterMessage((*ClassifySessionDump)(nil), "classify.ClassifySessionDump")
 	api.RegisterMessage((*ClassifySetInterfaceIPTable)(nil), "classify.ClassifySetInterfaceIPTable")
 	api.RegisterMessage((*ClassifySetInterfaceIPTableReply)(nil), "classify.ClassifySetInterfaceIPTableReply")
 	api.RegisterMessage((*ClassifySetInterfaceL2Tables)(nil), "classify.ClassifySetInterfaceL2Tables")
 	api.RegisterMessage((*ClassifySetInterfaceL2TablesReply)(nil), "classify.ClassifySetInterfaceL2TablesReply")
+	api.RegisterMessage((*ClassifyTableByInterface)(nil), "classify.ClassifyTableByInterface")
+	api.RegisterMessage((*ClassifyTableByInterfaceReply)(nil), "classify.ClassifyTableByInterfaceReply")
+	api.RegisterMessage((*ClassifyTableIds)(nil), "classify.ClassifyTableIds")
+	api.RegisterMessage((*ClassifyTableIdsReply)(nil), "classify.ClassifyTableIdsReply")
+	api.RegisterMessage((*ClassifyTableInfo)(nil), "classify.ClassifyTableInfo")
+	api.RegisterMessage((*ClassifyTableInfoReply)(nil), "classify.ClassifyTableInfoReply")
+	api.RegisterMessage((*FlowClassifyDetails)(nil), "classify.FlowClassifyDetails")
+	api.RegisterMessage((*FlowClassifyDump)(nil), "classify.FlowClassifyDump")
+	api.RegisterMessage((*FlowClassifySetInterface)(nil), "classify.FlowClassifySetInterface")
+	api.RegisterMessage((*FlowClassifySetInterfaceReply)(nil), "classify.FlowClassifySetInterfaceReply")
 	api.RegisterMessage((*InputACLSetInterface)(nil), "classify.InputACLSetInterface")
 	api.RegisterMessage((*InputACLSetInterfaceReply)(nil), "classify.InputACLSetInterfaceReply")
 	api.RegisterMessage((*OutputACLSetInterface)(nil), "classify.OutputACLSetInterface")
 	api.RegisterMessage((*OutputACLSetInterfaceReply)(nil), "classify.OutputACLSetInterfaceReply")
+	api.RegisterMessage((*PolicerClassifyDetails)(nil), "classify.PolicerClassifyDetails")
+	api.RegisterMessage((*PolicerClassifyDump)(nil), "classify.PolicerClassifyDump")
+	api.RegisterMessage((*PolicerClassifySetInterface)(nil), "classify.PolicerClassifySetInterface")
+	api.RegisterMessage((*PolicerClassifySetInterfaceReply)(nil), "classify.PolicerClassifySetInterfaceReply")
 }

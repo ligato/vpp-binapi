@@ -5,9 +5,8 @@
  Package flowprobe is a generated from VPP binary API module 'flowprobe'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package flowprobe
 
@@ -40,86 +39,6 @@ type Services interface {
 }
 
 /* Messages */
-
-// FlowprobeTxInterfaceAddDel represents VPP binary API message 'flowprobe_tx_interface_add_del':
-//
-//	"flowprobe_tx_interface_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "u8",
-//	    "which"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x10c2fbab"
-//	}
-//
-type FlowprobeTxInterfaceAddDel struct {
-	IsAdd     uint8
-	Which     uint8
-	SwIfIndex uint32
-}
-
-func (*FlowprobeTxInterfaceAddDel) GetMessageName() string {
-	return "flowprobe_tx_interface_add_del"
-}
-func (*FlowprobeTxInterfaceAddDel) GetCrcString() string {
-	return "10c2fbab"
-}
-func (*FlowprobeTxInterfaceAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// FlowprobeTxInterfaceAddDelReply represents VPP binary API message 'flowprobe_tx_interface_add_del_reply':
-//
-//	"flowprobe_tx_interface_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type FlowprobeTxInterfaceAddDelReply struct {
-	Retval int32
-}
-
-func (*FlowprobeTxInterfaceAddDelReply) GetMessageName() string {
-	return "flowprobe_tx_interface_add_del_reply"
-}
-func (*FlowprobeTxInterfaceAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*FlowprobeTxInterfaceAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
 
 // FlowprobeParams represents VPP binary API message 'flowprobe_params':
 //
@@ -211,9 +130,89 @@ func (*FlowprobeParamsReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// FlowprobeTxInterfaceAddDel represents VPP binary API message 'flowprobe_tx_interface_add_del':
+//
+//	"flowprobe_tx_interface_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "u8",
+//	    "which"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x10c2fbab"
+//	}
+//
+type FlowprobeTxInterfaceAddDel struct {
+	IsAdd     uint8
+	Which     uint8
+	SwIfIndex uint32
+}
+
+func (*FlowprobeTxInterfaceAddDel) GetMessageName() string {
+	return "flowprobe_tx_interface_add_del"
+}
+func (*FlowprobeTxInterfaceAddDel) GetCrcString() string {
+	return "10c2fbab"
+}
+func (*FlowprobeTxInterfaceAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// FlowprobeTxInterfaceAddDelReply represents VPP binary API message 'flowprobe_tx_interface_add_del_reply':
+//
+//	"flowprobe_tx_interface_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type FlowprobeTxInterfaceAddDelReply struct {
+	Retval int32
+}
+
+func (*FlowprobeTxInterfaceAddDelReply) GetMessageName() string {
+	return "flowprobe_tx_interface_add_del_reply"
+}
+func (*FlowprobeTxInterfaceAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*FlowprobeTxInterfaceAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 func init() {
-	api.RegisterMessage((*FlowprobeTxInterfaceAddDel)(nil), "flowprobe.FlowprobeTxInterfaceAddDel")
-	api.RegisterMessage((*FlowprobeTxInterfaceAddDelReply)(nil), "flowprobe.FlowprobeTxInterfaceAddDelReply")
 	api.RegisterMessage((*FlowprobeParams)(nil), "flowprobe.FlowprobeParams")
 	api.RegisterMessage((*FlowprobeParamsReply)(nil), "flowprobe.FlowprobeParamsReply")
+	api.RegisterMessage((*FlowprobeTxInterfaceAddDel)(nil), "flowprobe.FlowprobeTxInterfaceAddDel")
+	api.RegisterMessage((*FlowprobeTxInterfaceAddDelReply)(nil), "flowprobe.FlowprobeTxInterfaceAddDelReply")
 }

@@ -5,13 +5,12 @@
  Package l2 is a generated from VPP binary API module 'l2'.
 
  It contains following objects:
-	 47 messages
-	  7 types
-	  3 aliases
-	  3 enums
-	  1 union
 	 23 services
-
+	  3 enums
+	  3 aliases
+	  7 types
+	  1 union
+	 47 messages
 */
 package l2
 
@@ -280,95 +279,36 @@ func (*Address) GetCrcString() string {
 	return "09f11671"
 }
 
-// Prefix represents VPP binary API type 'prefix':
+// BridgeDomainSwIf represents VPP binary API type 'bridge_domain_sw_if':
 //
-//	"prefix",
+//	"bridge_domain_sw_if",
 //	[
-//	    "vl_api_address_t",
-//	    "address"
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
 //	],
 //	[
 //	    "u8",
-//	    "address_length"
+//	    "shg"
 //	],
 //	{
-//	    "crc": "0x0403aebc"
+//	    "crc": "0xa06dd426"
 //	}
 //
-type Prefix struct {
-	Address       Address
-	AddressLength uint8
+type BridgeDomainSwIf struct {
+	Context   uint32
+	SwIfIndex uint32
+	Shg       uint8
 }
 
-func (*Prefix) GetTypeName() string {
-	return "prefix"
+func (*BridgeDomainSwIf) GetTypeName() string {
+	return "bridge_domain_sw_if"
 }
-func (*Prefix) GetCrcString() string {
-	return "0403aebc"
-}
-
-// Mprefix represents VPP binary API type 'mprefix':
-//
-//	"mprefix",
-//	[
-//	    "vl_api_address_family_t",
-//	    "af"
-//	],
-//	[
-//	    "u16",
-//	    "grp_address_length"
-//	],
-//	[
-//	    "vl_api_address_union_t",
-//	    "grp_address"
-//	],
-//	[
-//	    "vl_api_address_union_t",
-//	    "src_address"
-//	],
-//	{
-//	    "crc": "0x1c4cba05"
-//	}
-//
-type Mprefix struct {
-	Af               AddressFamily
-	GrpAddressLength uint16
-	GrpAddress       AddressUnion
-	SrcAddress       AddressUnion
-}
-
-func (*Mprefix) GetTypeName() string {
-	return "mprefix"
-}
-func (*Mprefix) GetCrcString() string {
-	return "1c4cba05"
-}
-
-// IP6Prefix represents VPP binary API type 'ip6_prefix':
-//
-//	"ip6_prefix",
-//	[
-//	    "vl_api_ip6_address_t",
-//	    "prefix"
-//	],
-//	[
-//	    "u8",
-//	    "len"
-//	],
-//	{
-//	    "crc": "0x779fd64f"
-//	}
-//
-type IP6Prefix struct {
-	Prefix IP6Address
-	Len    uint8
-}
-
-func (*IP6Prefix) GetTypeName() string {
-	return "ip6_prefix"
-}
-func (*IP6Prefix) GetCrcString() string {
-	return "779fd64f"
+func (*BridgeDomainSwIf) GetCrcString() string {
+	return "a06dd426"
 }
 
 // IP4Prefix represents VPP binary API type 'ip4_prefix':
@@ -396,6 +336,33 @@ func (*IP4Prefix) GetTypeName() string {
 }
 func (*IP4Prefix) GetCrcString() string {
 	return "ea8dc11d"
+}
+
+// IP6Prefix represents VPP binary API type 'ip6_prefix':
+//
+//	"ip6_prefix",
+//	[
+//	    "vl_api_ip6_address_t",
+//	    "prefix"
+//	],
+//	[
+//	    "u8",
+//	    "len"
+//	],
+//	{
+//	    "crc": "0x779fd64f"
+//	}
+//
+type IP6Prefix struct {
+	Prefix IP6Address
+	Len    uint8
+}
+
+func (*IP6Prefix) GetTypeName() string {
+	return "ip6_prefix"
+}
+func (*IP6Prefix) GetCrcString() string {
+	return "779fd64f"
 }
 
 // MacEntry represents VPP binary API type 'mac_entry':
@@ -436,36 +403,68 @@ func (*MacEntry) GetCrcString() string {
 	return "971135b8"
 }
 
-// BridgeDomainSwIf represents VPP binary API type 'bridge_domain_sw_if':
+// Mprefix represents VPP binary API type 'mprefix':
 //
-//	"bridge_domain_sw_if",
+//	"mprefix",
 //	[
-//	    "u32",
-//	    "context"
+//	    "vl_api_address_family_t",
+//	    "af"
 //	],
 //	[
-//	    "u32",
-//	    "sw_if_index"
+//	    "u16",
+//	    "grp_address_length"
+//	],
+//	[
+//	    "vl_api_address_union_t",
+//	    "grp_address"
+//	],
+//	[
+//	    "vl_api_address_union_t",
+//	    "src_address"
+//	],
+//	{
+//	    "crc": "0x1c4cba05"
+//	}
+//
+type Mprefix struct {
+	Af               AddressFamily
+	GrpAddressLength uint16
+	GrpAddress       AddressUnion
+	SrcAddress       AddressUnion
+}
+
+func (*Mprefix) GetTypeName() string {
+	return "mprefix"
+}
+func (*Mprefix) GetCrcString() string {
+	return "1c4cba05"
+}
+
+// Prefix represents VPP binary API type 'prefix':
+//
+//	"prefix",
+//	[
+//	    "vl_api_address_t",
+//	    "address"
 //	],
 //	[
 //	    "u8",
-//	    "shg"
+//	    "address_length"
 //	],
 //	{
-//	    "crc": "0xa06dd426"
+//	    "crc": "0x0403aebc"
 //	}
 //
-type BridgeDomainSwIf struct {
-	Context   uint32
-	SwIfIndex uint32
-	Shg       uint8
+type Prefix struct {
+	Address       Address
+	AddressLength uint8
 }
 
-func (*BridgeDomainSwIf) GetTypeName() string {
-	return "bridge_domain_sw_if"
+func (*Prefix) GetTypeName() string {
+	return "prefix"
 }
-func (*BridgeDomainSwIf) GetCrcString() string {
-	return "a06dd426"
+func (*Prefix) GetCrcString() string {
+	return "0403aebc"
 }
 
 /* Unions */
@@ -496,6 +495,10 @@ func (*AddressUnion) GetCrcString() string {
 	return "d68a2fb4"
 }
 
+func AddressUnionIP4(a IP4Address) (u AddressUnion) {
+	u.SetIP4(a)
+	return
+}
 func (u *AddressUnion) SetIP4(a IP4Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -509,6 +512,10 @@ func (u *AddressUnion) GetIP4() (a IP4Address) {
 	return
 }
 
+func AddressUnionIP6(a IP6Address) (u AddressUnion) {
+	u.SetIP6(a)
+	return
+}
 func (u *AddressUnion) SetIP6(a IP6Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -524,9 +531,94 @@ func (u *AddressUnion) GetIP6() (a IP6Address) {
 
 /* Messages */
 
-// L2XconnectDetails represents VPP binary API message 'l2_xconnect_details':
+// BdIPMacAddDel represents VPP binary API message 'bd_ip_mac_add_del':
 //
-//	"l2_xconnect_details",
+//	"bd_ip_mac_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "vl_api_address_t",
+//	    "ip"
+//	],
+//	[
+//	    "vl_api_mac_address_t",
+//	    "mac"
+//	],
+//	{
+//	    "crc": "0xfb873902"
+//	}
+//
+type BdIPMacAddDel struct {
+	BdID  uint32
+	IsAdd uint8
+	IP    Address
+	Mac   MacAddress
+}
+
+func (*BdIPMacAddDel) GetMessageName() string {
+	return "bd_ip_mac_add_del"
+}
+func (*BdIPMacAddDel) GetCrcString() string {
+	return "fb873902"
+}
+func (*BdIPMacAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BdIPMacAddDelReply represents VPP binary API message 'bd_ip_mac_add_del_reply':
+//
+//	"bd_ip_mac_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type BdIPMacAddDelReply struct {
+	Retval int32
+}
+
+func (*BdIPMacAddDelReply) GetMessageName() string {
+	return "bd_ip_mac_add_del_reply"
+}
+func (*BdIPMacAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*BdIPMacAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BdIPMacDetails represents VPP binary API message 'bd_ip_mac_details':
+//
+//	"bd_ip_mac_details",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -537,34 +629,551 @@ func (u *AddressUnion) GetIP6() (a IP6Address) {
 //	],
 //	[
 //	    "u32",
-//	    "rx_sw_if_index"
+//	    "bd_id"
 //	],
 //	[
-//	    "u32",
-//	    "tx_sw_if_index"
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	[
+//	    "u8",
+//	    "ip_address",
+//	    16
+//	],
+//	[
+//	    "vl_api_mac_address_t",
+//	    "mac_address"
 //	],
 //	{
-//	    "crc": "0x722e2378"
+//	    "crc": "0xc05c27de"
 //	}
 //
-type L2XconnectDetails struct {
-	RxSwIfIndex uint32
-	TxSwIfIndex uint32
+type BdIPMacDetails struct {
+	BdID       uint32
+	IsIPv6     uint8
+	IPAddress  []byte `struc:"[16]byte"`
+	MacAddress MacAddress
 }
 
-func (*L2XconnectDetails) GetMessageName() string {
-	return "l2_xconnect_details"
+func (*BdIPMacDetails) GetMessageName() string {
+	return "bd_ip_mac_details"
 }
-func (*L2XconnectDetails) GetCrcString() string {
-	return "722e2378"
+func (*BdIPMacDetails) GetCrcString() string {
+	return "c05c27de"
 }
-func (*L2XconnectDetails) GetMessageType() api.MessageType {
+func (*BdIPMacDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// L2XconnectDump represents VPP binary API message 'l2_xconnect_dump':
+// BdIPMacDump represents VPP binary API message 'bd_ip_mac_dump':
 //
-//	"l2_xconnect_dump",
+//	"bd_ip_mac_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	{
+//	    "crc": "0xc25fdce6"
+//	}
+//
+type BdIPMacDump struct {
+	BdID uint32
+}
+
+func (*BdIPMacDump) GetMessageName() string {
+	return "bd_ip_mac_dump"
+}
+func (*BdIPMacDump) GetCrcString() string {
+	return "c25fdce6"
+}
+func (*BdIPMacDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BdIPMacFlush represents VPP binary API message 'bd_ip_mac_flush':
+//
+//	"bd_ip_mac_flush",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	{
+//	    "crc": "0xc25fdce6"
+//	}
+//
+type BdIPMacFlush struct {
+	BdID uint32
+}
+
+func (*BdIPMacFlush) GetMessageName() string {
+	return "bd_ip_mac_flush"
+}
+func (*BdIPMacFlush) GetCrcString() string {
+	return "c25fdce6"
+}
+func (*BdIPMacFlush) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BdIPMacFlushReply represents VPP binary API message 'bd_ip_mac_flush_reply':
+//
+//	"bd_ip_mac_flush_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type BdIPMacFlushReply struct {
+	Retval int32
+}
+
+func (*BdIPMacFlushReply) GetMessageName() string {
+	return "bd_ip_mac_flush_reply"
+}
+func (*BdIPMacFlushReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*BdIPMacFlushReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BridgeDomainAddDel represents VPP binary API message 'bridge_domain_add_del':
+//
+//	"bridge_domain_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	[
+//	    "u8",
+//	    "flood"
+//	],
+//	[
+//	    "u8",
+//	    "uu_flood"
+//	],
+//	[
+//	    "u8",
+//	    "forward"
+//	],
+//	[
+//	    "u8",
+//	    "learn"
+//	],
+//	[
+//	    "u8",
+//	    "arp_term"
+//	],
+//	[
+//	    "u8",
+//	    "mac_age"
+//	],
+//	[
+//	    "u8",
+//	    "bd_tag",
+//	    64
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	{
+//	    "crc": "0x6f668fd9"
+//	}
+//
+type BridgeDomainAddDel struct {
+	BdID    uint32
+	Flood   uint8
+	UuFlood uint8
+	Forward uint8
+	Learn   uint8
+	ArpTerm uint8
+	MacAge  uint8
+	BdTag   []byte `struc:"[64]byte"`
+	IsAdd   uint8
+}
+
+func (*BridgeDomainAddDel) GetMessageName() string {
+	return "bridge_domain_add_del"
+}
+func (*BridgeDomainAddDel) GetCrcString() string {
+	return "6f668fd9"
+}
+func (*BridgeDomainAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BridgeDomainAddDelReply represents VPP binary API message 'bridge_domain_add_del_reply':
+//
+//	"bridge_domain_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type BridgeDomainAddDelReply struct {
+	Retval int32
+}
+
+func (*BridgeDomainAddDelReply) GetMessageName() string {
+	return "bridge_domain_add_del_reply"
+}
+func (*BridgeDomainAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*BridgeDomainAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BridgeDomainDetails represents VPP binary API message 'bridge_domain_details':
+//
+//	"bridge_domain_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	[
+//	    "u8",
+//	    "flood"
+//	],
+//	[
+//	    "u8",
+//	    "uu_flood"
+//	],
+//	[
+//	    "u8",
+//	    "forward"
+//	],
+//	[
+//	    "u8",
+//	    "learn"
+//	],
+//	[
+//	    "u8",
+//	    "arp_term"
+//	],
+//	[
+//	    "u8",
+//	    "mac_age"
+//	],
+//	[
+//	    "u8",
+//	    "bd_tag",
+//	    64
+//	],
+//	[
+//	    "u32",
+//	    "bvi_sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "uu_fwd_sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "n_sw_ifs"
+//	],
+//	[
+//	    "vl_api_bridge_domain_sw_if_t",
+//	    "sw_if_details",
+//	    0,
+//	    "n_sw_ifs"
+//	],
+//	{
+//	    "crc": "0xb2134997"
+//	}
+//
+type BridgeDomainDetails struct {
+	BdID           uint32
+	Flood          uint8
+	UuFlood        uint8
+	Forward        uint8
+	Learn          uint8
+	ArpTerm        uint8
+	MacAge         uint8
+	BdTag          []byte `struc:"[64]byte"`
+	BviSwIfIndex   uint32
+	UuFwdSwIfIndex uint32
+	NSwIfs         uint32 `struc:"sizeof=SwIfDetails"`
+	SwIfDetails    []BridgeDomainSwIf
+}
+
+func (*BridgeDomainDetails) GetMessageName() string {
+	return "bridge_domain_details"
+}
+func (*BridgeDomainDetails) GetCrcString() string {
+	return "b2134997"
+}
+func (*BridgeDomainDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BridgeDomainDump represents VPP binary API message 'bridge_domain_dump':
+//
+//	"bridge_domain_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	{
+//	    "crc": "0xc25fdce6"
+//	}
+//
+type BridgeDomainDump struct {
+	BdID uint32
+}
+
+func (*BridgeDomainDump) GetMessageName() string {
+	return "bridge_domain_dump"
+}
+func (*BridgeDomainDump) GetCrcString() string {
+	return "c25fdce6"
+}
+func (*BridgeDomainDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BridgeDomainSetMacAge represents VPP binary API message 'bridge_domain_set_mac_age':
+//
+//	"bridge_domain_set_mac_age",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	[
+//	    "u8",
+//	    "mac_age"
+//	],
+//	{
+//	    "crc": "0xb537ad7b"
+//	}
+//
+type BridgeDomainSetMacAge struct {
+	BdID   uint32
+	MacAge uint8
+}
+
+func (*BridgeDomainSetMacAge) GetMessageName() string {
+	return "bridge_domain_set_mac_age"
+}
+func (*BridgeDomainSetMacAge) GetCrcString() string {
+	return "b537ad7b"
+}
+func (*BridgeDomainSetMacAge) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BridgeDomainSetMacAgeReply represents VPP binary API message 'bridge_domain_set_mac_age_reply':
+//
+//	"bridge_domain_set_mac_age_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type BridgeDomainSetMacAgeReply struct {
+	Retval int32
+}
+
+func (*BridgeDomainSetMacAgeReply) GetMessageName() string {
+	return "bridge_domain_set_mac_age_reply"
+}
+func (*BridgeDomainSetMacAgeReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*BridgeDomainSetMacAgeReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// BridgeFlags represents VPP binary API message 'bridge_flags':
+//
+//	"bridge_flags",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	[
+//	    "u8",
+//	    "is_set"
+//	],
+//	[
+//	    "vl_api_bd_flags_t",
+//	    "flags"
+//	],
+//	{
+//	    "crc": "0x8563d406"
+//	}
+//
+type BridgeFlags struct {
+	BdID  uint32
+	IsSet uint8
+	Flags BdFlags
+}
+
+func (*BridgeFlags) GetMessageName() string {
+	return "bridge_flags"
+}
+func (*BridgeFlags) GetCrcString() string {
+	return "8563d406"
+}
+func (*BridgeFlags) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BridgeFlagsReply represents VPP binary API message 'bridge_flags_reply':
+//
+//	"bridge_flags_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "resulting_feature_bitmap"
+//	],
+//	{
+//	    "crc": "0x29b2a2b3"
+//	}
+//
+type BridgeFlagsReply struct {
+	Retval                 int32
+	ResultingFeatureBitmap uint32
+}
+
+func (*BridgeFlagsReply) GetMessageName() string {
+	return "bridge_flags_reply"
+}
+func (*BridgeFlagsReply) GetCrcString() string {
+	return "29b2a2b3"
+}
+func (*BridgeFlagsReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// L2FibClearTable represents VPP binary API message 'l2_fib_clear_table':
+//
+//	"l2_fib_clear_table",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -581,16 +1190,49 @@ func (*L2XconnectDetails) GetMessageType() api.MessageType {
 //	    "crc": "0x51077d14"
 //	}
 //
-type L2XconnectDump struct{}
+type L2FibClearTable struct{}
 
-func (*L2XconnectDump) GetMessageName() string {
-	return "l2_xconnect_dump"
+func (*L2FibClearTable) GetMessageName() string {
+	return "l2_fib_clear_table"
 }
-func (*L2XconnectDump) GetCrcString() string {
+func (*L2FibClearTable) GetCrcString() string {
 	return "51077d14"
 }
-func (*L2XconnectDump) GetMessageType() api.MessageType {
+func (*L2FibClearTable) GetMessageType() api.MessageType {
 	return api.RequestMessage
+}
+
+// L2FibClearTableReply represents VPP binary API message 'l2_fib_clear_table_reply':
+//
+//	"l2_fib_clear_table_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type L2FibClearTableReply struct {
+	Retval int32
+}
+
+func (*L2FibClearTableReply) GetMessageName() string {
+	return "l2_fib_clear_table_reply"
+}
+func (*L2FibClearTableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*L2FibClearTableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
 }
 
 // L2FibTableDetails represents VPP binary API message 'l2_fib_table_details':
@@ -689,9 +1331,9 @@ func (*L2FibTableDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// L2FibClearTable represents VPP binary API message 'l2_fib_clear_table':
+// L2Flags represents VPP binary API message 'l2_flags':
 //
-//	"l2_fib_clear_table",
+//	"l2_flags",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -704,25 +1346,121 @@ func (*L2FibTableDump) GetMessageType() api.MessageType {
 //	    "u32",
 //	    "context"
 //	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u8",
+//	    "is_set"
+//	],
+//	[
+//	    "u32",
+//	    "feature_bitmap"
+//	],
 //	{
-//	    "crc": "0x51077d14"
+//	    "crc": "0x0e889fb9"
 //	}
 //
-type L2FibClearTable struct{}
+type L2Flags struct {
+	SwIfIndex     uint32
+	IsSet         uint8
+	FeatureBitmap uint32
+}
 
-func (*L2FibClearTable) GetMessageName() string {
-	return "l2_fib_clear_table"
+func (*L2Flags) GetMessageName() string {
+	return "l2_flags"
 }
-func (*L2FibClearTable) GetCrcString() string {
-	return "51077d14"
+func (*L2Flags) GetCrcString() string {
+	return "0e889fb9"
 }
-func (*L2FibClearTable) GetMessageType() api.MessageType {
+func (*L2Flags) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// L2FibClearTableReply represents VPP binary API message 'l2_fib_clear_table_reply':
+// L2FlagsReply represents VPP binary API message 'l2_flags_reply':
 //
-//	"l2_fib_clear_table_reply",
+//	"l2_flags_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "resulting_feature_bitmap"
+//	],
+//	{
+//	    "crc": "0x29b2a2b3"
+//	}
+//
+type L2FlagsReply struct {
+	Retval                 int32
+	ResultingFeatureBitmap uint32
+}
+
+func (*L2FlagsReply) GetMessageName() string {
+	return "l2_flags_reply"
+}
+func (*L2FlagsReply) GetCrcString() string {
+	return "29b2a2b3"
+}
+func (*L2FlagsReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// L2InterfaceEfpFilter represents VPP binary API message 'l2_interface_efp_filter':
+//
+//	"l2_interface_efp_filter",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u8",
+//	    "enable_disable"
+//	],
+//	{
+//	    "crc": "0x69d24598"
+//	}
+//
+type L2InterfaceEfpFilter struct {
+	SwIfIndex     uint32
+	EnableDisable uint8
+}
+
+func (*L2InterfaceEfpFilter) GetMessageName() string {
+	return "l2_interface_efp_filter"
+}
+func (*L2InterfaceEfpFilter) GetCrcString() string {
+	return "69d24598"
+}
+func (*L2InterfaceEfpFilter) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// L2InterfaceEfpFilterReply represents VPP binary API message 'l2_interface_efp_filter_reply':
+//
+//	"l2_interface_efp_filter_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -739,17 +1477,504 @@ func (*L2FibClearTable) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type L2FibClearTableReply struct {
+type L2InterfaceEfpFilterReply struct {
 	Retval int32
 }
 
-func (*L2FibClearTableReply) GetMessageName() string {
-	return "l2_fib_clear_table_reply"
+func (*L2InterfaceEfpFilterReply) GetMessageName() string {
+	return "l2_interface_efp_filter_reply"
 }
-func (*L2FibClearTableReply) GetCrcString() string {
+func (*L2InterfaceEfpFilterReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*L2FibClearTableReply) GetMessageType() api.MessageType {
+func (*L2InterfaceEfpFilterReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// L2InterfacePbbTagRewrite represents VPP binary API message 'l2_interface_pbb_tag_rewrite':
+//
+//	"l2_interface_pbb_tag_rewrite",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "vtr_op"
+//	],
+//	[
+//	    "u16",
+//	    "outer_tag"
+//	],
+//	[
+//	    "u8",
+//	    "b_dmac",
+//	    6
+//	],
+//	[
+//	    "u8",
+//	    "b_smac",
+//	    6
+//	],
+//	[
+//	    "u16",
+//	    "b_vlanid"
+//	],
+//	[
+//	    "u32",
+//	    "i_sid"
+//	],
+//	{
+//	    "crc": "0x6cf815f9"
+//	}
+//
+type L2InterfacePbbTagRewrite struct {
+	SwIfIndex uint32
+	VtrOp     uint32
+	OuterTag  uint16
+	BDmac     []byte `struc:"[6]byte"`
+	BSmac     []byte `struc:"[6]byte"`
+	BVlanid   uint16
+	ISid      uint32
+}
+
+func (*L2InterfacePbbTagRewrite) GetMessageName() string {
+	return "l2_interface_pbb_tag_rewrite"
+}
+func (*L2InterfacePbbTagRewrite) GetCrcString() string {
+	return "6cf815f9"
+}
+func (*L2InterfacePbbTagRewrite) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// L2InterfacePbbTagRewriteReply represents VPP binary API message 'l2_interface_pbb_tag_rewrite_reply':
+//
+//	"l2_interface_pbb_tag_rewrite_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type L2InterfacePbbTagRewriteReply struct {
+	Retval int32
+}
+
+func (*L2InterfacePbbTagRewriteReply) GetMessageName() string {
+	return "l2_interface_pbb_tag_rewrite_reply"
+}
+func (*L2InterfacePbbTagRewriteReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*L2InterfacePbbTagRewriteReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// L2InterfaceVlanTagRewrite represents VPP binary API message 'l2_interface_vlan_tag_rewrite':
+//
+//	"l2_interface_vlan_tag_rewrite",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "vtr_op"
+//	],
+//	[
+//	    "u32",
+//	    "push_dot1q"
+//	],
+//	[
+//	    "u32",
+//	    "tag1"
+//	],
+//	[
+//	    "u32",
+//	    "tag2"
+//	],
+//	{
+//	    "crc": "0xb90be6b4"
+//	}
+//
+type L2InterfaceVlanTagRewrite struct {
+	SwIfIndex uint32
+	VtrOp     uint32
+	PushDot1q uint32
+	Tag1      uint32
+	Tag2      uint32
+}
+
+func (*L2InterfaceVlanTagRewrite) GetMessageName() string {
+	return "l2_interface_vlan_tag_rewrite"
+}
+func (*L2InterfaceVlanTagRewrite) GetCrcString() string {
+	return "b90be6b4"
+}
+func (*L2InterfaceVlanTagRewrite) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// L2InterfaceVlanTagRewriteReply represents VPP binary API message 'l2_interface_vlan_tag_rewrite_reply':
+//
+//	"l2_interface_vlan_tag_rewrite_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type L2InterfaceVlanTagRewriteReply struct {
+	Retval int32
+}
+
+func (*L2InterfaceVlanTagRewriteReply) GetMessageName() string {
+	return "l2_interface_vlan_tag_rewrite_reply"
+}
+func (*L2InterfaceVlanTagRewriteReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*L2InterfaceVlanTagRewriteReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// L2MacsEvent represents VPP binary API message 'l2_macs_event':
+//
+//	"l2_macs_event",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "pid"
+//	],
+//	[
+//	    "u32",
+//	    "n_macs"
+//	],
+//	[
+//	    "vl_api_mac_entry_t",
+//	    "mac",
+//	    0,
+//	    "n_macs"
+//	],
+//	{
+//	    "crc": "0x4e5ab0c8"
+//	}
+//
+type L2MacsEvent struct {
+	PID   uint32
+	NMacs uint32 `struc:"sizeof=Mac"`
+	Mac   []MacEntry
+}
+
+func (*L2MacsEvent) GetMessageName() string {
+	return "l2_macs_event"
+}
+func (*L2MacsEvent) GetCrcString() string {
+	return "4e5ab0c8"
+}
+func (*L2MacsEvent) GetMessageType() api.MessageType {
+	return api.EventMessage
+}
+
+// L2PatchAddDel represents VPP binary API message 'l2_patch_add_del':
+//
+//	"l2_patch_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "rx_sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "tx_sw_if_index"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	{
+//	    "crc": "0x62506e63"
+//	}
+//
+type L2PatchAddDel struct {
+	RxSwIfIndex uint32
+	TxSwIfIndex uint32
+	IsAdd       uint8
+}
+
+func (*L2PatchAddDel) GetMessageName() string {
+	return "l2_patch_add_del"
+}
+func (*L2PatchAddDel) GetCrcString() string {
+	return "62506e63"
+}
+func (*L2PatchAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// L2PatchAddDelReply represents VPP binary API message 'l2_patch_add_del_reply':
+//
+//	"l2_patch_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type L2PatchAddDelReply struct {
+	Retval int32
+}
+
+func (*L2PatchAddDelReply) GetMessageName() string {
+	return "l2_patch_add_del_reply"
+}
+func (*L2PatchAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*L2PatchAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// L2XconnectDetails represents VPP binary API message 'l2_xconnect_details':
+//
+//	"l2_xconnect_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "rx_sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "tx_sw_if_index"
+//	],
+//	{
+//	    "crc": "0x722e2378"
+//	}
+//
+type L2XconnectDetails struct {
+	RxSwIfIndex uint32
+	TxSwIfIndex uint32
+}
+
+func (*L2XconnectDetails) GetMessageName() string {
+	return "l2_xconnect_details"
+}
+func (*L2XconnectDetails) GetCrcString() string {
+	return "722e2378"
+}
+func (*L2XconnectDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// L2XconnectDump represents VPP binary API message 'l2_xconnect_dump':
+//
+//	"l2_xconnect_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type L2XconnectDump struct{}
+
+func (*L2XconnectDump) GetMessageName() string {
+	return "l2_xconnect_dump"
+}
+func (*L2XconnectDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*L2XconnectDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// L2fibAddDel represents VPP binary API message 'l2fib_add_del':
+//
+//	"l2fib_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "mac",
+//	    6
+//	],
+//	[
+//	    "u32",
+//	    "bd_id"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "u8",
+//	    "static_mac"
+//	],
+//	[
+//	    "u8",
+//	    "filter_mac"
+//	],
+//	[
+//	    "u8",
+//	    "bvi_mac"
+//	],
+//	{
+//	    "crc": "0x34ced3eb"
+//	}
+//
+type L2fibAddDel struct {
+	Mac       []byte `struc:"[6]byte"`
+	BdID      uint32
+	SwIfIndex uint32
+	IsAdd     uint8
+	StaticMac uint8
+	FilterMac uint8
+	BviMac    uint8
+}
+
+func (*L2fibAddDel) GetMessageName() string {
+	return "l2fib_add_del"
+}
+func (*L2fibAddDel) GetCrcString() string {
+	return "34ced3eb"
+}
+func (*L2fibAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// L2fibAddDelReply represents VPP binary API message 'l2fib_add_del_reply':
+//
+//	"l2fib_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type L2fibAddDelReply struct {
+	Retval int32
+}
+
+func (*L2fibAddDelReply) GetMessageName() string {
+	return "l2fib_add_del_reply"
+}
+func (*L2fibAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*L2fibAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -957,9 +2182,9 @@ func (*L2fibFlushIntReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// L2fibAddDel represents VPP binary API message 'l2fib_add_del':
+// SwInterfaceSetL2Bridge represents VPP binary API message 'sw_interface_set_l2_bridge':
 //
-//	"l2fib_add_del",
+//	"sw_interface_set_l2_bridge",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -973,61 +2198,50 @@ func (*L2fibFlushIntReply) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "u8",
-//	    "mac",
-//	    6
+//	    "u32",
+//	    "rx_sw_if_index"
 //	],
 //	[
 //	    "u32",
 //	    "bd_id"
 //	],
 //	[
-//	    "u32",
-//	    "sw_if_index"
+//	    "vl_api_l2_port_type_t",
+//	    "port_type"
 //	],
 //	[
 //	    "u8",
-//	    "is_add"
+//	    "shg"
 //	],
 //	[
 //	    "u8",
-//	    "static_mac"
-//	],
-//	[
-//	    "u8",
-//	    "filter_mac"
-//	],
-//	[
-//	    "u8",
-//	    "bvi_mac"
+//	    "enable"
 //	],
 //	{
-//	    "crc": "0x34ced3eb"
+//	    "crc": "0x2af7795e"
 //	}
 //
-type L2fibAddDel struct {
-	Mac       []byte `struc:"[6]byte"`
-	BdID      uint32
-	SwIfIndex uint32
-	IsAdd     uint8
-	StaticMac uint8
-	FilterMac uint8
-	BviMac    uint8
+type SwInterfaceSetL2Bridge struct {
+	RxSwIfIndex uint32
+	BdID        uint32
+	PortType    L2PortType
+	Shg         uint8
+	Enable      uint8
 }
 
-func (*L2fibAddDel) GetMessageName() string {
-	return "l2fib_add_del"
+func (*SwInterfaceSetL2Bridge) GetMessageName() string {
+	return "sw_interface_set_l2_bridge"
 }
-func (*L2fibAddDel) GetCrcString() string {
-	return "34ced3eb"
+func (*SwInterfaceSetL2Bridge) GetCrcString() string {
+	return "2af7795e"
 }
-func (*L2fibAddDel) GetMessageType() api.MessageType {
+func (*SwInterfaceSetL2Bridge) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// L2fibAddDelReply represents VPP binary API message 'l2fib_add_del_reply':
+// SwInterfaceSetL2BridgeReply represents VPP binary API message 'sw_interface_set_l2_bridge_reply':
 //
-//	"l2fib_add_del_reply",
+//	"sw_interface_set_l2_bridge_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1044,17 +2258,172 @@ func (*L2fibAddDel) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type L2fibAddDelReply struct {
+type SwInterfaceSetL2BridgeReply struct {
 	Retval int32
 }
 
-func (*L2fibAddDelReply) GetMessageName() string {
-	return "l2fib_add_del_reply"
+func (*SwInterfaceSetL2BridgeReply) GetMessageName() string {
+	return "sw_interface_set_l2_bridge_reply"
 }
-func (*L2fibAddDelReply) GetCrcString() string {
+func (*SwInterfaceSetL2BridgeReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*L2fibAddDelReply) GetMessageType() api.MessageType {
+func (*SwInterfaceSetL2BridgeReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// SwInterfaceSetL2Xconnect represents VPP binary API message 'sw_interface_set_l2_xconnect':
+//
+//	"sw_interface_set_l2_xconnect",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "rx_sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "tx_sw_if_index"
+//	],
+//	[
+//	    "u8",
+//	    "enable"
+//	],
+//	{
+//	    "crc": "0x95de3988"
+//	}
+//
+type SwInterfaceSetL2Xconnect struct {
+	RxSwIfIndex uint32
+	TxSwIfIndex uint32
+	Enable      uint8
+}
+
+func (*SwInterfaceSetL2Xconnect) GetMessageName() string {
+	return "sw_interface_set_l2_xconnect"
+}
+func (*SwInterfaceSetL2Xconnect) GetCrcString() string {
+	return "95de3988"
+}
+func (*SwInterfaceSetL2Xconnect) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// SwInterfaceSetL2XconnectReply represents VPP binary API message 'sw_interface_set_l2_xconnect_reply':
+//
+//	"sw_interface_set_l2_xconnect_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type SwInterfaceSetL2XconnectReply struct {
+	Retval int32
+}
+
+func (*SwInterfaceSetL2XconnectReply) GetMessageName() string {
+	return "sw_interface_set_l2_xconnect_reply"
+}
+func (*SwInterfaceSetL2XconnectReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*SwInterfaceSetL2XconnectReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// SwInterfaceSetVpath represents VPP binary API message 'sw_interface_set_vpath':
+//
+//	"sw_interface_set_vpath",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u8",
+//	    "enable"
+//	],
+//	{
+//	    "crc": "0xa36fadc0"
+//	}
+//
+type SwInterfaceSetVpath struct {
+	SwIfIndex uint32
+	Enable    uint8
+}
+
+func (*SwInterfaceSetVpath) GetMessageName() string {
+	return "sw_interface_set_vpath"
+}
+func (*SwInterfaceSetVpath) GetCrcString() string {
+	return "a36fadc0"
+}
+func (*SwInterfaceSetVpath) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// SwInterfaceSetVpathReply represents VPP binary API message 'sw_interface_set_vpath_reply':
+//
+//	"sw_interface_set_vpath_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type SwInterfaceSetVpathReply struct {
+	Retval int32
+}
+
+func (*SwInterfaceSetVpathReply) GetMessageName() string {
+	return "sw_interface_set_vpath_reply"
+}
+func (*SwInterfaceSetVpathReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*SwInterfaceSetVpathReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -1148,1414 +2517,52 @@ func (*WantL2MacsEventsReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// L2MacsEvent represents VPP binary API message 'l2_macs_event':
-//
-//	"l2_macs_event",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "pid"
-//	],
-//	[
-//	    "u32",
-//	    "n_macs"
-//	],
-//	[
-//	    "vl_api_mac_entry_t",
-//	    "mac",
-//	    0,
-//	    "n_macs"
-//	],
-//	{
-//	    "crc": "0x4e5ab0c8"
-//	}
-//
-type L2MacsEvent struct {
-	PID   uint32
-	NMacs uint32 `struc:"sizeof=Mac"`
-	Mac   []MacEntry
-}
-
-func (*L2MacsEvent) GetMessageName() string {
-	return "l2_macs_event"
-}
-func (*L2MacsEvent) GetCrcString() string {
-	return "4e5ab0c8"
-}
-func (*L2MacsEvent) GetMessageType() api.MessageType {
-	return api.EventMessage
-}
-
-// L2Flags represents VPP binary API message 'l2_flags':
-//
-//	"l2_flags",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "is_set"
-//	],
-//	[
-//	    "u32",
-//	    "feature_bitmap"
-//	],
-//	{
-//	    "crc": "0x0e889fb9"
-//	}
-//
-type L2Flags struct {
-	SwIfIndex     uint32
-	IsSet         uint8
-	FeatureBitmap uint32
-}
-
-func (*L2Flags) GetMessageName() string {
-	return "l2_flags"
-}
-func (*L2Flags) GetCrcString() string {
-	return "0e889fb9"
-}
-func (*L2Flags) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// L2FlagsReply represents VPP binary API message 'l2_flags_reply':
-//
-//	"l2_flags_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "resulting_feature_bitmap"
-//	],
-//	{
-//	    "crc": "0x29b2a2b3"
-//	}
-//
-type L2FlagsReply struct {
-	Retval                 int32
-	ResultingFeatureBitmap uint32
-}
-
-func (*L2FlagsReply) GetMessageName() string {
-	return "l2_flags_reply"
-}
-func (*L2FlagsReply) GetCrcString() string {
-	return "29b2a2b3"
-}
-func (*L2FlagsReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BridgeDomainSetMacAge represents VPP binary API message 'bridge_domain_set_mac_age':
-//
-//	"bridge_domain_set_mac_age",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	[
-//	    "u8",
-//	    "mac_age"
-//	],
-//	{
-//	    "crc": "0xb537ad7b"
-//	}
-//
-type BridgeDomainSetMacAge struct {
-	BdID   uint32
-	MacAge uint8
-}
-
-func (*BridgeDomainSetMacAge) GetMessageName() string {
-	return "bridge_domain_set_mac_age"
-}
-func (*BridgeDomainSetMacAge) GetCrcString() string {
-	return "b537ad7b"
-}
-func (*BridgeDomainSetMacAge) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BridgeDomainSetMacAgeReply represents VPP binary API message 'bridge_domain_set_mac_age_reply':
-//
-//	"bridge_domain_set_mac_age_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type BridgeDomainSetMacAgeReply struct {
-	Retval int32
-}
-
-func (*BridgeDomainSetMacAgeReply) GetMessageName() string {
-	return "bridge_domain_set_mac_age_reply"
-}
-func (*BridgeDomainSetMacAgeReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*BridgeDomainSetMacAgeReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BridgeDomainAddDel represents VPP binary API message 'bridge_domain_add_del':
-//
-//	"bridge_domain_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	[
-//	    "u8",
-//	    "flood"
-//	],
-//	[
-//	    "u8",
-//	    "uu_flood"
-//	],
-//	[
-//	    "u8",
-//	    "forward"
-//	],
-//	[
-//	    "u8",
-//	    "learn"
-//	],
-//	[
-//	    "u8",
-//	    "arp_term"
-//	],
-//	[
-//	    "u8",
-//	    "mac_age"
-//	],
-//	[
-//	    "u8",
-//	    "bd_tag",
-//	    64
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	{
-//	    "crc": "0x6f668fd9"
-//	}
-//
-type BridgeDomainAddDel struct {
-	BdID    uint32
-	Flood   uint8
-	UuFlood uint8
-	Forward uint8
-	Learn   uint8
-	ArpTerm uint8
-	MacAge  uint8
-	BdTag   []byte `struc:"[64]byte"`
-	IsAdd   uint8
-}
-
-func (*BridgeDomainAddDel) GetMessageName() string {
-	return "bridge_domain_add_del"
-}
-func (*BridgeDomainAddDel) GetCrcString() string {
-	return "6f668fd9"
-}
-func (*BridgeDomainAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BridgeDomainAddDelReply represents VPP binary API message 'bridge_domain_add_del_reply':
-//
-//	"bridge_domain_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type BridgeDomainAddDelReply struct {
-	Retval int32
-}
-
-func (*BridgeDomainAddDelReply) GetMessageName() string {
-	return "bridge_domain_add_del_reply"
-}
-func (*BridgeDomainAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*BridgeDomainAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BridgeDomainDump represents VPP binary API message 'bridge_domain_dump':
-//
-//	"bridge_domain_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	{
-//	    "crc": "0xc25fdce6"
-//	}
-//
-type BridgeDomainDump struct {
-	BdID uint32
-}
-
-func (*BridgeDomainDump) GetMessageName() string {
-	return "bridge_domain_dump"
-}
-func (*BridgeDomainDump) GetCrcString() string {
-	return "c25fdce6"
-}
-func (*BridgeDomainDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BridgeDomainDetails represents VPP binary API message 'bridge_domain_details':
-//
-//	"bridge_domain_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	[
-//	    "u8",
-//	    "flood"
-//	],
-//	[
-//	    "u8",
-//	    "uu_flood"
-//	],
-//	[
-//	    "u8",
-//	    "forward"
-//	],
-//	[
-//	    "u8",
-//	    "learn"
-//	],
-//	[
-//	    "u8",
-//	    "arp_term"
-//	],
-//	[
-//	    "u8",
-//	    "mac_age"
-//	],
-//	[
-//	    "u8",
-//	    "bd_tag",
-//	    64
-//	],
-//	[
-//	    "u32",
-//	    "bvi_sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "uu_fwd_sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "n_sw_ifs"
-//	],
-//	[
-//	    "vl_api_bridge_domain_sw_if_t",
-//	    "sw_if_details",
-//	    0,
-//	    "n_sw_ifs"
-//	],
-//	{
-//	    "crc": "0xb2134997"
-//	}
-//
-type BridgeDomainDetails struct {
-	BdID           uint32
-	Flood          uint8
-	UuFlood        uint8
-	Forward        uint8
-	Learn          uint8
-	ArpTerm        uint8
-	MacAge         uint8
-	BdTag          []byte `struc:"[64]byte"`
-	BviSwIfIndex   uint32
-	UuFwdSwIfIndex uint32
-	NSwIfs         uint32 `struc:"sizeof=SwIfDetails"`
-	SwIfDetails    []BridgeDomainSwIf
-}
-
-func (*BridgeDomainDetails) GetMessageName() string {
-	return "bridge_domain_details"
-}
-func (*BridgeDomainDetails) GetCrcString() string {
-	return "b2134997"
-}
-func (*BridgeDomainDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BridgeFlags represents VPP binary API message 'bridge_flags':
-//
-//	"bridge_flags",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	[
-//	    "u8",
-//	    "is_set"
-//	],
-//	[
-//	    "vl_api_bd_flags_t",
-//	    "flags"
-//	],
-//	{
-//	    "crc": "0x8563d406"
-//	}
-//
-type BridgeFlags struct {
-	BdID  uint32
-	IsSet uint8
-	Flags BdFlags
-}
-
-func (*BridgeFlags) GetMessageName() string {
-	return "bridge_flags"
-}
-func (*BridgeFlags) GetCrcString() string {
-	return "8563d406"
-}
-func (*BridgeFlags) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BridgeFlagsReply represents VPP binary API message 'bridge_flags_reply':
-//
-//	"bridge_flags_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "resulting_feature_bitmap"
-//	],
-//	{
-//	    "crc": "0x29b2a2b3"
-//	}
-//
-type BridgeFlagsReply struct {
-	Retval                 int32
-	ResultingFeatureBitmap uint32
-}
-
-func (*BridgeFlagsReply) GetMessageName() string {
-	return "bridge_flags_reply"
-}
-func (*BridgeFlagsReply) GetCrcString() string {
-	return "29b2a2b3"
-}
-func (*BridgeFlagsReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// L2InterfaceVlanTagRewrite represents VPP binary API message 'l2_interface_vlan_tag_rewrite':
-//
-//	"l2_interface_vlan_tag_rewrite",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "vtr_op"
-//	],
-//	[
-//	    "u32",
-//	    "push_dot1q"
-//	],
-//	[
-//	    "u32",
-//	    "tag1"
-//	],
-//	[
-//	    "u32",
-//	    "tag2"
-//	],
-//	{
-//	    "crc": "0xb90be6b4"
-//	}
-//
-type L2InterfaceVlanTagRewrite struct {
-	SwIfIndex uint32
-	VtrOp     uint32
-	PushDot1q uint32
-	Tag1      uint32
-	Tag2      uint32
-}
-
-func (*L2InterfaceVlanTagRewrite) GetMessageName() string {
-	return "l2_interface_vlan_tag_rewrite"
-}
-func (*L2InterfaceVlanTagRewrite) GetCrcString() string {
-	return "b90be6b4"
-}
-func (*L2InterfaceVlanTagRewrite) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// L2InterfaceVlanTagRewriteReply represents VPP binary API message 'l2_interface_vlan_tag_rewrite_reply':
-//
-//	"l2_interface_vlan_tag_rewrite_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type L2InterfaceVlanTagRewriteReply struct {
-	Retval int32
-}
-
-func (*L2InterfaceVlanTagRewriteReply) GetMessageName() string {
-	return "l2_interface_vlan_tag_rewrite_reply"
-}
-func (*L2InterfaceVlanTagRewriteReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*L2InterfaceVlanTagRewriteReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// L2InterfacePbbTagRewrite represents VPP binary API message 'l2_interface_pbb_tag_rewrite':
-//
-//	"l2_interface_pbb_tag_rewrite",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "vtr_op"
-//	],
-//	[
-//	    "u16",
-//	    "outer_tag"
-//	],
-//	[
-//	    "u8",
-//	    "b_dmac",
-//	    6
-//	],
-//	[
-//	    "u8",
-//	    "b_smac",
-//	    6
-//	],
-//	[
-//	    "u16",
-//	    "b_vlanid"
-//	],
-//	[
-//	    "u32",
-//	    "i_sid"
-//	],
-//	{
-//	    "crc": "0x6cf815f9"
-//	}
-//
-type L2InterfacePbbTagRewrite struct {
-	SwIfIndex uint32
-	VtrOp     uint32
-	OuterTag  uint16
-	BDmac     []byte `struc:"[6]byte"`
-	BSmac     []byte `struc:"[6]byte"`
-	BVlanid   uint16
-	ISid      uint32
-}
-
-func (*L2InterfacePbbTagRewrite) GetMessageName() string {
-	return "l2_interface_pbb_tag_rewrite"
-}
-func (*L2InterfacePbbTagRewrite) GetCrcString() string {
-	return "6cf815f9"
-}
-func (*L2InterfacePbbTagRewrite) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// L2InterfacePbbTagRewriteReply represents VPP binary API message 'l2_interface_pbb_tag_rewrite_reply':
-//
-//	"l2_interface_pbb_tag_rewrite_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type L2InterfacePbbTagRewriteReply struct {
-	Retval int32
-}
-
-func (*L2InterfacePbbTagRewriteReply) GetMessageName() string {
-	return "l2_interface_pbb_tag_rewrite_reply"
-}
-func (*L2InterfacePbbTagRewriteReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*L2InterfacePbbTagRewriteReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// L2PatchAddDel represents VPP binary API message 'l2_patch_add_del':
-//
-//	"l2_patch_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "rx_sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "tx_sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	{
-//	    "crc": "0x62506e63"
-//	}
-//
-type L2PatchAddDel struct {
-	RxSwIfIndex uint32
-	TxSwIfIndex uint32
-	IsAdd       uint8
-}
-
-func (*L2PatchAddDel) GetMessageName() string {
-	return "l2_patch_add_del"
-}
-func (*L2PatchAddDel) GetCrcString() string {
-	return "62506e63"
-}
-func (*L2PatchAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// L2PatchAddDelReply represents VPP binary API message 'l2_patch_add_del_reply':
-//
-//	"l2_patch_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type L2PatchAddDelReply struct {
-	Retval int32
-}
-
-func (*L2PatchAddDelReply) GetMessageName() string {
-	return "l2_patch_add_del_reply"
-}
-func (*L2PatchAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*L2PatchAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// SwInterfaceSetL2Xconnect represents VPP binary API message 'sw_interface_set_l2_xconnect':
-//
-//	"sw_interface_set_l2_xconnect",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "rx_sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "tx_sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "enable"
-//	],
-//	{
-//	    "crc": "0x95de3988"
-//	}
-//
-type SwInterfaceSetL2Xconnect struct {
-	RxSwIfIndex uint32
-	TxSwIfIndex uint32
-	Enable      uint8
-}
-
-func (*SwInterfaceSetL2Xconnect) GetMessageName() string {
-	return "sw_interface_set_l2_xconnect"
-}
-func (*SwInterfaceSetL2Xconnect) GetCrcString() string {
-	return "95de3988"
-}
-func (*SwInterfaceSetL2Xconnect) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SwInterfaceSetL2XconnectReply represents VPP binary API message 'sw_interface_set_l2_xconnect_reply':
-//
-//	"sw_interface_set_l2_xconnect_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type SwInterfaceSetL2XconnectReply struct {
-	Retval int32
-}
-
-func (*SwInterfaceSetL2XconnectReply) GetMessageName() string {
-	return "sw_interface_set_l2_xconnect_reply"
-}
-func (*SwInterfaceSetL2XconnectReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*SwInterfaceSetL2XconnectReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// SwInterfaceSetL2Bridge represents VPP binary API message 'sw_interface_set_l2_bridge':
-//
-//	"sw_interface_set_l2_bridge",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "rx_sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	[
-//	    "vl_api_l2_port_type_t",
-//	    "port_type"
-//	],
-//	[
-//	    "u8",
-//	    "shg"
-//	],
-//	[
-//	    "u8",
-//	    "enable"
-//	],
-//	{
-//	    "crc": "0x2af7795e"
-//	}
-//
-type SwInterfaceSetL2Bridge struct {
-	RxSwIfIndex uint32
-	BdID        uint32
-	PortType    L2PortType
-	Shg         uint8
-	Enable      uint8
-}
-
-func (*SwInterfaceSetL2Bridge) GetMessageName() string {
-	return "sw_interface_set_l2_bridge"
-}
-func (*SwInterfaceSetL2Bridge) GetCrcString() string {
-	return "2af7795e"
-}
-func (*SwInterfaceSetL2Bridge) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SwInterfaceSetL2BridgeReply represents VPP binary API message 'sw_interface_set_l2_bridge_reply':
-//
-//	"sw_interface_set_l2_bridge_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type SwInterfaceSetL2BridgeReply struct {
-	Retval int32
-}
-
-func (*SwInterfaceSetL2BridgeReply) GetMessageName() string {
-	return "sw_interface_set_l2_bridge_reply"
-}
-func (*SwInterfaceSetL2BridgeReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*SwInterfaceSetL2BridgeReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BdIPMacAddDel represents VPP binary API message 'bd_ip_mac_add_del':
-//
-//	"bd_ip_mac_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "vl_api_address_t",
-//	    "ip"
-//	],
-//	[
-//	    "vl_api_mac_address_t",
-//	    "mac"
-//	],
-//	{
-//	    "crc": "0xfb873902"
-//	}
-//
-type BdIPMacAddDel struct {
-	BdID  uint32
-	IsAdd uint8
-	IP    Address
-	Mac   MacAddress
-}
-
-func (*BdIPMacAddDel) GetMessageName() string {
-	return "bd_ip_mac_add_del"
-}
-func (*BdIPMacAddDel) GetCrcString() string {
-	return "fb873902"
-}
-func (*BdIPMacAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BdIPMacAddDelReply represents VPP binary API message 'bd_ip_mac_add_del_reply':
-//
-//	"bd_ip_mac_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type BdIPMacAddDelReply struct {
-	Retval int32
-}
-
-func (*BdIPMacAddDelReply) GetMessageName() string {
-	return "bd_ip_mac_add_del_reply"
-}
-func (*BdIPMacAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*BdIPMacAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BdIPMacFlush represents VPP binary API message 'bd_ip_mac_flush':
-//
-//	"bd_ip_mac_flush",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	{
-//	    "crc": "0xc25fdce6"
-//	}
-//
-type BdIPMacFlush struct {
-	BdID uint32
-}
-
-func (*BdIPMacFlush) GetMessageName() string {
-	return "bd_ip_mac_flush"
-}
-func (*BdIPMacFlush) GetCrcString() string {
-	return "c25fdce6"
-}
-func (*BdIPMacFlush) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BdIPMacFlushReply represents VPP binary API message 'bd_ip_mac_flush_reply':
-//
-//	"bd_ip_mac_flush_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type BdIPMacFlushReply struct {
-	Retval int32
-}
-
-func (*BdIPMacFlushReply) GetMessageName() string {
-	return "bd_ip_mac_flush_reply"
-}
-func (*BdIPMacFlushReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*BdIPMacFlushReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BdIPMacDetails represents VPP binary API message 'bd_ip_mac_details':
-//
-//	"bd_ip_mac_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "ip_address",
-//	    16
-//	],
-//	[
-//	    "vl_api_mac_address_t",
-//	    "mac_address"
-//	],
-//	{
-//	    "crc": "0xc05c27de"
-//	}
-//
-type BdIPMacDetails struct {
-	BdID       uint32
-	IsIPv6     uint8
-	IPAddress  []byte `struc:"[16]byte"`
-	MacAddress MacAddress
-}
-
-func (*BdIPMacDetails) GetMessageName() string {
-	return "bd_ip_mac_details"
-}
-func (*BdIPMacDetails) GetCrcString() string {
-	return "c05c27de"
-}
-func (*BdIPMacDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BdIPMacDump represents VPP binary API message 'bd_ip_mac_dump':
-//
-//	"bd_ip_mac_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "bd_id"
-//	],
-//	{
-//	    "crc": "0xc25fdce6"
-//	}
-//
-type BdIPMacDump struct {
-	BdID uint32
-}
-
-func (*BdIPMacDump) GetMessageName() string {
-	return "bd_ip_mac_dump"
-}
-func (*BdIPMacDump) GetCrcString() string {
-	return "c25fdce6"
-}
-func (*BdIPMacDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// L2InterfaceEfpFilter represents VPP binary API message 'l2_interface_efp_filter':
-//
-//	"l2_interface_efp_filter",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "enable_disable"
-//	],
-//	{
-//	    "crc": "0x69d24598"
-//	}
-//
-type L2InterfaceEfpFilter struct {
-	SwIfIndex     uint32
-	EnableDisable uint8
-}
-
-func (*L2InterfaceEfpFilter) GetMessageName() string {
-	return "l2_interface_efp_filter"
-}
-func (*L2InterfaceEfpFilter) GetCrcString() string {
-	return "69d24598"
-}
-func (*L2InterfaceEfpFilter) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// L2InterfaceEfpFilterReply represents VPP binary API message 'l2_interface_efp_filter_reply':
-//
-//	"l2_interface_efp_filter_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type L2InterfaceEfpFilterReply struct {
-	Retval int32
-}
-
-func (*L2InterfaceEfpFilterReply) GetMessageName() string {
-	return "l2_interface_efp_filter_reply"
-}
-func (*L2InterfaceEfpFilterReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*L2InterfaceEfpFilterReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// SwInterfaceSetVpath represents VPP binary API message 'sw_interface_set_vpath':
-//
-//	"sw_interface_set_vpath",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "enable"
-//	],
-//	{
-//	    "crc": "0xa36fadc0"
-//	}
-//
-type SwInterfaceSetVpath struct {
-	SwIfIndex uint32
-	Enable    uint8
-}
-
-func (*SwInterfaceSetVpath) GetMessageName() string {
-	return "sw_interface_set_vpath"
-}
-func (*SwInterfaceSetVpath) GetCrcString() string {
-	return "a36fadc0"
-}
-func (*SwInterfaceSetVpath) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SwInterfaceSetVpathReply represents VPP binary API message 'sw_interface_set_vpath_reply':
-//
-//	"sw_interface_set_vpath_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type SwInterfaceSetVpathReply struct {
-	Retval int32
-}
-
-func (*SwInterfaceSetVpathReply) GetMessageName() string {
-	return "sw_interface_set_vpath_reply"
-}
-func (*SwInterfaceSetVpathReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*SwInterfaceSetVpathReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 func init() {
-	api.RegisterMessage((*L2XconnectDetails)(nil), "l2.L2XconnectDetails")
-	api.RegisterMessage((*L2XconnectDump)(nil), "l2.L2XconnectDump")
-	api.RegisterMessage((*L2FibTableDetails)(nil), "l2.L2FibTableDetails")
-	api.RegisterMessage((*L2FibTableDump)(nil), "l2.L2FibTableDump")
+	api.RegisterMessage((*BdIPMacAddDel)(nil), "l2.BdIPMacAddDel")
+	api.RegisterMessage((*BdIPMacAddDelReply)(nil), "l2.BdIPMacAddDelReply")
+	api.RegisterMessage((*BdIPMacDetails)(nil), "l2.BdIPMacDetails")
+	api.RegisterMessage((*BdIPMacDump)(nil), "l2.BdIPMacDump")
+	api.RegisterMessage((*BdIPMacFlush)(nil), "l2.BdIPMacFlush")
+	api.RegisterMessage((*BdIPMacFlushReply)(nil), "l2.BdIPMacFlushReply")
+	api.RegisterMessage((*BridgeDomainAddDel)(nil), "l2.BridgeDomainAddDel")
+	api.RegisterMessage((*BridgeDomainAddDelReply)(nil), "l2.BridgeDomainAddDelReply")
+	api.RegisterMessage((*BridgeDomainDetails)(nil), "l2.BridgeDomainDetails")
+	api.RegisterMessage((*BridgeDomainDump)(nil), "l2.BridgeDomainDump")
+	api.RegisterMessage((*BridgeDomainSetMacAge)(nil), "l2.BridgeDomainSetMacAge")
+	api.RegisterMessage((*BridgeDomainSetMacAgeReply)(nil), "l2.BridgeDomainSetMacAgeReply")
+	api.RegisterMessage((*BridgeFlags)(nil), "l2.BridgeFlags")
+	api.RegisterMessage((*BridgeFlagsReply)(nil), "l2.BridgeFlagsReply")
 	api.RegisterMessage((*L2FibClearTable)(nil), "l2.L2FibClearTable")
 	api.RegisterMessage((*L2FibClearTableReply)(nil), "l2.L2FibClearTableReply")
+	api.RegisterMessage((*L2FibTableDetails)(nil), "l2.L2FibTableDetails")
+	api.RegisterMessage((*L2FibTableDump)(nil), "l2.L2FibTableDump")
+	api.RegisterMessage((*L2Flags)(nil), "l2.L2Flags")
+	api.RegisterMessage((*L2FlagsReply)(nil), "l2.L2FlagsReply")
+	api.RegisterMessage((*L2InterfaceEfpFilter)(nil), "l2.L2InterfaceEfpFilter")
+	api.RegisterMessage((*L2InterfaceEfpFilterReply)(nil), "l2.L2InterfaceEfpFilterReply")
+	api.RegisterMessage((*L2InterfacePbbTagRewrite)(nil), "l2.L2InterfacePbbTagRewrite")
+	api.RegisterMessage((*L2InterfacePbbTagRewriteReply)(nil), "l2.L2InterfacePbbTagRewriteReply")
+	api.RegisterMessage((*L2InterfaceVlanTagRewrite)(nil), "l2.L2InterfaceVlanTagRewrite")
+	api.RegisterMessage((*L2InterfaceVlanTagRewriteReply)(nil), "l2.L2InterfaceVlanTagRewriteReply")
+	api.RegisterMessage((*L2MacsEvent)(nil), "l2.L2MacsEvent")
+	api.RegisterMessage((*L2PatchAddDel)(nil), "l2.L2PatchAddDel")
+	api.RegisterMessage((*L2PatchAddDelReply)(nil), "l2.L2PatchAddDelReply")
+	api.RegisterMessage((*L2XconnectDetails)(nil), "l2.L2XconnectDetails")
+	api.RegisterMessage((*L2XconnectDump)(nil), "l2.L2XconnectDump")
+	api.RegisterMessage((*L2fibAddDel)(nil), "l2.L2fibAddDel")
+	api.RegisterMessage((*L2fibAddDelReply)(nil), "l2.L2fibAddDelReply")
 	api.RegisterMessage((*L2fibFlushAll)(nil), "l2.L2fibFlushAll")
 	api.RegisterMessage((*L2fibFlushAllReply)(nil), "l2.L2fibFlushAllReply")
 	api.RegisterMessage((*L2fibFlushBd)(nil), "l2.L2fibFlushBd")
 	api.RegisterMessage((*L2fibFlushBdReply)(nil), "l2.L2fibFlushBdReply")
 	api.RegisterMessage((*L2fibFlushInt)(nil), "l2.L2fibFlushInt")
 	api.RegisterMessage((*L2fibFlushIntReply)(nil), "l2.L2fibFlushIntReply")
-	api.RegisterMessage((*L2fibAddDel)(nil), "l2.L2fibAddDel")
-	api.RegisterMessage((*L2fibAddDelReply)(nil), "l2.L2fibAddDelReply")
-	api.RegisterMessage((*WantL2MacsEvents)(nil), "l2.WantL2MacsEvents")
-	api.RegisterMessage((*WantL2MacsEventsReply)(nil), "l2.WantL2MacsEventsReply")
-	api.RegisterMessage((*L2MacsEvent)(nil), "l2.L2MacsEvent")
-	api.RegisterMessage((*L2Flags)(nil), "l2.L2Flags")
-	api.RegisterMessage((*L2FlagsReply)(nil), "l2.L2FlagsReply")
-	api.RegisterMessage((*BridgeDomainSetMacAge)(nil), "l2.BridgeDomainSetMacAge")
-	api.RegisterMessage((*BridgeDomainSetMacAgeReply)(nil), "l2.BridgeDomainSetMacAgeReply")
-	api.RegisterMessage((*BridgeDomainAddDel)(nil), "l2.BridgeDomainAddDel")
-	api.RegisterMessage((*BridgeDomainAddDelReply)(nil), "l2.BridgeDomainAddDelReply")
-	api.RegisterMessage((*BridgeDomainDump)(nil), "l2.BridgeDomainDump")
-	api.RegisterMessage((*BridgeDomainDetails)(nil), "l2.BridgeDomainDetails")
-	api.RegisterMessage((*BridgeFlags)(nil), "l2.BridgeFlags")
-	api.RegisterMessage((*BridgeFlagsReply)(nil), "l2.BridgeFlagsReply")
-	api.RegisterMessage((*L2InterfaceVlanTagRewrite)(nil), "l2.L2InterfaceVlanTagRewrite")
-	api.RegisterMessage((*L2InterfaceVlanTagRewriteReply)(nil), "l2.L2InterfaceVlanTagRewriteReply")
-	api.RegisterMessage((*L2InterfacePbbTagRewrite)(nil), "l2.L2InterfacePbbTagRewrite")
-	api.RegisterMessage((*L2InterfacePbbTagRewriteReply)(nil), "l2.L2InterfacePbbTagRewriteReply")
-	api.RegisterMessage((*L2PatchAddDel)(nil), "l2.L2PatchAddDel")
-	api.RegisterMessage((*L2PatchAddDelReply)(nil), "l2.L2PatchAddDelReply")
-	api.RegisterMessage((*SwInterfaceSetL2Xconnect)(nil), "l2.SwInterfaceSetL2Xconnect")
-	api.RegisterMessage((*SwInterfaceSetL2XconnectReply)(nil), "l2.SwInterfaceSetL2XconnectReply")
 	api.RegisterMessage((*SwInterfaceSetL2Bridge)(nil), "l2.SwInterfaceSetL2Bridge")
 	api.RegisterMessage((*SwInterfaceSetL2BridgeReply)(nil), "l2.SwInterfaceSetL2BridgeReply")
-	api.RegisterMessage((*BdIPMacAddDel)(nil), "l2.BdIPMacAddDel")
-	api.RegisterMessage((*BdIPMacAddDelReply)(nil), "l2.BdIPMacAddDelReply")
-	api.RegisterMessage((*BdIPMacFlush)(nil), "l2.BdIPMacFlush")
-	api.RegisterMessage((*BdIPMacFlushReply)(nil), "l2.BdIPMacFlushReply")
-	api.RegisterMessage((*BdIPMacDetails)(nil), "l2.BdIPMacDetails")
-	api.RegisterMessage((*BdIPMacDump)(nil), "l2.BdIPMacDump")
-	api.RegisterMessage((*L2InterfaceEfpFilter)(nil), "l2.L2InterfaceEfpFilter")
-	api.RegisterMessage((*L2InterfaceEfpFilterReply)(nil), "l2.L2InterfaceEfpFilterReply")
+	api.RegisterMessage((*SwInterfaceSetL2Xconnect)(nil), "l2.SwInterfaceSetL2Xconnect")
+	api.RegisterMessage((*SwInterfaceSetL2XconnectReply)(nil), "l2.SwInterfaceSetL2XconnectReply")
 	api.RegisterMessage((*SwInterfaceSetVpath)(nil), "l2.SwInterfaceSetVpath")
 	api.RegisterMessage((*SwInterfaceSetVpathReply)(nil), "l2.SwInterfaceSetVpathReply")
+	api.RegisterMessage((*WantL2MacsEvents)(nil), "l2.WantL2MacsEvents")
+	api.RegisterMessage((*WantL2MacsEventsReply)(nil), "l2.WantL2MacsEventsReply")
 }

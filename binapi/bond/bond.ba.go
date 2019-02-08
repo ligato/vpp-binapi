@@ -5,9 +5,8 @@
  Package bond is a generated from VPP binary API module 'bond'.
 
  It contains following objects:
-	 12 messages
 	  6 services
-
+	 12 messages
 */
 package bond
 
@@ -225,6 +224,76 @@ func (*BondDeleteReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// BondDetachSlave represents VPP binary API message 'bond_detach_slave':
+//
+//	"bond_detach_slave",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type BondDetachSlave struct {
+	SwIfIndex uint32
+}
+
+func (*BondDetachSlave) GetMessageName() string {
+	return "bond_detach_slave"
+}
+func (*BondDetachSlave) GetCrcString() string {
+	return "529cb13f"
+}
+func (*BondDetachSlave) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// BondDetachSlaveReply represents VPP binary API message 'bond_detach_slave_reply':
+//
+//	"bond_detach_slave_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type BondDetachSlaveReply struct {
+	Retval int32
+}
+
+func (*BondDetachSlaveReply) GetMessageName() string {
+	return "bond_detach_slave_reply"
+}
+func (*BondDetachSlaveReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*BondDetachSlaveReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // BondEnslave represents VPP binary API message 'bond_enslave':
 //
 //	"bond_enslave",
@@ -310,107 +379,6 @@ func (*BondEnslaveReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// BondDetachSlave represents VPP binary API message 'bond_detach_slave':
-//
-//	"bond_detach_slave",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type BondDetachSlave struct {
-	SwIfIndex uint32
-}
-
-func (*BondDetachSlave) GetMessageName() string {
-	return "bond_detach_slave"
-}
-func (*BondDetachSlave) GetCrcString() string {
-	return "529cb13f"
-}
-func (*BondDetachSlave) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// BondDetachSlaveReply represents VPP binary API message 'bond_detach_slave_reply':
-//
-//	"bond_detach_slave_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type BondDetachSlaveReply struct {
-	Retval int32
-}
-
-func (*BondDetachSlaveReply) GetMessageName() string {
-	return "bond_detach_slave_reply"
-}
-func (*BondDetachSlaveReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*BondDetachSlaveReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// SwInterfaceBondDump represents VPP binary API message 'sw_interface_bond_dump':
-//
-//	"sw_interface_bond_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type SwInterfaceBondDump struct{}
-
-func (*SwInterfaceBondDump) GetMessageName() string {
-	return "sw_interface_bond_dump"
-}
-func (*SwInterfaceBondDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*SwInterfaceBondDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // SwInterfaceBondDetails represents VPP binary API message 'sw_interface_bond_details':
 //
 //	"sw_interface_bond_details",
@@ -475,9 +443,9 @@ func (*SwInterfaceBondDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// SwInterfaceSlaveDump represents VPP binary API message 'sw_interface_slave_dump':
+// SwInterfaceBondDump represents VPP binary API message 'sw_interface_bond_dump':
 //
-//	"sw_interface_slave_dump",
+//	"sw_interface_bond_dump",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -490,25 +458,19 @@ func (*SwInterfaceBondDetails) GetMessageType() api.MessageType {
 //	    "u32",
 //	    "context"
 //	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
 //	{
-//	    "crc": "0x529cb13f"
+//	    "crc": "0x51077d14"
 //	}
 //
-type SwInterfaceSlaveDump struct {
-	SwIfIndex uint32
-}
+type SwInterfaceBondDump struct{}
 
-func (*SwInterfaceSlaveDump) GetMessageName() string {
-	return "sw_interface_slave_dump"
+func (*SwInterfaceBondDump) GetMessageName() string {
+	return "sw_interface_bond_dump"
 }
-func (*SwInterfaceSlaveDump) GetCrcString() string {
-	return "529cb13f"
+func (*SwInterfaceBondDump) GetCrcString() string {
+	return "51077d14"
 }
-func (*SwInterfaceSlaveDump) GetMessageType() api.MessageType {
+func (*SwInterfaceBondDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
@@ -561,17 +523,54 @@ func (*SwInterfaceSlaveDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// SwInterfaceSlaveDump represents VPP binary API message 'sw_interface_slave_dump':
+//
+//	"sw_interface_slave_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type SwInterfaceSlaveDump struct {
+	SwIfIndex uint32
+}
+
+func (*SwInterfaceSlaveDump) GetMessageName() string {
+	return "sw_interface_slave_dump"
+}
+func (*SwInterfaceSlaveDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*SwInterfaceSlaveDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
 	api.RegisterMessage((*BondCreate)(nil), "bond.BondCreate")
 	api.RegisterMessage((*BondCreateReply)(nil), "bond.BondCreateReply")
 	api.RegisterMessage((*BondDelete)(nil), "bond.BondDelete")
 	api.RegisterMessage((*BondDeleteReply)(nil), "bond.BondDeleteReply")
-	api.RegisterMessage((*BondEnslave)(nil), "bond.BondEnslave")
-	api.RegisterMessage((*BondEnslaveReply)(nil), "bond.BondEnslaveReply")
 	api.RegisterMessage((*BondDetachSlave)(nil), "bond.BondDetachSlave")
 	api.RegisterMessage((*BondDetachSlaveReply)(nil), "bond.BondDetachSlaveReply")
-	api.RegisterMessage((*SwInterfaceBondDump)(nil), "bond.SwInterfaceBondDump")
+	api.RegisterMessage((*BondEnslave)(nil), "bond.BondEnslave")
+	api.RegisterMessage((*BondEnslaveReply)(nil), "bond.BondEnslaveReply")
 	api.RegisterMessage((*SwInterfaceBondDetails)(nil), "bond.SwInterfaceBondDetails")
-	api.RegisterMessage((*SwInterfaceSlaveDump)(nil), "bond.SwInterfaceSlaveDump")
+	api.RegisterMessage((*SwInterfaceBondDump)(nil), "bond.SwInterfaceBondDump")
 	api.RegisterMessage((*SwInterfaceSlaveDetails)(nil), "bond.SwInterfaceSlaveDetails")
+	api.RegisterMessage((*SwInterfaceSlaveDump)(nil), "bond.SwInterfaceSlaveDump")
 }

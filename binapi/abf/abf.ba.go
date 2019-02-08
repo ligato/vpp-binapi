@@ -5,10 +5,9 @@
  Package abf is a generated from VPP binary API module 'abf'.
 
  It contains following objects:
-	 10 messages
-	  4 types
 	  5 services
-
+	  4 types
+	 10 messages
 */
 package abf
 
@@ -55,6 +54,82 @@ type Services interface {
 }
 
 /* Types */
+
+// AbfItfAttach represents VPP binary API type 'abf_itf_attach':
+//
+//	"abf_itf_attach",
+//	[
+//	    "u32",
+//	    "policy_id"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "priority"
+//	],
+//	[
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	{
+//	    "crc": "0xaa3ea7fe"
+//	}
+//
+type AbfItfAttach struct {
+	PolicyID  uint32
+	SwIfIndex uint32
+	Priority  uint32
+	IsIPv6    uint8
+}
+
+func (*AbfItfAttach) GetTypeName() string {
+	return "abf_itf_attach"
+}
+func (*AbfItfAttach) GetCrcString() string {
+	return "aa3ea7fe"
+}
+
+// AbfPolicy represents VPP binary API type 'abf_policy':
+//
+//	"abf_policy",
+//	[
+//	    "u32",
+//	    "policy_id"
+//	],
+//	[
+//	    "u32",
+//	    "acl_index"
+//	],
+//	[
+//	    "u8",
+//	    "n_paths"
+//	],
+//	[
+//	    "vl_api_fib_path_t",
+//	    "paths",
+//	    0,
+//	    "n_paths"
+//	],
+//	{
+//	    "crc": "0x252c563e"
+//	}
+//
+type AbfPolicy struct {
+	PolicyID uint32
+	ACLIndex uint32
+	NPaths   uint8 `struc:"sizeof=Paths"`
+	Paths    []FibPath
+}
+
+func (*AbfPolicy) GetTypeName() string {
+	return "abf_policy"
+}
+func (*AbfPolicy) GetCrcString() string {
+	return "252c563e"
+}
 
 // FibMplsLabel represents VPP binary API type 'fib_mpls_label':
 //
@@ -217,83 +292,146 @@ func (*FibPath) GetCrcString() string {
 	return "ba7a81f0"
 }
 
-// AbfPolicy represents VPP binary API type 'abf_policy':
-//
-//	"abf_policy",
-//	[
-//	    "u32",
-//	    "policy_id"
-//	],
-//	[
-//	    "u32",
-//	    "acl_index"
-//	],
-//	[
-//	    "u8",
-//	    "n_paths"
-//	],
-//	[
-//	    "vl_api_fib_path_t",
-//	    "paths",
-//	    0,
-//	    "n_paths"
-//	],
-//	{
-//	    "crc": "0x252c563e"
-//	}
-//
-type AbfPolicy struct {
-	PolicyID uint32
-	ACLIndex uint32
-	NPaths   uint8 `struc:"sizeof=Paths"`
-	Paths    []FibPath
-}
-
-func (*AbfPolicy) GetTypeName() string {
-	return "abf_policy"
-}
-func (*AbfPolicy) GetCrcString() string {
-	return "252c563e"
-}
-
-// AbfItfAttach represents VPP binary API type 'abf_itf_attach':
-//
-//	"abf_itf_attach",
-//	[
-//	    "u32",
-//	    "policy_id"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "priority"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	{
-//	    "crc": "0xaa3ea7fe"
-//	}
-//
-type AbfItfAttach struct {
-	PolicyID  uint32
-	SwIfIndex uint32
-	Priority  uint32
-	IsIPv6    uint8
-}
-
-func (*AbfItfAttach) GetTypeName() string {
-	return "abf_itf_attach"
-}
-func (*AbfItfAttach) GetCrcString() string {
-	return "aa3ea7fe"
-}
-
 /* Messages */
+
+// AbfItfAttachAddDel represents VPP binary API message 'abf_itf_attach_add_del':
+//
+//	"abf_itf_attach_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	[
+//	    "vl_api_abf_itf_attach_t",
+//	    "attach"
+//	],
+//	{
+//	    "crc": "0xb0b50ab1"
+//	}
+//
+type AbfItfAttachAddDel struct {
+	IsAdd  uint8
+	Attach AbfItfAttach
+}
+
+func (*AbfItfAttachAddDel) GetMessageName() string {
+	return "abf_itf_attach_add_del"
+}
+func (*AbfItfAttachAddDel) GetCrcString() string {
+	return "b0b50ab1"
+}
+func (*AbfItfAttachAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// AbfItfAttachAddDelReply represents VPP binary API message 'abf_itf_attach_add_del_reply':
+//
+//	"abf_itf_attach_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type AbfItfAttachAddDelReply struct {
+	Retval int32
+}
+
+func (*AbfItfAttachAddDelReply) GetMessageName() string {
+	return "abf_itf_attach_add_del_reply"
+}
+func (*AbfItfAttachAddDelReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*AbfItfAttachAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// AbfItfAttachDetails represents VPP binary API message 'abf_itf_attach_details':
+//
+//	"abf_itf_attach_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "vl_api_abf_itf_attach_t",
+//	    "attach"
+//	],
+//	{
+//	    "crc": "0x999006a7"
+//	}
+//
+type AbfItfAttachDetails struct {
+	Attach AbfItfAttach
+}
+
+func (*AbfItfAttachDetails) GetMessageName() string {
+	return "abf_itf_attach_details"
+}
+func (*AbfItfAttachDetails) GetCrcString() string {
+	return "999006a7"
+}
+func (*AbfItfAttachDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// AbfItfAttachDump represents VPP binary API message 'abf_itf_attach_dump':
+//
+//	"abf_itf_attach_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type AbfItfAttachDump struct{}
+
+func (*AbfItfAttachDump) GetMessageName() string {
+	return "abf_itf_attach_dump"
+}
+func (*AbfItfAttachDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*AbfItfAttachDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
 
 // AbfPluginGetVersion represents VPP binary API message 'abf_plugin_get_version':
 //
@@ -503,154 +641,15 @@ func (*AbfPolicyDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// AbfItfAttachAddDel represents VPP binary API message 'abf_itf_attach_add_del':
-//
-//	"abf_itf_attach_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
-//	[
-//	    "vl_api_abf_itf_attach_t",
-//	    "attach"
-//	],
-//	{
-//	    "crc": "0xb0b50ab1"
-//	}
-//
-type AbfItfAttachAddDel struct {
-	IsAdd  uint8
-	Attach AbfItfAttach
-}
-
-func (*AbfItfAttachAddDel) GetMessageName() string {
-	return "abf_itf_attach_add_del"
-}
-func (*AbfItfAttachAddDel) GetCrcString() string {
-	return "b0b50ab1"
-}
-func (*AbfItfAttachAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// AbfItfAttachAddDelReply represents VPP binary API message 'abf_itf_attach_add_del_reply':
-//
-//	"abf_itf_attach_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type AbfItfAttachAddDelReply struct {
-	Retval int32
-}
-
-func (*AbfItfAttachAddDelReply) GetMessageName() string {
-	return "abf_itf_attach_add_del_reply"
-}
-func (*AbfItfAttachAddDelReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*AbfItfAttachAddDelReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// AbfItfAttachDetails represents VPP binary API message 'abf_itf_attach_details':
-//
-//	"abf_itf_attach_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "vl_api_abf_itf_attach_t",
-//	    "attach"
-//	],
-//	{
-//	    "crc": "0x999006a7"
-//	}
-//
-type AbfItfAttachDetails struct {
-	Attach AbfItfAttach
-}
-
-func (*AbfItfAttachDetails) GetMessageName() string {
-	return "abf_itf_attach_details"
-}
-func (*AbfItfAttachDetails) GetCrcString() string {
-	return "999006a7"
-}
-func (*AbfItfAttachDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// AbfItfAttachDump represents VPP binary API message 'abf_itf_attach_dump':
-//
-//	"abf_itf_attach_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type AbfItfAttachDump struct{}
-
-func (*AbfItfAttachDump) GetMessageName() string {
-	return "abf_itf_attach_dump"
-}
-func (*AbfItfAttachDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*AbfItfAttachDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 func init() {
+	api.RegisterMessage((*AbfItfAttachAddDel)(nil), "abf.AbfItfAttachAddDel")
+	api.RegisterMessage((*AbfItfAttachAddDelReply)(nil), "abf.AbfItfAttachAddDelReply")
+	api.RegisterMessage((*AbfItfAttachDetails)(nil), "abf.AbfItfAttachDetails")
+	api.RegisterMessage((*AbfItfAttachDump)(nil), "abf.AbfItfAttachDump")
 	api.RegisterMessage((*AbfPluginGetVersion)(nil), "abf.AbfPluginGetVersion")
 	api.RegisterMessage((*AbfPluginGetVersionReply)(nil), "abf.AbfPluginGetVersionReply")
 	api.RegisterMessage((*AbfPolicyAddDel)(nil), "abf.AbfPolicyAddDel")
 	api.RegisterMessage((*AbfPolicyAddDelReply)(nil), "abf.AbfPolicyAddDelReply")
 	api.RegisterMessage((*AbfPolicyDetails)(nil), "abf.AbfPolicyDetails")
 	api.RegisterMessage((*AbfPolicyDump)(nil), "abf.AbfPolicyDump")
-	api.RegisterMessage((*AbfItfAttachAddDel)(nil), "abf.AbfItfAttachAddDel")
-	api.RegisterMessage((*AbfItfAttachAddDelReply)(nil), "abf.AbfItfAttachAddDelReply")
-	api.RegisterMessage((*AbfItfAttachDetails)(nil), "abf.AbfItfAttachDetails")
-	api.RegisterMessage((*AbfItfAttachDump)(nil), "abf.AbfItfAttachDump")
 }

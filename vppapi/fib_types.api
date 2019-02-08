@@ -1,0 +1,70 @@
+/*
+ * Copyright (c) 2016 Cisco and/or its affiliates.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at:
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ 
+/** \brief MPLS label
+*/
+typeonly define fib_mpls_label
+{
+  u8 is_uniform;
+  u32 label;
+  u8 ttl;
+  u8 exp;
+};
+
+/** \brief FIB path
+    @param sw_if_index - index of the interface
+    @param weight - The weight, for UCMP
+    @param preference - The preference of the path. lowest preference
+    is prefered
+    @param is_local - local if non-zero, else remote
+    @param is_drop - Drop the packet
+    @param is_unreach - Drop the packet and rate limit send ICMP unreachable
+    @param is_prohibit - Drop the packet and rate limit send ICMP prohibited
+    @param is_udp_encap - The path describes a UDP-o-IP encapsulation.
+    @param is_dvr - Does the route resolve via a DVR interface.
+    @param is_source_lookup - The the path is a deaggregate path (i.e. a lookup
+    	   		      in another table) is the lookup on the packet's
+			      source address or destination.
+    @param afi - dpo_proto_t protocol that describes the next-hop address
+    @param via_label - The next-hop is a resolved via a local label
+    @param next_hop[16] - the next hop address
+    @param next_hop_id - Used when the path resolves via an object
+                         that has a unique identifier. e.g. the UDP
+                         encap object
+*/
+typeonly define fib_path
+{
+  u32 sw_if_index;
+  u32 table_id;
+  u8 weight;
+  u8 preference;
+  u8 is_local;
+  u8 is_drop;
+  u8 is_udp_encap;
+  u8 is_unreach;
+  u8 is_prohibit;
+  u8 is_resolve_host;
+  u8 is_resolve_attached;
+  u8 is_dvr;
+  u8 is_source_lookup;
+  u8 is_interface_rx;
+  u8 afi;
+  u8 next_hop[16];
+  u32 next_hop_id;
+  u32 rpf_id;
+  u32 via_label;
+  u8 n_labels;
+  vl_api_fib_mpls_label_t label_stack[16];
+};

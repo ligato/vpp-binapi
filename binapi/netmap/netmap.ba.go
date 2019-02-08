@@ -5,9 +5,8 @@
  Package netmap is a generated from VPP binary API module 'netmap'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package netmap
 

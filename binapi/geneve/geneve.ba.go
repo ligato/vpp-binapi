@@ -5,9 +5,8 @@
  Package geneve is a generated from VPP binary API module 'geneve'.
 
  It contains following objects:
-	  6 messages
 	  3 services
-
+	  6 messages
 */
 package geneve
 
@@ -158,43 +157,6 @@ func (*GeneveAddDelTunnelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// GeneveTunnelDump represents VPP binary API message 'geneve_tunnel_dump':
-//
-//	"geneve_tunnel_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type GeneveTunnelDump struct {
-	SwIfIndex uint32
-}
-
-func (*GeneveTunnelDump) GetMessageName() string {
-	return "geneve_tunnel_dump"
-}
-func (*GeneveTunnelDump) GetCrcString() string {
-	return "529cb13f"
-}
-func (*GeneveTunnelDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // GeneveTunnelDetails represents VPP binary API message 'geneve_tunnel_details':
 //
 //	"geneve_tunnel_details",
@@ -263,6 +225,43 @@ func (*GeneveTunnelDetails) GetCrcString() string {
 }
 func (*GeneveTunnelDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
+}
+
+// GeneveTunnelDump represents VPP binary API message 'geneve_tunnel_dump':
+//
+//	"geneve_tunnel_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type GeneveTunnelDump struct {
+	SwIfIndex uint32
+}
+
+func (*GeneveTunnelDump) GetMessageName() string {
+	return "geneve_tunnel_dump"
+}
+func (*GeneveTunnelDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*GeneveTunnelDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
 }
 
 // SwInterfaceSetGeneveBypass represents VPP binary API message 'sw_interface_set_geneve_bypass':
@@ -348,8 +347,8 @@ func (*SwInterfaceSetGeneveBypassReply) GetMessageType() api.MessageType {
 func init() {
 	api.RegisterMessage((*GeneveAddDelTunnel)(nil), "geneve.GeneveAddDelTunnel")
 	api.RegisterMessage((*GeneveAddDelTunnelReply)(nil), "geneve.GeneveAddDelTunnelReply")
-	api.RegisterMessage((*GeneveTunnelDump)(nil), "geneve.GeneveTunnelDump")
 	api.RegisterMessage((*GeneveTunnelDetails)(nil), "geneve.GeneveTunnelDetails")
+	api.RegisterMessage((*GeneveTunnelDump)(nil), "geneve.GeneveTunnelDump")
 	api.RegisterMessage((*SwInterfaceSetGeneveBypass)(nil), "geneve.SwInterfaceSetGeneveBypass")
 	api.RegisterMessage((*SwInterfaceSetGeneveBypassReply)(nil), "geneve.SwInterfaceSetGeneveBypassReply")
 }

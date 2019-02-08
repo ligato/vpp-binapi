@@ -5,11 +5,10 @@
  Package qos is a generated from VPP binary API module 'qos'.
 
  It contains following objects:
-	  8 messages
-	  1 type
-	  1 enum
 	  4 services
-
+	  1 enum
+	  1 type
+	  8 messages
 */
 package qos
 
@@ -110,9 +109,9 @@ func (*QosEgressMapRow) GetCrcString() string {
 
 /* Messages */
 
-// QosRecordEnableDisable represents VPP binary API message 'qos_record_enable_disable':
+// QosEgressMapDelete represents VPP binary API message 'qos_egress_map_delete':
 //
-//	"qos_record_enable_disable",
+//	"qos_egress_map_delete",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -127,39 +126,29 @@ func (*QosEgressMapRow) GetCrcString() string {
 //	],
 //	[
 //	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "vl_api_qos_source_t",
-//	    "input_source"
-//	],
-//	[
-//	    "u8",
-//	    "enable"
+//	    "map_id"
 //	],
 //	{
-//	    "crc": "0xf768050f"
+//	    "crc": "0xdaab68c1"
 //	}
 //
-type QosRecordEnableDisable struct {
-	SwIfIndex   uint32
-	InputSource QosSource
-	Enable      uint8
+type QosEgressMapDelete struct {
+	MapID uint32
 }
 
-func (*QosRecordEnableDisable) GetMessageName() string {
-	return "qos_record_enable_disable"
+func (*QosEgressMapDelete) GetMessageName() string {
+	return "qos_egress_map_delete"
 }
-func (*QosRecordEnableDisable) GetCrcString() string {
-	return "f768050f"
+func (*QosEgressMapDelete) GetCrcString() string {
+	return "daab68c1"
 }
-func (*QosRecordEnableDisable) GetMessageType() api.MessageType {
+func (*QosEgressMapDelete) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// QosRecordEnableDisableReply represents VPP binary API message 'qos_record_enable_disable_reply':
+// QosEgressMapDeleteReply represents VPP binary API message 'qos_egress_map_delete_reply':
 //
-//	"qos_record_enable_disable_reply",
+//	"qos_egress_map_delete_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -176,17 +165,17 @@ func (*QosRecordEnableDisable) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type QosRecordEnableDisableReply struct {
+type QosEgressMapDeleteReply struct {
 	Retval int32
 }
 
-func (*QosRecordEnableDisableReply) GetMessageName() string {
-	return "qos_record_enable_disable_reply"
+func (*QosEgressMapDeleteReply) GetMessageName() string {
+	return "qos_egress_map_delete_reply"
 }
-func (*QosRecordEnableDisableReply) GetCrcString() string {
+func (*QosEgressMapDeleteReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*QosRecordEnableDisableReply) GetMessageType() api.MessageType {
+func (*QosEgressMapDeleteReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -263,76 +252,6 @@ func (*QosEgressMapUpdateReply) GetCrcString() string {
 	return "e8d4e804"
 }
 func (*QosEgressMapUpdateReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// QosEgressMapDelete represents VPP binary API message 'qos_egress_map_delete':
-//
-//	"qos_egress_map_delete",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "map_id"
-//	],
-//	{
-//	    "crc": "0xdaab68c1"
-//	}
-//
-type QosEgressMapDelete struct {
-	MapID uint32
-}
-
-func (*QosEgressMapDelete) GetMessageName() string {
-	return "qos_egress_map_delete"
-}
-func (*QosEgressMapDelete) GetCrcString() string {
-	return "daab68c1"
-}
-func (*QosEgressMapDelete) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// QosEgressMapDeleteReply represents VPP binary API message 'qos_egress_map_delete_reply':
-//
-//	"qos_egress_map_delete_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type QosEgressMapDeleteReply struct {
-	Retval int32
-}
-
-func (*QosEgressMapDeleteReply) GetMessageName() string {
-	return "qos_egress_map_delete_reply"
-}
-func (*QosEgressMapDeleteReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*QosEgressMapDeleteReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -421,13 +340,93 @@ func (*QosMarkEnableDisableReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// QosRecordEnableDisable represents VPP binary API message 'qos_record_enable_disable':
+//
+//	"qos_record_enable_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "vl_api_qos_source_t",
+//	    "input_source"
+//	],
+//	[
+//	    "u8",
+//	    "enable"
+//	],
+//	{
+//	    "crc": "0xf768050f"
+//	}
+//
+type QosRecordEnableDisable struct {
+	SwIfIndex   uint32
+	InputSource QosSource
+	Enable      uint8
+}
+
+func (*QosRecordEnableDisable) GetMessageName() string {
+	return "qos_record_enable_disable"
+}
+func (*QosRecordEnableDisable) GetCrcString() string {
+	return "f768050f"
+}
+func (*QosRecordEnableDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// QosRecordEnableDisableReply represents VPP binary API message 'qos_record_enable_disable_reply':
+//
+//	"qos_record_enable_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type QosRecordEnableDisableReply struct {
+	Retval int32
+}
+
+func (*QosRecordEnableDisableReply) GetMessageName() string {
+	return "qos_record_enable_disable_reply"
+}
+func (*QosRecordEnableDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*QosRecordEnableDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 func init() {
-	api.RegisterMessage((*QosRecordEnableDisable)(nil), "qos.QosRecordEnableDisable")
-	api.RegisterMessage((*QosRecordEnableDisableReply)(nil), "qos.QosRecordEnableDisableReply")
-	api.RegisterMessage((*QosEgressMapUpdate)(nil), "qos.QosEgressMapUpdate")
-	api.RegisterMessage((*QosEgressMapUpdateReply)(nil), "qos.QosEgressMapUpdateReply")
 	api.RegisterMessage((*QosEgressMapDelete)(nil), "qos.QosEgressMapDelete")
 	api.RegisterMessage((*QosEgressMapDeleteReply)(nil), "qos.QosEgressMapDeleteReply")
+	api.RegisterMessage((*QosEgressMapUpdate)(nil), "qos.QosEgressMapUpdate")
+	api.RegisterMessage((*QosEgressMapUpdateReply)(nil), "qos.QosEgressMapUpdateReply")
 	api.RegisterMessage((*QosMarkEnableDisable)(nil), "qos.QosMarkEnableDisable")
 	api.RegisterMessage((*QosMarkEnableDisableReply)(nil), "qos.QosMarkEnableDisableReply")
+	api.RegisterMessage((*QosRecordEnableDisable)(nil), "qos.QosRecordEnableDisable")
+	api.RegisterMessage((*QosRecordEnableDisableReply)(nil), "qos.QosRecordEnableDisableReply")
 }

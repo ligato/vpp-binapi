@@ -5,9 +5,8 @@
  Package pot is a generated from VPP binary API module 'pot'.
 
  It contains following objects:
-	  8 messages
 	  4 services
-
+	  8 messages
 */
 package pot
 
@@ -49,6 +48,88 @@ type Services interface {
 }
 
 /* Messages */
+
+// PotProfileActivate represents VPP binary API message 'pot_profile_activate':
+//
+//	"pot_profile_activate",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "id"
+//	],
+//	[
+//	    "u8",
+//	    "list_name_len"
+//	],
+//	[
+//	    "u8",
+//	    "list_name",
+//	    0,
+//	    "list_name_len"
+//	],
+//	{
+//	    "crc": "0xeeada566"
+//	}
+//
+type PotProfileActivate struct {
+	ID          uint8
+	ListNameLen uint8 `struc:"sizeof=ListName"`
+	ListName    []byte
+}
+
+func (*PotProfileActivate) GetMessageName() string {
+	return "pot_profile_activate"
+}
+func (*PotProfileActivate) GetCrcString() string {
+	return "eeada566"
+}
+func (*PotProfileActivate) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// PotProfileActivateReply represents VPP binary API message 'pot_profile_activate_reply':
+//
+//	"pot_profile_activate_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type PotProfileActivateReply struct {
+	Retval int32
+}
+
+func (*PotProfileActivateReply) GetMessageName() string {
+	return "pot_profile_activate_reply"
+}
+func (*PotProfileActivateReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*PotProfileActivateReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
 
 // PotProfileAdd represents VPP binary API message 'pot_profile_add':
 //
@@ -167,88 +248,6 @@ func (*PotProfileAddReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// PotProfileActivate represents VPP binary API message 'pot_profile_activate':
-//
-//	"pot_profile_activate",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "id"
-//	],
-//	[
-//	    "u8",
-//	    "list_name_len"
-//	],
-//	[
-//	    "u8",
-//	    "list_name",
-//	    0,
-//	    "list_name_len"
-//	],
-//	{
-//	    "crc": "0xeeada566"
-//	}
-//
-type PotProfileActivate struct {
-	ID          uint8
-	ListNameLen uint8 `struc:"sizeof=ListName"`
-	ListName    []byte
-}
-
-func (*PotProfileActivate) GetMessageName() string {
-	return "pot_profile_activate"
-}
-func (*PotProfileActivate) GetCrcString() string {
-	return "eeada566"
-}
-func (*PotProfileActivate) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// PotProfileActivateReply represents VPP binary API message 'pot_profile_activate_reply':
-//
-//	"pot_profile_activate_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type PotProfileActivateReply struct {
-	Retval int32
-}
-
-func (*PotProfileActivateReply) GetMessageName() string {
-	return "pot_profile_activate_reply"
-}
-func (*PotProfileActivateReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*PotProfileActivateReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 // PotProfileDel represents VPP binary API message 'pot_profile_del':
 //
 //	"pot_profile_del",
@@ -326,43 +325,6 @@ func (*PotProfileDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// PotProfileShowConfigDump represents VPP binary API message 'pot_profile_show_config_dump':
-//
-//	"pot_profile_show_config_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "id"
-//	],
-//	{
-//	    "crc": "0x005b7d59"
-//	}
-//
-type PotProfileShowConfigDump struct {
-	ID uint8
-}
-
-func (*PotProfileShowConfigDump) GetMessageName() string {
-	return "pot_profile_show_config_dump"
-}
-func (*PotProfileShowConfigDump) GetCrcString() string {
-	return "005b7d59"
-}
-func (*PotProfileShowConfigDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // PotProfileShowConfigDetails represents VPP binary API message 'pot_profile_show_config_details':
 //
 //	"pot_profile_show_config_details",
@@ -436,13 +398,50 @@ func (*PotProfileShowConfigDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// PotProfileShowConfigDump represents VPP binary API message 'pot_profile_show_config_dump':
+//
+//	"pot_profile_show_config_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "id"
+//	],
+//	{
+//	    "crc": "0x005b7d59"
+//	}
+//
+type PotProfileShowConfigDump struct {
+	ID uint8
+}
+
+func (*PotProfileShowConfigDump) GetMessageName() string {
+	return "pot_profile_show_config_dump"
+}
+func (*PotProfileShowConfigDump) GetCrcString() string {
+	return "005b7d59"
+}
+func (*PotProfileShowConfigDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
-	api.RegisterMessage((*PotProfileAdd)(nil), "pot.PotProfileAdd")
-	api.RegisterMessage((*PotProfileAddReply)(nil), "pot.PotProfileAddReply")
 	api.RegisterMessage((*PotProfileActivate)(nil), "pot.PotProfileActivate")
 	api.RegisterMessage((*PotProfileActivateReply)(nil), "pot.PotProfileActivateReply")
+	api.RegisterMessage((*PotProfileAdd)(nil), "pot.PotProfileAdd")
+	api.RegisterMessage((*PotProfileAddReply)(nil), "pot.PotProfileAddReply")
 	api.RegisterMessage((*PotProfileDel)(nil), "pot.PotProfileDel")
 	api.RegisterMessage((*PotProfileDelReply)(nil), "pot.PotProfileDelReply")
-	api.RegisterMessage((*PotProfileShowConfigDump)(nil), "pot.PotProfileShowConfigDump")
 	api.RegisterMessage((*PotProfileShowConfigDetails)(nil), "pot.PotProfileShowConfigDetails")
+	api.RegisterMessage((*PotProfileShowConfigDump)(nil), "pot.PotProfileShowConfigDump")
 }

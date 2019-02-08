@@ -5,9 +5,8 @@
  Package feature is a generated from VPP binary API module 'feature'.
 
  It contains following objects:
-	  2 messages
 	  1 service
-
+	  2 messages
 */
 package feature
 

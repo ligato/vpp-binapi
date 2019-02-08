@@ -5,9 +5,8 @@
  Package udp_ping is a generated from VPP binary API module 'udp_ping'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package udp_ping
 

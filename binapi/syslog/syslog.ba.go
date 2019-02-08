@@ -5,13 +5,12 @@
  Package syslog is a generated from VPP binary API module 'syslog'.
 
  It contains following objects:
-	  8 messages
-	  5 types
-	  2 aliases
-	  2 enums
-	  1 union
 	  4 services
-
+	  2 enums
+	  2 aliases
+	  5 types
+	  1 union
+	  8 messages
 */
 package syslog
 
@@ -176,31 +175,58 @@ func (*Address) GetCrcString() string {
 	return "09f11671"
 }
 
-// Prefix represents VPP binary API type 'prefix':
+// IP4Prefix represents VPP binary API type 'ip4_prefix':
 //
-//	"prefix",
+//	"ip4_prefix",
 //	[
-//	    "vl_api_address_t",
-//	    "address"
+//	    "vl_api_ip4_address_t",
+//	    "prefix"
 //	],
 //	[
 //	    "u8",
-//	    "address_length"
+//	    "len"
 //	],
 //	{
-//	    "crc": "0x0403aebc"
+//	    "crc": "0xea8dc11d"
 //	}
 //
-type Prefix struct {
-	Address       Address
-	AddressLength uint8
+type IP4Prefix struct {
+	Prefix IP4Address
+	Len    uint8
 }
 
-func (*Prefix) GetTypeName() string {
-	return "prefix"
+func (*IP4Prefix) GetTypeName() string {
+	return "ip4_prefix"
 }
-func (*Prefix) GetCrcString() string {
-	return "0403aebc"
+func (*IP4Prefix) GetCrcString() string {
+	return "ea8dc11d"
+}
+
+// IP6Prefix represents VPP binary API type 'ip6_prefix':
+//
+//	"ip6_prefix",
+//	[
+//	    "vl_api_ip6_address_t",
+//	    "prefix"
+//	],
+//	[
+//	    "u8",
+//	    "len"
+//	],
+//	{
+//	    "crc": "0x779fd64f"
+//	}
+//
+type IP6Prefix struct {
+	Prefix IP6Address
+	Len    uint8
+}
+
+func (*IP6Prefix) GetTypeName() string {
+	return "ip6_prefix"
+}
+func (*IP6Prefix) GetCrcString() string {
+	return "779fd64f"
 }
 
 // Mprefix represents VPP binary API type 'mprefix':
@@ -240,58 +266,31 @@ func (*Mprefix) GetCrcString() string {
 	return "1c4cba05"
 }
 
-// IP6Prefix represents VPP binary API type 'ip6_prefix':
+// Prefix represents VPP binary API type 'prefix':
 //
-//	"ip6_prefix",
+//	"prefix",
 //	[
-//	    "vl_api_ip6_address_t",
-//	    "prefix"
+//	    "vl_api_address_t",
+//	    "address"
 //	],
 //	[
 //	    "u8",
-//	    "len"
+//	    "address_length"
 //	],
 //	{
-//	    "crc": "0x779fd64f"
+//	    "crc": "0x0403aebc"
 //	}
 //
-type IP6Prefix struct {
-	Prefix IP6Address
-	Len    uint8
+type Prefix struct {
+	Address       Address
+	AddressLength uint8
 }
 
-func (*IP6Prefix) GetTypeName() string {
-	return "ip6_prefix"
+func (*Prefix) GetTypeName() string {
+	return "prefix"
 }
-func (*IP6Prefix) GetCrcString() string {
-	return "779fd64f"
-}
-
-// IP4Prefix represents VPP binary API type 'ip4_prefix':
-//
-//	"ip4_prefix",
-//	[
-//	    "vl_api_ip4_address_t",
-//	    "prefix"
-//	],
-//	[
-//	    "u8",
-//	    "len"
-//	],
-//	{
-//	    "crc": "0xea8dc11d"
-//	}
-//
-type IP4Prefix struct {
-	Prefix IP4Address
-	Len    uint8
-}
-
-func (*IP4Prefix) GetTypeName() string {
-	return "ip4_prefix"
-}
-func (*IP4Prefix) GetCrcString() string {
-	return "ea8dc11d"
+func (*Prefix) GetCrcString() string {
+	return "0403aebc"
 }
 
 /* Unions */
@@ -322,6 +321,10 @@ func (*AddressUnion) GetCrcString() string {
 	return "d68a2fb4"
 }
 
+func AddressUnionIP4(a IP4Address) (u AddressUnion) {
+	u.SetIP4(a)
+	return
+}
 func (u *AddressUnion) SetIP4(a IP4Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -335,6 +338,10 @@ func (u *AddressUnion) GetIP4() (a IP4Address) {
 	return
 }
 
+func AddressUnionIP6(a IP6Address) (u AddressUnion) {
+	u.SetIP6(a)
+	return
+}
 func (u *AddressUnion) SetIP6(a IP6Address) {
 	var b = new(bytes.Buffer)
 	if err := struc.Pack(b, &a); err != nil {
@@ -350,9 +357,9 @@ func (u *AddressUnion) GetIP6() (a IP6Address) {
 
 /* Messages */
 
-// SyslogSetSender represents VPP binary API message 'syslog_set_sender':
+// SyslogGetFilter represents VPP binary API message 'syslog_get_filter':
 //
-//	"syslog_set_sender",
+//	"syslog_get_filter",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -365,51 +372,25 @@ func (u *AddressUnion) GetIP6() (a IP6Address) {
 //	    "u32",
 //	    "context"
 //	],
-//	[
-//	    "vl_api_ip4_address_t",
-//	    "src_address"
-//	],
-//	[
-//	    "vl_api_ip4_address_t",
-//	    "collector_address"
-//	],
-//	[
-//	    "u16",
-//	    "collector_port"
-//	],
-//	[
-//	    "u32",
-//	    "vrf_id"
-//	],
-//	[
-//	    "u32",
-//	    "max_msg_size"
-//	],
 //	{
-//	    "crc": "0x80126be2"
+//	    "crc": "0x51077d14"
 //	}
 //
-type SyslogSetSender struct {
-	SrcAddress       IP4Address
-	CollectorAddress IP4Address
-	CollectorPort    uint16
-	VrfID            uint32
-	MaxMsgSize       uint32
-}
+type SyslogGetFilter struct{}
 
-func (*SyslogSetSender) GetMessageName() string {
-	return "syslog_set_sender"
+func (*SyslogGetFilter) GetMessageName() string {
+	return "syslog_get_filter"
 }
-func (*SyslogSetSender) GetCrcString() string {
-	return "80126be2"
+func (*SyslogGetFilter) GetCrcString() string {
+	return "51077d14"
 }
-func (*SyslogSetSender) GetMessageType() api.MessageType {
+func (*SyslogGetFilter) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// SyslogSetSenderReply represents VPP binary API message 'syslog_set_sender_reply':
+// SyslogGetFilterReply represents VPP binary API message 'syslog_get_filter_reply':
 //
-//	"syslog_set_sender_reply",
+//	"syslog_get_filter_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -422,21 +403,26 @@ func (*SyslogSetSender) GetMessageType() api.MessageType {
 //	    "i32",
 //	    "retval"
 //	],
+//	[
+//	    "vl_api_syslog_severity_t",
+//	    "severity"
+//	],
 //	{
-//	    "crc": "0xe8d4e804"
+//	    "crc": "0x529a4e3c"
 //	}
 //
-type SyslogSetSenderReply struct {
-	Retval int32
+type SyslogGetFilterReply struct {
+	Retval   int32
+	Severity SyslogSeverity
 }
 
-func (*SyslogSetSenderReply) GetMessageName() string {
-	return "syslog_set_sender_reply"
+func (*SyslogGetFilterReply) GetMessageName() string {
+	return "syslog_get_filter_reply"
 }
-func (*SyslogSetSenderReply) GetCrcString() string {
-	return "e8d4e804"
+func (*SyslogGetFilterReply) GetCrcString() string {
+	return "529a4e3c"
 }
-func (*SyslogSetSenderReply) GetMessageType() api.MessageType {
+func (*SyslogGetFilterReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -599,9 +585,9 @@ func (*SyslogSetFilterReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// SyslogGetFilter represents VPP binary API message 'syslog_get_filter':
+// SyslogSetSender represents VPP binary API message 'syslog_set_sender':
 //
-//	"syslog_get_filter",
+//	"syslog_set_sender",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -614,25 +600,51 @@ func (*SyslogSetFilterReply) GetMessageType() api.MessageType {
 //	    "u32",
 //	    "context"
 //	],
+//	[
+//	    "vl_api_ip4_address_t",
+//	    "src_address"
+//	],
+//	[
+//	    "vl_api_ip4_address_t",
+//	    "collector_address"
+//	],
+//	[
+//	    "u16",
+//	    "collector_port"
+//	],
+//	[
+//	    "u32",
+//	    "vrf_id"
+//	],
+//	[
+//	    "u32",
+//	    "max_msg_size"
+//	],
 //	{
-//	    "crc": "0x51077d14"
+//	    "crc": "0x80126be2"
 //	}
 //
-type SyslogGetFilter struct{}
+type SyslogSetSender struct {
+	SrcAddress       IP4Address
+	CollectorAddress IP4Address
+	CollectorPort    uint16
+	VrfID            uint32
+	MaxMsgSize       uint32
+}
 
-func (*SyslogGetFilter) GetMessageName() string {
-	return "syslog_get_filter"
+func (*SyslogSetSender) GetMessageName() string {
+	return "syslog_set_sender"
 }
-func (*SyslogGetFilter) GetCrcString() string {
-	return "51077d14"
+func (*SyslogSetSender) GetCrcString() string {
+	return "80126be2"
 }
-func (*SyslogGetFilter) GetMessageType() api.MessageType {
+func (*SyslogSetSender) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// SyslogGetFilterReply represents VPP binary API message 'syslog_get_filter_reply':
+// SyslogSetSenderReply represents VPP binary API message 'syslog_set_sender_reply':
 //
-//	"syslog_get_filter_reply",
+//	"syslog_set_sender_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -645,36 +657,31 @@ func (*SyslogGetFilter) GetMessageType() api.MessageType {
 //	    "i32",
 //	    "retval"
 //	],
-//	[
-//	    "vl_api_syslog_severity_t",
-//	    "severity"
-//	],
 //	{
-//	    "crc": "0x529a4e3c"
+//	    "crc": "0xe8d4e804"
 //	}
 //
-type SyslogGetFilterReply struct {
-	Retval   int32
-	Severity SyslogSeverity
+type SyslogSetSenderReply struct {
+	Retval int32
 }
 
-func (*SyslogGetFilterReply) GetMessageName() string {
-	return "syslog_get_filter_reply"
+func (*SyslogSetSenderReply) GetMessageName() string {
+	return "syslog_set_sender_reply"
 }
-func (*SyslogGetFilterReply) GetCrcString() string {
-	return "529a4e3c"
+func (*SyslogSetSenderReply) GetCrcString() string {
+	return "e8d4e804"
 }
-func (*SyslogGetFilterReply) GetMessageType() api.MessageType {
+func (*SyslogSetSenderReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
 func init() {
-	api.RegisterMessage((*SyslogSetSender)(nil), "syslog.SyslogSetSender")
-	api.RegisterMessage((*SyslogSetSenderReply)(nil), "syslog.SyslogSetSenderReply")
+	api.RegisterMessage((*SyslogGetFilter)(nil), "syslog.SyslogGetFilter")
+	api.RegisterMessage((*SyslogGetFilterReply)(nil), "syslog.SyslogGetFilterReply")
 	api.RegisterMessage((*SyslogGetSender)(nil), "syslog.SyslogGetSender")
 	api.RegisterMessage((*SyslogGetSenderReply)(nil), "syslog.SyslogGetSenderReply")
 	api.RegisterMessage((*SyslogSetFilter)(nil), "syslog.SyslogSetFilter")
 	api.RegisterMessage((*SyslogSetFilterReply)(nil), "syslog.SyslogSetFilterReply")
-	api.RegisterMessage((*SyslogGetFilter)(nil), "syslog.SyslogGetFilter")
-	api.RegisterMessage((*SyslogGetFilterReply)(nil), "syslog.SyslogGetFilterReply")
+	api.RegisterMessage((*SyslogSetSender)(nil), "syslog.SyslogSetSender")
+	api.RegisterMessage((*SyslogSetSenderReply)(nil), "syslog.SyslogSetSenderReply")
 }

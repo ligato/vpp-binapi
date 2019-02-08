@@ -5,9 +5,8 @@
  Package vxlan is a generated from VPP binary API module 'vxlan'.
 
  It contains following objects:
-	  8 messages
 	  4 services
-
+	  8 messages
 */
 package vxlan
 
@@ -49,6 +48,86 @@ type Services interface {
 }
 
 /* Messages */
+
+// SwInterfaceSetVxlanBypass represents VPP binary API message 'sw_interface_set_vxlan_bypass':
+//
+//	"sw_interface_set_vxlan_bypass",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	[
+//	    "u8",
+//	    "enable"
+//	],
+//	{
+//	    "crc": "0xe74ca095"
+//	}
+//
+type SwInterfaceSetVxlanBypass struct {
+	SwIfIndex uint32
+	IsIPv6    uint8
+	Enable    uint8
+}
+
+func (*SwInterfaceSetVxlanBypass) GetMessageName() string {
+	return "sw_interface_set_vxlan_bypass"
+}
+func (*SwInterfaceSetVxlanBypass) GetCrcString() string {
+	return "e74ca095"
+}
+func (*SwInterfaceSetVxlanBypass) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// SwInterfaceSetVxlanBypassReply represents VPP binary API message 'sw_interface_set_vxlan_bypass_reply':
+//
+//	"sw_interface_set_vxlan_bypass_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type SwInterfaceSetVxlanBypassReply struct {
+	Retval int32
+}
+
+func (*SwInterfaceSetVxlanBypassReply) GetMessageName() string {
+	return "sw_interface_set_vxlan_bypass_reply"
+}
+func (*SwInterfaceSetVxlanBypassReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*SwInterfaceSetVxlanBypassReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
 
 // VxlanAddDelTunnel represents VPP binary API message 'vxlan_add_del_tunnel':
 //
@@ -167,198 +246,6 @@ func (*VxlanAddDelTunnelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// VxlanTunnelDump represents VPP binary API message 'vxlan_tunnel_dump':
-//
-//	"vxlan_tunnel_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	{
-//	    "crc": "0x529cb13f"
-//	}
-//
-type VxlanTunnelDump struct {
-	SwIfIndex uint32
-}
-
-func (*VxlanTunnelDump) GetMessageName() string {
-	return "vxlan_tunnel_dump"
-}
-func (*VxlanTunnelDump) GetCrcString() string {
-	return "529cb13f"
-}
-func (*VxlanTunnelDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// VxlanTunnelDetails represents VPP binary API message 'vxlan_tunnel_details':
-//
-//	"vxlan_tunnel_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "instance"
-//	],
-//	[
-//	    "u8",
-//	    "src_address",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "dst_address",
-//	    16
-//	],
-//	[
-//	    "u32",
-//	    "mcast_sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "encap_vrf_id"
-//	],
-//	[
-//	    "u32",
-//	    "decap_next_index"
-//	],
-//	[
-//	    "u32",
-//	    "vni"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	{
-//	    "crc": "0xce38e127"
-//	}
-//
-type VxlanTunnelDetails struct {
-	SwIfIndex      uint32
-	Instance       uint32
-	SrcAddress     []byte `struc:"[16]byte"`
-	DstAddress     []byte `struc:"[16]byte"`
-	McastSwIfIndex uint32
-	EncapVrfID     uint32
-	DecapNextIndex uint32
-	Vni            uint32
-	IsIPv6         uint8
-}
-
-func (*VxlanTunnelDetails) GetMessageName() string {
-	return "vxlan_tunnel_details"
-}
-func (*VxlanTunnelDetails) GetCrcString() string {
-	return "ce38e127"
-}
-func (*VxlanTunnelDetails) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// SwInterfaceSetVxlanBypass represents VPP binary API message 'sw_interface_set_vxlan_bypass':
-//
-//	"sw_interface_set_vxlan_bypass",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u8",
-//	    "is_ipv6"
-//	],
-//	[
-//	    "u8",
-//	    "enable"
-//	],
-//	{
-//	    "crc": "0xe74ca095"
-//	}
-//
-type SwInterfaceSetVxlanBypass struct {
-	SwIfIndex uint32
-	IsIPv6    uint8
-	Enable    uint8
-}
-
-func (*SwInterfaceSetVxlanBypass) GetMessageName() string {
-	return "sw_interface_set_vxlan_bypass"
-}
-func (*SwInterfaceSetVxlanBypass) GetCrcString() string {
-	return "e74ca095"
-}
-func (*SwInterfaceSetVxlanBypass) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SwInterfaceSetVxlanBypassReply represents VPP binary API message 'sw_interface_set_vxlan_bypass_reply':
-//
-//	"sw_interface_set_vxlan_bypass_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type SwInterfaceSetVxlanBypassReply struct {
-	Retval int32
-}
-
-func (*SwInterfaceSetVxlanBypassReply) GetMessageName() string {
-	return "sw_interface_set_vxlan_bypass_reply"
-}
-func (*SwInterfaceSetVxlanBypassReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*SwInterfaceSetVxlanBypassReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 // VxlanOffloadRx represents VPP binary API message 'vxlan_offload_rx':
 //
 //	"vxlan_offload_rx",
@@ -439,13 +326,125 @@ func (*VxlanOffloadRxReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// VxlanTunnelDetails represents VPP binary API message 'vxlan_tunnel_details':
+//
+//	"vxlan_tunnel_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "instance"
+//	],
+//	[
+//	    "u8",
+//	    "src_address",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "dst_address",
+//	    16
+//	],
+//	[
+//	    "u32",
+//	    "mcast_sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "encap_vrf_id"
+//	],
+//	[
+//	    "u32",
+//	    "decap_next_index"
+//	],
+//	[
+//	    "u32",
+//	    "vni"
+//	],
+//	[
+//	    "u8",
+//	    "is_ipv6"
+//	],
+//	{
+//	    "crc": "0xce38e127"
+//	}
+//
+type VxlanTunnelDetails struct {
+	SwIfIndex      uint32
+	Instance       uint32
+	SrcAddress     []byte `struc:"[16]byte"`
+	DstAddress     []byte `struc:"[16]byte"`
+	McastSwIfIndex uint32
+	EncapVrfID     uint32
+	DecapNextIndex uint32
+	Vni            uint32
+	IsIPv6         uint8
+}
+
+func (*VxlanTunnelDetails) GetMessageName() string {
+	return "vxlan_tunnel_details"
+}
+func (*VxlanTunnelDetails) GetCrcString() string {
+	return "ce38e127"
+}
+func (*VxlanTunnelDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// VxlanTunnelDump represents VPP binary API message 'vxlan_tunnel_dump':
+//
+//	"vxlan_tunnel_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	{
+//	    "crc": "0x529cb13f"
+//	}
+//
+type VxlanTunnelDump struct {
+	SwIfIndex uint32
+}
+
+func (*VxlanTunnelDump) GetMessageName() string {
+	return "vxlan_tunnel_dump"
+}
+func (*VxlanTunnelDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*VxlanTunnelDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
-	api.RegisterMessage((*VxlanAddDelTunnel)(nil), "vxlan.VxlanAddDelTunnel")
-	api.RegisterMessage((*VxlanAddDelTunnelReply)(nil), "vxlan.VxlanAddDelTunnelReply")
-	api.RegisterMessage((*VxlanTunnelDump)(nil), "vxlan.VxlanTunnelDump")
-	api.RegisterMessage((*VxlanTunnelDetails)(nil), "vxlan.VxlanTunnelDetails")
 	api.RegisterMessage((*SwInterfaceSetVxlanBypass)(nil), "vxlan.SwInterfaceSetVxlanBypass")
 	api.RegisterMessage((*SwInterfaceSetVxlanBypassReply)(nil), "vxlan.SwInterfaceSetVxlanBypassReply")
+	api.RegisterMessage((*VxlanAddDelTunnel)(nil), "vxlan.VxlanAddDelTunnel")
+	api.RegisterMessage((*VxlanAddDelTunnelReply)(nil), "vxlan.VxlanAddDelTunnelReply")
 	api.RegisterMessage((*VxlanOffloadRx)(nil), "vxlan.VxlanOffloadRx")
 	api.RegisterMessage((*VxlanOffloadRxReply)(nil), "vxlan.VxlanOffloadRxReply")
+	api.RegisterMessage((*VxlanTunnelDetails)(nil), "vxlan.VxlanTunnelDetails")
+	api.RegisterMessage((*VxlanTunnelDump)(nil), "vxlan.VxlanTunnelDump")
 }

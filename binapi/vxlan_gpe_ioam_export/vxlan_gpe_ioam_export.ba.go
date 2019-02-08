@@ -5,9 +5,8 @@
  Package vxlan_gpe_ioam_export is a generated from VPP binary API module 'vxlan_gpe_ioam_export'.
 
  It contains following objects:
-	  2 messages
 	  1 service
-
+	  2 messages
 */
 package vxlan_gpe_ioam_export
 

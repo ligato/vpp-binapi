@@ -5,9 +5,8 @@
  Package lacp is a generated from VPP binary API module 'lacp'.
 
  It contains following objects:
-	  2 messages
 	  1 service
-
+	  2 messages
 */
 package lacp
 
@@ -37,37 +36,6 @@ type Services interface {
 }
 
 /* Messages */
-
-// SwInterfaceLacpDump represents VPP binary API message 'sw_interface_lacp_dump':
-//
-//	"sw_interface_lacp_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type SwInterfaceLacpDump struct{}
-
-func (*SwInterfaceLacpDump) GetMessageName() string {
-	return "sw_interface_lacp_dump"
-}
-func (*SwInterfaceLacpDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*SwInterfaceLacpDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
 
 // SwInterfaceLacpDetails represents VPP binary API message 'sw_interface_lacp_details':
 //
@@ -196,7 +164,38 @@ func (*SwInterfaceLacpDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// SwInterfaceLacpDump represents VPP binary API message 'sw_interface_lacp_dump':
+//
+//	"sw_interface_lacp_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type SwInterfaceLacpDump struct{}
+
+func (*SwInterfaceLacpDump) GetMessageName() string {
+	return "sw_interface_lacp_dump"
+}
+func (*SwInterfaceLacpDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*SwInterfaceLacpDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
-	api.RegisterMessage((*SwInterfaceLacpDump)(nil), "lacp.SwInterfaceLacpDump")
 	api.RegisterMessage((*SwInterfaceLacpDetails)(nil), "lacp.SwInterfaceLacpDetails")
+	api.RegisterMessage((*SwInterfaceLacpDump)(nil), "lacp.SwInterfaceLacpDump")
 }

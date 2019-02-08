@@ -5,9 +5,8 @@
  Package nsim is a generated from VPP binary API module 'nsim'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package nsim
 
@@ -40,86 +39,6 @@ type Services interface {
 }
 
 /* Messages */
-
-// NsimEnableDisable represents VPP binary API message 'nsim_enable_disable':
-//
-//	"nsim_enable_disable",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "enable_disable"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index0"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index1"
-//	],
-//	{
-//	    "crc": "0xdf4e7ba9"
-//	}
-//
-type NsimEnableDisable struct {
-	EnableDisable uint8
-	SwIfIndex0    uint32
-	SwIfIndex1    uint32
-}
-
-func (*NsimEnableDisable) GetMessageName() string {
-	return "nsim_enable_disable"
-}
-func (*NsimEnableDisable) GetCrcString() string {
-	return "df4e7ba9"
-}
-func (*NsimEnableDisable) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// NsimEnableDisableReply represents VPP binary API message 'nsim_enable_disable_reply':
-//
-//	"nsim_enable_disable_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type NsimEnableDisableReply struct {
-	Retval int32
-}
-
-func (*NsimEnableDisableReply) GetMessageName() string {
-	return "nsim_enable_disable_reply"
-}
-func (*NsimEnableDisableReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*NsimEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
 
 // NsimConfigure represents VPP binary API message 'nsim_configure':
 //
@@ -206,9 +125,89 @@ func (*NsimConfigureReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// NsimEnableDisable represents VPP binary API message 'nsim_enable_disable':
+//
+//	"nsim_enable_disable",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "enable_disable"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index0"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index1"
+//	],
+//	{
+//	    "crc": "0xdf4e7ba9"
+//	}
+//
+type NsimEnableDisable struct {
+	EnableDisable uint8
+	SwIfIndex0    uint32
+	SwIfIndex1    uint32
+}
+
+func (*NsimEnableDisable) GetMessageName() string {
+	return "nsim_enable_disable"
+}
+func (*NsimEnableDisable) GetCrcString() string {
+	return "df4e7ba9"
+}
+func (*NsimEnableDisable) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// NsimEnableDisableReply represents VPP binary API message 'nsim_enable_disable_reply':
+//
+//	"nsim_enable_disable_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type NsimEnableDisableReply struct {
+	Retval int32
+}
+
+func (*NsimEnableDisableReply) GetMessageName() string {
+	return "nsim_enable_disable_reply"
+}
+func (*NsimEnableDisableReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*NsimEnableDisableReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 func init() {
-	api.RegisterMessage((*NsimEnableDisable)(nil), "nsim.NsimEnableDisable")
-	api.RegisterMessage((*NsimEnableDisableReply)(nil), "nsim.NsimEnableDisableReply")
 	api.RegisterMessage((*NsimConfigure)(nil), "nsim.NsimConfigure")
 	api.RegisterMessage((*NsimConfigureReply)(nil), "nsim.NsimConfigureReply")
+	api.RegisterMessage((*NsimEnableDisable)(nil), "nsim.NsimEnableDisable")
+	api.RegisterMessage((*NsimEnableDisableReply)(nil), "nsim.NsimEnableDisableReply")
 }

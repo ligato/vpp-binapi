@@ -5,9 +5,8 @@
  Package session is a generated from VPP binary API module 'session'.
 
  It contains following objects:
-	 44 messages
 	 22 services
-
+	 44 messages
 */
 package session
 
@@ -121,6 +120,434 @@ type Services interface {
 }
 
 /* Messages */
+
+// AcceptSession represents VPP binary API message 'accept_session':
+//
+//	"accept_session",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u64",
+//	    "listener_handle"
+//	],
+//	[
+//	    "u64",
+//	    "handle"
+//	],
+//	[
+//	    "u64",
+//	    "server_rx_fifo"
+//	],
+//	[
+//	    "u64",
+//	    "server_tx_fifo"
+//	],
+//	[
+//	    "u64",
+//	    "vpp_event_queue_address"
+//	],
+//	[
+//	    "u64",
+//	    "server_event_queue_address"
+//	],
+//	[
+//	    "u16",
+//	    "port"
+//	],
+//	[
+//	    "u8",
+//	    "is_ip4"
+//	],
+//	[
+//	    "u8",
+//	    "ip",
+//	    16
+//	],
+//	{
+//	    "crc": "0xbd57a498"
+//	}
+//
+type AcceptSession struct {
+	ListenerHandle          uint64
+	Handle                  uint64
+	ServerRxFifo            uint64
+	ServerTxFifo            uint64
+	VppEventQueueAddress    uint64
+	ServerEventQueueAddress uint64
+	Port                    uint16
+	IsIP4                   uint8
+	IP                      []byte `struc:"[16]byte"`
+}
+
+func (*AcceptSession) GetMessageName() string {
+	return "accept_session"
+}
+func (*AcceptSession) GetCrcString() string {
+	return "bd57a498"
+}
+func (*AcceptSession) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// AcceptSessionReply represents VPP binary API message 'accept_session_reply':
+//
+//	"accept_session_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u64",
+//	    "handle"
+//	],
+//	{
+//	    "crc": "0xd6960a03"
+//	}
+//
+type AcceptSessionReply struct {
+	Retval int32
+	Handle uint64
+}
+
+func (*AcceptSessionReply) GetMessageName() string {
+	return "accept_session_reply"
+}
+func (*AcceptSessionReply) GetCrcString() string {
+	return "d6960a03"
+}
+func (*AcceptSessionReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// AppCutThroughRegistrationAdd represents VPP binary API message 'app_cut_through_registration_add':
+//
+//	"app_cut_through_registration_add",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u64",
+//	    "evt_q_address"
+//	],
+//	[
+//	    "u64",
+//	    "peer_evt_q_address"
+//	],
+//	[
+//	    "u32",
+//	    "wrk_index"
+//	],
+//	[
+//	    "u8",
+//	    "n_fds"
+//	],
+//	[
+//	    "u8",
+//	    "fd_flags"
+//	],
+//	{
+//	    "crc": "0x6d73b1b9"
+//	}
+//
+type AppCutThroughRegistrationAdd struct {
+	EvtQAddress     uint64
+	PeerEvtQAddress uint64
+	WrkIndex        uint32
+	NFds            uint8
+	FdFlags         uint8
+}
+
+func (*AppCutThroughRegistrationAdd) GetMessageName() string {
+	return "app_cut_through_registration_add"
+}
+func (*AppCutThroughRegistrationAdd) GetCrcString() string {
+	return "6d73b1b9"
+}
+func (*AppCutThroughRegistrationAdd) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// AppCutThroughRegistrationAddReply represents VPP binary API message 'app_cut_through_registration_add_reply':
+//
+//	"app_cut_through_registration_add_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type AppCutThroughRegistrationAddReply struct {
+	Retval int32
+}
+
+func (*AppCutThroughRegistrationAddReply) GetMessageName() string {
+	return "app_cut_through_registration_add_reply"
+}
+func (*AppCutThroughRegistrationAddReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*AppCutThroughRegistrationAddReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// AppNamespaceAddDel represents VPP binary API message 'app_namespace_add_del':
+//
+//	"app_namespace_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u64",
+//	    "secret"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "ip4_fib_id"
+//	],
+//	[
+//	    "u32",
+//	    "ip6_fib_id"
+//	],
+//	[
+//	    "u8",
+//	    "namespace_id_len"
+//	],
+//	[
+//	    "u8",
+//	    "namespace_id",
+//	    64
+//	],
+//	{
+//	    "crc": "0xdd074c65"
+//	}
+//
+type AppNamespaceAddDel struct {
+	Secret         uint64
+	SwIfIndex      uint32
+	IP4FibID       uint32
+	IP6FibID       uint32
+	NamespaceIDLen uint8
+	NamespaceID    []byte `struc:"[64]byte"`
+}
+
+func (*AppNamespaceAddDel) GetMessageName() string {
+	return "app_namespace_add_del"
+}
+func (*AppNamespaceAddDel) GetCrcString() string {
+	return "dd074c65"
+}
+func (*AppNamespaceAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// AppNamespaceAddDelReply represents VPP binary API message 'app_namespace_add_del_reply':
+//
+//	"app_namespace_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "appns_index"
+//	],
+//	{
+//	    "crc": "0x85137120"
+//	}
+//
+type AppNamespaceAddDelReply struct {
+	Retval     int32
+	AppnsIndex uint32
+}
+
+func (*AppNamespaceAddDelReply) GetMessageName() string {
+	return "app_namespace_add_del_reply"
+}
+func (*AppNamespaceAddDelReply) GetCrcString() string {
+	return "85137120"
+}
+func (*AppNamespaceAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// AppWorkerAddDel represents VPP binary API message 'app_worker_add_del':
+//
+//	"app_worker_add_del",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "app_index"
+//	],
+//	[
+//	    "u32",
+//	    "wrk_index"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	{
+//	    "crc": "0x6d2b2279"
+//	}
+//
+type AppWorkerAddDel struct {
+	AppIndex uint32
+	WrkIndex uint32
+	IsAdd    uint8
+}
+
+func (*AppWorkerAddDel) GetMessageName() string {
+	return "app_worker_add_del"
+}
+func (*AppWorkerAddDel) GetCrcString() string {
+	return "6d2b2279"
+}
+func (*AppWorkerAddDel) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// AppWorkerAddDelReply represents VPP binary API message 'app_worker_add_del_reply':
+//
+//	"app_worker_add_del_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u32",
+//	    "wrk_index"
+//	],
+//	[
+//	    "u64",
+//	    "app_event_queue_address"
+//	],
+//	[
+//	    "u8",
+//	    "n_fds"
+//	],
+//	[
+//	    "u8",
+//	    "fd_flags"
+//	],
+//	[
+//	    "u8",
+//	    "segment_name_length"
+//	],
+//	[
+//	    "u8",
+//	    "segment_name",
+//	    128
+//	],
+//	[
+//	    "u64",
+//	    "segment_handle"
+//	],
+//	[
+//	    "u8",
+//	    "is_add"
+//	],
+//	{
+//	    "crc": "0x56b21abc"
+//	}
+//
+type AppWorkerAddDelReply struct {
+	Retval               int32
+	WrkIndex             uint32
+	AppEventQueueAddress uint64
+	NFds                 uint8
+	FdFlags              uint8
+	SegmentNameLength    uint8
+	SegmentName          []byte `struc:"[128]byte"`
+	SegmentHandle        uint64
+	IsAdd                uint8
+}
+
+func (*AppWorkerAddDelReply) GetMessageName() string {
+	return "app_worker_add_del_reply"
+}
+func (*AppWorkerAddDelReply) GetCrcString() string {
+	return "56b21abc"
+}
+func (*AppWorkerAddDelReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
 
 // ApplicationAttach represents VPP binary API message 'application_attach':
 //
@@ -247,6 +674,70 @@ func (*ApplicationAttachReply) GetCrcString() string {
 	return "581866e8"
 }
 func (*ApplicationAttachReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// ApplicationDetach represents VPP binary API message 'application_detach':
+//
+//	"application_detach",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type ApplicationDetach struct{}
+
+func (*ApplicationDetach) GetMessageName() string {
+	return "application_detach"
+}
+func (*ApplicationDetach) GetCrcString() string {
+	return "51077d14"
+}
+func (*ApplicationDetach) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ApplicationDetachReply represents VPP binary API message 'application_detach_reply':
+//
+//	"application_detach_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type ApplicationDetachReply struct {
+	Retval int32
+}
+
+func (*ApplicationDetachReply) GetMessageName() string {
+	return "application_detach_reply"
+}
+func (*ApplicationDetachReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*ApplicationDetachReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -414,9 +905,9 @@ func (*ApplicationTLSKeyAddReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// ApplicationDetach represents VPP binary API message 'application_detach':
+// BindSock represents VPP binary API message 'bind_sock':
 //
-//	"application_detach",
+//	"bind_sock",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -429,25 +920,63 @@ func (*ApplicationTLSKeyAddReply) GetMessageType() api.MessageType {
 //	    "u32",
 //	    "context"
 //	],
+//	[
+//	    "u32",
+//	    "wrk_index"
+//	],
+//	[
+//	    "u32",
+//	    "vrf"
+//	],
+//	[
+//	    "u8",
+//	    "is_ip4"
+//	],
+//	[
+//	    "u8",
+//	    "ip",
+//	    16
+//	],
+//	[
+//	    "u16",
+//	    "port"
+//	],
+//	[
+//	    "u8",
+//	    "proto"
+//	],
+//	[
+//	    "u64",
+//	    "options",
+//	    16
+//	],
 //	{
-//	    "crc": "0x51077d14"
+//	    "crc": "0x0394633f"
 //	}
 //
-type ApplicationDetach struct{}
+type BindSock struct {
+	WrkIndex uint32
+	Vrf      uint32
+	IsIP4    uint8
+	IP       []byte `struc:"[16]byte"`
+	Port     uint16
+	Proto    uint8
+	Options  []uint64 `struc:"[16]uint64"`
+}
 
-func (*ApplicationDetach) GetMessageName() string {
-	return "application_detach"
+func (*BindSock) GetMessageName() string {
+	return "bind_sock"
 }
-func (*ApplicationDetach) GetCrcString() string {
-	return "51077d14"
+func (*BindSock) GetCrcString() string {
+	return "0394633f"
 }
-func (*ApplicationDetach) GetMessageType() api.MessageType {
+func (*BindSock) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// ApplicationDetachReply represents VPP binary API message 'application_detach_reply':
+// BindSockReply represents VPP binary API message 'bind_sock_reply':
 //
-//	"application_detach_reply",
+//	"bind_sock_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -455,47 +984,39 @@ func (*ApplicationDetach) GetMessageType() api.MessageType {
 //	[
 //	    "u32",
 //	    "context"
+//	],
+//	[
+//	    "u64",
+//	    "handle"
 //	],
 //	[
 //	    "i32",
 //	    "retval"
 //	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type ApplicationDetachReply struct {
-	Retval int32
-}
-
-func (*ApplicationDetachReply) GetMessageName() string {
-	return "application_detach_reply"
-}
-func (*ApplicationDetachReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*ApplicationDetachReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// MapAnotherSegment represents VPP binary API message 'map_another_segment':
-//
-//	"map_another_segment",
 //	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
+//	    "u8",
+//	    "lcl_is_ip4"
 //	],
 //	[
 //	    "u8",
-//	    "fd_flags"
+//	    "lcl_ip",
+//	    16
+//	],
+//	[
+//	    "u16",
+//	    "lcl_port"
+//	],
+//	[
+//	    "u64",
+//	    "rx_fifo"
+//	],
+//	[
+//	    "u64",
+//	    "tx_fifo"
+//	],
+//	[
+//	    "u64",
+//	    "vpp_evt_q"
 //	],
 //	[
 //	    "u32",
@@ -503,134 +1024,38 @@ func (*ApplicationDetachReply) GetMessageType() api.MessageType {
 //	],
 //	[
 //	    "u8",
+//	    "segment_name_length"
+//	],
+//	[
+//	    "u8",
 //	    "segment_name",
 //	    128
 //	],
-//	[
-//	    "u64",
-//	    "segment_handle"
-//	],
 //	{
-//	    "crc": "0xdc2d630b"
+//	    "crc": "0x5ca8f50a"
 //	}
 //
-type MapAnotherSegment struct {
-	FdFlags       uint8
-	SegmentSize   uint32
-	SegmentName   []byte `struc:"[128]byte"`
-	SegmentHandle uint64
+type BindSockReply struct {
+	Handle            uint64
+	Retval            int32
+	LclIsIP4          uint8
+	LclIP             []byte `struc:"[16]byte"`
+	LclPort           uint16
+	RxFifo            uint64
+	TxFifo            uint64
+	VppEvtQ           uint64
+	SegmentSize       uint32
+	SegmentNameLength uint8
+	SegmentName       []byte `struc:"[128]byte"`
 }
 
-func (*MapAnotherSegment) GetMessageName() string {
-	return "map_another_segment"
+func (*BindSockReply) GetMessageName() string {
+	return "bind_sock_reply"
 }
-func (*MapAnotherSegment) GetCrcString() string {
-	return "dc2d630b"
+func (*BindSockReply) GetCrcString() string {
+	return "5ca8f50a"
 }
-func (*MapAnotherSegment) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// MapAnotherSegmentReply represents VPP binary API message 'map_another_segment_reply':
-//
-//	"map_another_segment_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type MapAnotherSegmentReply struct {
-	Retval int32
-}
-
-func (*MapAnotherSegmentReply) GetMessageName() string {
-	return "map_another_segment_reply"
-}
-func (*MapAnotherSegmentReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*MapAnotherSegmentReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// UnmapSegment represents VPP binary API message 'unmap_segment':
-//
-//	"unmap_segment",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u64",
-//	    "segment_handle"
-//	],
-//	{
-//	    "crc": "0xf77096f6"
-//	}
-//
-type UnmapSegment struct {
-	SegmentHandle uint64
-}
-
-func (*UnmapSegment) GetMessageName() string {
-	return "unmap_segment"
-}
-func (*UnmapSegment) GetCrcString() string {
-	return "f77096f6"
-}
-func (*UnmapSegment) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// UnmapSegmentReply represents VPP binary API message 'unmap_segment_reply':
-//
-//	"unmap_segment_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type UnmapSegmentReply struct {
-	Retval int32
-}
-
-func (*UnmapSegmentReply) GetMessageName() string {
-	return "unmap_segment_reply"
-}
-func (*UnmapSegmentReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*UnmapSegmentReply) GetMessageType() api.MessageType {
+func (*BindSockReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -743,773 +1168,6 @@ func (*BindURIReply) GetCrcString() string {
 	return "528af6c0"
 }
 func (*BindURIReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// UnbindURI represents VPP binary API message 'unbind_uri':
-//
-//	"unbind_uri",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "uri",
-//	    128
-//	],
-//	{
-//	    "crc": "0x294cf07d"
-//	}
-//
-type UnbindURI struct {
-	URI []byte `struc:"[128]byte"`
-}
-
-func (*UnbindURI) GetMessageName() string {
-	return "unbind_uri"
-}
-func (*UnbindURI) GetCrcString() string {
-	return "294cf07d"
-}
-func (*UnbindURI) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// UnbindURIReply represents VPP binary API message 'unbind_uri_reply':
-//
-//	"unbind_uri_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type UnbindURIReply struct {
-	Retval int32
-}
-
-func (*UnbindURIReply) GetMessageName() string {
-	return "unbind_uri_reply"
-}
-func (*UnbindURIReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*UnbindURIReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ConnectURI represents VPP binary API message 'connect_uri':
-//
-//	"connect_uri",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u64",
-//	    "client_queue_address"
-//	],
-//	[
-//	    "u64",
-//	    "options",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "uri",
-//	    128
-//	],
-//	{
-//	    "crc": "0xa36143d6"
-//	}
-//
-type ConnectURI struct {
-	ClientQueueAddress uint64
-	Options            []uint64 `struc:"[16]uint64"`
-	URI                []byte   `struc:"[128]byte"`
-}
-
-func (*ConnectURI) GetMessageName() string {
-	return "connect_uri"
-}
-func (*ConnectURI) GetCrcString() string {
-	return "a36143d6"
-}
-func (*ConnectURI) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ConnectURIReply represents VPP binary API message 'connect_uri_reply':
-//
-//	"connect_uri_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type ConnectURIReply struct {
-	Retval int32
-}
-
-func (*ConnectURIReply) GetMessageName() string {
-	return "connect_uri_reply"
-}
-func (*ConnectURIReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*ConnectURIReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// AcceptSession represents VPP binary API message 'accept_session':
-//
-//	"accept_session",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u64",
-//	    "listener_handle"
-//	],
-//	[
-//	    "u64",
-//	    "handle"
-//	],
-//	[
-//	    "u64",
-//	    "server_rx_fifo"
-//	],
-//	[
-//	    "u64",
-//	    "server_tx_fifo"
-//	],
-//	[
-//	    "u64",
-//	    "vpp_event_queue_address"
-//	],
-//	[
-//	    "u64",
-//	    "server_event_queue_address"
-//	],
-//	[
-//	    "u16",
-//	    "port"
-//	],
-//	[
-//	    "u8",
-//	    "is_ip4"
-//	],
-//	[
-//	    "u8",
-//	    "ip",
-//	    16
-//	],
-//	{
-//	    "crc": "0xbd57a498"
-//	}
-//
-type AcceptSession struct {
-	ListenerHandle          uint64
-	Handle                  uint64
-	ServerRxFifo            uint64
-	ServerTxFifo            uint64
-	VppEventQueueAddress    uint64
-	ServerEventQueueAddress uint64
-	Port                    uint16
-	IsIP4                   uint8
-	IP                      []byte `struc:"[16]byte"`
-}
-
-func (*AcceptSession) GetMessageName() string {
-	return "accept_session"
-}
-func (*AcceptSession) GetCrcString() string {
-	return "bd57a498"
-}
-func (*AcceptSession) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// AcceptSessionReply represents VPP binary API message 'accept_session_reply':
-//
-//	"accept_session_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u64",
-//	    "handle"
-//	],
-//	{
-//	    "crc": "0xd6960a03"
-//	}
-//
-type AcceptSessionReply struct {
-	Retval int32
-	Handle uint64
-}
-
-func (*AcceptSessionReply) GetMessageName() string {
-	return "accept_session_reply"
-}
-func (*AcceptSessionReply) GetCrcString() string {
-	return "d6960a03"
-}
-func (*AcceptSessionReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// DisconnectSession represents VPP binary API message 'disconnect_session':
-//
-//	"disconnect_session",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u64",
-//	    "handle"
-//	],
-//	{
-//	    "crc": "0x7279205b"
-//	}
-//
-type DisconnectSession struct {
-	Handle uint64
-}
-
-func (*DisconnectSession) GetMessageName() string {
-	return "disconnect_session"
-}
-func (*DisconnectSession) GetCrcString() string {
-	return "7279205b"
-}
-func (*DisconnectSession) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// DisconnectSessionReply represents VPP binary API message 'disconnect_session_reply':
-//
-//	"disconnect_session_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u64",
-//	    "handle"
-//	],
-//	{
-//	    "crc": "0xd6960a03"
-//	}
-//
-type DisconnectSessionReply struct {
-	Retval int32
-	Handle uint64
-}
-
-func (*DisconnectSessionReply) GetMessageName() string {
-	return "disconnect_session_reply"
-}
-func (*DisconnectSessionReply) GetCrcString() string {
-	return "d6960a03"
-}
-func (*DisconnectSessionReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ResetSession represents VPP binary API message 'reset_session':
-//
-//	"reset_session",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u64",
-//	    "handle"
-//	],
-//	{
-//	    "crc": "0x7279205b"
-//	}
-//
-type ResetSession struct {
-	Handle uint64
-}
-
-func (*ResetSession) GetMessageName() string {
-	return "reset_session"
-}
-func (*ResetSession) GetCrcString() string {
-	return "7279205b"
-}
-func (*ResetSession) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ResetSessionReply represents VPP binary API message 'reset_session_reply':
-//
-//	"reset_session_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u64",
-//	    "handle"
-//	],
-//	{
-//	    "crc": "0xd6960a03"
-//	}
-//
-type ResetSessionReply struct {
-	Retval int32
-	Handle uint64
-}
-
-func (*ResetSessionReply) GetMessageName() string {
-	return "reset_session_reply"
-}
-func (*ResetSessionReply) GetCrcString() string {
-	return "d6960a03"
-}
-func (*ResetSessionReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BindSock represents VPP binary API message 'bind_sock':
-//
-//	"bind_sock",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "wrk_index"
-//	],
-//	[
-//	    "u32",
-//	    "vrf"
-//	],
-//	[
-//	    "u8",
-//	    "is_ip4"
-//	],
-//	[
-//	    "u8",
-//	    "ip",
-//	    16
-//	],
-//	[
-//	    "u16",
-//	    "port"
-//	],
-//	[
-//	    "u8",
-//	    "proto"
-//	],
-//	[
-//	    "u64",
-//	    "options",
-//	    16
-//	],
-//	{
-//	    "crc": "0x0394633f"
-//	}
-//
-type BindSock struct {
-	WrkIndex uint32
-	Vrf      uint32
-	IsIP4    uint8
-	IP       []byte `struc:"[16]byte"`
-	Port     uint16
-	Proto    uint8
-	Options  []uint64 `struc:"[16]uint64"`
-}
-
-func (*BindSock) GetMessageName() string {
-	return "bind_sock"
-}
-func (*BindSock) GetCrcString() string {
-	return "0394633f"
-}
-func (*BindSock) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// UnbindSock represents VPP binary API message 'unbind_sock':
-//
-//	"unbind_sock",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "wrk_index"
-//	],
-//	[
-//	    "u64",
-//	    "handle"
-//	],
-//	{
-//	    "crc": "0x08880908"
-//	}
-//
-type UnbindSock struct {
-	WrkIndex uint32
-	Handle   uint64
-}
-
-func (*UnbindSock) GetMessageName() string {
-	return "unbind_sock"
-}
-func (*UnbindSock) GetCrcString() string {
-	return "08880908"
-}
-func (*UnbindSock) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// UnbindSockReply represents VPP binary API message 'unbind_sock_reply':
-//
-//	"unbind_sock_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type UnbindSockReply struct {
-	Retval int32
-}
-
-func (*UnbindSockReply) GetMessageName() string {
-	return "unbind_sock_reply"
-}
-func (*UnbindSockReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*UnbindSockReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// ConnectSock represents VPP binary API message 'connect_sock':
-//
-//	"connect_sock",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "wrk_index"
-//	],
-//	[
-//	    "u64",
-//	    "client_queue_address"
-//	],
-//	[
-//	    "u64",
-//	    "options",
-//	    16
-//	],
-//	[
-//	    "u32",
-//	    "vrf"
-//	],
-//	[
-//	    "u8",
-//	    "is_ip4"
-//	],
-//	[
-//	    "u8",
-//	    "ip",
-//	    16
-//	],
-//	[
-//	    "u16",
-//	    "port"
-//	],
-//	[
-//	    "u8",
-//	    "proto"
-//	],
-//	[
-//	    "u8",
-//	    "hostname_len"
-//	],
-//	[
-//	    "u8",
-//	    "hostname",
-//	    0,
-//	    "hostname_len"
-//	],
-//	{
-//	    "crc": "0xa916aa77"
-//	}
-//
-type ConnectSock struct {
-	WrkIndex           uint32
-	ClientQueueAddress uint64
-	Options            []uint64 `struc:"[16]uint64"`
-	Vrf                uint32
-	IsIP4              uint8
-	IP                 []byte `struc:"[16]byte"`
-	Port               uint16
-	Proto              uint8
-	HostnameLen        uint8 `struc:"sizeof=Hostname"`
-	Hostname           []byte
-}
-
-func (*ConnectSock) GetMessageName() string {
-	return "connect_sock"
-}
-func (*ConnectSock) GetCrcString() string {
-	return "a916aa77"
-}
-func (*ConnectSock) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// ConnectSockReply represents VPP binary API message 'connect_sock_reply':
-//
-//	"connect_sock_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	{
-//	    "crc": "0xe8d4e804"
-//	}
-//
-type ConnectSockReply struct {
-	Retval int32
-}
-
-func (*ConnectSockReply) GetMessageName() string {
-	return "connect_sock_reply"
-}
-func (*ConnectSockReply) GetCrcString() string {
-	return "e8d4e804"
-}
-func (*ConnectSockReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// BindSockReply represents VPP binary API message 'bind_sock_reply':
-//
-//	"bind_sock_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u64",
-//	    "handle"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u8",
-//	    "lcl_is_ip4"
-//	],
-//	[
-//	    "u8",
-//	    "lcl_ip",
-//	    16
-//	],
-//	[
-//	    "u16",
-//	    "lcl_port"
-//	],
-//	[
-//	    "u64",
-//	    "rx_fifo"
-//	],
-//	[
-//	    "u64",
-//	    "tx_fifo"
-//	],
-//	[
-//	    "u64",
-//	    "vpp_evt_q"
-//	],
-//	[
-//	    "u32",
-//	    "segment_size"
-//	],
-//	[
-//	    "u8",
-//	    "segment_name_length"
-//	],
-//	[
-//	    "u8",
-//	    "segment_name",
-//	    128
-//	],
-//	{
-//	    "crc": "0x5ca8f50a"
-//	}
-//
-type BindSockReply struct {
-	Handle            uint64
-	Retval            int32
-	LclIsIP4          uint8
-	LclIP             []byte `struc:"[16]byte"`
-	LclPort           uint16
-	RxFifo            uint64
-	TxFifo            uint64
-	VppEvtQ           uint64
-	SegmentSize       uint32
-	SegmentNameLength uint8
-	SegmentName       []byte `struc:"[128]byte"`
-}
-
-func (*BindSockReply) GetMessageName() string {
-	return "bind_sock_reply"
-}
-func (*BindSockReply) GetCrcString() string {
-	return "5ca8f50a"
-}
-func (*BindSockReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -1634,9 +1292,9 @@ func (*ConnectSessionReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// AppCutThroughRegistrationAdd represents VPP binary API message 'app_cut_through_registration_add':
+// ConnectSock represents VPP binary API message 'connect_sock':
 //
-//	"app_cut_through_registration_add",
+//	"connect_sock",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1650,50 +1308,79 @@ func (*ConnectSessionReply) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "u64",
-//	    "evt_q_address"
-//	],
-//	[
-//	    "u64",
-//	    "peer_evt_q_address"
-//	],
-//	[
 //	    "u32",
 //	    "wrk_index"
 //	],
 //	[
-//	    "u8",
-//	    "n_fds"
+//	    "u64",
+//	    "client_queue_address"
+//	],
+//	[
+//	    "u64",
+//	    "options",
+//	    16
+//	],
+//	[
+//	    "u32",
+//	    "vrf"
 //	],
 //	[
 //	    "u8",
-//	    "fd_flags"
+//	    "is_ip4"
+//	],
+//	[
+//	    "u8",
+//	    "ip",
+//	    16
+//	],
+//	[
+//	    "u16",
+//	    "port"
+//	],
+//	[
+//	    "u8",
+//	    "proto"
+//	],
+//	[
+//	    "u8",
+//	    "hostname_len"
+//	],
+//	[
+//	    "u8",
+//	    "hostname",
+//	    0,
+//	    "hostname_len"
 //	],
 //	{
-//	    "crc": "0x6d73b1b9"
+//	    "crc": "0xa916aa77"
 //	}
 //
-type AppCutThroughRegistrationAdd struct {
-	EvtQAddress     uint64
-	PeerEvtQAddress uint64
-	WrkIndex        uint32
-	NFds            uint8
-	FdFlags         uint8
+type ConnectSock struct {
+	WrkIndex           uint32
+	ClientQueueAddress uint64
+	Options            []uint64 `struc:"[16]uint64"`
+	Vrf                uint32
+	IsIP4              uint8
+	IP                 []byte `struc:"[16]byte"`
+	Port               uint16
+	Proto              uint8
+	HostnameLen        uint8 `struc:"sizeof=Hostname"`
+	Hostname           []byte
 }
 
-func (*AppCutThroughRegistrationAdd) GetMessageName() string {
-	return "app_cut_through_registration_add"
+func (*ConnectSock) GetMessageName() string {
+	return "connect_sock"
 }
-func (*AppCutThroughRegistrationAdd) GetCrcString() string {
-	return "6d73b1b9"
+func (*ConnectSock) GetCrcString() string {
+	return "a916aa77"
 }
-func (*AppCutThroughRegistrationAdd) GetMessageType() api.MessageType {
+func (*ConnectSock) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// AppCutThroughRegistrationAddReply represents VPP binary API message 'app_cut_through_registration_add_reply':
+// ConnectSockReply represents VPP binary API message 'connect_sock_reply':
 //
-//	"app_cut_through_registration_add_reply",
+//	"connect_sock_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1710,23 +1397,23 @@ func (*AppCutThroughRegistrationAdd) GetMessageType() api.MessageType {
 //	    "crc": "0xe8d4e804"
 //	}
 //
-type AppCutThroughRegistrationAddReply struct {
+type ConnectSockReply struct {
 	Retval int32
 }
 
-func (*AppCutThroughRegistrationAddReply) GetMessageName() string {
-	return "app_cut_through_registration_add_reply"
+func (*ConnectSockReply) GetMessageName() string {
+	return "connect_sock_reply"
 }
-func (*AppCutThroughRegistrationAddReply) GetCrcString() string {
+func (*ConnectSockReply) GetCrcString() string {
 	return "e8d4e804"
 }
-func (*AppCutThroughRegistrationAddReply) GetMessageType() api.MessageType {
+func (*ConnectSockReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// AppWorkerAddDel represents VPP binary API message 'app_worker_add_del':
+// ConnectURI represents VPP binary API message 'connect_uri':
 //
-//	"app_worker_add_del",
+//	"connect_uri",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1740,40 +1427,112 @@ func (*AppCutThroughRegistrationAddReply) GetMessageType() api.MessageType {
 //	    "context"
 //	],
 //	[
-//	    "u32",
-//	    "app_index"
+//	    "u64",
+//	    "client_queue_address"
 //	],
 //	[
-//	    "u32",
-//	    "wrk_index"
+//	    "u64",
+//	    "options",
+//	    16
 //	],
 //	[
 //	    "u8",
-//	    "is_add"
+//	    "uri",
+//	    128
 //	],
 //	{
-//	    "crc": "0x6d2b2279"
+//	    "crc": "0xa36143d6"
 //	}
 //
-type AppWorkerAddDel struct {
-	AppIndex uint32
-	WrkIndex uint32
-	IsAdd    uint8
+type ConnectURI struct {
+	ClientQueueAddress uint64
+	Options            []uint64 `struc:"[16]uint64"`
+	URI                []byte   `struc:"[128]byte"`
 }
 
-func (*AppWorkerAddDel) GetMessageName() string {
-	return "app_worker_add_del"
+func (*ConnectURI) GetMessageName() string {
+	return "connect_uri"
 }
-func (*AppWorkerAddDel) GetCrcString() string {
-	return "6d2b2279"
+func (*ConnectURI) GetCrcString() string {
+	return "a36143d6"
 }
-func (*AppWorkerAddDel) GetMessageType() api.MessageType {
+func (*ConnectURI) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
-// AppWorkerAddDelReply represents VPP binary API message 'app_worker_add_del_reply':
+// ConnectURIReply represents VPP binary API message 'connect_uri_reply':
 //
-//	"app_worker_add_del_reply",
+//	"connect_uri_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type ConnectURIReply struct {
+	Retval int32
+}
+
+func (*ConnectURIReply) GetMessageName() string {
+	return "connect_uri_reply"
+}
+func (*ConnectURIReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*ConnectURIReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// DisconnectSession represents VPP binary API message 'disconnect_session':
+//
+//	"disconnect_session",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u64",
+//	    "handle"
+//	],
+//	{
+//	    "crc": "0x7279205b"
+//	}
+//
+type DisconnectSession struct {
+	Handle uint64
+}
+
+func (*DisconnectSession) GetMessageName() string {
+	return "disconnect_session"
+}
+func (*DisconnectSession) GetCrcString() string {
+	return "7279205b"
+}
+func (*DisconnectSession) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// DisconnectSessionReply represents VPP binary API message 'disconnect_session_reply':
+//
+//	"disconnect_session_reply",
 //	[
 //	    "u16",
 //	    "_vl_msg_id"
@@ -1787,24 +1546,50 @@ func (*AppWorkerAddDel) GetMessageType() api.MessageType {
 //	    "retval"
 //	],
 //	[
-//	    "u32",
-//	    "wrk_index"
-//	],
-//	[
 //	    "u64",
-//	    "app_event_queue_address"
+//	    "handle"
+//	],
+//	{
+//	    "crc": "0xd6960a03"
+//	}
+//
+type DisconnectSessionReply struct {
+	Retval int32
+	Handle uint64
+}
+
+func (*DisconnectSessionReply) GetMessageName() string {
+	return "disconnect_session_reply"
+}
+func (*DisconnectSessionReply) GetCrcString() string {
+	return "d6960a03"
+}
+func (*DisconnectSessionReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// MapAnotherSegment represents VPP binary API message 'map_another_segment':
+//
+//	"map_another_segment",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
 //	],
 //	[
-//	    "u8",
-//	    "n_fds"
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
 //	],
 //	[
 //	    "u8",
 //	    "fd_flags"
 //	],
 //	[
-//	    "u8",
-//	    "segment_name_length"
+//	    "u32",
+//	    "segment_size"
 //	],
 //	[
 //	    "u8",
@@ -1815,33 +1600,132 @@ func (*AppWorkerAddDel) GetMessageType() api.MessageType {
 //	    "u64",
 //	    "segment_handle"
 //	],
-//	[
-//	    "u8",
-//	    "is_add"
-//	],
 //	{
-//	    "crc": "0x56b21abc"
+//	    "crc": "0xdc2d630b"
 //	}
 //
-type AppWorkerAddDelReply struct {
-	Retval               int32
-	WrkIndex             uint32
-	AppEventQueueAddress uint64
-	NFds                 uint8
-	FdFlags              uint8
-	SegmentNameLength    uint8
-	SegmentName          []byte `struc:"[128]byte"`
-	SegmentHandle        uint64
-	IsAdd                uint8
+type MapAnotherSegment struct {
+	FdFlags       uint8
+	SegmentSize   uint32
+	SegmentName   []byte `struc:"[128]byte"`
+	SegmentHandle uint64
 }
 
-func (*AppWorkerAddDelReply) GetMessageName() string {
-	return "app_worker_add_del_reply"
+func (*MapAnotherSegment) GetMessageName() string {
+	return "map_another_segment"
 }
-func (*AppWorkerAddDelReply) GetCrcString() string {
-	return "56b21abc"
+func (*MapAnotherSegment) GetCrcString() string {
+	return "dc2d630b"
 }
-func (*AppWorkerAddDelReply) GetMessageType() api.MessageType {
+func (*MapAnotherSegment) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// MapAnotherSegmentReply represents VPP binary API message 'map_another_segment_reply':
+//
+//	"map_another_segment_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type MapAnotherSegmentReply struct {
+	Retval int32
+}
+
+func (*MapAnotherSegmentReply) GetMessageName() string {
+	return "map_another_segment_reply"
+}
+func (*MapAnotherSegmentReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*MapAnotherSegmentReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// ResetSession represents VPP binary API message 'reset_session':
+//
+//	"reset_session",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u64",
+//	    "handle"
+//	],
+//	{
+//	    "crc": "0x7279205b"
+//	}
+//
+type ResetSession struct {
+	Handle uint64
+}
+
+func (*ResetSession) GetMessageName() string {
+	return "reset_session"
+}
+func (*ResetSession) GetCrcString() string {
+	return "7279205b"
+}
+func (*ResetSession) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// ResetSessionReply represents VPP binary API message 'reset_session_reply':
+//
+//	"reset_session_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	[
+//	    "u64",
+//	    "handle"
+//	],
+//	{
+//	    "crc": "0xd6960a03"
+//	}
+//
+type ResetSessionReply struct {
+	Retval int32
+	Handle uint64
+}
+
+func (*ResetSessionReply) GetMessageName() string {
+	return "reset_session_reply"
+}
+func (*ResetSessionReply) GetCrcString() string {
+	return "d6960a03"
+}
+func (*ResetSessionReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -1912,107 +1796,6 @@ func (*SessionEnableDisableReply) GetCrcString() string {
 	return "e8d4e804"
 }
 func (*SessionEnableDisableReply) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
-// AppNamespaceAddDel represents VPP binary API message 'app_namespace_add_del':
-//
-//	"app_namespace_add_del",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u64",
-//	    "secret"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "ip4_fib_id"
-//	],
-//	[
-//	    "u32",
-//	    "ip6_fib_id"
-//	],
-//	[
-//	    "u8",
-//	    "namespace_id_len"
-//	],
-//	[
-//	    "u8",
-//	    "namespace_id",
-//	    64
-//	],
-//	{
-//	    "crc": "0xdd074c65"
-//	}
-//
-type AppNamespaceAddDel struct {
-	Secret         uint64
-	SwIfIndex      uint32
-	IP4FibID       uint32
-	IP6FibID       uint32
-	NamespaceIDLen uint8
-	NamespaceID    []byte `struc:"[64]byte"`
-}
-
-func (*AppNamespaceAddDel) GetMessageName() string {
-	return "app_namespace_add_del"
-}
-func (*AppNamespaceAddDel) GetCrcString() string {
-	return "dd074c65"
-}
-func (*AppNamespaceAddDel) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// AppNamespaceAddDelReply represents VPP binary API message 'app_namespace_add_del_reply':
-//
-//	"app_namespace_add_del_reply",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "i32",
-//	    "retval"
-//	],
-//	[
-//	    "u32",
-//	    "appns_index"
-//	],
-//	{
-//	    "crc": "0x85137120"
-//	}
-//
-type AppNamespaceAddDelReply struct {
-	Retval     int32
-	AppnsIndex uint32
-}
-
-func (*AppNamespaceAddDelReply) GetMessageName() string {
-	return "app_namespace_add_del_reply"
-}
-func (*AppNamespaceAddDelReply) GetCrcString() string {
-	return "85137120"
-}
-func (*AppNamespaceAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
@@ -2149,37 +1932,6 @@ func (*SessionRuleAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// SessionRulesDump represents VPP binary API message 'session_rules_dump':
-//
-//	"session_rules_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type SessionRulesDump struct{}
-
-func (*SessionRulesDump) GetMessageName() string {
-	return "session_rules_dump"
-}
-func (*SessionRulesDump) GetCrcString() string {
-	return "51077d14"
-}
-func (*SessionRulesDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // SessionRulesDetails represents VPP binary API message 'session_rules_details':
 //
 //	"session_rules_details",
@@ -2271,49 +2023,296 @@ func (*SessionRulesDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// SessionRulesDump represents VPP binary API message 'session_rules_dump':
+//
+//	"session_rules_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type SessionRulesDump struct{}
+
+func (*SessionRulesDump) GetMessageName() string {
+	return "session_rules_dump"
+}
+func (*SessionRulesDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*SessionRulesDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// UnbindSock represents VPP binary API message 'unbind_sock':
+//
+//	"unbind_sock",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "wrk_index"
+//	],
+//	[
+//	    "u64",
+//	    "handle"
+//	],
+//	{
+//	    "crc": "0x08880908"
+//	}
+//
+type UnbindSock struct {
+	WrkIndex uint32
+	Handle   uint64
+}
+
+func (*UnbindSock) GetMessageName() string {
+	return "unbind_sock"
+}
+func (*UnbindSock) GetCrcString() string {
+	return "08880908"
+}
+func (*UnbindSock) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// UnbindSockReply represents VPP binary API message 'unbind_sock_reply':
+//
+//	"unbind_sock_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type UnbindSockReply struct {
+	Retval int32
+}
+
+func (*UnbindSockReply) GetMessageName() string {
+	return "unbind_sock_reply"
+}
+func (*UnbindSockReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*UnbindSockReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// UnbindURI represents VPP binary API message 'unbind_uri':
+//
+//	"unbind_uri",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "uri",
+//	    128
+//	],
+//	{
+//	    "crc": "0x294cf07d"
+//	}
+//
+type UnbindURI struct {
+	URI []byte `struc:"[128]byte"`
+}
+
+func (*UnbindURI) GetMessageName() string {
+	return "unbind_uri"
+}
+func (*UnbindURI) GetCrcString() string {
+	return "294cf07d"
+}
+func (*UnbindURI) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// UnbindURIReply represents VPP binary API message 'unbind_uri_reply':
+//
+//	"unbind_uri_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type UnbindURIReply struct {
+	Retval int32
+}
+
+func (*UnbindURIReply) GetMessageName() string {
+	return "unbind_uri_reply"
+}
+func (*UnbindURIReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*UnbindURIReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// UnmapSegment represents VPP binary API message 'unmap_segment':
+//
+//	"unmap_segment",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u64",
+//	    "segment_handle"
+//	],
+//	{
+//	    "crc": "0xf77096f6"
+//	}
+//
+type UnmapSegment struct {
+	SegmentHandle uint64
+}
+
+func (*UnmapSegment) GetMessageName() string {
+	return "unmap_segment"
+}
+func (*UnmapSegment) GetCrcString() string {
+	return "f77096f6"
+}
+func (*UnmapSegment) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// UnmapSegmentReply represents VPP binary API message 'unmap_segment_reply':
+//
+//	"unmap_segment_reply",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "i32",
+//	    "retval"
+//	],
+//	{
+//	    "crc": "0xe8d4e804"
+//	}
+//
+type UnmapSegmentReply struct {
+	Retval int32
+}
+
+func (*UnmapSegmentReply) GetMessageName() string {
+	return "unmap_segment_reply"
+}
+func (*UnmapSegmentReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*UnmapSegmentReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 func init() {
+	api.RegisterMessage((*AcceptSession)(nil), "session.AcceptSession")
+	api.RegisterMessage((*AcceptSessionReply)(nil), "session.AcceptSessionReply")
+	api.RegisterMessage((*AppCutThroughRegistrationAdd)(nil), "session.AppCutThroughRegistrationAdd")
+	api.RegisterMessage((*AppCutThroughRegistrationAddReply)(nil), "session.AppCutThroughRegistrationAddReply")
+	api.RegisterMessage((*AppNamespaceAddDel)(nil), "session.AppNamespaceAddDel")
+	api.RegisterMessage((*AppNamespaceAddDelReply)(nil), "session.AppNamespaceAddDelReply")
+	api.RegisterMessage((*AppWorkerAddDel)(nil), "session.AppWorkerAddDel")
+	api.RegisterMessage((*AppWorkerAddDelReply)(nil), "session.AppWorkerAddDelReply")
 	api.RegisterMessage((*ApplicationAttach)(nil), "session.ApplicationAttach")
 	api.RegisterMessage((*ApplicationAttachReply)(nil), "session.ApplicationAttachReply")
+	api.RegisterMessage((*ApplicationDetach)(nil), "session.ApplicationDetach")
+	api.RegisterMessage((*ApplicationDetachReply)(nil), "session.ApplicationDetachReply")
 	api.RegisterMessage((*ApplicationTLSCertAdd)(nil), "session.ApplicationTLSCertAdd")
 	api.RegisterMessage((*ApplicationTLSCertAddReply)(nil), "session.ApplicationTLSCertAddReply")
 	api.RegisterMessage((*ApplicationTLSKeyAdd)(nil), "session.ApplicationTLSKeyAdd")
 	api.RegisterMessage((*ApplicationTLSKeyAddReply)(nil), "session.ApplicationTLSKeyAddReply")
-	api.RegisterMessage((*ApplicationDetach)(nil), "session.ApplicationDetach")
-	api.RegisterMessage((*ApplicationDetachReply)(nil), "session.ApplicationDetachReply")
-	api.RegisterMessage((*MapAnotherSegment)(nil), "session.MapAnotherSegment")
-	api.RegisterMessage((*MapAnotherSegmentReply)(nil), "session.MapAnotherSegmentReply")
-	api.RegisterMessage((*UnmapSegment)(nil), "session.UnmapSegment")
-	api.RegisterMessage((*UnmapSegmentReply)(nil), "session.UnmapSegmentReply")
+	api.RegisterMessage((*BindSock)(nil), "session.BindSock")
+	api.RegisterMessage((*BindSockReply)(nil), "session.BindSockReply")
 	api.RegisterMessage((*BindURI)(nil), "session.BindURI")
 	api.RegisterMessage((*BindURIReply)(nil), "session.BindURIReply")
-	api.RegisterMessage((*UnbindURI)(nil), "session.UnbindURI")
-	api.RegisterMessage((*UnbindURIReply)(nil), "session.UnbindURIReply")
-	api.RegisterMessage((*ConnectURI)(nil), "session.ConnectURI")
-	api.RegisterMessage((*ConnectURIReply)(nil), "session.ConnectURIReply")
-	api.RegisterMessage((*AcceptSession)(nil), "session.AcceptSession")
-	api.RegisterMessage((*AcceptSessionReply)(nil), "session.AcceptSessionReply")
-	api.RegisterMessage((*DisconnectSession)(nil), "session.DisconnectSession")
-	api.RegisterMessage((*DisconnectSessionReply)(nil), "session.DisconnectSessionReply")
-	api.RegisterMessage((*ResetSession)(nil), "session.ResetSession")
-	api.RegisterMessage((*ResetSessionReply)(nil), "session.ResetSessionReply")
-	api.RegisterMessage((*BindSock)(nil), "session.BindSock")
-	api.RegisterMessage((*UnbindSock)(nil), "session.UnbindSock")
-	api.RegisterMessage((*UnbindSockReply)(nil), "session.UnbindSockReply")
-	api.RegisterMessage((*ConnectSock)(nil), "session.ConnectSock")
-	api.RegisterMessage((*ConnectSockReply)(nil), "session.ConnectSockReply")
-	api.RegisterMessage((*BindSockReply)(nil), "session.BindSockReply")
 	api.RegisterMessage((*ConnectSession)(nil), "session.ConnectSession")
 	api.RegisterMessage((*ConnectSessionReply)(nil), "session.ConnectSessionReply")
-	api.RegisterMessage((*AppCutThroughRegistrationAdd)(nil), "session.AppCutThroughRegistrationAdd")
-	api.RegisterMessage((*AppCutThroughRegistrationAddReply)(nil), "session.AppCutThroughRegistrationAddReply")
-	api.RegisterMessage((*AppWorkerAddDel)(nil), "session.AppWorkerAddDel")
-	api.RegisterMessage((*AppWorkerAddDelReply)(nil), "session.AppWorkerAddDelReply")
+	api.RegisterMessage((*ConnectSock)(nil), "session.ConnectSock")
+	api.RegisterMessage((*ConnectSockReply)(nil), "session.ConnectSockReply")
+	api.RegisterMessage((*ConnectURI)(nil), "session.ConnectURI")
+	api.RegisterMessage((*ConnectURIReply)(nil), "session.ConnectURIReply")
+	api.RegisterMessage((*DisconnectSession)(nil), "session.DisconnectSession")
+	api.RegisterMessage((*DisconnectSessionReply)(nil), "session.DisconnectSessionReply")
+	api.RegisterMessage((*MapAnotherSegment)(nil), "session.MapAnotherSegment")
+	api.RegisterMessage((*MapAnotherSegmentReply)(nil), "session.MapAnotherSegmentReply")
+	api.RegisterMessage((*ResetSession)(nil), "session.ResetSession")
+	api.RegisterMessage((*ResetSessionReply)(nil), "session.ResetSessionReply")
 	api.RegisterMessage((*SessionEnableDisable)(nil), "session.SessionEnableDisable")
 	api.RegisterMessage((*SessionEnableDisableReply)(nil), "session.SessionEnableDisableReply")
-	api.RegisterMessage((*AppNamespaceAddDel)(nil), "session.AppNamespaceAddDel")
-	api.RegisterMessage((*AppNamespaceAddDelReply)(nil), "session.AppNamespaceAddDelReply")
 	api.RegisterMessage((*SessionRuleAddDel)(nil), "session.SessionRuleAddDel")
 	api.RegisterMessage((*SessionRuleAddDelReply)(nil), "session.SessionRuleAddDelReply")
-	api.RegisterMessage((*SessionRulesDump)(nil), "session.SessionRulesDump")
 	api.RegisterMessage((*SessionRulesDetails)(nil), "session.SessionRulesDetails")
+	api.RegisterMessage((*SessionRulesDump)(nil), "session.SessionRulesDump")
+	api.RegisterMessage((*UnbindSock)(nil), "session.UnbindSock")
+	api.RegisterMessage((*UnbindSockReply)(nil), "session.UnbindSockReply")
+	api.RegisterMessage((*UnbindURI)(nil), "session.UnbindURI")
+	api.RegisterMessage((*UnbindURIReply)(nil), "session.UnbindURIReply")
+	api.RegisterMessage((*UnmapSegment)(nil), "session.UnmapSegment")
+	api.RegisterMessage((*UnmapSegmentReply)(nil), "session.UnmapSegmentReply")
 }

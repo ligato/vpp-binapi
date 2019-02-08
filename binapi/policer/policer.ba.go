@@ -5,9 +5,8 @@
  Package policer is a generated from VPP binary API module 'policer'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package policer
 
@@ -193,49 +192,6 @@ func (*PolicerAddDelReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// PolicerDump represents VPP binary API message 'policer_dump':
-//
-//	"policer_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u8",
-//	    "match_name_valid"
-//	],
-//	[
-//	    "u8",
-//	    "match_name",
-//	    64
-//	],
-//	{
-//	    "crc": "0x8be04d34"
-//	}
-//
-type PolicerDump struct {
-	MatchNameValid uint8
-	MatchName      []byte `struc:"[64]byte"`
-}
-
-func (*PolicerDump) GetMessageName() string {
-	return "policer_dump"
-}
-func (*PolicerDump) GetCrcString() string {
-	return "8be04d34"
-}
-func (*PolicerDump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
 // PolicerDetails represents VPP binary API message 'policer_details':
 //
 //	"policer_details",
@@ -385,9 +341,52 @@ func (*PolicerDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// PolicerDump represents VPP binary API message 'policer_dump':
+//
+//	"policer_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u8",
+//	    "match_name_valid"
+//	],
+//	[
+//	    "u8",
+//	    "match_name",
+//	    64
+//	],
+//	{
+//	    "crc": "0x8be04d34"
+//	}
+//
+type PolicerDump struct {
+	MatchNameValid uint8
+	MatchName      []byte `struc:"[64]byte"`
+}
+
+func (*PolicerDump) GetMessageName() string {
+	return "policer_dump"
+}
+func (*PolicerDump) GetCrcString() string {
+	return "8be04d34"
+}
+func (*PolicerDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 func init() {
 	api.RegisterMessage((*PolicerAddDel)(nil), "policer.PolicerAddDel")
 	api.RegisterMessage((*PolicerAddDelReply)(nil), "policer.PolicerAddDelReply")
-	api.RegisterMessage((*PolicerDump)(nil), "policer.PolicerDump")
 	api.RegisterMessage((*PolicerDetails)(nil), "policer.PolicerDetails")
+	api.RegisterMessage((*PolicerDump)(nil), "policer.PolicerDump")
 }

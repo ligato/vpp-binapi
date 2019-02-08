@@ -5,9 +5,8 @@
  Package cop is a generated from VPP binary API module 'cop'.
 
  It contains following objects:
-	  4 messages
 	  2 services
-
+	  4 messages
 */
 package cop
 

@@ -5,9 +5,8 @@
  Package tapv2 is a generated from VPP binary API module 'tapv2'.
 
  It contains following objects:
-	  6 messages
 	  3 services
-
+	  6 messages
 */
 package tapv2
 
@@ -45,6 +44,142 @@ type Services interface {
 }
 
 /* Messages */
+
+// SwInterfaceTapV2Details represents VPP binary API message 'sw_interface_tap_v2_details':
+//
+//	"sw_interface_tap_v2_details",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	[
+//	    "u32",
+//	    "sw_if_index"
+//	],
+//	[
+//	    "u32",
+//	    "id"
+//	],
+//	[
+//	    "u8",
+//	    "dev_name",
+//	    64
+//	],
+//	[
+//	    "u16",
+//	    "tx_ring_sz"
+//	],
+//	[
+//	    "u16",
+//	    "rx_ring_sz"
+//	],
+//	[
+//	    "u8",
+//	    "host_mac_addr",
+//	    6
+//	],
+//	[
+//	    "u8",
+//	    "host_if_name",
+//	    64
+//	],
+//	[
+//	    "u8",
+//	    "host_namespace",
+//	    64
+//	],
+//	[
+//	    "u8",
+//	    "host_bridge",
+//	    64
+//	],
+//	[
+//	    "u8",
+//	    "host_ip4_addr",
+//	    4
+//	],
+//	[
+//	    "u8",
+//	    "host_ip4_prefix_len"
+//	],
+//	[
+//	    "u8",
+//	    "host_ip6_addr",
+//	    16
+//	],
+//	[
+//	    "u8",
+//	    "host_ip6_prefix_len"
+//	],
+//	[
+//	    "u32",
+//	    "tap_flags"
+//	],
+//	{
+//	    "crc": "0x73dbc2d2"
+//	}
+//
+type SwInterfaceTapV2Details struct {
+	SwIfIndex        uint32
+	ID               uint32
+	DevName          []byte `struc:"[64]byte"`
+	TxRingSz         uint16
+	RxRingSz         uint16
+	HostMacAddr      []byte `struc:"[6]byte"`
+	HostIfName       []byte `struc:"[64]byte"`
+	HostNamespace    []byte `struc:"[64]byte"`
+	HostBridge       []byte `struc:"[64]byte"`
+	HostIP4Addr      []byte `struc:"[4]byte"`
+	HostIP4PrefixLen uint8
+	HostIP6Addr      []byte `struc:"[16]byte"`
+	HostIP6PrefixLen uint8
+	TapFlags         uint32
+}
+
+func (*SwInterfaceTapV2Details) GetMessageName() string {
+	return "sw_interface_tap_v2_details"
+}
+func (*SwInterfaceTapV2Details) GetCrcString() string {
+	return "73dbc2d2"
+}
+func (*SwInterfaceTapV2Details) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// SwInterfaceTapV2Dump represents VPP binary API message 'sw_interface_tap_v2_dump':
+//
+//	"sw_interface_tap_v2_dump",
+//	[
+//	    "u16",
+//	    "_vl_msg_id"
+//	],
+//	[
+//	    "u32",
+//	    "client_index"
+//	],
+//	[
+//	    "u32",
+//	    "context"
+//	],
+//	{
+//	    "crc": "0x51077d14"
+//	}
+//
+type SwInterfaceTapV2Dump struct{}
+
+func (*SwInterfaceTapV2Dump) GetMessageName() string {
+	return "sw_interface_tap_v2_dump"
+}
+func (*SwInterfaceTapV2Dump) GetCrcString() string {
+	return "51077d14"
+}
+func (*SwInterfaceTapV2Dump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
 
 // TapCreateV2 represents VPP binary API message 'tap_create_v2':
 //
@@ -321,147 +456,11 @@ func (*TapDeleteV2Reply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
-// SwInterfaceTapV2Dump represents VPP binary API message 'sw_interface_tap_v2_dump':
-//
-//	"sw_interface_tap_v2_dump",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "client_index"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	{
-//	    "crc": "0x51077d14"
-//	}
-//
-type SwInterfaceTapV2Dump struct{}
-
-func (*SwInterfaceTapV2Dump) GetMessageName() string {
-	return "sw_interface_tap_v2_dump"
-}
-func (*SwInterfaceTapV2Dump) GetCrcString() string {
-	return "51077d14"
-}
-func (*SwInterfaceTapV2Dump) GetMessageType() api.MessageType {
-	return api.RequestMessage
-}
-
-// SwInterfaceTapV2Details represents VPP binary API message 'sw_interface_tap_v2_details':
-//
-//	"sw_interface_tap_v2_details",
-//	[
-//	    "u16",
-//	    "_vl_msg_id"
-//	],
-//	[
-//	    "u32",
-//	    "context"
-//	],
-//	[
-//	    "u32",
-//	    "sw_if_index"
-//	],
-//	[
-//	    "u32",
-//	    "id"
-//	],
-//	[
-//	    "u8",
-//	    "dev_name",
-//	    64
-//	],
-//	[
-//	    "u16",
-//	    "tx_ring_sz"
-//	],
-//	[
-//	    "u16",
-//	    "rx_ring_sz"
-//	],
-//	[
-//	    "u8",
-//	    "host_mac_addr",
-//	    6
-//	],
-//	[
-//	    "u8",
-//	    "host_if_name",
-//	    64
-//	],
-//	[
-//	    "u8",
-//	    "host_namespace",
-//	    64
-//	],
-//	[
-//	    "u8",
-//	    "host_bridge",
-//	    64
-//	],
-//	[
-//	    "u8",
-//	    "host_ip4_addr",
-//	    4
-//	],
-//	[
-//	    "u8",
-//	    "host_ip4_prefix_len"
-//	],
-//	[
-//	    "u8",
-//	    "host_ip6_addr",
-//	    16
-//	],
-//	[
-//	    "u8",
-//	    "host_ip6_prefix_len"
-//	],
-//	[
-//	    "u32",
-//	    "tap_flags"
-//	],
-//	{
-//	    "crc": "0x73dbc2d2"
-//	}
-//
-type SwInterfaceTapV2Details struct {
-	SwIfIndex        uint32
-	ID               uint32
-	DevName          []byte `struc:"[64]byte"`
-	TxRingSz         uint16
-	RxRingSz         uint16
-	HostMacAddr      []byte `struc:"[6]byte"`
-	HostIfName       []byte `struc:"[64]byte"`
-	HostNamespace    []byte `struc:"[64]byte"`
-	HostBridge       []byte `struc:"[64]byte"`
-	HostIP4Addr      []byte `struc:"[4]byte"`
-	HostIP4PrefixLen uint8
-	HostIP6Addr      []byte `struc:"[16]byte"`
-	HostIP6PrefixLen uint8
-	TapFlags         uint32
-}
-
-func (*SwInterfaceTapV2Details) GetMessageName() string {
-	return "sw_interface_tap_v2_details"
-}
-func (*SwInterfaceTapV2Details) GetCrcString() string {
-	return "73dbc2d2"
-}
-func (*SwInterfaceTapV2Details) GetMessageType() api.MessageType {
-	return api.ReplyMessage
-}
-
 func init() {
+	api.RegisterMessage((*SwInterfaceTapV2Details)(nil), "tapv2.SwInterfaceTapV2Details")
+	api.RegisterMessage((*SwInterfaceTapV2Dump)(nil), "tapv2.SwInterfaceTapV2Dump")
 	api.RegisterMessage((*TapCreateV2)(nil), "tapv2.TapCreateV2")
 	api.RegisterMessage((*TapCreateV2Reply)(nil), "tapv2.TapCreateV2Reply")
 	api.RegisterMessage((*TapDeleteV2)(nil), "tapv2.TapDeleteV2")
 	api.RegisterMessage((*TapDeleteV2Reply)(nil), "tapv2.TapDeleteV2Reply")
-	api.RegisterMessage((*SwInterfaceTapV2Dump)(nil), "tapv2.SwInterfaceTapV2Dump")
-	api.RegisterMessage((*SwInterfaceTapV2Details)(nil), "tapv2.SwInterfaceTapV2Details")
 }
