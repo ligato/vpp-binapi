@@ -1,0 +1,291 @@
+{
+    "types": [
+        [
+            "address",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "vl_api_address_union_t",
+                "un"
+            ]
+        ],
+        [
+            "prefix",
+            [
+                "vl_api_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "mprefix",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "u16",
+                "grp_address_length"
+            ],
+            [
+                "vl_api_address_union_t",
+                "grp_address"
+            ],
+            [
+                "vl_api_address_union_t",
+                "src_address"
+            ]
+        ],
+        [
+            "ip6_prefix",
+            [
+                "vl_api_ip6_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "ip4_prefix",
+            [
+                "vl_api_ip4_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "gre_tunnel",
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u16",
+                "session_id"
+            ],
+            [
+                "vl_api_gre_tunnel_type_t",
+                "type"
+            ],
+            [
+                "u32",
+                "instance"
+            ],
+            [
+                "u32",
+                "outer_fib_id"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "vl_api_address_t",
+                "src"
+            ],
+            [
+                "vl_api_address_t",
+                "dst"
+            ]
+        ]
+    ],
+    "messages": [
+        [
+            "gre_tunnel_add_del",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_add"
+            ],
+            [
+                "vl_api_gre_tunnel_t",
+                "tunnel"
+            ],
+            {
+                "crc": "0x04199f47"
+            }
+        ],
+        [
+            "gre_tunnel_add_del_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x903324db"
+            }
+        ],
+        [
+            "gre_tunnel_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0xd85aab0d"
+            }
+        ],
+        [
+            "gre_tunnel_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_gre_tunnel_t",
+                "tunnel"
+            ],
+            {
+                "crc": "0xfd0e1d36"
+            }
+        ]
+    ],
+    "unions": [
+        [
+            "address_union",
+            [
+                "vl_api_ip4_address_t",
+                "ip4"
+            ],
+            [
+                "vl_api_ip6_address_t",
+                "ip6"
+            ]
+        ]
+    ],
+    "enums": [
+        [
+            "address_family",
+            [
+                "ADDRESS_IP4",
+                0
+            ],
+            [
+                "ADDRESS_IP6",
+                1
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ip_proto",
+            [
+                "IP_API_PROTO_TCP",
+                6
+            ],
+            [
+                "IP_API_PROTO_UDP",
+                17
+            ],
+            [
+                "IP_API_PROTO_EIGRP",
+                88
+            ],
+            [
+                "IP_API_PROTO_OSPF",
+                89
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "gre_tunnel_type",
+            [
+                "GRE_API_TUNNEL_TYPE_L3",
+                0
+            ],
+            [
+                "GRE_API_TUNNEL_TYPE_TEB",
+                1
+            ],
+            [
+                "GRE_API_TUNNEL_TYPE_ERSPAN",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ]
+    ],
+    "services": {
+        "gre_tunnel_add_del": {
+            "reply": "gre_tunnel_add_del_reply"
+        },
+        "gre_tunnel_dump": {
+            "reply": "gre_tunnel_details",
+            "stream": true
+        }
+    },
+    "options": {
+        "version": "2.0.0"
+    },
+    "aliases": {
+        "interface_index": {
+            "type": "u32"
+        },
+        "ip4_address": {
+            "type": "u8",
+            "length": 4
+        },
+        "ip6_address": {
+            "type": "u8",
+            "length": 16
+        }
+    },
+    "vl_api_version": "0x660ad073"
+}

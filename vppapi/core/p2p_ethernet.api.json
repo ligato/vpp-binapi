@@ -1,0 +1,124 @@
+{
+    "types": [],
+    "messages": [
+        [
+            "p2p_ethernet_add",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "parent_if_index"
+            ],
+            [
+                "u32",
+                "subif_id"
+            ],
+            [
+                "vl_api_mac_address_t",
+                "remote_mac"
+            ],
+            {
+                "crc": "0x85f5000b"
+            }
+        ],
+        [
+            "p2p_ethernet_add_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x903324db"
+            }
+        ],
+        [
+            "p2p_ethernet_del",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "parent_if_index"
+            ],
+            [
+                "vl_api_mac_address_t",
+                "remote_mac"
+            ],
+            {
+                "crc": "0x1f90f942"
+            }
+        ],
+        [
+            "p2p_ethernet_del_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ]
+    ],
+    "unions": [],
+    "enums": [],
+    "services": {
+        "p2p_ethernet_add": {
+            "reply": "p2p_ethernet_add_reply"
+        },
+        "p2p_ethernet_del": {
+            "reply": "p2p_ethernet_del_reply"
+        }
+    },
+    "options": {
+        "version": "1.0.0"
+    },
+    "aliases": {
+        "interface_index": {
+            "type": "u32"
+        },
+        "mac_address": {
+            "type": "u8",
+            "length": 6
+        }
+    },
+    "vl_api_version": "0x12e9dc04"
+}

@@ -1,0 +1,414 @@
+{
+    "types": [
+        [
+            "address",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "vl_api_address_union_t",
+                "un"
+            ]
+        ],
+        [
+            "prefix",
+            [
+                "vl_api_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "mprefix",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "u16",
+                "grp_address_length"
+            ],
+            [
+                "vl_api_address_union_t",
+                "grp_address"
+            ],
+            [
+                "vl_api_address_union_t",
+                "src_address"
+            ]
+        ],
+        [
+            "ip6_prefix",
+            [
+                "vl_api_ip6_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "ip4_prefix",
+            [
+                "vl_api_ip4_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "ipip_tunnel",
+            [
+                "u32",
+                "instance"
+            ],
+            [
+                "vl_api_address_t",
+                "src"
+            ],
+            [
+                "vl_api_address_t",
+                "dst"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            [
+                "u32",
+                "table_id"
+            ],
+            [
+                "u8",
+                "tc_tos"
+            ]
+        ]
+    ],
+    "messages": [
+        [
+            "ipip_add_tunnel",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ipip_tunnel_t",
+                "tunnel"
+            ],
+            {
+                "crc": "0x3a82fd98"
+            }
+        ],
+        [
+            "ipip_add_tunnel_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x903324db"
+            }
+        ],
+        [
+            "ipip_del_tunnel",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0xd85aab0d"
+            }
+        ],
+        [
+            "ipip_del_tunnel_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "ipip_6rd_add_tunnel",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "ip6_table_id"
+            ],
+            [
+                "u32",
+                "ip4_table_id"
+            ],
+            [
+                "vl_api_ip6_prefix_t",
+                "ip6_prefix"
+            ],
+            [
+                "vl_api_ip4_prefix_t",
+                "ip4_prefix"
+            ],
+            [
+                "vl_api_ip4_address_t",
+                "ip4_src"
+            ],
+            [
+                "bool",
+                "security_check"
+            ],
+            [
+                "u8",
+                "tc_tos"
+            ],
+            {
+                "crc": "0x98df11ca"
+            }
+        ],
+        [
+            "ipip_6rd_add_tunnel_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x903324db"
+            }
+        ],
+        [
+            "ipip_6rd_del_tunnel",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0xd85aab0d"
+            }
+        ],
+        [
+            "ipip_6rd_del_tunnel_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "ipip_tunnel_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0xd85aab0d"
+            }
+        ],
+        [
+            "ipip_tunnel_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_ipip_tunnel_t",
+                "tunnel"
+            ],
+            {
+                "crc": "0x67f720e6"
+            }
+        ]
+    ],
+    "unions": [
+        [
+            "address_union",
+            [
+                "vl_api_ip4_address_t",
+                "ip4"
+            ],
+            [
+                "vl_api_ip6_address_t",
+                "ip6"
+            ]
+        ]
+    ],
+    "enums": [
+        [
+            "address_family",
+            [
+                "ADDRESS_IP4",
+                0
+            ],
+            [
+                "ADDRESS_IP6",
+                1
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ip_proto",
+            [
+                "IP_API_PROTO_TCP",
+                6
+            ],
+            [
+                "IP_API_PROTO_UDP",
+                17
+            ],
+            [
+                "IP_API_PROTO_EIGRP",
+                88
+            ],
+            [
+                "IP_API_PROTO_OSPF",
+                89
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ]
+    ],
+    "services": {
+        "ipip_add_tunnel": {
+            "reply": "ipip_add_tunnel_reply"
+        },
+        "ipip_del_tunnel": {
+            "reply": "ipip_del_tunnel_reply"
+        },
+        "ipip_6rd_add_tunnel": {
+            "reply": "ipip_6rd_add_tunnel_reply"
+        },
+        "ipip_6rd_del_tunnel": {
+            "reply": "ipip_6rd_del_tunnel_reply"
+        },
+        "ipip_tunnel_dump": {
+            "reply": "ipip_tunnel_details",
+            "stream": true
+        }
+    },
+    "options": {
+        "version": "1.2.0"
+    },
+    "aliases": {
+        "interface_index": {
+            "type": "u32"
+        },
+        "ip4_address": {
+            "type": "u8",
+            "length": 4
+        },
+        "ip6_address": {
+            "type": "u8",
+            "length": 16
+        }
+    },
+    "vl_api_version": "0x162a1897"
+}
