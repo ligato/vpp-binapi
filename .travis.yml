@@ -3,10 +3,12 @@ services: docker
 
 language: go
 go:
-  - "1.12.x"
+  - 1.12.x
+
+env:
+  - GO111MODULE=on
 
 before_script:
-  - export GO111MODULE=on
   - export VPP_IMG="ligato/vpp-base:master"
   - docker pull $VPP_IMG
 

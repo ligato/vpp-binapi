@@ -5,10 +5,10 @@
 Package ip is a generated VPP binary API for 'ip' module.
 
 It consists of:
-	 14 enums
+	  7 enums
 	  3 aliases
-	 29 types
-	  3 unions
+	 16 types
+	  1 union
 	 93 messages
 	 45 services
 */
@@ -58,87 +58,6 @@ func (x AddressFamily) String() string {
 	return strconv.Itoa(int(x))
 }
 
-// AddressFamily represents VPP binary API enum 'address_family'.
-type AddressFamily uint32
-
-const (
-	ADDRESS_IP4 AddressFamily = 0
-	ADDRESS_IP6 AddressFamily = 1
-)
-
-var AddressFamily_name = map[uint32]string{
-	0: "ADDRESS_IP4",
-	1: "ADDRESS_IP6",
-}
-
-var AddressFamily_value = map[string]uint32{
-	"ADDRESS_IP4": 0,
-	"ADDRESS_IP6": 1,
-}
-
-func (x AddressFamily) String() string {
-	s, ok := AddressFamily_name[uint32(x)]
-	if ok {
-		return s
-	}
-	return strconv.Itoa(int(x))
-}
-
-// AddressFamily represents VPP binary API enum 'address_family'.
-type AddressFamily uint32
-
-const (
-	ADDRESS_IP4 AddressFamily = 0
-	ADDRESS_IP6 AddressFamily = 1
-)
-
-var AddressFamily_name = map[uint32]string{
-	0: "ADDRESS_IP4",
-	1: "ADDRESS_IP6",
-}
-
-var AddressFamily_value = map[string]uint32{
-	"ADDRESS_IP4": 0,
-	"ADDRESS_IP6": 1,
-}
-
-func (x AddressFamily) String() string {
-	s, ok := AddressFamily_name[uint32(x)]
-	if ok {
-		return s
-	}
-	return strconv.Itoa(int(x))
-}
-
-// FibPathFlags represents VPP binary API enum 'fib_path_flags'.
-type FibPathFlags uint32
-
-const (
-	FIB_API_PATH_FLAG_NONE                 FibPathFlags = 0
-	FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED FibPathFlags = 1
-	FIB_API_PATH_FLAG_RESOLVE_VIA_HOST     FibPathFlags = 2
-)
-
-var FibPathFlags_name = map[uint32]string{
-	0: "FIB_API_PATH_FLAG_NONE",
-	1: "FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED",
-	2: "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
-}
-
-var FibPathFlags_value = map[string]uint32{
-	"FIB_API_PATH_FLAG_NONE":                 0,
-	"FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED": 1,
-	"FIB_API_PATH_FLAG_RESOLVE_VIA_HOST":     2,
-}
-
-func (x FibPathFlags) String() string {
-	s, ok := FibPathFlags_name[uint32(x)]
-	if ok {
-		return s
-	}
-	return strconv.Itoa(int(x))
-}
-
 // FibPathFlags represents VPP binary API enum 'fib_path_flags'.
 type FibPathFlags uint32
 
@@ -197,94 +116,6 @@ var FibPathNhProto_value = map[string]uint32{
 
 func (x FibPathNhProto) String() string {
 	s, ok := FibPathNhProto_name[uint32(x)]
-	if ok {
-		return s
-	}
-	return strconv.Itoa(int(x))
-}
-
-// FibPathNhProto represents VPP binary API enum 'fib_path_nh_proto'.
-type FibPathNhProto uint32
-
-const (
-	FIB_API_PATH_NH_PROTO_IP4      FibPathNhProto = 0
-	FIB_API_PATH_NH_PROTO_IP6      FibPathNhProto = 1
-	FIB_API_PATH_NH_PROTO_MPLS     FibPathNhProto = 2
-	FIB_API_PATH_NH_PROTO_ETHERNET FibPathNhProto = 3
-	FIB_API_PATH_NH_PROTO_BIER     FibPathNhProto = 4
-)
-
-var FibPathNhProto_name = map[uint32]string{
-	0: "FIB_API_PATH_NH_PROTO_IP4",
-	1: "FIB_API_PATH_NH_PROTO_IP6",
-	2: "FIB_API_PATH_NH_PROTO_MPLS",
-	3: "FIB_API_PATH_NH_PROTO_ETHERNET",
-	4: "FIB_API_PATH_NH_PROTO_BIER",
-}
-
-var FibPathNhProto_value = map[string]uint32{
-	"FIB_API_PATH_NH_PROTO_IP4":      0,
-	"FIB_API_PATH_NH_PROTO_IP6":      1,
-	"FIB_API_PATH_NH_PROTO_MPLS":     2,
-	"FIB_API_PATH_NH_PROTO_ETHERNET": 3,
-	"FIB_API_PATH_NH_PROTO_BIER":     4,
-}
-
-func (x FibPathNhProto) String() string {
-	s, ok := FibPathNhProto_name[uint32(x)]
-	if ok {
-		return s
-	}
-	return strconv.Itoa(int(x))
-}
-
-// FibPathType represents VPP binary API enum 'fib_path_type'.
-type FibPathType uint32
-
-const (
-	FIB_API_PATH_TYPE_NORMAL        FibPathType = 0
-	FIB_API_PATH_TYPE_LOCAL         FibPathType = 1
-	FIB_API_PATH_TYPE_DROP          FibPathType = 2
-	FIB_API_PATH_TYPE_UDP_ENCAP     FibPathType = 3
-	FIB_API_PATH_TYPE_BIER_IMP      FibPathType = 4
-	FIB_API_PATH_TYPE_ICMP_UNREACH  FibPathType = 5
-	FIB_API_PATH_TYPE_ICMP_PROHIBIT FibPathType = 6
-	FIB_API_PATH_TYPE_SOURCE_LOOKUP FibPathType = 7
-	FIB_API_PATH_TYPE_DVR           FibPathType = 8
-	FIB_API_PATH_TYPE_INTERFACE_RX  FibPathType = 9
-	FIB_API_PATH_TYPE_CLASSIFY      FibPathType = 10
-)
-
-var FibPathType_name = map[uint32]string{
-	0:  "FIB_API_PATH_TYPE_NORMAL",
-	1:  "FIB_API_PATH_TYPE_LOCAL",
-	2:  "FIB_API_PATH_TYPE_DROP",
-	3:  "FIB_API_PATH_TYPE_UDP_ENCAP",
-	4:  "FIB_API_PATH_TYPE_BIER_IMP",
-	5:  "FIB_API_PATH_TYPE_ICMP_UNREACH",
-	6:  "FIB_API_PATH_TYPE_ICMP_PROHIBIT",
-	7:  "FIB_API_PATH_TYPE_SOURCE_LOOKUP",
-	8:  "FIB_API_PATH_TYPE_DVR",
-	9:  "FIB_API_PATH_TYPE_INTERFACE_RX",
-	10: "FIB_API_PATH_TYPE_CLASSIFY",
-}
-
-var FibPathType_value = map[string]uint32{
-	"FIB_API_PATH_TYPE_NORMAL":        0,
-	"FIB_API_PATH_TYPE_LOCAL":         1,
-	"FIB_API_PATH_TYPE_DROP":          2,
-	"FIB_API_PATH_TYPE_UDP_ENCAP":     3,
-	"FIB_API_PATH_TYPE_BIER_IMP":      4,
-	"FIB_API_PATH_TYPE_ICMP_UNREACH":  5,
-	"FIB_API_PATH_TYPE_ICMP_PROHIBIT": 6,
-	"FIB_API_PATH_TYPE_SOURCE_LOOKUP": 7,
-	"FIB_API_PATH_TYPE_DVR":           8,
-	"FIB_API_PATH_TYPE_INTERFACE_RX":  9,
-	"FIB_API_PATH_TYPE_CLASSIFY":      10,
-}
-
-func (x FibPathType) String() string {
-	s, ok := FibPathType_name[uint32(x)]
 	if ok {
 		return s
 	}
@@ -405,70 +236,6 @@ func (x IPProto) String() string {
 	return strconv.Itoa(int(x))
 }
 
-// IPProto represents VPP binary API enum 'ip_proto'.
-type IPProto uint32
-
-const (
-	IP_API_PROTO_TCP   IPProto = 6
-	IP_API_PROTO_UDP   IPProto = 17
-	IP_API_PROTO_EIGRP IPProto = 88
-	IP_API_PROTO_OSPF  IPProto = 89
-)
-
-var IPProto_name = map[uint32]string{
-	6:  "IP_API_PROTO_TCP",
-	17: "IP_API_PROTO_UDP",
-	88: "IP_API_PROTO_EIGRP",
-	89: "IP_API_PROTO_OSPF",
-}
-
-var IPProto_value = map[string]uint32{
-	"IP_API_PROTO_TCP":   6,
-	"IP_API_PROTO_UDP":   17,
-	"IP_API_PROTO_EIGRP": 88,
-	"IP_API_PROTO_OSPF":  89,
-}
-
-func (x IPProto) String() string {
-	s, ok := IPProto_name[uint32(x)]
-	if ok {
-		return s
-	}
-	return strconv.Itoa(int(x))
-}
-
-// IPProto represents VPP binary API enum 'ip_proto'.
-type IPProto uint32
-
-const (
-	IP_API_PROTO_TCP   IPProto = 6
-	IP_API_PROTO_UDP   IPProto = 17
-	IP_API_PROTO_EIGRP IPProto = 88
-	IP_API_PROTO_OSPF  IPProto = 89
-)
-
-var IPProto_name = map[uint32]string{
-	6:  "IP_API_PROTO_TCP",
-	17: "IP_API_PROTO_UDP",
-	88: "IP_API_PROTO_EIGRP",
-	89: "IP_API_PROTO_OSPF",
-}
-
-var IPProto_value = map[string]uint32{
-	"IP_API_PROTO_TCP":   6,
-	"IP_API_PROTO_UDP":   17,
-	"IP_API_PROTO_EIGRP": 88,
-	"IP_API_PROTO_OSPF":  89,
-}
-
-func (x IPProto) String() string {
-	s, ok := IPProto_name[uint32(x)]
-	if ok {
-		return s
-	}
-	return strconv.Itoa(int(x))
-}
-
 // MfibItfFlags represents VPP binary API enum 'mfib_itf_flags'.
 type MfibItfFlags uint32
 
@@ -526,26 +293,6 @@ func (*Address) GetTypeName() string {
 	return "address"
 }
 
-// Address represents VPP binary API type 'address'.
-type Address struct {
-	Af AddressFamily
-	Un AddressUnion
-}
-
-func (*Address) GetTypeName() string {
-	return "address"
-}
-
-// Address represents VPP binary API type 'address'.
-type Address struct {
-	Af AddressFamily
-	Un AddressUnion
-}
-
-func (*Address) GetTypeName() string {
-	return "address"
-}
-
 // FibMplsLabel represents VPP binary API type 'fib_mpls_label'.
 type FibMplsLabel struct {
 	IsUniform uint8
@@ -556,37 +303,6 @@ type FibMplsLabel struct {
 
 func (*FibMplsLabel) GetTypeName() string {
 	return "fib_mpls_label"
-}
-
-// FibMplsLabel represents VPP binary API type 'fib_mpls_label'.
-type FibMplsLabel struct {
-	IsUniform uint8
-	Label     uint32
-	TTL       uint8
-	Exp       uint8
-}
-
-func (*FibMplsLabel) GetTypeName() string {
-	return "fib_mpls_label"
-}
-
-// FibPath represents VPP binary API type 'fib_path'.
-type FibPath struct {
-	SwIfIndex  uint32
-	TableID    uint32
-	RpfID      uint32
-	Weight     uint8
-	Preference uint8
-	Type       FibPathType
-	Flags      FibPathFlags
-	Proto      FibPathNhProto
-	Nh         FibPathNh
-	NLabels    uint8
-	LabelStack []FibMplsLabel `struc:"[16]FibMplsLabel"`
-}
-
-func (*FibPath) GetTypeName() string {
-	return "fib_path"
 }
 
 // FibPath represents VPP binary API type 'fib_path'.
@@ -620,18 +336,6 @@ func (*FibPathNh) GetTypeName() string {
 	return "fib_path_nh"
 }
 
-// FibPathNh represents VPP binary API type 'fib_path_nh'.
-type FibPathNh struct {
-	Address            AddressUnion
-	ViaLabel           uint32
-	ObjID              uint32
-	ClassifyTableIndex uint32
-}
-
-func (*FibPathNh) GetTypeName() string {
-	return "fib_path_nh"
-}
-
 // IP4Prefix represents VPP binary API type 'ip4_prefix'.
 type IP4Prefix struct {
 	Address IP4Address
@@ -640,46 +344,6 @@ type IP4Prefix struct {
 
 func (*IP4Prefix) GetTypeName() string {
 	return "ip4_prefix"
-}
-
-// IP4Prefix represents VPP binary API type 'ip4_prefix'.
-type IP4Prefix struct {
-	Address IP4Address
-	Len     uint8
-}
-
-func (*IP4Prefix) GetTypeName() string {
-	return "ip4_prefix"
-}
-
-// IP4Prefix represents VPP binary API type 'ip4_prefix'.
-type IP4Prefix struct {
-	Address IP4Address
-	Len     uint8
-}
-
-func (*IP4Prefix) GetTypeName() string {
-	return "ip4_prefix"
-}
-
-// IP6Prefix represents VPP binary API type 'ip6_prefix'.
-type IP6Prefix struct {
-	Address IP6Address
-	Len     uint8
-}
-
-func (*IP6Prefix) GetTypeName() string {
-	return "ip6_prefix"
-}
-
-// IP6Prefix represents VPP binary API type 'ip6_prefix'.
-type IP6Prefix struct {
-	Address IP6Address
-	Len     uint8
-}
-
-func (*IP6Prefix) GetTypeName() string {
-	return "ip6_prefix"
 }
 
 // IP6Prefix represents VPP binary API type 'ip6_prefix'.
@@ -776,50 +440,6 @@ func (*Mprefix) GetTypeName() string {
 	return "mprefix"
 }
 
-// Mprefix represents VPP binary API type 'mprefix'.
-type Mprefix struct {
-	Af               AddressFamily
-	GrpAddressLength uint16
-	GrpAddress       AddressUnion
-	SrcAddress       AddressUnion
-}
-
-func (*Mprefix) GetTypeName() string {
-	return "mprefix"
-}
-
-// Mprefix represents VPP binary API type 'mprefix'.
-type Mprefix struct {
-	Af               AddressFamily
-	GrpAddressLength uint16
-	GrpAddress       AddressUnion
-	SrcAddress       AddressUnion
-}
-
-func (*Mprefix) GetTypeName() string {
-	return "mprefix"
-}
-
-// Prefix represents VPP binary API type 'prefix'.
-type Prefix struct {
-	Address Address
-	Len     uint8
-}
-
-func (*Prefix) GetTypeName() string {
-	return "prefix"
-}
-
-// Prefix represents VPP binary API type 'prefix'.
-type Prefix struct {
-	Address Address
-	Len     uint8
-}
-
-func (*Prefix) GetTypeName() string {
-	return "prefix"
-}
-
 // Prefix represents VPP binary API type 'prefix'.
 type Prefix struct {
 	Address Address
@@ -850,92 +470,6 @@ type PuntRedirect struct {
 
 func (*PuntRedirect) GetTypeName() string {
 	return "punt_redirect"
-}
-
-// AddressUnion represents VPP binary API union 'address_union'.
-type AddressUnion struct {
-	XXX_UnionData [16]byte
-}
-
-func (*AddressUnion) GetTypeName() string {
-	return "address_union"
-}
-
-func AddressUnionIP4(a IP4Address) (u AddressUnion) {
-	u.SetIP4(a)
-	return
-}
-func (u *AddressUnion) SetIP4(a IP4Address) {
-	var b = new(bytes.Buffer)
-	if err := struc.Pack(b, &a); err != nil {
-		return
-	}
-	copy(u.XXX_UnionData[:], b.Bytes())
-}
-func (u *AddressUnion) GetIP4() (a IP4Address) {
-	var b = bytes.NewReader(u.XXX_UnionData[:])
-	struc.Unpack(b, &a)
-	return
-}
-
-func AddressUnionIP6(a IP6Address) (u AddressUnion) {
-	u.SetIP6(a)
-	return
-}
-func (u *AddressUnion) SetIP6(a IP6Address) {
-	var b = new(bytes.Buffer)
-	if err := struc.Pack(b, &a); err != nil {
-		return
-	}
-	copy(u.XXX_UnionData[:], b.Bytes())
-}
-func (u *AddressUnion) GetIP6() (a IP6Address) {
-	var b = bytes.NewReader(u.XXX_UnionData[:])
-	struc.Unpack(b, &a)
-	return
-}
-
-// AddressUnion represents VPP binary API union 'address_union'.
-type AddressUnion struct {
-	XXX_UnionData [16]byte
-}
-
-func (*AddressUnion) GetTypeName() string {
-	return "address_union"
-}
-
-func AddressUnionIP4(a IP4Address) (u AddressUnion) {
-	u.SetIP4(a)
-	return
-}
-func (u *AddressUnion) SetIP4(a IP4Address) {
-	var b = new(bytes.Buffer)
-	if err := struc.Pack(b, &a); err != nil {
-		return
-	}
-	copy(u.XXX_UnionData[:], b.Bytes())
-}
-func (u *AddressUnion) GetIP4() (a IP4Address) {
-	var b = bytes.NewReader(u.XXX_UnionData[:])
-	struc.Unpack(b, &a)
-	return
-}
-
-func AddressUnionIP6(a IP6Address) (u AddressUnion) {
-	u.SetIP6(a)
-	return
-}
-func (u *AddressUnion) SetIP6(a IP6Address) {
-	var b = new(bytes.Buffer)
-	if err := struc.Pack(b, &a); err != nil {
-		return
-	}
-	copy(u.XXX_UnionData[:], b.Bytes())
-}
-func (u *AddressUnion) GetIP6() (a IP6Address) {
-	var b = bytes.NewReader(u.XXX_UnionData[:])
-	struc.Unpack(b, &a)
-	return
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

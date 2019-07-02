@@ -5,10 +5,10 @@
 Package abf is a generated VPP binary API for 'abf' module.
 
 It consists of:
-	  7 enums
+	  5 enums
 	  2 aliases
-	 15 types
-	  2 unions
+	 10 types
+	  1 union
 	 10 messages
 	  5 services
 */
@@ -31,32 +31,6 @@ const (
 	// VersionCrc is the CRC of this module.
 	VersionCrc = 0x25b8fffd
 )
-
-// AddressFamily represents VPP binary API enum 'address_family'.
-type AddressFamily uint32
-
-const (
-	ADDRESS_IP4 AddressFamily = 0
-	ADDRESS_IP6 AddressFamily = 1
-)
-
-var AddressFamily_name = map[uint32]string{
-	0: "ADDRESS_IP4",
-	1: "ADDRESS_IP6",
-}
-
-var AddressFamily_value = map[string]uint32{
-	"ADDRESS_IP4": 0,
-	"ADDRESS_IP6": 1,
-}
-
-func (x AddressFamily) String() string {
-	s, ok := AddressFamily_name[uint32(x)]
-	if ok {
-		return s
-	}
-	return strconv.Itoa(int(x))
-}
 
 // AddressFamily represents VPP binary API enum 'address_family'.
 type AddressFamily uint32
@@ -233,38 +207,6 @@ func (x IPProto) String() string {
 	return strconv.Itoa(int(x))
 }
 
-// IPProto represents VPP binary API enum 'ip_proto'.
-type IPProto uint32
-
-const (
-	IP_API_PROTO_TCP   IPProto = 6
-	IP_API_PROTO_UDP   IPProto = 17
-	IP_API_PROTO_EIGRP IPProto = 88
-	IP_API_PROTO_OSPF  IPProto = 89
-)
-
-var IPProto_name = map[uint32]string{
-	6:  "IP_API_PROTO_TCP",
-	17: "IP_API_PROTO_UDP",
-	88: "IP_API_PROTO_EIGRP",
-	89: "IP_API_PROTO_OSPF",
-}
-
-var IPProto_value = map[string]uint32{
-	"IP_API_PROTO_TCP":   6,
-	"IP_API_PROTO_UDP":   17,
-	"IP_API_PROTO_EIGRP": 88,
-	"IP_API_PROTO_OSPF":  89,
-}
-
-func (x IPProto) String() string {
-	s, ok := IPProto_name[uint32(x)]
-	if ok {
-		return s
-	}
-	return strconv.Itoa(int(x))
-}
-
 // IP4Address represents VPP binary API alias 'ip4_address'.
 type IP4Address [4]uint8
 
@@ -293,16 +235,6 @@ type AbfPolicy struct {
 
 func (*AbfPolicy) GetTypeName() string {
 	return "abf_policy"
-}
-
-// Address represents VPP binary API type 'address'.
-type Address struct {
-	Af AddressFamily
-	Un AddressUnion
-}
-
-func (*Address) GetTypeName() string {
-	return "address"
 }
 
 // Address represents VPP binary API type 'address'.
@@ -368,26 +300,6 @@ func (*IP4Prefix) GetTypeName() string {
 	return "ip4_prefix"
 }
 
-// IP4Prefix represents VPP binary API type 'ip4_prefix'.
-type IP4Prefix struct {
-	Address IP4Address
-	Len     uint8
-}
-
-func (*IP4Prefix) GetTypeName() string {
-	return "ip4_prefix"
-}
-
-// IP6Prefix represents VPP binary API type 'ip6_prefix'.
-type IP6Prefix struct {
-	Address IP6Address
-	Len     uint8
-}
-
-func (*IP6Prefix) GetTypeName() string {
-	return "ip6_prefix"
-}
-
 // IP6Prefix represents VPP binary API type 'ip6_prefix'.
 type IP6Prefix struct {
 	Address IP6Address
@@ -410,18 +322,6 @@ func (*Mprefix) GetTypeName() string {
 	return "mprefix"
 }
 
-// Mprefix represents VPP binary API type 'mprefix'.
-type Mprefix struct {
-	Af               AddressFamily
-	GrpAddressLength uint16
-	GrpAddress       AddressUnion
-	SrcAddress       AddressUnion
-}
-
-func (*Mprefix) GetTypeName() string {
-	return "mprefix"
-}
-
 // Prefix represents VPP binary API type 'prefix'.
 type Prefix struct {
 	Address Address
@@ -430,59 +330,6 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
-}
-
-// Prefix represents VPP binary API type 'prefix'.
-type Prefix struct {
-	Address Address
-	Len     uint8
-}
-
-func (*Prefix) GetTypeName() string {
-	return "prefix"
-}
-
-// AddressUnion represents VPP binary API union 'address_union'.
-type AddressUnion struct {
-	XXX_UnionData [16]byte
-}
-
-func (*AddressUnion) GetTypeName() string {
-	return "address_union"
-}
-
-func AddressUnionIP4(a IP4Address) (u AddressUnion) {
-	u.SetIP4(a)
-	return
-}
-func (u *AddressUnion) SetIP4(a IP4Address) {
-	var b = new(bytes.Buffer)
-	if err := struc.Pack(b, &a); err != nil {
-		return
-	}
-	copy(u.XXX_UnionData[:], b.Bytes())
-}
-func (u *AddressUnion) GetIP4() (a IP4Address) {
-	var b = bytes.NewReader(u.XXX_UnionData[:])
-	struc.Unpack(b, &a)
-	return
-}
-
-func AddressUnionIP6(a IP6Address) (u AddressUnion) {
-	u.SetIP6(a)
-	return
-}
-func (u *AddressUnion) SetIP6(a IP6Address) {
-	var b = new(bytes.Buffer)
-	if err := struc.Pack(b, &a); err != nil {
-		return
-	}
-	copy(u.XXX_UnionData[:], b.Bytes())
-}
-func (u *AddressUnion) GetIP6() (a IP6Address) {
-	var b = bytes.NewReader(u.XXX_UnionData[:])
-	struc.Unpack(b, &a)
-	return
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.
