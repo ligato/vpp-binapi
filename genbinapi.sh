@@ -12,7 +12,7 @@ docker run --rm "$VPP_IMG" cat /vpp/version > /tmp/VPP_VERSION
 
 rm -rf vppapi/*
 docker run --rm -v $(pwd)/vppapi:/vppapi -w /vppapi -u $(id -u):$(id -g) "$VPP_IMG" \
-	cp -r /usr/share/vpp/api/* /vppapi
+	sh -c "cp -r /usr/share/vpp/api/* /vppapi"
 
 rm -rf binapi/*
 binapi-generator --input-dir=vppapi --output-dir=binapi --include-services --debug
