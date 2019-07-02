@@ -6,7 +6,7 @@ Package gbp is a generated VPP binary API for 'gbp' module.
 
 It consists of:
 	  8 enums
-	  3 aliases
+	  4 aliases
 	 19 types
 	  1 union
 	 48 messages
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "2.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x724b8f
+	VersionCrc = 0xdbe01b26
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -276,6 +276,9 @@ func (x IPProto) String() string {
 	return strconv.Itoa(int(x))
 }
 
+// GbpScope represents VPP binary API alias 'gbp_scope'.
+type GbpScope uint16
+
 // IP4Address represents VPP binary API alias 'ip4_address'.
 type IP4Address [4]uint8
 
@@ -298,6 +301,7 @@ func (*Address) GetTypeName() string {
 // GbpBridgeDomain represents VPP binary API type 'gbp_bridge_domain'.
 type GbpBridgeDomain struct {
 	BdID             uint32
+	RdID             uint32
 	Flags            GbpBridgeDomainFlags
 	BviSwIfIndex     uint32
 	UuFwdSwIfIndex   uint32
@@ -310,6 +314,7 @@ func (*GbpBridgeDomain) GetTypeName() string {
 
 // GbpContract represents VPP binary API type 'gbp_contract'.
 type GbpContract struct {
+	Scope             GbpScope
 	Sclass            uint16
 	Dclass            uint16
 	ACLIndex          uint32
@@ -423,6 +428,7 @@ type GbpRouteDomain struct {
 	IP6TableID     uint32
 	IP4UuSwIfIndex uint32
 	IP6UuSwIfIndex uint32
+	Scope          GbpScope
 }
 
 func (*GbpRouteDomain) GetTypeName() string {
@@ -558,7 +564,7 @@ func (*GbpBridgeDomainAdd) GetMessageName() string {
 	return "gbp_bridge_domain_add"
 }
 func (*GbpBridgeDomainAdd) GetCrcString() string {
-	return "3c8de74d"
+	return "70f1069c"
 }
 func (*GbpBridgeDomainAdd) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -618,7 +624,7 @@ func (*GbpBridgeDomainDetails) GetMessageName() string {
 	return "gbp_bridge_domain_details"
 }
 func (*GbpBridgeDomainDetails) GetCrcString() string {
-	return "df5a6f15"
+	return "db8b025a"
 }
 func (*GbpBridgeDomainDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -662,7 +668,7 @@ func (*GbpContractAddDel) GetMessageName() string {
 	return "gbp_contract_add_del"
 }
 func (*GbpContractAddDel) GetCrcString() string {
-	return "97126636"
+	return "c64310d2"
 }
 func (*GbpContractAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -693,7 +699,7 @@ func (*GbpContractDetails) GetMessageName() string {
 	return "gbp_contract_details"
 }
 func (*GbpContractDetails) GetCrcString() string {
-	return "8643ffd2"
+	return "9a1cf8f2"
 }
 func (*GbpContractDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -1018,7 +1024,7 @@ func (*GbpRouteDomainAdd) GetMessageName() string {
 	return "gbp_route_domain_add"
 }
 func (*GbpRouteDomainAdd) GetCrcString() string {
-	return "831c03ac"
+	return "355b67c0"
 }
 func (*GbpRouteDomainAdd) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -1078,7 +1084,7 @@ func (*GbpRouteDomainDetails) GetMessageName() string {
 	return "gbp_route_domain_details"
 }
 func (*GbpRouteDomainDetails) GetCrcString() string {
-	return "fc0cc5e3"
+	return "3493453f"
 }
 func (*GbpRouteDomainDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage

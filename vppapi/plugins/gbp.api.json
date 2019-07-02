@@ -70,6 +70,10 @@
                 "bd_id"
             ],
             [
+                "u32",
+                "rd_id"
+            ],
+            [
                 "vl_api_gbp_bridge_domain_flags_t",
                 "flags"
             ],
@@ -107,6 +111,10 @@
             [
                 "u32",
                 "ip6_uu_sw_if_index"
+            ],
+            [
+                "vl_api_gbp_scope_t",
+                "scope"
             ]
         ],
         [
@@ -274,6 +282,10 @@
         [
             "gbp_contract",
             [
+                "vl_api_gbp_scope_t",
+                "scope"
+            ],
+            [
                 "u16",
                 "sclass"
             ],
@@ -360,7 +372,7 @@
                 "bd"
             ],
             {
-                "crc": "0x3c8de74d"
+                "crc": "0x70f1069c"
             }
         ],
         [
@@ -472,7 +484,7 @@
                 "bd"
             ],
             {
-                "crc": "0xdf5a6f15"
+                "crc": "0xdb8b025a"
             }
         ],
         [
@@ -494,7 +506,7 @@
                 "rd"
             ],
             {
-                "crc": "0x831c03ac"
+                "crc": "0x355b67c0"
             }
         ],
         [
@@ -606,7 +618,7 @@
                 "rd"
             ],
             {
-                "crc": "0xfc0cc5e3"
+                "crc": "0x3493453f"
             }
         ],
         [
@@ -1036,7 +1048,7 @@
                 "contract"
             ],
             {
-                "crc": "0x97126636"
+                "crc": "0xc64310d2"
             }
         ],
         [
@@ -1094,7 +1106,7 @@
                 "contract"
             ],
             {
-                "crc": "0x8643ffd2"
+                "crc": "0x9a1cf8f2"
             }
         ],
         [
@@ -1568,7 +1580,10 @@
         "mac_address": {
             "type": "u8",
             "length": 6
+        },
+        "gbp_scope": {
+            "type": "u16"
         }
     },
-    "vl_api_version": "0x724b8f"
+    "vl_api_version": "0xdbe01b26"
 }
