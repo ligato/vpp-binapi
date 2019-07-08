@@ -5,7 +5,7 @@
 Package gbp is a generated VPP binary API for 'gbp' module.
 
 It consists of:
-	  8 enums
+	  9 enums
 	  4 aliases
 	 19 types
 	  1 union
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "2.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xdbe01b26
+	VersionCrc = 0xcb3951da
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -128,6 +128,32 @@ func (x GbpEndpointFlags) String() string {
 	return strconv.Itoa(int(x))
 }
 
+// GbpExtItfFlags represents VPP binary API enum 'gbp_ext_itf_flags'.
+type GbpExtItfFlags uint32
+
+const (
+	GBP_API_EXT_ITF_F_NONE GbpExtItfFlags = 0
+	GBP_API_EXT_ITF_F_ANON GbpExtItfFlags = 1
+)
+
+var GbpExtItfFlags_name = map[uint32]string{
+	0: "GBP_API_EXT_ITF_F_NONE",
+	1: "GBP_API_EXT_ITF_F_ANON",
+}
+
+var GbpExtItfFlags_value = map[string]uint32{
+	"GBP_API_EXT_ITF_F_NONE": 0,
+	"GBP_API_EXT_ITF_F_ANON": 1,
+}
+
+func (x GbpExtItfFlags) String() string {
+	s, ok := GbpExtItfFlags_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
 // GbpHashMode represents VPP binary API enum 'gbp_hash_mode'.
 type GbpHashMode uint32
 
@@ -194,6 +220,7 @@ const (
 	GBP_API_SUBNET_STITCHED_INTERNAL GbpSubnetType = 2
 	GBP_API_SUBNET_STITCHED_EXTERNAL GbpSubnetType = 3
 	GBP_API_SUBNET_L3_OUT            GbpSubnetType = 4
+	GBP_API_SUBNET_ANON_L3_OUT       GbpSubnetType = 5
 )
 
 var GbpSubnetType_name = map[uint32]string{
@@ -201,6 +228,7 @@ var GbpSubnetType_name = map[uint32]string{
 	2: "GBP_API_SUBNET_STITCHED_INTERNAL",
 	3: "GBP_API_SUBNET_STITCHED_EXTERNAL",
 	4: "GBP_API_SUBNET_L3_OUT",
+	5: "GBP_API_SUBNET_ANON_L3_OUT",
 }
 
 var GbpSubnetType_value = map[string]uint32{
@@ -208,6 +236,7 @@ var GbpSubnetType_value = map[string]uint32{
 	"GBP_API_SUBNET_STITCHED_INTERNAL": 2,
 	"GBP_API_SUBNET_STITCHED_EXTERNAL": 3,
 	"GBP_API_SUBNET_L3_OUT":            4,
+	"GBP_API_SUBNET_ANON_L3_OUT":       5,
 }
 
 func (x GbpSubnetType) String() string {
@@ -381,6 +410,7 @@ type GbpExtItf struct {
 	SwIfIndex uint32
 	BdID      uint32
 	RdID      uint32
+	Flags     GbpExtItfFlags
 }
 
 func (*GbpExtItf) GetTypeName() string {
@@ -907,7 +937,7 @@ func (*GbpExtItfAddDel) GetMessageName() string {
 	return "gbp_ext_itf_add_del"
 }
 func (*GbpExtItfAddDel) GetCrcString() string {
-	return "513ca3a8"
+	return "6995e85f"
 }
 func (*GbpExtItfAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -937,7 +967,7 @@ func (*GbpExtItfDetails) GetMessageName() string {
 	return "gbp_ext_itf_details"
 }
 func (*GbpExtItfDetails) GetCrcString() string {
-	return "f9cac23b"
+	return "89c19ec5"
 }
 func (*GbpExtItfDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -1128,7 +1158,7 @@ func (*GbpSubnetAddDel) GetMessageName() string {
 	return "gbp_subnet_add_del"
 }
 func (*GbpSubnetAddDel) GetCrcString() string {
-	return "6660648f"
+	return "4be859ed"
 }
 func (*GbpSubnetAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -1158,7 +1188,7 @@ func (*GbpSubnetDetails) GetMessageName() string {
 	return "gbp_subnet_details"
 }
 func (*GbpSubnetDetails) GetCrcString() string {
-	return "e59133c7"
+	return "24fdca24"
 }
 func (*GbpSubnetDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage

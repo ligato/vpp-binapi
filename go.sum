@@ -1,5 +1,5 @@
-git.fd.io/govpp.git v0.0.0-20190702095656-d3b84969e8ec h1:5SY7fFlXzDt51RX4KpqcAsRF2+FBmIrvvHQoxuuWeQI=
-git.fd.io/govpp.git v0.0.0-20190702095656-d3b84969e8ec/go.mod h1:+vyimAjILe5SYKjw4/WJ/8qPl9U5Qd9IT2v6b9VB83o=
+git.fd.io/govpp.git v0.0.0-20190703150028-b1006dced4cc h1:mnt9HMWrGrw30Ggi+4siyIUxiKtMcV0NU+PREikT5uA=
+git.fd.io/govpp.git v0.0.0-20190703150028-b1006dced4cc/go.mod h1:+vyimAjILe5SYKjw4/WJ/8qPl9U5Qd9IT2v6b9VB83o=
 github.com/bennyscetbun/jsongo v0.0.0-20181011160514-88b16279eead h1:/KtqFXOm1+F082xPOIhCXzxbCE3GfOuJzC90n0CcAuI=
 github.com/bennyscetbun/jsongo v0.0.0-20181011160514-88b16279eead/go.mod h1:suxbVmjBV8+A2BBAM5EYVh6Uj8j3rqJhzWf3hv7Ff8U=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

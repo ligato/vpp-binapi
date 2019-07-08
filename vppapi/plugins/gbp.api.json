@@ -349,6 +349,10 @@
             [
                 "u32",
                 "rd_id"
+            ],
+            [
+                "vl_api_gbp_ext_itf_flags_t",
+                "flags"
             ]
         ]
     ],
@@ -968,7 +972,7 @@
                 "subnet"
             ],
             {
-                "crc": "0x6660648f"
+                "crc": "0x4be859ed"
             }
         ],
         [
@@ -1022,7 +1026,7 @@
                 "subnet"
             ],
             {
-                "crc": "0xe59133c7"
+                "crc": "0x24fdca24"
             }
         ],
         [
@@ -1252,7 +1256,7 @@
                 "ext_itf"
             ],
             {
-                "crc": "0x513ca3a8"
+                "crc": "0x6995e85f"
             }
         ],
         [
@@ -1306,7 +1310,7 @@
                 "ext_itf"
             ],
             {
-                "crc": "0xf9cac23b"
+                "crc": "0x89c19ec5"
             }
         ]
     ],
@@ -1430,6 +1434,10 @@
                 "GBP_API_SUBNET_L3_OUT",
                 4
             ],
+            [
+                "GBP_API_SUBNET_ANON_L3_OUT",
+                5
+            ],
             {
                 "enumtype": "u32"
             }
@@ -1479,6 +1487,20 @@
             [
                 "GBP_VXLAN_TUNNEL_MODE_L3",
                 2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "gbp_ext_itf_flags",
+            [
+                "GBP_API_EXT_ITF_F_NONE",
+                0
+            ],
+            [
+                "GBP_API_EXT_ITF_F_ANON",
+                1
             ],
             {
                 "enumtype": "u32"
@@ -1585,5 +1607,5 @@
             "type": "u16"
         }
     },
-    "vl_api_version": "0xdbe01b26"
+    "vl_api_version": "0xcb3951da"
 }
