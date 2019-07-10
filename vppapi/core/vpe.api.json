@@ -461,10 +461,252 @@
             {
                 "crc": "0x2ed75f32"
             }
+        ],
+        [
+            "log_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "f64",
+                "start_timestamp"
+            ],
+            {
+                "crc": "0x74fddb5f"
+            }
+        ],
+        [
+            "log_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "f64",
+                "timestamp_ticks"
+            ],
+            [
+                "vl_api_log_level_t",
+                "level"
+            ],
+            [
+                "string",
+                "timestamp",
+                {
+                    "limit": 24
+                }
+            ],
+            [
+                "string",
+                "msg_class",
+                {
+                    "limit": 32
+                }
+            ],
+            [
+                "string",
+                "message",
+                {
+                    "limit": 256
+                }
+            ],
+            {
+                "crc": "0x91976545"
+            }
+        ],
+        [
+            "show_vpe_system_time_ticks",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14"
+            }
+        ],
+        [
+            "show_vpe_system_time_ticks_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "f64",
+                "vpe_system_time_ticks"
+            ],
+            {
+                "crc": "0x5fa0885c"
+            }
+        ],
+        [
+            "get_f64_endian_value",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "f64",
+                "f64_one",
+                {
+                    "default": 1.0
+                }
+            ],
+            {
+                "crc": "0x809fcd44"
+            }
+        ],
+        [
+            "get_f64_endian_value_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "retval"
+            ],
+            [
+                "f64",
+                "f64_one_result"
+            ],
+            {
+                "crc": "0x7e02e404"
+            }
+        ],
+        [
+            "get_f64_increment_by_one",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "f64",
+                "f64_value",
+                {
+                    "default": 1.0
+                }
+            ],
+            {
+                "crc": "0xb64f027e"
+            }
+        ],
+        [
+            "get_f64_increment_by_one_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "retval"
+            ],
+            [
+                "f64",
+                "f64_value"
+            ],
+            {
+                "crc": "0xd25dbaa3"
+            }
         ]
     ],
     "unions": [],
-    "enums": [],
+    "enums": [
+        [
+            "log_level",
+            [
+                "VPE_API_LOG_LEVEL_EMERG",
+                0
+            ],
+            [
+                "VPE_API_LOG_LEVEL_ALERT",
+                1
+            ],
+            [
+                "VPE_API_LOG_LEVEL_CRIT",
+                2
+            ],
+            [
+                "VPE_API_LOG_LEVEL_ERR",
+                3
+            ],
+            [
+                "VPE_API_LOG_LEVEL_WARNING",
+                4
+            ],
+            [
+                "VPE_API_LOG_LEVEL_NOTICE",
+                5
+            ],
+            [
+                "VPE_API_LOG_LEVEL_INFO",
+                6
+            ],
+            [
+                "VPE_API_LOG_LEVEL_DEBUG",
+                7
+            ],
+            [
+                "VPE_API_LOG_LEVEL_DISABLED",
+                8
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ]
+    ],
     "services": {
         "control_ping": {
             "reply": "control_ping_reply"
@@ -492,11 +734,24 @@
         },
         "get_next_index": {
             "reply": "get_next_index_reply"
+        },
+        "log_dump": {
+            "reply": "log_details",
+            "stream": true
+        },
+        "show_vpe_system_time_ticks": {
+            "reply": "show_vpe_system_time_ticks_reply"
+        },
+        "get_f64_endian_value": {
+            "reply": "get_f64_endian_value_reply"
+        },
+        "get_f64_increment_by_one": {
+            "reply": "get_f64_increment_by_one_reply"
         }
     },
     "options": {
-        "version": "1.1.0"
+        "version": "1.4.0"
     },
     "aliases": {},
-    "vl_api_version": "0x2cc8d629"
+    "vl_api_version": "0xf4bcb773"
 }
