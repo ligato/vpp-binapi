@@ -667,10 +667,10 @@
             ],
             [
                 "u64",
-                "transport_opts"
+                "parent_handle"
             ],
             {
-                "crc": "0x19606426"
+                "crc": "0xaf27d10c"
             }
         ],
         [
@@ -1174,5 +1174,5 @@
         "version": "1.6.0"
     },
     "aliases": {},
-    "vl_api_version": "0x7bc64c4"
+    "vl_api_version": "0x9570a9fb"
 }

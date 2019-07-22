@@ -36,8 +36,12 @@
                 "u8",
                 "lb"
             ],
+            [
+                "u8",
+                "numa_only"
+            ],
             {
-                "crc": "0x3b21645d"
+                "crc": "0xf19b4ad0"
             }
         ],
         [
@@ -244,6 +248,10 @@
                 "lb"
             ],
             [
+                "u8",
+                "numa_only"
+            ],
+            [
                 "u32",
                 "active_slaves"
             ],
@@ -252,7 +260,7 @@
                 "slaves"
             ],
             {
-                "crc": "0x22e48daa"
+                "crc": "0xa8ac5a5f"
             }
         ],
         [
@@ -334,8 +342,8 @@
         }
     },
     "options": {
-        "version": "1.0.0"
+        "version": "1.0.1"
     },
     "aliases": {},
-    "vl_api_version": "0xd7e62f79"
+    "vl_api_version": "0xf29d9886"
 }
