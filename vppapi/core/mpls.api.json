@@ -367,7 +367,7 @@
                 "mt_tunnel"
             ],
             {
-                "crc": "0x81025192"
+                "crc": "0xf077d939"
             }
         ],
         [
@@ -433,7 +433,7 @@
                 "mt_tunnel"
             ],
             {
-                "crc": "0x8785712e"
+                "crc": "0x076f0da6"
             }
         ],
         [
@@ -543,7 +543,7 @@
                 "mr_route"
             ],
             {
-                "crc": "0x3d7ca673"
+                "crc": "0xafc038a8"
             }
         ],
         [
@@ -605,7 +605,7 @@
                 "mr_route"
             ],
             {
-                "crc": "0x463be12f"
+                "crc": "0xec00ad76"
             }
         ],
         [
@@ -898,6 +898,10 @@
                 "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
                 2
             ],
+            [
+                "FIB_API_PATH_FLAG_POP_PW_CW",
+                4
+            ],
             {
                 "enumtype": "u32"
             }
@@ -1175,5 +1179,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x2185ebd9"
+    "vl_api_version": "0x6cbb7d02"
 }

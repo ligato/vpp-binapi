@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "3.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xc28cff0d
+	VersionCrc = 0xc7eaa78c
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -65,18 +65,21 @@ const (
 	FIB_API_PATH_FLAG_NONE                 FibPathFlags = 0
 	FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED FibPathFlags = 1
 	FIB_API_PATH_FLAG_RESOLVE_VIA_HOST     FibPathFlags = 2
+	FIB_API_PATH_FLAG_POP_PW_CW            FibPathFlags = 4
 )
 
 var FibPathFlags_name = map[uint32]string{
 	0: "FIB_API_PATH_FLAG_NONE",
 	1: "FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED",
 	2: "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
+	4: "FIB_API_PATH_FLAG_POP_PW_CW",
 }
 
 var FibPathFlags_value = map[string]uint32{
 	"FIB_API_PATH_FLAG_NONE":                 0,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED": 1,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_HOST":     2,
+	"FIB_API_PATH_FLAG_POP_PW_CW":            4,
 }
 
 func (x FibPathFlags) String() string {

@@ -6,9 +6,9 @@ Package qos is a generated VPP binary API for 'qos' module.
 
 It consists of:
 	  1 enum
-	  1 type
-	  8 messages
-	  4 services
+	  4 types
+	 15 messages
+	  7 services
 */
 package qos
 
@@ -27,11 +27,11 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x5fc93981
+	VersionCrc = 0x4994c707
 )
 
 // QosSource represents VPP binary API enum 'qos_source'.
-type QosSource uint32
+type QosSource uint8
 
 const (
 	QOS_API_SOURCE_EXT  QosSource = 0
@@ -40,14 +40,14 @@ const (
 	QOS_API_SOURCE_IP   QosSource = 3
 )
 
-var QosSource_name = map[uint32]string{
+var QosSource_name = map[uint8]string{
 	0: "QOS_API_SOURCE_EXT",
 	1: "QOS_API_SOURCE_VLAN",
 	2: "QOS_API_SOURCE_MPLS",
 	3: "QOS_API_SOURCE_IP",
 }
 
-var QosSource_value = map[string]uint32{
+var QosSource_value = map[string]uint8{
 	"QOS_API_SOURCE_EXT":  0,
 	"QOS_API_SOURCE_VLAN": 1,
 	"QOS_API_SOURCE_MPLS": 2,
@@ -55,11 +55,21 @@ var QosSource_value = map[string]uint32{
 }
 
 func (x QosSource) String() string {
-	s, ok := QosSource_name[uint32(x)]
+	s, ok := QosSource_name[uint8(x)]
 	if ok {
 		return s
 	}
 	return strconv.Itoa(int(x))
+}
+
+// QosEgressMap represents VPP binary API type 'qos_egress_map'.
+type QosEgressMap struct {
+	ID   uint32
+	Rows []QosEgressMapRow `struc:"[4]QosEgressMapRow"`
+}
+
+func (*QosEgressMap) GetTypeName() string {
+	return "qos_egress_map"
 }
 
 // QosEgressMapRow represents VPP binary API type 'qos_egress_map_row'.
@@ -71,16 +81,37 @@ func (*QosEgressMapRow) GetTypeName() string {
 	return "qos_egress_map_row"
 }
 
+// QosMark represents VPP binary API type 'qos_mark'.
+type QosMark struct {
+	SwIfIndex    uint32
+	MapID        uint32
+	OutputSource QosSource
+}
+
+func (*QosMark) GetTypeName() string {
+	return "qos_mark"
+}
+
+// QosRecord represents VPP binary API type 'qos_record'.
+type QosRecord struct {
+	SwIfIndex   uint32
+	InputSource QosSource
+}
+
+func (*QosRecord) GetTypeName() string {
+	return "qos_record"
+}
+
 // QosEgressMapDelete represents VPP binary API message 'qos_egress_map_delete'.
 type QosEgressMapDelete struct {
-	MapID uint32
+	ID uint32
 }
 
 func (*QosEgressMapDelete) GetMessageName() string {
 	return "qos_egress_map_delete"
 }
 func (*QosEgressMapDelete) GetCrcString() string {
-	return "daab68c1"
+	return "3a91bde5"
 }
 func (*QosEgressMapDelete) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -101,17 +132,44 @@ func (*QosEgressMapDeleteReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// QosEgressMapDetails represents VPP binary API message 'qos_egress_map_details'.
+type QosEgressMapDetails struct {
+	Map QosEgressMap
+}
+
+func (*QosEgressMapDetails) GetMessageName() string {
+	return "qos_egress_map_details"
+}
+func (*QosEgressMapDetails) GetCrcString() string {
+	return "46c5653c"
+}
+func (*QosEgressMapDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// QosEgressMapDump represents VPP binary API message 'qos_egress_map_dump'.
+type QosEgressMapDump struct{}
+
+func (*QosEgressMapDump) GetMessageName() string {
+	return "qos_egress_map_dump"
+}
+func (*QosEgressMapDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*QosEgressMapDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 // QosEgressMapUpdate represents VPP binary API message 'qos_egress_map_update'.
 type QosEgressMapUpdate struct {
-	MapID uint32
-	Rows  []QosEgressMapRow `struc:"[4]QosEgressMapRow"`
+	Map QosEgressMap
 }
 
 func (*QosEgressMapUpdate) GetMessageName() string {
 	return "qos_egress_map_update"
 }
 func (*QosEgressMapUpdate) GetCrcString() string {
-	return "132f5196"
+	return "6d1c065f"
 }
 func (*QosEgressMapUpdate) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -132,19 +190,62 @@ func (*QosEgressMapUpdateReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// QosMarkDetails represents VPP binary API message 'qos_mark_details'.
+type QosMarkDetails struct {
+	Mark QosMark
+}
+
+func (*QosMarkDetails) GetMessageName() string {
+	return "qos_mark_details"
+}
+func (*QosMarkDetails) GetCrcString() string {
+	return "89fe81a9"
+}
+func (*QosMarkDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// QosMarkDetailsReply represents VPP binary API message 'qos_mark_details_reply'.
+type QosMarkDetailsReply struct {
+	Retval int32
+}
+
+func (*QosMarkDetailsReply) GetMessageName() string {
+	return "qos_mark_details_reply"
+}
+func (*QosMarkDetailsReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*QosMarkDetailsReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// QosMarkDump represents VPP binary API message 'qos_mark_dump'.
+type QosMarkDump struct {
+	SwIfIndex uint32
+}
+
+func (*QosMarkDump) GetMessageName() string {
+	return "qos_mark_dump"
+}
+func (*QosMarkDump) GetCrcString() string {
+	return "529cb13f"
+}
+func (*QosMarkDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 // QosMarkEnableDisable represents VPP binary API message 'qos_mark_enable_disable'.
 type QosMarkEnableDisable struct {
-	MapID        uint32
-	SwIfIndex    uint32
-	OutputSource QosSource
-	Enable       uint8
+	Enable uint8
+	Mark   QosMark
 }
 
 func (*QosMarkEnableDisable) GetMessageName() string {
 	return "qos_mark_enable_disable"
 }
 func (*QosMarkEnableDisable) GetCrcString() string {
-	return "55d66592"
+	return "a7f849c8"
 }
 func (*QosMarkEnableDisable) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -165,18 +266,45 @@ func (*QosMarkEnableDisableReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
 }
 
+// QosRecordDetails represents VPP binary API message 'qos_record_details'.
+type QosRecordDetails struct {
+	Record QosRecord
+}
+
+func (*QosRecordDetails) GetMessageName() string {
+	return "qos_record_details"
+}
+func (*QosRecordDetails) GetCrcString() string {
+	return "01e537d6"
+}
+func (*QosRecordDetails) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
+// QosRecordDump represents VPP binary API message 'qos_record_dump'.
+type QosRecordDump struct{}
+
+func (*QosRecordDump) GetMessageName() string {
+	return "qos_record_dump"
+}
+func (*QosRecordDump) GetCrcString() string {
+	return "51077d14"
+}
+func (*QosRecordDump) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
 // QosRecordEnableDisable represents VPP binary API message 'qos_record_enable_disable'.
 type QosRecordEnableDisable struct {
-	SwIfIndex   uint32
-	InputSource QosSource
-	Enable      uint8
+	Enable uint8
+	Record QosRecord
 }
 
 func (*QosRecordEnableDisable) GetMessageName() string {
 	return "qos_record_enable_disable"
 }
 func (*QosRecordEnableDisable) GetCrcString() string {
-	return "3f61053b"
+	return "0e9320b1"
 }
 func (*QosRecordEnableDisable) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -200,10 +328,17 @@ func (*QosRecordEnableDisableReply) GetMessageType() api.MessageType {
 func init() {
 	api.RegisterMessage((*QosEgressMapDelete)(nil), "qos.QosEgressMapDelete")
 	api.RegisterMessage((*QosEgressMapDeleteReply)(nil), "qos.QosEgressMapDeleteReply")
+	api.RegisterMessage((*QosEgressMapDetails)(nil), "qos.QosEgressMapDetails")
+	api.RegisterMessage((*QosEgressMapDump)(nil), "qos.QosEgressMapDump")
 	api.RegisterMessage((*QosEgressMapUpdate)(nil), "qos.QosEgressMapUpdate")
 	api.RegisterMessage((*QosEgressMapUpdateReply)(nil), "qos.QosEgressMapUpdateReply")
+	api.RegisterMessage((*QosMarkDetails)(nil), "qos.QosMarkDetails")
+	api.RegisterMessage((*QosMarkDetailsReply)(nil), "qos.QosMarkDetailsReply")
+	api.RegisterMessage((*QosMarkDump)(nil), "qos.QosMarkDump")
 	api.RegisterMessage((*QosMarkEnableDisable)(nil), "qos.QosMarkEnableDisable")
 	api.RegisterMessage((*QosMarkEnableDisableReply)(nil), "qos.QosMarkEnableDisableReply")
+	api.RegisterMessage((*QosRecordDetails)(nil), "qos.QosRecordDetails")
+	api.RegisterMessage((*QosRecordDump)(nil), "qos.QosRecordDump")
 	api.RegisterMessage((*QosRecordEnableDisable)(nil), "qos.QosRecordEnableDisable")
 	api.RegisterMessage((*QosRecordEnableDisableReply)(nil), "qos.QosRecordEnableDisableReply")
 }
@@ -213,10 +348,17 @@ func AllMessages() []api.Message {
 	return []api.Message{
 		(*QosEgressMapDelete)(nil),
 		(*QosEgressMapDeleteReply)(nil),
+		(*QosEgressMapDetails)(nil),
+		(*QosEgressMapDump)(nil),
 		(*QosEgressMapUpdate)(nil),
 		(*QosEgressMapUpdateReply)(nil),
+		(*QosMarkDetails)(nil),
+		(*QosMarkDetailsReply)(nil),
+		(*QosMarkDump)(nil),
 		(*QosMarkEnableDisable)(nil),
 		(*QosMarkEnableDisableReply)(nil),
+		(*QosRecordDetails)(nil),
+		(*QosRecordDump)(nil),
 		(*QosRecordEnableDisable)(nil),
 		(*QosRecordEnableDisableReply)(nil),
 	}
@@ -224,6 +366,9 @@ func AllMessages() []api.Message {
 
 // RPCService represents RPC service API for qos module.
 type RPCService interface {
+	DumpQosEgressMap(ctx context.Context, in *QosEgressMapDump) (RPCService_DumpQosEgressMapClient, error)
+	DumpQosMark(ctx context.Context, in *QosMarkDump) (RPCService_DumpQosMarkClient, error)
+	DumpQosRecord(ctx context.Context, in *QosRecordDump) (RPCService_DumpQosRecordClient, error)
 	QosEgressMapDelete(ctx context.Context, in *QosEgressMapDelete) (*QosEgressMapDeleteReply, error)
 	QosEgressMapUpdate(ctx context.Context, in *QosEgressMapUpdate) (*QosEgressMapUpdateReply, error)
 	QosMarkEnableDisable(ctx context.Context, in *QosMarkEnableDisable) (*QosMarkEnableDisableReply, error)
@@ -236,6 +381,84 @@ type serviceClient struct {
 
 func NewServiceClient(ch api.Channel) RPCService {
 	return &serviceClient{ch}
+}
+
+func (c *serviceClient) DumpQosEgressMap(ctx context.Context, in *QosEgressMapDump) (RPCService_DumpQosEgressMapClient, error) {
+	stream := c.ch.SendMultiRequest(in)
+	x := &serviceClient_DumpQosEgressMapClient{stream}
+	return x, nil
+}
+
+type RPCService_DumpQosEgressMapClient interface {
+	Recv() (*QosEgressMapDetails, error)
+}
+
+type serviceClient_DumpQosEgressMapClient struct {
+	api.MultiRequestCtx
+}
+
+func (c *serviceClient_DumpQosEgressMapClient) Recv() (*QosEgressMapDetails, error) {
+	m := new(QosEgressMapDetails)
+	stop, err := c.MultiRequestCtx.ReceiveReply(m)
+	if err != nil {
+		return nil, err
+	}
+	if stop {
+		return nil, io.EOF
+	}
+	return m, nil
+}
+
+func (c *serviceClient) DumpQosMark(ctx context.Context, in *QosMarkDump) (RPCService_DumpQosMarkClient, error) {
+	stream := c.ch.SendMultiRequest(in)
+	x := &serviceClient_DumpQosMarkClient{stream}
+	return x, nil
+}
+
+type RPCService_DumpQosMarkClient interface {
+	Recv() (*QosMarkDetails, error)
+}
+
+type serviceClient_DumpQosMarkClient struct {
+	api.MultiRequestCtx
+}
+
+func (c *serviceClient_DumpQosMarkClient) Recv() (*QosMarkDetails, error) {
+	m := new(QosMarkDetails)
+	stop, err := c.MultiRequestCtx.ReceiveReply(m)
+	if err != nil {
+		return nil, err
+	}
+	if stop {
+		return nil, io.EOF
+	}
+	return m, nil
+}
+
+func (c *serviceClient) DumpQosRecord(ctx context.Context, in *QosRecordDump) (RPCService_DumpQosRecordClient, error) {
+	stream := c.ch.SendMultiRequest(in)
+	x := &serviceClient_DumpQosRecordClient{stream}
+	return x, nil
+}
+
+type RPCService_DumpQosRecordClient interface {
+	Recv() (*QosRecordDetails, error)
+}
+
+type serviceClient_DumpQosRecordClient struct {
+	api.MultiRequestCtx
+}
+
+func (c *serviceClient_DumpQosRecordClient) Recv() (*QosRecordDetails, error) {
+	m := new(QosRecordDetails)
+	stop, err := c.MultiRequestCtx.ReceiveReply(m)
+	if err != nil {
+		return nil, err
+	}
+	if stop {
+		return nil, io.EOF
+	}
+	return m, nil
 }
 
 func (c *serviceClient) QosEgressMapDelete(ctx context.Context, in *QosEgressMapDelete) (*QosEgressMapDeleteReply, error) {

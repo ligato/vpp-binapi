@@ -3105,6 +3105,10 @@
                 "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
                 2
             ],
+            [
+                "FIB_API_PATH_FLAG_POP_PW_CW",
+                4
+            ],
             {
                 "enumtype": "u32"
             }
@@ -3378,6 +3382,10 @@
             [
                 "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
                 2
+            ],
+            [
+                "FIB_API_PATH_FLAG_POP_PW_CW",
+                4
             ],
             {
                 "enumtype": "u32"
@@ -3839,5 +3847,5 @@
             "length": 6
         }
     },
-    "vl_api_version": "0xc28cff0d"
+    "vl_api_version": "0xc7eaa78c"
 }

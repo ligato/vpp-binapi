@@ -979,6 +979,46 @@
             {
                 "crc": "0x6a5d4e81"
             }
+        ],
+        [
+            "acl_stats_intf_counters_enable",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "enable"
+            ],
+            {
+                "crc": "0xb3e225d2"
+            }
+        ],
+        [
+            "acl_stats_intf_counters_enable_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
         ]
     ],
     "unions": [],
@@ -1042,11 +1082,14 @@
         "acl_interface_etype_whitelist_dump": {
             "reply": "acl_interface_etype_whitelist_details",
             "stream": true
+        },
+        "acl_stats_intf_counters_enable": {
+            "reply": "acl_stats_intf_counters_enable_reply"
         }
     },
     "options": {
         "version": "1.0.1"
     },
     "aliases": {},
-    "vl_api_version": "0x859a73ee"
+    "vl_api_version": "0xd7265b0"
 }

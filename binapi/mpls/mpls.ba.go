@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x2185ebd9
+	VersionCrc = 0x6cbb7d02
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -65,18 +65,21 @@ const (
 	FIB_API_PATH_FLAG_NONE                 FibPathFlags = 0
 	FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED FibPathFlags = 1
 	FIB_API_PATH_FLAG_RESOLVE_VIA_HOST     FibPathFlags = 2
+	FIB_API_PATH_FLAG_POP_PW_CW            FibPathFlags = 4
 )
 
 var FibPathFlags_name = map[uint32]string{
 	0: "FIB_API_PATH_FLAG_NONE",
 	1: "FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED",
 	2: "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
+	4: "FIB_API_PATH_FLAG_POP_PW_CW",
 }
 
 var FibPathFlags_value = map[string]uint32{
 	"FIB_API_PATH_FLAG_NONE":                 0,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED": 1,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_HOST":     2,
+	"FIB_API_PATH_FLAG_POP_PW_CW":            4,
 }
 
 func (x FibPathFlags) String() string {
@@ -574,7 +577,7 @@ func (*MplsRouteAddDel) GetMessageName() string {
 	return "mpls_route_add_del"
 }
 func (*MplsRouteAddDel) GetCrcString() string {
-	return "3d7ca673"
+	return "afc038a8"
 }
 func (*MplsRouteAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -605,7 +608,7 @@ func (*MplsRouteDetails) GetMessageName() string {
 	return "mpls_route_details"
 }
 func (*MplsRouteDetails) GetCrcString() string {
-	return "463be12f"
+	return "ec00ad76"
 }
 func (*MplsRouteDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -695,7 +698,7 @@ func (*MplsTunnelAddDel) GetMessageName() string {
 	return "mpls_tunnel_add_del"
 }
 func (*MplsTunnelAddDel) GetCrcString() string {
-	return "81025192"
+	return "f077d939"
 }
 func (*MplsTunnelAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -727,7 +730,7 @@ func (*MplsTunnelDetails) GetMessageName() string {
 	return "mpls_tunnel_details"
 }
 func (*MplsTunnelDetails) GetCrcString() string {
-	return "8785712e"
+	return "076f0da6"
 }
 func (*MplsTunnelDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage

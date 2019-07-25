@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x89235b51
+	VersionCrc = 0x54307ba2
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -65,18 +65,21 @@ const (
 	FIB_API_PATH_FLAG_NONE                 FibPathFlags = 0
 	FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED FibPathFlags = 1
 	FIB_API_PATH_FLAG_RESOLVE_VIA_HOST     FibPathFlags = 2
+	FIB_API_PATH_FLAG_POP_PW_CW            FibPathFlags = 4
 )
 
 var FibPathFlags_name = map[uint32]string{
 	0: "FIB_API_PATH_FLAG_NONE",
 	1: "FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED",
 	2: "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
+	4: "FIB_API_PATH_FLAG_POP_PW_CW",
 }
 
 var FibPathFlags_value = map[string]uint32{
 	"FIB_API_PATH_FLAG_NONE":                 0,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED": 1,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_HOST":     2,
+	"FIB_API_PATH_FLAG_POP_PW_CW":            4,
 }
 
 func (x FibPathFlags) String() string {
@@ -612,7 +615,7 @@ func (*AbfPolicyAddDel) GetMessageName() string {
 	return "abf_policy_add_del"
 }
 func (*AbfPolicyAddDel) GetCrcString() string {
-	return "60b0000b"
+	return "d1fc434d"
 }
 func (*AbfPolicyAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -642,7 +645,7 @@ func (*AbfPolicyDetails) GetMessageName() string {
 	return "abf_policy_details"
 }
 func (*AbfPolicyDetails) GetCrcString() string {
-	return "ed2091e2"
+	return "c19593c8"
 }
 func (*AbfPolicyDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage

@@ -1,11 +1,49 @@
 {
     "types": [
         [
+            "qos_record",
+            [
+                "u32",
+                "sw_if_index"
+            ],
+            [
+                "vl_api_qos_source_t",
+                "input_source"
+            ]
+        ],
+        [
             "qos_egress_map_row",
             [
                 "u8",
                 "outputs",
                 256
+            ]
+        ],
+        [
+            "qos_egress_map",
+            [
+                "u32",
+                "id"
+            ],
+            [
+                "vl_api_qos_egress_map_row_t",
+                "rows",
+                4
+            ]
+        ],
+        [
+            "qos_mark",
+            [
+                "u32",
+                "sw_if_index"
+            ],
+            [
+                "u32",
+                "map_id"
+            ],
+            [
+                "vl_api_qos_source_t",
+                "output_source"
             ]
         ]
     ],
@@ -25,19 +63,15 @@
                 "context"
             ],
             [
-                "u32",
-                "sw_if_index"
-            ],
-            [
-                "vl_api_qos_source_t",
-                "input_source"
-            ],
-            [
                 "u8",
                 "enable"
             ],
+            [
+                "vl_api_qos_record_t",
+                "record"
+            ],
             {
-                "crc": "0x3f61053b"
+                "crc": "0x0e9320b1"
             }
         ],
         [
@@ -59,6 +93,42 @@
             }
         ],
         [
+            "qos_record_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14"
+            }
+        ],
+        [
+            "qos_record_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_qos_record_t",
+                "record"
+            ],
+            {
+                "crc": "0x01e537d6"
+            }
+        ],
+        [
             "qos_egress_map_update",
             [
                 "u16",
@@ -73,16 +143,11 @@
                 "context"
             ],
             [
-                "u32",
-                "map_id"
-            ],
-            [
-                "vl_api_qos_egress_map_row_t",
-                "rows",
-                4
+                "vl_api_qos_egress_map_t",
+                "map"
             ],
             {
-                "crc": "0x132f5196"
+                "crc": "0x6d1c065f"
             }
         ],
         [
@@ -119,10 +184,10 @@
             ],
             [
                 "u32",
-                "map_id"
+                "id"
             ],
             {
-                "crc": "0xdaab68c1"
+                "crc": "0x3a91bde5"
             }
         ],
         [
@@ -144,6 +209,42 @@
             }
         ],
         [
+            "qos_egress_map_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            {
+                "crc": "0x51077d14"
+            }
+        ],
+        [
+            "qos_egress_map_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_qos_egress_map_t",
+                "map"
+            ],
+            {
+                "crc": "0x46c5653c"
+            }
+        ],
+        [
             "qos_mark_enable_disable",
             [
                 "u16",
@@ -158,27 +259,77 @@
                 "context"
             ],
             [
+                "u8",
+                "enable"
+            ],
+            [
+                "vl_api_qos_mark_t",
+                "mark"
+            ],
+            {
+                "crc": "0xa7f849c8"
+            }
+        ],
+        [
+            "qos_mark_enable_disable_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
                 "u32",
-                "map_id"
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "qos_mark_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
             ],
             [
                 "u32",
                 "sw_if_index"
             ],
-            [
-                "vl_api_qos_source_t",
-                "output_source"
-            ],
-            [
-                "u8",
-                "enable"
-            ],
             {
-                "crc": "0x55d66592"
+                "crc": "0x529cb13f"
             }
         ],
         [
-            "qos_mark_enable_disable_reply",
+            "qos_mark_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_qos_mark_t",
+                "mark"
+            ],
+            {
+                "crc": "0x89fe81a9"
+            }
+        ],
+        [
+            "qos_mark_details_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -217,7 +368,7 @@
                 3
             ],
             {
-                "enumtype": "u32"
+                "enumtype": "u8"
             }
         ]
     ],
@@ -225,19 +376,31 @@
         "qos_record_enable_disable": {
             "reply": "qos_record_enable_disable_reply"
         },
+        "qos_record_dump": {
+            "reply": "qos_record_details",
+            "stream": true
+        },
         "qos_egress_map_update": {
             "reply": "qos_egress_map_update_reply"
         },
         "qos_egress_map_delete": {
             "reply": "qos_egress_map_delete_reply"
         },
+        "qos_egress_map_dump": {
+            "reply": "qos_egress_map_details",
+            "stream": true
+        },
         "qos_mark_enable_disable": {
             "reply": "qos_mark_enable_disable_reply"
+        },
+        "qos_mark_dump": {
+            "reply": "qos_mark_details",
+            "stream": true
         }
     },
     "options": {
         "version": "1.0.0"
     },
     "aliases": {},
-    "vl_api_version": "0x5fc93981"
+    "vl_api_version": "0x4994c707"
 }

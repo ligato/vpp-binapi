@@ -231,7 +231,7 @@
                 "l3xc"
             ],
             {
-                "crc": "0x2d935ce5"
+                "crc": "0xba037841"
             }
         ],
         [
@@ -337,7 +337,7 @@
                 "l3xc"
             ],
             {
-                "crc": "0xdbfc254e"
+                "crc": "0x924a1b6a"
             }
         ]
     ],
@@ -575,6 +575,10 @@
                 "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
                 2
             ],
+            [
+                "FIB_API_PATH_FLAG_POP_PW_CW",
+                4
+            ],
             {
                 "enumtype": "u32"
             }
@@ -658,5 +662,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0xd323745f"
+    "vl_api_version": "0xb2b7b56b"
 }

@@ -632,7 +632,7 @@
                 "bde_n_paths"
             ],
             {
-                "crc": "0xe10bd9c4"
+                "crc": "0x51dd9d5d"
             }
         ],
         [
@@ -712,7 +712,7 @@
                 "bde_n_paths"
             ],
             {
-                "crc": "0xc942baef"
+                "crc": "0xe5ea0c21"
             }
         ]
     ],
@@ -950,6 +950,10 @@
                 "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
                 2
             ],
+            [
+                "FIB_API_PATH_FLAG_POP_PW_CW",
+                4
+            ],
             {
                 "enumtype": "u32"
             }
@@ -1058,5 +1062,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x13f02645"
+    "vl_api_version": "0xc217e3eb"
 }

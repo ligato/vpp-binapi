@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.2.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x13f02645
+	VersionCrc = 0xc217e3eb
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -65,18 +65,21 @@ const (
 	FIB_API_PATH_FLAG_NONE                 FibPathFlags = 0
 	FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED FibPathFlags = 1
 	FIB_API_PATH_FLAG_RESOLVE_VIA_HOST     FibPathFlags = 2
+	FIB_API_PATH_FLAG_POP_PW_CW            FibPathFlags = 4
 )
 
 var FibPathFlags_name = map[uint32]string{
 	0: "FIB_API_PATH_FLAG_NONE",
 	1: "FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED",
 	2: "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
+	4: "FIB_API_PATH_FLAG_POP_PW_CW",
 }
 
 var FibPathFlags_value = map[string]uint32{
 	"FIB_API_PATH_FLAG_NONE":                 0,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED": 1,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_HOST":     2,
+	"FIB_API_PATH_FLAG_POP_PW_CW":            4,
 }
 
 func (x FibPathFlags) String() string {
@@ -527,7 +530,7 @@ func (*BierDispEntryAddDel) GetMessageName() string {
 	return "bier_disp_entry_add_del"
 }
 func (*BierDispEntryAddDel) GetCrcString() string {
-	return "e10bd9c4"
+	return "51dd9d5d"
 }
 func (*BierDispEntryAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -562,7 +565,7 @@ func (*BierDispEntryDetails) GetMessageName() string {
 	return "bier_disp_entry_details"
 }
 func (*BierDispEntryDetails) GetCrcString() string {
-	return "c942baef"
+	return "e5ea0c21"
 }
 func (*BierDispEntryDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage

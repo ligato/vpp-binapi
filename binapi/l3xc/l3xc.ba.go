@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xd323745f
+	VersionCrc = 0xb2b7b56b
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -65,18 +65,21 @@ const (
 	FIB_API_PATH_FLAG_NONE                 FibPathFlags = 0
 	FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED FibPathFlags = 1
 	FIB_API_PATH_FLAG_RESOLVE_VIA_HOST     FibPathFlags = 2
+	FIB_API_PATH_FLAG_POP_PW_CW            FibPathFlags = 4
 )
 
 var FibPathFlags_name = map[uint32]string{
 	0: "FIB_API_PATH_FLAG_NONE",
 	1: "FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED",
 	2: "FIB_API_PATH_FLAG_RESOLVE_VIA_HOST",
+	4: "FIB_API_PATH_FLAG_POP_PW_CW",
 }
 
 var FibPathFlags_value = map[string]uint32{
 	"FIB_API_PATH_FLAG_NONE":                 0,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_ATTACHED": 1,
 	"FIB_API_PATH_FLAG_RESOLVE_VIA_HOST":     2,
+	"FIB_API_PATH_FLAG_POP_PW_CW":            4,
 }
 
 func (x FibPathFlags) String() string {
@@ -542,7 +545,7 @@ func (*L3xcDetails) GetMessageName() string {
 	return "l3xc_details"
 }
 func (*L3xcDetails) GetCrcString() string {
-	return "dbfc254e"
+	return "924a1b6a"
 }
 func (*L3xcDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -601,7 +604,7 @@ func (*L3xcUpdate) GetMessageName() string {
 	return "l3xc_update"
 }
 func (*L3xcUpdate) GetCrcString() string {
-	return "2d935ce5"
+	return "ba037841"
 }
 func (*L3xcUpdate) GetMessageType() api.MessageType {
 	return api.RequestMessage
