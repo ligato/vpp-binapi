@@ -19,8 +19,16 @@
                 "u32",
                 "interface_id"
             ],
+            [
+                "u8",
+                "gso_enabled"
+            ],
+            [
+                "u32",
+                "gso_size"
+            ],
             {
-                "crc": "0xef1dc980"
+                "crc": "0xb1ecff05"
             }
         ],
         [
@@ -168,8 +176,8 @@
         }
     },
     "options": {
-        "version": "1.0.0"
+        "version": "1.1.0"
     },
     "aliases": {},
-    "vl_api_version": "0x8246d825"
+    "vl_api_version": "0x953cbbb2"
 }

@@ -23,9 +23,9 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "pg"
 	// APIVersion is the API version of this module.
-	APIVersion = "1.0.0"
+	APIVersion = "1.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x8246d825
+	VersionCrc = 0x953cbbb2
 )
 
 // PgCapture represents VPP binary API message 'pg_capture'.
@@ -65,13 +65,15 @@ func (*PgCaptureReply) GetMessageType() api.MessageType {
 // PgCreateInterface represents VPP binary API message 'pg_create_interface'.
 type PgCreateInterface struct {
 	InterfaceID uint32
+	GsoEnabled  uint8
+	GsoSize     uint32
 }
 
 func (*PgCreateInterface) GetMessageName() string {
 	return "pg_create_interface"
 }
 func (*PgCreateInterface) GetCrcString() string {
-	return "ef1dc980"
+	return "b1ecff05"
 }
 func (*PgCreateInterface) GetMessageType() api.MessageType {
 	return api.RequestMessage

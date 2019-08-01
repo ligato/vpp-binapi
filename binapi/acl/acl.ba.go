@@ -26,7 +26,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.0.1"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xd7265b0
+	VersionCrc = 0xedb7b898
 )
 
 // ACLRule represents VPP binary API type 'acl_rule'.

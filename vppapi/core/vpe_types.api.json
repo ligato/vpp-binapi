@@ -1,0 +1,36 @@
+{
+    "types": [
+        [
+            "version",
+            [
+                "u32",
+                "major"
+            ],
+            [
+                "u32",
+                "minor"
+            ],
+            [
+                "u32",
+                "patch"
+            ],
+            [
+                "u8",
+                "pre_release",
+                17
+            ],
+            [
+                "u8",
+                "build_metadata",
+                17
+            ]
+        ]
+    ],
+    "messages": [],
+    "unions": [],
+    "enums": [],
+    "services": {},
+    "options": {},
+    "aliases": {},
+    "vl_api_version": "0x313831b7"
+}
