@@ -7,7 +7,7 @@ Package gbp is a generated VPP binary API for 'gbp' module.
 It consists of:
 	 11 enums
 	  4 aliases
-	 19 types
+	 20 types
 	  1 union
 	 48 messages
 	 23 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "2.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xd9dff49a
+	VersionCrc = 0x11019e53
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -679,6 +679,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

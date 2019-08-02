@@ -7,7 +7,7 @@ Package l3xc is a generated VPP binary API for 'l3xc' module.
 It consists of:
 	  7 enums
 	  2 aliases
-	  9 types
+	 10 types
 	  1 union
 	  8 messages
 	  4 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xb2b7b56b
+	VersionCrc = 0x50ec0b4e
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -460,6 +460,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

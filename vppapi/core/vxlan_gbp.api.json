@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "vxlan_gbp_tunnel",
             [
                 "u32",
@@ -471,5 +482,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x28f90600"
+    "vl_api_version": "0xbac46121"
 }

@@ -7,7 +7,7 @@ Package maps is a generated VPP binary API for 'map' module.
 It consists of:
 	  4 enums
 	  2 aliases
-	  5 types
+	  6 types
 	  1 union
 	 32 messages
 	 16 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "3.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x65c6ca1b
+	VersionCrc = 0x590943b2
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -285,6 +285,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

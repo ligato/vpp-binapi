@@ -23,9 +23,9 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "vhost_user"
 	// APIVersion is the API version of this module.
-	APIVersion = "2.0.0"
+	APIVersion = "3.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xa81376c5
+	VersionCrc = 0x2762ee64
 )
 
 // CreateVhostUserIf represents VPP binary API message 'create_vhost_user_if'.
@@ -35,6 +35,7 @@ type CreateVhostUserIf struct {
 	Renumber            uint8
 	DisableMrgRxbuf     uint8
 	DisableIndirectDesc uint8
+	EnableGso           uint8
 	CustomDevInstance   uint32
 	UseCustomMac        uint8
 	MacAddress          []byte `struc:"[6]byte"`
@@ -45,7 +46,7 @@ func (*CreateVhostUserIf) GetMessageName() string {
 	return "create_vhost_user_if"
 }
 func (*CreateVhostUserIf) GetCrcString() string {
-	return "bd230b87"
+	return "a3438cd4"
 }
 func (*CreateVhostUserIf) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -103,6 +104,7 @@ type ModifyVhostUserIf struct {
 	IsServer          uint8
 	SockFilename      []byte `struc:"[256]byte"`
 	Renumber          uint8
+	EnableGso         uint8
 	CustomDevInstance uint32
 }
 
@@ -110,7 +112,7 @@ func (*ModifyVhostUserIf) GetMessageName() string {
 	return "modify_vhost_user_if"
 }
 func (*ModifyVhostUserIf) GetCrcString() string {
-	return "80a9eaaa"
+	return "3fd4c094"
 }
 func (*ModifyVhostUserIf) GetMessageType() api.MessageType {
 	return api.RequestMessage

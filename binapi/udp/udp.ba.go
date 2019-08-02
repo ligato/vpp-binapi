@@ -7,7 +7,7 @@ Package udp is a generated VPP binary API for 'udp' module.
 It consists of:
 	  4 enums
 	  2 aliases
-	  6 types
+	  7 types
 	  1 union
 	  6 messages
 	  3 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xe703bc6f
+	VersionCrc = 0xa6c90ec3
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -285,6 +285,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // UDPEncap represents VPP binary API type 'udp_encap'.

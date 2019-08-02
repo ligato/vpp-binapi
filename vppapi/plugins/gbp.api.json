@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "gbp_bridge_domain",
             [
                 "u32",
@@ -1751,5 +1762,5 @@
             "type": "u16"
         }
     },
-    "vl_api_version": "0xd9dff49a"
+    "vl_api_version": "0x11019e53"
 }

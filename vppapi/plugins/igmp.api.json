@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "igmp_group",
             [
                 "vl_api_filter_mode_t",
@@ -790,5 +801,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x29edb31e"
+    "vl_api_version": "0x1ea84f5f"
 }

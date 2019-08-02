@@ -7,7 +7,7 @@ Package igmp is a generated VPP binary API for 'igmp' module.
 It consists of:
 	  6 enums
 	  2 aliases
-	  7 types
+	  8 types
 	  1 union
 	 19 messages
 	  9 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x29edb31e
+	VersionCrc = 0x1ea84f5f
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -360,6 +360,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

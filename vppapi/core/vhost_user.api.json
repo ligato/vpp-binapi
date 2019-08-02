@@ -37,6 +37,10 @@
                 "disable_indirect_desc"
             ],
             [
+                "u8",
+                "enable_gso"
+            ],
+            [
                 "u32",
                 "custom_dev_instance"
             ],
@@ -55,7 +59,7 @@
                 64
             ],
             {
-                "crc": "0xbd230b87"
+                "crc": "0xa3438cd4"
             }
         ],
         [
@@ -112,11 +116,15 @@
                 "renumber"
             ],
             [
+                "u8",
+                "enable_gso"
+            ],
+            [
                 "u32",
                 "custom_dev_instance"
             ],
             {
-                "crc": "0x80a9eaaa"
+                "crc": "0x3fd4c094"
             }
         ],
         [
@@ -262,8 +270,8 @@
         }
     },
     "options": {
-        "version": "2.0.0"
+        "version": "3.0.0"
     },
     "aliases": {},
-    "vl_api_version": "0xa81376c5"
+    "vl_api_version": "0x2762ee64"
 }

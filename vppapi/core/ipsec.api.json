@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "ipsec_spd_entry",
             [
                 "u32",
@@ -1404,5 +1415,5 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0xd2452344"
+    "vl_api_version": "0xaffef530"
 }

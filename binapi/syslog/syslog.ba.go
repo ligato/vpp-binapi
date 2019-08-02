@@ -7,7 +7,7 @@ Package syslog is a generated VPP binary API for 'syslog' module.
 It consists of:
 	  5 enums
 	  2 aliases
-	  5 types
+	  6 types
 	  1 union
 	  8 messages
 	  4 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xf11d04ce
+	VersionCrc = 0x99a6a2b4
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -329,6 +329,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

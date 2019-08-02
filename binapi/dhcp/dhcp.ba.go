@@ -7,7 +7,7 @@ Package dhcp is a generated VPP binary API for 'dhcp' module.
 It consists of:
 	  4 enums
 	  2 aliases
-	 11 types
+	 12 types
 	  1 union
 	 25 messages
 	 11 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "2.0.1"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x8c5157ba
+	VersionCrc = 0xbc570632
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -360,6 +360,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

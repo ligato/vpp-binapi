@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "address",
             [
                 "vl_api_address_family_t",
@@ -124,6 +135,17 @@
             [
                 "u8",
                 "len"
+            ]
+        ],
+        [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
             ]
         ],
         [
@@ -971,5 +993,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x54307ba2"
+    "vl_api_version": "0x96d30784"
 }

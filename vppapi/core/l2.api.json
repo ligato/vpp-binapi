@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "mac_entry",
             [
                 "u32",
@@ -1756,5 +1767,5 @@
             "length": 6
         }
     },
-    "vl_api_version": "0x46c9d538"
+    "vl_api_version": "0x532950d2"
 }

@@ -1,6 +1,31 @@
 {
     "types": [
         [
+            "version",
+            [
+                "u32",
+                "major"
+            ],
+            [
+                "u32",
+                "minor"
+            ],
+            [
+                "u32",
+                "patch"
+            ],
+            [
+                "u8",
+                "pre_release",
+                17
+            ],
+            [
+                "u8",
+                "build_metadata",
+                17
+            ]
+        ],
+        [
             "thread_data",
             [
                 "u32",
@@ -477,11 +502,11 @@
                 "context"
             ],
             [
-                "f64",
+                "vl_api_timestamp_t",
                 "start_timestamp"
             ],
             {
-                "crc": "0x74fddb5f"
+                "crc": "0xe4a022b6"
             }
         ],
         [
@@ -495,19 +520,12 @@
                 "context"
             ],
             [
-                "f64",
-                "timestamp_ticks"
+                "vl_api_timestamp_t",
+                "timestamp"
             ],
             [
                 "vl_api_log_level_t",
                 "level"
-            ],
-            [
-                "string",
-                "timestamp",
-                {
-                    "limit": 24
-                }
             ],
             [
                 "string",
@@ -524,11 +542,11 @@
                 }
             ],
             {
-                "crc": "0x91976545"
+                "crc": "0x4aea1f4d"
             }
         ],
         [
-            "show_vpe_system_time_ticks",
+            "show_vpe_system_time",
             [
                 "u16",
                 "_vl_msg_id"
@@ -546,7 +564,7 @@
             }
         ],
         [
-            "show_vpe_system_time_ticks_reply",
+            "show_vpe_system_time_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -560,11 +578,11 @@
                 "retval"
             ],
             [
-                "f64",
-                "vpe_system_time_ticks"
+                "vl_api_timestamp_t",
+                "vpe_system_time"
             ],
             {
-                "crc": "0x5fa0885c"
+                "crc": "0x3b12fb3f"
             }
         ],
         [
@@ -739,8 +757,8 @@
             "reply": "log_details",
             "stream": true
         },
-        "show_vpe_system_time_ticks": {
-            "reply": "show_vpe_system_time_ticks_reply"
+        "show_vpe_system_time": {
+            "reply": "show_vpe_system_time_reply"
         },
         "get_f64_endian_value": {
             "reply": "get_f64_endian_value_reply"
@@ -750,8 +768,15 @@
         }
     },
     "options": {
-        "version": "1.4.0"
+        "version": "1.5.0"
     },
-    "aliases": {},
-    "vl_api_version": "0xf4bcb773"
+    "aliases": {
+        "timestamp": {
+            "type": "f64"
+        },
+        "timedelta": {
+            "type": "f64"
+        }
+    },
+    "vl_api_version": "0x2521f24d"
 }

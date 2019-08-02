@@ -7,7 +7,7 @@ Package ip_types is a generated VPP binary API for 'ip_types' module.
 It consists of:
 	  4 enums
 	  2 aliases
-	  5 types
+	  6 types
 	  1 union
 */
 package ip_types
@@ -25,7 +25,7 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "ip_types"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xc8a09355
+	VersionCrc = 0x417e2bb7
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -281,6 +281,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

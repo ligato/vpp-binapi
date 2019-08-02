@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "ipip_tunnel",
             [
                 "u32",
@@ -554,5 +565,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x3121a110"
+    "vl_api_version": "0x45442869"
 }

@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "nat44_lb_addr_port",
             [
                 "vl_api_ip4_address_t",
@@ -230,6 +241,46 @@
             ],
             {
                 "crc": "0x006a0786"
+            }
+        ],
+        [
+            "nat_set_log_level",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_nat_log_level_t",
+                "log_level"
+            ],
+            {
+                "crc": "0x70076bfe"
+            }
+        ],
+        [
+            "nat_set_log_level_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
             }
         ],
         [
@@ -3842,6 +3893,36 @@
             {
                 "enumtype": "u8"
             }
+        ],
+        [
+            "nat_log_level",
+            [
+                "NAT_LOG_NONE",
+                0
+            ],
+            [
+                "NAT_LOG_ERROR",
+                1
+            ],
+            [
+                "NAT_LOG_WARNING",
+                2
+            ],
+            [
+                "NAT_LOG_NOTICE",
+                3
+            ],
+            [
+                "NAT_LOG_INFO",
+                4
+            ],
+            [
+                "NAT_LOG_DEBUG",
+                5
+            ],
+            {
+                "enumtype": "u8"
+            }
         ]
     ],
     "services": {
@@ -3856,6 +3937,9 @@
         },
         "nat_show_config": {
             "reply": "nat_show_config_reply"
+        },
+        "nat_set_log_level": {
+            "reply": "nat_set_log_level_reply"
         },
         "nat_set_workers": {
             "reply": "nat_set_workers_reply"
@@ -4072,7 +4156,7 @@
         }
     },
     "options": {
-        "version": "5.0.0"
+        "version": "5.1.0"
     },
     "aliases": {
         "ip4_address": {
@@ -4087,5 +4171,5 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x68a1a63b"
+    "vl_api_version": "0x11e8f685"
 }

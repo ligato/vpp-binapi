@@ -7,7 +7,7 @@ Package vxlan_gbp is a generated VPP binary API for 'vxlan_gbp' module.
 It consists of:
 	  5 enums
 	  2 aliases
-	  6 types
+	  7 types
 	  1 union
 	  6 messages
 	  3 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x28f90600
+	VersionCrc = 0xbac46121
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -311,6 +311,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // VxlanGbpTunnel represents VPP binary API type 'vxlan_gbp_tunnel'.

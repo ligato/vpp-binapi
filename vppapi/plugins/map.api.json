@@ -62,6 +62,17 @@
                 "u8",
                 "len"
             ]
+        ],
+        [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
         ]
     ],
     "messages": [
@@ -1183,5 +1194,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x65c6ca1b"
+    "vl_api_version": "0x590943b2"
 }

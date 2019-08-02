@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "dhcp_client",
             [
                 "u32",
@@ -1228,5 +1239,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x8c5157ba"
+    "vl_api_version": "0xbc570632"
 }

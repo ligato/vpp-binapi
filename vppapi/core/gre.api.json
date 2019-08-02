@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "gre_tunnel",
             [
                 "u32",
@@ -431,5 +442,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x6f22ed63"
+    "vl_api_version": "0xed1d2d72"
 }

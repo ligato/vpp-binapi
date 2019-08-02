@@ -7,7 +7,7 @@ Package mpls is a generated VPP binary API for 'mpls' module.
 It consists of:
 	  7 enums
 	  2 aliases
-	 11 types
+	 12 types
 	  1 union
 	 16 messages
 	  8 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x6cbb7d02
+	VersionCrc = 0x108193db
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -487,6 +487,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

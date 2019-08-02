@@ -7,7 +7,7 @@ Package bier is a generated VPP binary API for 'bier' module.
 It consists of:
 	  7 enums
 	  2 aliases
-	 10 types
+	 11 types
 	  1 union
 	 22 messages
 	 11 services
@@ -29,7 +29,7 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "1.2.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xc217e3eb
+	VersionCrc = 0x2e6c2bed
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -471,6 +471,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

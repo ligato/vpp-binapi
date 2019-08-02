@@ -7,7 +7,7 @@ Package mfib_types is a generated VPP binary API for 'mfib_types' module.
 It consists of:
 	  8 enums
 	  2 aliases
-	  9 types
+	 10 types
 	  1 union
 */
 package mfib_types
@@ -25,7 +25,7 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "mfib_types"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x689a17a9
+	VersionCrc = 0x1665faa2
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -492,6 +492,16 @@ type Prefix struct {
 
 func (*Prefix) GetTypeName() string {
 	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
 }
 
 // AddressUnion represents VPP binary API union 'address_union'.

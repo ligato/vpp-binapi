@@ -28,9 +28,59 @@
     ],
     "messages": [],
     "unions": [],
-    "enums": [],
+    "enums": [
+        [
+            "log_level",
+            [
+                "VPE_API_LOG_LEVEL_EMERG",
+                0
+            ],
+            [
+                "VPE_API_LOG_LEVEL_ALERT",
+                1
+            ],
+            [
+                "VPE_API_LOG_LEVEL_CRIT",
+                2
+            ],
+            [
+                "VPE_API_LOG_LEVEL_ERR",
+                3
+            ],
+            [
+                "VPE_API_LOG_LEVEL_WARNING",
+                4
+            ],
+            [
+                "VPE_API_LOG_LEVEL_NOTICE",
+                5
+            ],
+            [
+                "VPE_API_LOG_LEVEL_INFO",
+                6
+            ],
+            [
+                "VPE_API_LOG_LEVEL_DEBUG",
+                7
+            ],
+            [
+                "VPE_API_LOG_LEVEL_DISABLED",
+                8
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ]
+    ],
     "services": {},
     "options": {},
-    "aliases": {},
-    "vl_api_version": "0x313831b7"
+    "aliases": {
+        "timestamp": {
+            "type": "f64"
+        },
+        "timedelta": {
+            "type": "f64"
+        }
+    },
+    "vl_api_version": "0x3369988d"
 }

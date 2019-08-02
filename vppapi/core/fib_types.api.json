@@ -64,6 +64,17 @@
             ]
         ],
         [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ],
+        [
             "fib_mpls_label",
             [
                 "u8",
@@ -458,5 +469,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x269531ab"
+    "vl_api_version": "0xc980a710"
 }
