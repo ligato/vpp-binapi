@@ -27,9 +27,9 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "map"
 	// APIVersion is the API version of this module.
-	APIVersion = "3.1.0"
+	APIVersion = "4.0.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x590943b2
+	VersionCrc = 0x65e23a93
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -778,15 +778,15 @@ func (*MapParamSetTCPReply) GetMessageType() api.MessageType {
 
 // MapParamSetTrafficClass represents VPP binary API message 'map_param_set_traffic_class'.
 type MapParamSetTrafficClass struct {
-	Copy  bool
-	Class uint8
+	Copy    bool
+	TcClass uint8
 }
 
 func (*MapParamSetTrafficClass) GetMessageName() string {
 	return "map_param_set_traffic_class"
 }
 func (*MapParamSetTrafficClass) GetCrcString() string {
-	return "007ee563"
+	return "9cac455c"
 }
 func (*MapParamSetTrafficClass) GetMessageType() api.MessageType {
 	return api.RequestMessage

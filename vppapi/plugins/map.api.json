@@ -761,10 +761,10 @@
             ],
             [
                 "u8",
-                "class"
+                "tc_class"
             ],
             {
-                "crc": "0x007ee563"
+                "crc": "0x9cac455c"
             }
         ],
         [
@@ -1182,7 +1182,7 @@
         }
     },
     "options": {
-        "version": "3.1.0"
+        "version": "4.0.0"
     },
     "aliases": {
         "ip4_address": {
@@ -1194,5 +1194,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x590943b2"
+    "vl_api_version": "0x65e23a93"
 }
