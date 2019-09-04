@@ -142,10 +142,11 @@
             ],
             [
                 "string",
-                "cmd"
+                "cmd",
+                0
             ],
             {
-                "crc": "0xb1ad59b3"
+                "crc": "0xf8377302"
             }
         ],
         [
@@ -186,10 +187,11 @@
             ],
             [
                 "string",
-                "reply"
+                "reply",
+                0
             ],
             {
-                "crc": "0x6d3c80a4"
+                "crc": "0x05879051"
             }
         ],
         [
@@ -322,33 +324,25 @@
             [
                 "string",
                 "program",
-                {
-                    "limit": 32
-                }
+                32
             ],
             [
                 "string",
                 "version",
-                {
-                    "limit": 32
-                }
+                32
             ],
             [
                 "string",
                 "build_date",
-                {
-                    "limit": 32
-                }
+                32
             ],
             [
                 "string",
                 "build_directory",
-                {
-                    "limit": 256
-                }
+                256
             ],
             {
-                "crc": "0xb9bcf6df"
+                "crc": "0xc919bde1"
             }
         ],
         [
@@ -530,19 +524,15 @@
             [
                 "string",
                 "msg_class",
-                {
-                    "limit": 32
-                }
+                32
             ],
             [
                 "string",
                 "message",
-                {
-                    "limit": 256
-                }
+                256
             ],
             {
-                "crc": "0x4aea1f4d"
+                "crc": "0xed1e1ac4"
             }
         ],
         [
@@ -768,7 +758,7 @@
         }
     },
     "options": {
-        "version": "1.5.0"
+        "version": "1.6.0"
     },
     "aliases": {
         "timestamp": {
@@ -778,5 +768,5 @@
             "type": "f64"
         }
     },
-    "vl_api_version": "0x2521f24d"
+    "vl_api_version": "0x1bf55581"
 }

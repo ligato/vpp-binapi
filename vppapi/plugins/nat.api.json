@@ -361,10 +361,11 @@
             ],
             [
                 "string",
-                "name"
+                "name",
+                64
             ],
             {
-                "crc": "0x9922dabd"
+                "crc": "0x84bf06fc"
             }
         ],
         [
@@ -1525,10 +1526,11 @@
             ],
             [
                 "string",
-                "tag"
+                "tag",
+                64
             ],
             {
-                "crc": "0xe26e4d05"
+                "crc": "0x7e918064"
             }
         ],
         [
@@ -1611,10 +1613,11 @@
             ],
             [
                 "string",
-                "tag"
+                "tag",
+                64
             ],
             {
-                "crc": "0x68e5b3cc"
+                "crc": "0x86389137"
             }
         ],
         [
@@ -1661,10 +1664,11 @@
             ],
             [
                 "string",
-                "tag"
+                "tag",
+                64
             ],
             {
-                "crc": "0x27cfdf6a"
+                "crc": "0x42dce21f"
             }
         ],
         [
@@ -1739,10 +1743,11 @@
             ],
             [
                 "string",
-                "tag"
+                "tag",
+                64
             ],
             {
-                "crc": "0xede3c486"
+                "crc": "0x87236490"
             }
         ],
         [
@@ -2012,6 +2017,11 @@
                 "affinity"
             ],
             [
+                "string",
+                "tag",
+                64
+            ],
+            [
                 "u32",
                 "local_num"
             ],
@@ -2021,12 +2031,8 @@
                 0,
                 "local_num"
             ],
-            [
-                "string",
-                "tag"
-            ],
             {
-                "crc": "0xfdbafb24"
+                "crc": "0xf1d96602"
             }
         ],
         [
@@ -2152,6 +2158,11 @@
                 "affinity"
             ],
             [
+                "string",
+                "tag",
+                64
+            ],
+            [
                 "u32",
                 "local_num"
             ],
@@ -2161,12 +2172,8 @@
                 0,
                 "local_num"
             ],
-            [
-                "string",
-                "tag"
-            ],
             {
-                "crc": "0x561d7343"
+                "crc": "0xfa4bb25d"
             }
         ],
         [
@@ -3853,6 +3860,158 @@
             }
         ],
         [
+            "if_status_flags",
+            [
+                "IF_STATUS_API_FLAG_ADMIN_UP",
+                1
+            ],
+            [
+                "IF_STATUS_API_FLAG_LINK_UP",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "mtu_proto",
+            [
+                "MTU_PROTO_API_L3",
+                1
+            ],
+            [
+                "MTU_PROTO_API_IP4",
+                2
+            ],
+            [
+                "MTU_PROTO_API_IP6",
+                3
+            ],
+            [
+                "MTU_PROTO_API_MPLS",
+                4
+            ],
+            [
+                "MTU_PROTO_API_N",
+                5
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "link_duplex",
+            [
+                "LINK_DUPLEX_API_UNKNOWN",
+                0
+            ],
+            [
+                "LINK_DUPLEX_API_HALF",
+                1
+            ],
+            [
+                "LINK_DUPLEX_API_FULL",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "sub_if_flags",
+            [
+                "SUB_IF_API_FLAG_NO_TAGS",
+                1
+            ],
+            [
+                "SUB_IF_API_FLAG_ONE_TAG",
+                2
+            ],
+            [
+                "SUB_IF_API_FLAG_TWO_TAGS",
+                4
+            ],
+            [
+                "SUB_IF_API_FLAG_DOT1AD",
+                8
+            ],
+            [
+                "SUB_IF_API_FLAG_EXACT_MATCH",
+                16
+            ],
+            [
+                "SUB_IF_API_FLAG_DEFAULT",
+                32
+            ],
+            [
+                "SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY",
+                64
+            ],
+            [
+                "SUB_IF_API_FLAG_INNER_VLAN_ID_ANY",
+                128
+            ],
+            [
+                "SUB_IF_API_FLAG_MASK_VNET",
+                254
+            ],
+            [
+                "SUB_IF_API_FLAG_DOT1AH",
+                256
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "rx_mode",
+            [
+                "RX_MODE_API_UNKNOWN",
+                0
+            ],
+            [
+                "RX_MODE_API_POLLING",
+                1
+            ],
+            [
+                "RX_MODE_API_INTERRUPT",
+                2
+            ],
+            [
+                "RX_MODE_API_ADAPTIVE",
+                3
+            ],
+            [
+                "RX_MODE_API_DEFAULT",
+                4
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "if_type",
+            [
+                "IF_API_TYPE_HARDWARE",
+                1
+            ],
+            [
+                "IF_API_TYPE_SUB",
+                2
+            ],
+            [
+                "IF_API_TYPE_P2P",
+                3
+            ],
+            [
+                "IF_API_TYPE_PIPE",
+                4
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
             "nat_config_flags",
             [
                 "NAT_IS_NONE",
@@ -4156,7 +4315,7 @@
         }
     },
     "options": {
-        "version": "5.1.0"
+        "version": "5.2.0"
     },
     "aliases": {
         "ip4_address": {
@@ -4171,5 +4330,5 @@
             "type": "u32"
         }
     },
-    "vl_api_version": "0x11e8f685"
+    "vl_api_version": "0xdc89bb61"
 }

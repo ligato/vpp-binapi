@@ -221,11 +221,11 @@
                 "bt_label"
             ],
             [
-                "u8",
+                "bool",
                 "bt_is_add"
             ],
             {
-                "crc": "0xcd3e9483"
+                "crc": "0x35e59209"
             }
         ],
         [
@@ -301,11 +301,11 @@
                 "context"
             ],
             [
-                "u8",
+                "bool",
                 "br_is_add"
             ],
             [
-                "u8",
+                "bool",
                 "br_is_replace"
             ],
             [
@@ -313,7 +313,7 @@
                 "br_route"
             ],
             {
-                "crc": "0x90121982"
+                "crc": "0xf29edca0"
             }
         ],
         [
@@ -541,11 +541,11 @@
                 "bdt_tbl_id"
             ],
             [
-                "u8",
+                "bool",
                 "bdt_is_add"
             ],
             {
-                "crc": "0x7671b2cb"
+                "crc": "0x889657ac"
             }
         ],
         [
@@ -625,7 +625,7 @@
                 "bde_tbl_id"
             ],
             [
-                "u8",
+                "bool",
                 "bde_is_add"
             ],
             [
@@ -643,7 +643,7 @@
                 "bde_n_paths"
             ],
             {
-                "crc": "0x51dd9d5d"
+                "crc": "0x561c1573"
             }
         ],
         [
@@ -705,7 +705,7 @@
                 "bde_tbl_id"
             ],
             [
-                "u8",
+                "bool",
                 "bde_is_add"
             ],
             [
@@ -723,7 +723,7 @@
                 "bde_n_paths"
             ],
             {
-                "crc": "0xe5ea0c21"
+                "crc": "0x529e346c"
             }
         ]
     ],
@@ -1061,7 +1061,7 @@
         }
     },
     "options": {
-        "version": "1.2.0"
+        "version": "1.2.1"
     },
     "aliases": {
         "ip4_address": {
@@ -1073,5 +1073,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x2e6c2bed"
+    "vl_api_version": "0x3cd9c729"
 }

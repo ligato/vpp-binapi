@@ -16,19 +16,20 @@ package vpe
 import (
 	bytes "bytes"
 	context "context"
-	api "git.fd.io/govpp.git/api"
-	struc "github.com/lunixbochs/struc"
 	io "io"
 	strconv "strconv"
+
+	api "git.fd.io/govpp.git/api"
+	struc "github.com/lunixbochs/struc"
 )
 
 const (
 	// ModuleName is the name of this module.
 	ModuleName = "vpe"
 	// APIVersion is the API version of this module.
-	APIVersion = "1.5.0"
+	APIVersion = "1.6.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x2521f24d
+	VersionCrc = 0x1bf55581
 )
 
 // LogLevel represents VPP binary API enum 'log_level'.
@@ -169,7 +170,7 @@ func (*CliInband) GetMessageName() string {
 	return "cli_inband"
 }
 func (*CliInband) GetCrcString() string {
-	return "b1ad59b3"
+	return "f8377302"
 }
 func (*CliInband) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -186,7 +187,7 @@ func (*CliInbandReply) GetMessageName() string {
 	return "cli_inband_reply"
 }
 func (*CliInbandReply) GetCrcString() string {
-	return "6d3c80a4"
+	return "05879051"
 }
 func (*CliInbandReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -396,17 +397,17 @@ func (*GetNodeIndexReply) GetMessageType() api.MessageType {
 type LogDetails struct {
 	Timestamp       Timestamp
 	Level           LogLevel
-	XXX_MsgClassLen uint32 `struc:"sizeof=MsgClass"`
-	MsgClass        string `binapi:",limit=32"`
-	XXX_MessageLen  uint32 `struc:"sizeof=Message"`
-	Message         string `binapi:",limit=256"`
+	XXX_MsgClassLen uint32   `struc:"sizeof=MsgClass"`
+	MsgClass        []string `struc:"[32]string"`
+	XXX_MessageLen  uint32   `struc:"sizeof=Message"`
+	Message         []string `struc:"[256]string"`
 }
 
 func (*LogDetails) GetMessageName() string {
 	return "log_details"
 }
 func (*LogDetails) GetCrcString() string {
-	return "4aea1f4d"
+	return "ed1e1ac4"
 }
 func (*LogDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -473,21 +474,21 @@ func (*ShowVersion) GetMessageType() api.MessageType {
 // ShowVersionReply represents VPP binary API message 'show_version_reply'.
 type ShowVersionReply struct {
 	Retval                int32
-	XXX_ProgramLen        uint32 `struc:"sizeof=Program"`
-	Program               string `binapi:",limit=32"`
-	XXX_VersionLen        uint32 `struc:"sizeof=Version"`
-	Version               string `binapi:",limit=32"`
-	XXX_BuildDateLen      uint32 `struc:"sizeof=BuildDate"`
-	BuildDate             string `binapi:",limit=32"`
-	XXX_BuildDirectoryLen uint32 `struc:"sizeof=BuildDirectory"`
-	BuildDirectory        string `binapi:",limit=256"`
+	XXX_ProgramLen        uint32   `struc:"sizeof=Program"`
+	Program               string   `struc:"[32]string"`
+	XXX_VersionLen        uint32   `struc:"sizeof=Version"`
+	Version               []string `struc:"[32]string"`
+	XXX_BuildDateLen      uint32   `struc:"sizeof=BuildDate"`
+	BuildDate             []string `struc:"[32]string"`
+	XXX_BuildDirectoryLen uint32   `struc:"sizeof=BuildDirectory"`
+	BuildDirectory        []string `struc:"[256]string"`
 }
 
 func (*ShowVersionReply) GetMessageName() string {
 	return "show_version_reply"
 }
 func (*ShowVersionReply) GetCrcString() string {
-	return "b9bcf6df"
+	return "c919bde1"
 }
 func (*ShowVersionReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage

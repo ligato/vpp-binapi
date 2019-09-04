@@ -27,9 +27,9 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "map"
 	// APIVersion is the API version of this module.
-	APIVersion = "4.0.0"
+	APIVersion = "4.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x65e23a93
+	VersionCrc = 0xa9c2a92c
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -382,15 +382,15 @@ type MapAddDomain struct {
 	PsidOffset uint8
 	PsidLength uint8
 	Mtu        uint16
-	XXX_TagLen uint32 `struc:"sizeof=Tag"`
-	Tag        string `binapi:",limit=64"`
+	XXX_TagLen uint32   `struc:"sizeof=Tag"`
+	Tag        []string `struc:"[64]string"`
 }
 
 func (*MapAddDomain) GetMessageName() string {
 	return "map_add_domain"
 }
 func (*MapAddDomain) GetCrcString() string {
-	return "18755ddb"
+	return "927d5ddb"
 }
 func (*MapAddDomain) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -453,15 +453,15 @@ type MapDomainDetails struct {
 	PsidLength  uint8
 	Flags       uint8
 	Mtu         uint16
-	XXX_TagLen  uint32 `struc:"sizeof=Tag"`
-	Tag         string `binapi:",limit=64"`
+	XXX_TagLen  uint32   `struc:"sizeof=Tag"`
+	Tag         []string `struc:"[64]string"`
 }
 
 func (*MapDomainDetails) GetMessageName() string {
 	return "map_domain_details"
 }
 func (*MapDomainDetails) GetCrcString() string {
-	return "c36cec17"
+	return "65d11a95"
 }
 func (*MapDomainDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage

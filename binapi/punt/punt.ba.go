@@ -27,9 +27,9 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "punt"
 	// APIVersion is the API version of this module.
-	APIVersion = "2.1.0"
+	APIVersion = "2.2.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xd16c6294
+	VersionCrc = 0x1cc8896c
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -489,7 +489,7 @@ func (*PuntReasonDetails) GetMessageName() string {
 	return "punt_reason_details"
 }
 func (*PuntReasonDetails) GetCrcString() string {
-	return "aa3dd9e5"
+	return "2c9d4a40"
 }
 func (*PuntReasonDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -504,7 +504,7 @@ func (*PuntReasonDump) GetMessageName() string {
 	return "punt_reason_dump"
 }
 func (*PuntReasonDump) GetCrcString() string {
-	return "bf8f10da"
+	return "5c0dd4fe"
 }
 func (*PuntReasonDump) GetMessageType() api.MessageType {
 	return api.RequestMessage

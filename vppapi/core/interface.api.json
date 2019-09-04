@@ -1,5 +1,80 @@
 {
-    "types": [],
+    "types": [
+        [
+            "address",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "vl_api_address_union_t",
+                "un"
+            ]
+        ],
+        [
+            "prefix",
+            [
+                "vl_api_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "mprefix",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "u16",
+                "grp_address_length"
+            ],
+            [
+                "vl_api_address_union_t",
+                "grp_address"
+            ],
+            [
+                "vl_api_address_union_t",
+                "src_address"
+            ]
+        ],
+        [
+            "ip6_prefix",
+            [
+                "vl_api_ip6_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "ip4_prefix",
+            [
+                "vl_api_ip4_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ]
+    ],
     "messages": [
         [
             "sw_interface_set_flags",
@@ -16,15 +91,15 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
-                "admin_up_down"
+                "vl_api_if_status_flags_t",
+                "flags"
             ],
             {
-                "crc": "0x555485f5"
+                "crc": "0xb2dc5eb2"
             }
         ],
         [
@@ -60,7 +135,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -68,7 +143,7 @@
                 "mtu"
             ],
             {
-                "crc": "0x132da1e7"
+                "crc": "0xe6c533aa"
             }
         ],
         [
@@ -104,7 +179,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -113,7 +188,7 @@
                 4
             ],
             {
-                "crc": "0xd0008db8"
+                "crc": "0xe768babe"
             }
         ],
         [
@@ -149,15 +224,15 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
+                "bool",
                 "enable"
             ],
             {
-                "crc": "0xa36fadc0"
+                "crc": "0x4ea0cbc4"
             }
         ],
         [
@@ -193,23 +268,19 @@
                 "pid"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
-                "admin_up_down"
+                "vl_api_if_status_flags_t",
+                "flags"
             ],
             [
-                "u8",
-                "link_up_down"
-            ],
-            [
-                "u8",
+                "bool",
                 "deleted"
             ],
             {
-                "crc": "0xbf9938e4"
+                "crc": "0xa98c55b5"
             }
         ],
         [
@@ -267,7 +338,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -275,29 +346,19 @@
                 "sup_sw_if_index"
             ],
             [
-                "u32",
-                "l2_address_length"
+                "vl_api_mac_address_t",
+                "l2_address"
             ],
             [
-                "u8",
-                "l2_address",
-                8
+                "vl_api_if_status_flags_t",
+                "flags"
             ],
             [
-                "u8",
-                "interface_name",
-                64
+                "vl_api_if_type_t",
+                "type"
             ],
             [
-                "u8",
-                "admin_up_down"
-            ],
-            [
-                "u8",
-                "link_up_down"
-            ],
-            [
-                "u8",
+                "vl_api_link_duplex_t",
                 "link_duplex"
             ],
             [
@@ -319,14 +380,6 @@
             ],
             [
                 "u8",
-                "sub_dot1ad"
-            ],
-            [
-                "u8",
-                "sub_dot1ah"
-            ],
-            [
-                "u8",
                 "sub_number_of_tags"
             ],
             [
@@ -338,20 +391,8 @@
                 "sub_inner_vlan_id"
             ],
             [
-                "u8",
-                "sub_exact_match"
-            ],
-            [
-                "u8",
-                "sub_default"
-            ],
-            [
-                "u8",
-                "sub_outer_vlan_id_any"
-            ],
-            [
-                "u8",
-                "sub_inner_vlan_id_any"
+                "vl_api_sub_if_flags_t",
+                "sub_if_flags"
             ],
             [
                 "u32",
@@ -370,23 +411,16 @@
                 "vtr_tag2"
             ],
             [
-                "u8",
-                "tag",
-                64
-            ],
-            [
                 "u16",
                 "outer_tag"
             ],
             [
-                "u8",
-                "b_dmac",
-                6
+                "vl_api_mac_address_t",
+                "b_dmac"
             ],
             [
-                "u8",
-                "b_smac",
-                6
+                "vl_api_mac_address_t",
+                "b_smac"
             ],
             [
                 "u16",
@@ -396,8 +430,18 @@
                 "u32",
                 "i_sid"
             ],
+            [
+                "string",
+                "interface_name",
+                64
+            ],
+            [
+                "string",
+                "tag",
+                64
+            ],
             {
-                "crc": "0xe4ee7eb6"
+                "crc": "0xe67d02b6"
             }
         ],
         [
@@ -419,16 +463,16 @@
                 "sw_if_index"
             ],
             [
-                "u8",
+                "bool",
                 "name_filter_valid"
             ],
             [
-                "u8",
+                "string",
                 "name_filter",
-                49
+                0
             ],
             {
-                "crc": "0x052753c5"
+                "crc": "0x4ecaa564"
             }
         ],
         [
@@ -446,32 +490,23 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
+                "bool",
                 "is_add"
             ],
             [
-                "u8",
-                "is_ipv6"
-            ],
-            [
-                "u8",
+                "bool",
                 "del_all"
             ],
             [
-                "u8",
-                "address_length"
-            ],
-            [
-                "u8",
-                "address",
-                16
+                "vl_api_prefix_t",
+                "prefix"
             ],
             {
-                "crc": "0x7b583179"
+                "crc": "0x43a487bd"
             }
         ],
         [
@@ -507,11 +542,11 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
+                "bool",
                 "is_ipv6"
             ],
             [
@@ -519,7 +554,7 @@
                 "vrf_id"
             ],
             {
-                "crc": "0xacb25d89"
+                "crc": "0x2d412a82"
             }
         ],
         [
@@ -555,15 +590,15 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
+                "bool",
                 "is_ipv6"
             ],
             {
-                "crc": "0x6b7bcd0a"
+                "crc": "0x6cfbc675"
             }
         ],
         [
@@ -603,19 +638,19 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "unnumbered_sw_if_index"
             ],
             [
-                "u8",
+                "bool",
                 "is_add"
             ],
             {
-                "crc": "0xa2c1bbda"
+                "crc": "0x61e660a5"
             }
         ],
         [
@@ -651,11 +686,11 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0x529cb13f"
+                "crc": "0xd85aab0d"
             }
         ],
         [
@@ -691,20 +726,20 @@
                 "context"
             ],
             [
-                "u8",
+                "bool",
                 "is_add"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
+                "string",
                 "tag",
                 64
             ],
             {
-                "crc": "0x14cc636c"
+                "crc": "0x7b32df5b"
             }
         ],
         [
@@ -740,16 +775,15 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
-                "mac_address",
-                6
+                "vl_api_mac_address_t",
+                "mac_address"
             ],
             {
-                "crc": "0xeed5dfca"
+                "crc": "0x5b2186bf"
             }
         ],
         [
@@ -785,11 +819,11 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0x529cb13f"
+                "crc": "0xd85aab0d"
             }
         ],
         [
@@ -807,12 +841,11 @@
                 "retval"
             ],
             [
-                "u8",
-                "mac_address",
-                6
+                "vl_api_mac_address_t",
+                "mac_address"
             ],
             {
-                "crc": "0x8ea538d3"
+                "crc": "0xf7723cdb"
             }
         ],
         [
@@ -830,11 +863,11 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
+                "bool",
                 "queue_id_valid"
             ],
             [
@@ -842,11 +875,11 @@
                 "queue_id"
             ],
             [
-                "u8",
+                "vl_api_rx_mode_t",
                 "mode"
             ],
             {
-                "crc": "0x2a1cc58c"
+                "crc": "0x9897721c"
             }
         ],
         [
@@ -882,7 +915,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -894,11 +927,11 @@
                 "worker_id"
             ],
             [
-                "u8",
+                "bool",
                 "is_main"
             ],
             {
-                "crc": "0x4ef4377d"
+                "crc": "0xe462d0d9"
             }
         ],
         [
@@ -934,11 +967,11 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0x529cb13f"
+                "crc": "0xd85aab0d"
             }
         ],
         [
@@ -956,7 +989,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -968,11 +1001,11 @@
                 "worker_id"
             ],
             [
-                "u8",
+                "vl_api_rx_mode_t",
                 "mode"
             ],
             {
-                "crc": "0x0e9e33f4"
+                "crc": "0x93d413ec"
             }
         ],
         [
@@ -990,7 +1023,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -998,7 +1031,7 @@
                 "new_show_dev_instance"
             ],
             {
-                "crc": "0x39194269"
+                "crc": "0x642d5410"
             }
         ],
         [
@@ -1034,7 +1067,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -1042,36 +1075,8 @@
                 "sub_id"
             ],
             [
-                "u8",
-                "no_tags"
-            ],
-            [
-                "u8",
-                "one_tag"
-            ],
-            [
-                "u8",
-                "two_tags"
-            ],
-            [
-                "u8",
-                "dot1ad"
-            ],
-            [
-                "u8",
-                "exact_match"
-            ],
-            [
-                "u8",
-                "default_sub"
-            ],
-            [
-                "u8",
-                "outer_vlan_id_any"
-            ],
-            [
-                "u8",
-                "inner_vlan_id_any"
+                "vl_api_sub_if_flags_t",
+                "sub_if_flags"
             ],
             [
                 "u16",
@@ -1082,7 +1087,7 @@
                 "inner_vlan_id"
             ],
             {
-                "crc": "0x86cfe408"
+                "crc": "0xa51a5dd3"
             }
         ],
         [
@@ -1100,11 +1105,11 @@
                 "retval"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0xfda5941f"
+                "crc": "0x903324db"
             }
         ],
         [
@@ -1122,7 +1127,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -1130,7 +1135,7 @@
                 "vlan_id"
             ],
             {
-                "crc": "0x70cadeda"
+                "crc": "0xbc534dd3"
             }
         ],
         [
@@ -1148,11 +1153,11 @@
                 "retval"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0xfda5941f"
+                "crc": "0x903324db"
             }
         ],
         [
@@ -1170,11 +1175,11 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0x529cb13f"
+                "crc": "0xd85aab0d"
             }
         ],
         [
@@ -1210,12 +1215,11 @@
                 "context"
             ],
             [
-                "u8",
-                "mac_address",
-                6
+                "vl_api_mac_address_t",
+                "mac_address"
             ],
             {
-                "crc": "0x3b54129c"
+                "crc": "0x16e13d38"
             }
         ],
         [
@@ -1233,11 +1237,11 @@
                 "retval"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0xfda5941f"
+                "crc": "0x903324db"
             }
         ],
         [
@@ -1255,12 +1259,11 @@
                 "context"
             ],
             [
-                "u8",
-                "mac_address",
-                6
+                "vl_api_mac_address_t",
+                "mac_address"
             ],
             [
-                "u8",
+                "bool",
                 "is_specified"
             ],
             [
@@ -1268,7 +1271,7 @@
                 "user_instance"
             ],
             {
-                "crc": "0x7bbd53b6"
+                "crc": "0xc9794285"
             }
         ],
         [
@@ -1286,11 +1289,11 @@
                 "retval"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0xfda5941f"
+                "crc": "0x903324db"
             }
         ],
         [
@@ -1308,11 +1311,11 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0x529cb13f"
+                "crc": "0xd85aab0d"
             }
         ],
         [
@@ -1348,15 +1351,15 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
+                "bool",
                 "enable_disable"
             ],
             {
-                "crc": "0x69d24598"
+                "crc": "0x35049db2"
             }
         ],
         [
@@ -1378,8 +1381,353 @@
             }
         ]
     ],
-    "unions": [],
-    "enums": [],
+    "unions": [
+        [
+            "address_union",
+            [
+                "vl_api_ip4_address_t",
+                "ip4"
+            ],
+            [
+                "vl_api_ip6_address_t",
+                "ip6"
+            ]
+        ]
+    ],
+    "enums": [
+        [
+            "if_status_flags",
+            [
+                "IF_STATUS_API_FLAG_ADMIN_UP",
+                1
+            ],
+            [
+                "IF_STATUS_API_FLAG_LINK_UP",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "mtu_proto",
+            [
+                "MTU_PROTO_API_L3",
+                1
+            ],
+            [
+                "MTU_PROTO_API_IP4",
+                2
+            ],
+            [
+                "MTU_PROTO_API_IP6",
+                3
+            ],
+            [
+                "MTU_PROTO_API_MPLS",
+                4
+            ],
+            [
+                "MTU_PROTO_API_N",
+                5
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "link_duplex",
+            [
+                "LINK_DUPLEX_API_UNKNOWN",
+                0
+            ],
+            [
+                "LINK_DUPLEX_API_HALF",
+                1
+            ],
+            [
+                "LINK_DUPLEX_API_FULL",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "sub_if_flags",
+            [
+                "SUB_IF_API_FLAG_NO_TAGS",
+                1
+            ],
+            [
+                "SUB_IF_API_FLAG_ONE_TAG",
+                2
+            ],
+            [
+                "SUB_IF_API_FLAG_TWO_TAGS",
+                4
+            ],
+            [
+                "SUB_IF_API_FLAG_DOT1AD",
+                8
+            ],
+            [
+                "SUB_IF_API_FLAG_EXACT_MATCH",
+                16
+            ],
+            [
+                "SUB_IF_API_FLAG_DEFAULT",
+                32
+            ],
+            [
+                "SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY",
+                64
+            ],
+            [
+                "SUB_IF_API_FLAG_INNER_VLAN_ID_ANY",
+                128
+            ],
+            [
+                "SUB_IF_API_FLAG_MASK_VNET",
+                254
+            ],
+            [
+                "SUB_IF_API_FLAG_DOT1AH",
+                256
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "rx_mode",
+            [
+                "RX_MODE_API_UNKNOWN",
+                0
+            ],
+            [
+                "RX_MODE_API_POLLING",
+                1
+            ],
+            [
+                "RX_MODE_API_INTERRUPT",
+                2
+            ],
+            [
+                "RX_MODE_API_ADAPTIVE",
+                3
+            ],
+            [
+                "RX_MODE_API_DEFAULT",
+                4
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "if_type",
+            [
+                "IF_API_TYPE_HARDWARE",
+                1
+            ],
+            [
+                "IF_API_TYPE_SUB",
+                2
+            ],
+            [
+                "IF_API_TYPE_P2P",
+                3
+            ],
+            [
+                "IF_API_TYPE_PIPE",
+                4
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "address_family",
+            [
+                "ADDRESS_IP4",
+                0
+            ],
+            [
+                "ADDRESS_IP6",
+                1
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ip_ecn",
+            [
+                "IP_API_ECN_NONE",
+                0
+            ],
+            [
+                "IP_API_ECN_ECT0",
+                1
+            ],
+            [
+                "IP_API_ECN_ECT1",
+                2
+            ],
+            [
+                "IP_API_ECN_CE",
+                3
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "ip_dscp",
+            [
+                "IP_API_DSCP_CS0",
+                0
+            ],
+            [
+                "IP_API_DSCP_CS1",
+                8
+            ],
+            [
+                "IP_API_DSCP_AF11",
+                10
+            ],
+            [
+                "IP_API_DSCP_AF12",
+                12
+            ],
+            [
+                "IP_API_DSCP_AF13",
+                14
+            ],
+            [
+                "IP_API_DSCP_CS2",
+                16
+            ],
+            [
+                "IP_API_DSCP_AF21",
+                18
+            ],
+            [
+                "IP_API_DSCP_AF22",
+                20
+            ],
+            [
+                "IP_API_DSCP_AF23",
+                22
+            ],
+            [
+                "IP_API_DSCP_CS3",
+                24
+            ],
+            [
+                "IP_API_DSCP_AF31",
+                26
+            ],
+            [
+                "IP_API_DSCP_AF32",
+                28
+            ],
+            [
+                "IP_API_DSCP_AF33",
+                30
+            ],
+            [
+                "IP_API_DSCP_CS4",
+                32
+            ],
+            [
+                "IP_API_DSCP_AF41",
+                34
+            ],
+            [
+                "IP_API_DSCP_AF42",
+                36
+            ],
+            [
+                "IP_API_DSCP_AF43",
+                38
+            ],
+            [
+                "IP_API_DSCP_CS5",
+                40
+            ],
+            [
+                "IP_API_DSCP_EF",
+                46
+            ],
+            [
+                "IP_API_DSCP_CS6",
+                48
+            ],
+            [
+                "IP_API_DSCP_CS7",
+                50
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "ip_proto",
+            [
+                "IP_API_PROTO_HOPOPT",
+                0
+            ],
+            [
+                "IP_API_PROTO_ICMP",
+                1
+            ],
+            [
+                "IP_API_PROTO_IGMP",
+                2
+            ],
+            [
+                "IP_API_PROTO_TCP",
+                6
+            ],
+            [
+                "IP_API_PROTO_UDP",
+                17
+            ],
+            [
+                "IP_API_PROTO_GRE",
+                47
+            ],
+            [
+                "IP_API_PROTO_AH",
+                50
+            ],
+            [
+                "IP_API_PROTO_ESP",
+                51
+            ],
+            [
+                "IP_API_PROTO_EIGRP",
+                88
+            ],
+            [
+                "IP_API_PROTO_OSPF",
+                89
+            ],
+            [
+                "IP_API_PROTO_SCTP",
+                132
+            ],
+            [
+                "IP_API_PROTO_RESERVED",
+                255
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ]
+    ],
     "services": {
         "want_interface_events": {
             "reply": "want_interface_events_reply",
@@ -1463,12 +1811,24 @@
         }
     },
     "options": {
-        "version": "2.3.1"
+        "version": "3.1.0"
     },
     "aliases": {
         "interface_index": {
             "type": "u32"
+        },
+        "mac_address": {
+            "type": "u8",
+            "length": 6
+        },
+        "ip4_address": {
+            "type": "u8",
+            "length": 4
+        },
+        "ip6_address": {
+            "type": "u8",
+            "length": 16
         }
     },
-    "vl_api_version": "0x6aab37be"
+    "vl_api_version": "0xd61ab705"
 }

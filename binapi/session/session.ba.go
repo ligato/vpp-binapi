@@ -5,8 +5,8 @@
 Package session is a generated VPP binary API for 'session' module.
 
 It consists of:
-	 38 messages
-	 19 services
+	 40 messages
+	 20 services
 */
 package session
 
@@ -23,10 +23,52 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "session"
 	// APIVersion is the API version of this module.
-	APIVersion = "1.6.0"
+	APIVersion = "1.7.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x9570a9fb
+	VersionCrc = 0x116a172d
 )
+
+// AppAttach represents VPP binary API message 'app_attach'.
+type AppAttach struct {
+	Options        []uint64 `struc:"[16]uint64"`
+	NamespaceIDLen uint8
+	NamespaceID    []byte `struc:"[64]byte"`
+}
+
+func (*AppAttach) GetMessageName() string {
+	return "app_attach"
+}
+func (*AppAttach) GetCrcString() string {
+	return "ed08f4bd"
+}
+func (*AppAttach) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// AppAttachReply represents VPP binary API message 'app_attach_reply'.
+type AppAttachReply struct {
+	Retval            int32
+	AppMq             uint64
+	VppCtrlMq         uint64
+	VppCtrlMqThread   uint8
+	AppIndex          uint32
+	NFds              uint8
+	FdFlags           uint8
+	SegmentSize       uint32
+	SegmentNameLength uint8
+	SegmentName       []byte `struc:"[128]byte"`
+	SegmentHandle     uint64
+}
+
+func (*AppAttachReply) GetMessageName() string {
+	return "app_attach_reply"
+}
+func (*AppAttachReply) GetCrcString() string {
+	return "0112f647"
+}
+func (*AppAttachReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
 
 // AppCutThroughRegistrationAdd represents VPP binary API message 'app_cut_through_registration_add'.
 type AppCutThroughRegistrationAdd struct {
@@ -348,16 +390,16 @@ type ConnectSock struct {
 	IP                 []byte `struc:"[16]byte"`
 	Port               uint16
 	Proto              uint8
+	ParentHandle       uint64
 	HostnameLen        uint8 `struc:"sizeof=Hostname"`
 	Hostname           []byte
-	ParentHandle       uint64
 }
 
 func (*ConnectSock) GetMessageName() string {
 	return "connect_sock"
 }
 func (*ConnectSock) GetCrcString() string {
-	return "af27d10c"
+	return "d2b460ca"
 }
 func (*ConnectSock) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -677,6 +719,8 @@ func (*UnmapSegmentReply) GetMessageType() api.MessageType {
 }
 
 func init() {
+	api.RegisterMessage((*AppAttach)(nil), "session.AppAttach")
+	api.RegisterMessage((*AppAttachReply)(nil), "session.AppAttachReply")
 	api.RegisterMessage((*AppCutThroughRegistrationAdd)(nil), "session.AppCutThroughRegistrationAdd")
 	api.RegisterMessage((*AppCutThroughRegistrationAddReply)(nil), "session.AppCutThroughRegistrationAddReply")
 	api.RegisterMessage((*AppNamespaceAddDel)(nil), "session.AppNamespaceAddDel")
@@ -720,6 +764,8 @@ func init() {
 // Messages returns list of all messages in this module.
 func AllMessages() []api.Message {
 	return []api.Message{
+		(*AppAttach)(nil),
+		(*AppAttachReply)(nil),
 		(*AppCutThroughRegistrationAdd)(nil),
 		(*AppCutThroughRegistrationAddReply)(nil),
 		(*AppNamespaceAddDel)(nil),
@@ -764,6 +810,7 @@ func AllMessages() []api.Message {
 // RPCService represents RPC service API for session module.
 type RPCService interface {
 	DumpSessionRules(ctx context.Context, in *SessionRulesDump) (RPCService_DumpSessionRulesClient, error)
+	AppAttach(ctx context.Context, in *AppAttach) (*AppAttachReply, error)
 	AppCutThroughRegistrationAdd(ctx context.Context, in *AppCutThroughRegistrationAdd) (*AppCutThroughRegistrationAddReply, error)
 	AppNamespaceAddDel(ctx context.Context, in *AppNamespaceAddDel) (*AppNamespaceAddDelReply, error)
 	AppWorkerAddDel(ctx context.Context, in *AppWorkerAddDel) (*AppWorkerAddDelReply, error)
@@ -816,6 +863,15 @@ func (c *serviceClient_DumpSessionRulesClient) Recv() (*SessionRulesDetails, err
 		return nil, io.EOF
 	}
 	return m, nil
+}
+
+func (c *serviceClient) AppAttach(ctx context.Context, in *AppAttach) (*AppAttachReply, error) {
+	out := new(AppAttachReply)
+	err := c.ch.SendRequest(in).ReceiveReply(out)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *serviceClient) AppCutThroughRegistrationAdd(ctx context.Context, in *AppCutThroughRegistrationAdd) (*AppCutThroughRegistrationAddReply, error) {

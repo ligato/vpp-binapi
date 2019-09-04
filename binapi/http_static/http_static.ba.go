@@ -23,9 +23,9 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "http_static"
 	// APIVersion is the API version of this module.
-	APIVersion = "2.0.0"
+	APIVersion = "2.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xe83d3b4a
+	VersionCrc = 0x8ce15783
 )
 
 // HTTPStaticEnable represents VPP binary API message 'http_static_enable'.
@@ -34,17 +34,17 @@ type HTTPStaticEnable struct {
 	CacheSizeLimit     uint32
 	PreallocFifos      uint32
 	PrivateSegmentSize uint32
-	XXX_WwwRootLen     uint32 `struc:"sizeof=WwwRoot"`
-	WwwRoot            string `binapi:",limit=256"`
-	XXX_URILen         uint32 `struc:"sizeof=URI"`
-	URI                string `binapi:",limit=256"`
+	XXX_WwwRootLen     uint32   `struc:"sizeof=WwwRoot"`
+	WwwRoot            []string `struc:"[256]string"`
+	XXX_URILen         uint32   `struc:"sizeof=URI"`
+	URI                []string `struc:"[256]string"`
 }
 
 func (*HTTPStaticEnable) GetMessageName() string {
 	return "http_static_enable"
 }
 func (*HTTPStaticEnable) GetCrcString() string {
-	return "1fa440d3"
+	return "075f8292"
 }
 func (*HTTPStaticEnable) GetMessageType() api.MessageType {
 	return api.RequestMessage

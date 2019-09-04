@@ -89,6 +89,97 @@
             }
         ],
         [
+            "app_attach",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u64",
+                "options",
+                16
+            ],
+            [
+                "u8",
+                "namespace_id_len"
+            ],
+            [
+                "u8",
+                "namespace_id",
+                64
+            ],
+            {
+                "crc": "0xed08f4bd"
+            }
+        ],
+        [
+            "app_attach_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            [
+                "u64",
+                "app_mq"
+            ],
+            [
+                "u64",
+                "vpp_ctrl_mq"
+            ],
+            [
+                "u8",
+                "vpp_ctrl_mq_thread"
+            ],
+            [
+                "u32",
+                "app_index"
+            ],
+            [
+                "u8",
+                "n_fds"
+            ],
+            [
+                "u8",
+                "fd_flags"
+            ],
+            [
+                "u32",
+                "segment_size"
+            ],
+            [
+                "u8",
+                "segment_name_length"
+            ],
+            [
+                "u8",
+                "segment_name",
+                128
+            ],
+            [
+                "u64",
+                "segment_handle"
+            ],
+            {
+                "crc": "0x0112f647"
+            }
+        ],
+        [
             "application_tls_cert_add",
             [
                 "u16",
@@ -656,6 +747,10 @@
                 "proto"
             ],
             [
+                "u64",
+                "parent_handle"
+            ],
+            [
                 "u8",
                 "hostname_len"
             ],
@@ -665,12 +760,8 @@
                 0,
                 "hostname_len"
             ],
-            [
-                "u64",
-                "parent_handle"
-            ],
             {
-                "crc": "0xaf27d10c"
+                "crc": "0xd2b460ca"
             }
         ],
         [
@@ -1114,6 +1205,9 @@
         "application_attach": {
             "reply": "application_attach_reply"
         },
+        "app_attach": {
+            "reply": "app_attach_reply"
+        },
         "application_tls_cert_add": {
             "reply": "application_tls_cert_add_reply"
         },
@@ -1171,8 +1265,8 @@
         }
     },
     "options": {
-        "version": "1.6.0"
+        "version": "1.7.0"
     },
     "aliases": {},
-    "vl_api_version": "0x9570a9fb"
+    "vl_api_version": "0x116a172d"
 }

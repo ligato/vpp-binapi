@@ -121,12 +121,10 @@
             [
                 "string",
                 "tag",
-                {
-                    "limit": 64
-                }
+                64
             ],
             {
-                "crc": "0x18755ddb"
+                "crc": "0x927d5ddb"
             }
         ],
         [
@@ -310,12 +308,10 @@
             [
                 "string",
                 "tag",
-                {
-                    "limit": 64
-                }
+                64
             ],
             {
-                "crc": "0xc36cec17"
+                "crc": "0x65d11a95"
             }
         ],
         [
@@ -1182,7 +1178,7 @@
         }
     },
     "options": {
-        "version": "4.0.0"
+        "version": "4.1.0"
     },
     "aliases": {
         "ip4_address": {
@@ -1194,5 +1190,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0x65e23a93"
+    "vl_api_version": "0xa9c2a92c"
 }

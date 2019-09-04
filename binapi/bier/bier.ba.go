@@ -27,9 +27,9 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "bier"
 	// APIVersion is the API version of this module.
-	APIVersion = "1.2.0"
+	APIVersion = "1.2.1"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x2e6c2bed
+	VersionCrc = 0x3cd9c729
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -530,7 +530,7 @@ func (u *AddressUnion) GetIP6() (a IP6Address) {
 type BierDispEntryAddDel struct {
 	BdeBp           uint16
 	BdeTblID        uint32
-	BdeIsAdd        uint8
+	BdeIsAdd        bool
 	BdePayloadProto uint8
 	BdeNPaths       uint8 `struc:"sizeof=BdePaths"`
 	BdePaths        []FibPath
@@ -540,7 +540,7 @@ func (*BierDispEntryAddDel) GetMessageName() string {
 	return "bier_disp_entry_add_del"
 }
 func (*BierDispEntryAddDel) GetCrcString() string {
-	return "51dd9d5d"
+	return "561c1573"
 }
 func (*BierDispEntryAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -565,7 +565,7 @@ func (*BierDispEntryAddDelReply) GetMessageType() api.MessageType {
 type BierDispEntryDetails struct {
 	BdeBp           uint16
 	BdeTblID        uint32
-	BdeIsAdd        uint8
+	BdeIsAdd        bool
 	BdePayloadProto uint8
 	BdeNPaths       uint8 `struc:"sizeof=BdePaths"`
 	BdePaths        []FibPath
@@ -575,7 +575,7 @@ func (*BierDispEntryDetails) GetMessageName() string {
 	return "bier_disp_entry_details"
 }
 func (*BierDispEntryDetails) GetCrcString() string {
-	return "e5ea0c21"
+	return "529e346c"
 }
 func (*BierDispEntryDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -599,14 +599,14 @@ func (*BierDispEntryDump) GetMessageType() api.MessageType {
 // BierDispTableAddDel represents VPP binary API message 'bier_disp_table_add_del'.
 type BierDispTableAddDel struct {
 	BdtTblID uint32
-	BdtIsAdd uint8
+	BdtIsAdd bool
 }
 
 func (*BierDispTableAddDel) GetMessageName() string {
 	return "bier_disp_table_add_del"
 }
 func (*BierDispTableAddDel) GetCrcString() string {
-	return "7671b2cb"
+	return "889657ac"
 }
 func (*BierDispTableAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -752,8 +752,8 @@ func (*BierImpDump) GetMessageType() api.MessageType {
 
 // BierRouteAddDel represents VPP binary API message 'bier_route_add_del'.
 type BierRouteAddDel struct {
-	BrIsAdd     uint8
-	BrIsReplace uint8
+	BrIsAdd     bool
+	BrIsReplace bool
 	BrRoute     BierRoute
 }
 
@@ -761,7 +761,7 @@ func (*BierRouteAddDel) GetMessageName() string {
 	return "bier_route_add_del"
 }
 func (*BierRouteAddDel) GetCrcString() string {
-	return "90121982"
+	return "f29edca0"
 }
 func (*BierRouteAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -816,14 +816,14 @@ func (*BierRouteDump) GetMessageType() api.MessageType {
 type BierTableAddDel struct {
 	BtTblID BierTableID
 	BtLabel uint32
-	BtIsAdd uint8
+	BtIsAdd bool
 }
 
 func (*BierTableAddDel) GetMessageName() string {
 	return "bier_table_add_del"
 }
 func (*BierTableAddDel) GetCrcString() string {
-	return "cd3e9483"
+	return "35e59209"
 }
 func (*BierTableAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage

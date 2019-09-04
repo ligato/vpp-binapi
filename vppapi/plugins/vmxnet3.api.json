@@ -89,8 +89,12 @@
                 "u8",
                 "bind"
             ],
+            [
+                "u8",
+                "enable_gso"
+            ],
             {
-                "crc": "0x6da613a5"
+                "crc": "0x80cc3559"
             }
         ],
         [
@@ -247,8 +251,8 @@
         }
     },
     "options": {
-        "version": "1.0.0"
+        "version": "1.0.1"
     },
     "aliases": {},
-    "vl_api_version": "0xe9e9abb1"
+    "vl_api_version": "0x402d34e6"
 }

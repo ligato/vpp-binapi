@@ -126,7 +126,8 @@
             ],
             [
                 "string",
-                "name"
+                "name",
+                0
             ]
         ]
     ],
@@ -333,7 +334,7 @@
                 "reason"
             ],
             {
-                "crc": "0xbf8f10da"
+                "crc": "0x5c0dd4fe"
             }
         ],
         [
@@ -351,7 +352,7 @@
                 "reason"
             ],
             {
-                "crc": "0xaa3dd9e5"
+                "crc": "0x2c9d4a40"
             }
         ]
     ],
@@ -603,7 +604,7 @@
         }
     },
     "options": {
-        "version": "2.1.0"
+        "version": "2.2.0"
     },
     "aliases": {
         "ip4_address": {
@@ -615,5 +616,5 @@
             "length": 16
         }
     },
-    "vl_api_version": "0xd16c6294"
+    "vl_api_version": "0x1cc8896c"
 }

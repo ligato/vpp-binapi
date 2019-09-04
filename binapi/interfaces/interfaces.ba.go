@@ -5,7 +5,10 @@
 Package interfaces is a generated VPP binary API for 'interface' module.
 
 It consists of:
-	  1 alias
+	 10 enums
+	  4 aliases
+	  6 types
+	  1 union
 	 51 messages
 	 25 services
 */
@@ -24,25 +27,543 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "interface"
 	// APIVersion is the API version of this module.
-	APIVersion = "2.3.1"
+	APIVersion = "3.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x6aab37be
+	VersionCrc = 0xd61ab705
 )
+
+// AddressFamily represents VPP binary API enum 'address_family'.
+type AddressFamily uint32
+
+const (
+	ADDRESS_IP4 AddressFamily = 0
+	ADDRESS_IP6 AddressFamily = 1
+)
+
+var AddressFamily_name = map[uint32]string{
+	0: "ADDRESS_IP4",
+	1: "ADDRESS_IP6",
+}
+
+var AddressFamily_value = map[string]uint32{
+	"ADDRESS_IP4": 0,
+	"ADDRESS_IP6": 1,
+}
+
+func (x AddressFamily) String() string {
+	s, ok := AddressFamily_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// IfStatusFlags represents VPP binary API enum 'if_status_flags'.
+type IfStatusFlags uint32
+
+const (
+	IF_STATUS_API_FLAG_ADMIN_UP IfStatusFlags = 1
+	IF_STATUS_API_FLAG_LINK_UP  IfStatusFlags = 2
+)
+
+var IfStatusFlags_name = map[uint32]string{
+	1: "IF_STATUS_API_FLAG_ADMIN_UP",
+	2: "IF_STATUS_API_FLAG_LINK_UP",
+}
+
+var IfStatusFlags_value = map[string]uint32{
+	"IF_STATUS_API_FLAG_ADMIN_UP": 1,
+	"IF_STATUS_API_FLAG_LINK_UP":  2,
+}
+
+func (x IfStatusFlags) String() string {
+	s, ok := IfStatusFlags_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// IfType represents VPP binary API enum 'if_type'.
+type IfType uint32
+
+const (
+	IF_API_TYPE_HARDWARE IfType = 1
+	IF_API_TYPE_SUB      IfType = 2
+	IF_API_TYPE_P2P      IfType = 3
+	IF_API_TYPE_PIPE     IfType = 4
+)
+
+var IfType_name = map[uint32]string{
+	1: "IF_API_TYPE_HARDWARE",
+	2: "IF_API_TYPE_SUB",
+	3: "IF_API_TYPE_P2P",
+	4: "IF_API_TYPE_PIPE",
+}
+
+var IfType_value = map[string]uint32{
+	"IF_API_TYPE_HARDWARE": 1,
+	"IF_API_TYPE_SUB":      2,
+	"IF_API_TYPE_P2P":      3,
+	"IF_API_TYPE_PIPE":     4,
+}
+
+func (x IfType) String() string {
+	s, ok := IfType_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// IPDscp represents VPP binary API enum 'ip_dscp'.
+type IPDscp uint8
+
+const (
+	IP_API_DSCP_CS0  IPDscp = 0
+	IP_API_DSCP_CS1  IPDscp = 8
+	IP_API_DSCP_AF11 IPDscp = 10
+	IP_API_DSCP_AF12 IPDscp = 12
+	IP_API_DSCP_AF13 IPDscp = 14
+	IP_API_DSCP_CS2  IPDscp = 16
+	IP_API_DSCP_AF21 IPDscp = 18
+	IP_API_DSCP_AF22 IPDscp = 20
+	IP_API_DSCP_AF23 IPDscp = 22
+	IP_API_DSCP_CS3  IPDscp = 24
+	IP_API_DSCP_AF31 IPDscp = 26
+	IP_API_DSCP_AF32 IPDscp = 28
+	IP_API_DSCP_AF33 IPDscp = 30
+	IP_API_DSCP_CS4  IPDscp = 32
+	IP_API_DSCP_AF41 IPDscp = 34
+	IP_API_DSCP_AF42 IPDscp = 36
+	IP_API_DSCP_AF43 IPDscp = 38
+	IP_API_DSCP_CS5  IPDscp = 40
+	IP_API_DSCP_EF   IPDscp = 46
+	IP_API_DSCP_CS6  IPDscp = 48
+	IP_API_DSCP_CS7  IPDscp = 50
+)
+
+var IPDscp_name = map[uint8]string{
+	0:  "IP_API_DSCP_CS0",
+	8:  "IP_API_DSCP_CS1",
+	10: "IP_API_DSCP_AF11",
+	12: "IP_API_DSCP_AF12",
+	14: "IP_API_DSCP_AF13",
+	16: "IP_API_DSCP_CS2",
+	18: "IP_API_DSCP_AF21",
+	20: "IP_API_DSCP_AF22",
+	22: "IP_API_DSCP_AF23",
+	24: "IP_API_DSCP_CS3",
+	26: "IP_API_DSCP_AF31",
+	28: "IP_API_DSCP_AF32",
+	30: "IP_API_DSCP_AF33",
+	32: "IP_API_DSCP_CS4",
+	34: "IP_API_DSCP_AF41",
+	36: "IP_API_DSCP_AF42",
+	38: "IP_API_DSCP_AF43",
+	40: "IP_API_DSCP_CS5",
+	46: "IP_API_DSCP_EF",
+	48: "IP_API_DSCP_CS6",
+	50: "IP_API_DSCP_CS7",
+}
+
+var IPDscp_value = map[string]uint8{
+	"IP_API_DSCP_CS0":  0,
+	"IP_API_DSCP_CS1":  8,
+	"IP_API_DSCP_AF11": 10,
+	"IP_API_DSCP_AF12": 12,
+	"IP_API_DSCP_AF13": 14,
+	"IP_API_DSCP_CS2":  16,
+	"IP_API_DSCP_AF21": 18,
+	"IP_API_DSCP_AF22": 20,
+	"IP_API_DSCP_AF23": 22,
+	"IP_API_DSCP_CS3":  24,
+	"IP_API_DSCP_AF31": 26,
+	"IP_API_DSCP_AF32": 28,
+	"IP_API_DSCP_AF33": 30,
+	"IP_API_DSCP_CS4":  32,
+	"IP_API_DSCP_AF41": 34,
+	"IP_API_DSCP_AF42": 36,
+	"IP_API_DSCP_AF43": 38,
+	"IP_API_DSCP_CS5":  40,
+	"IP_API_DSCP_EF":   46,
+	"IP_API_DSCP_CS6":  48,
+	"IP_API_DSCP_CS7":  50,
+}
+
+func (x IPDscp) String() string {
+	s, ok := IPDscp_name[uint8(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// IPEcn represents VPP binary API enum 'ip_ecn'.
+type IPEcn uint8
+
+const (
+	IP_API_ECN_NONE IPEcn = 0
+	IP_API_ECN_ECT0 IPEcn = 1
+	IP_API_ECN_ECT1 IPEcn = 2
+	IP_API_ECN_CE   IPEcn = 3
+)
+
+var IPEcn_name = map[uint8]string{
+	0: "IP_API_ECN_NONE",
+	1: "IP_API_ECN_ECT0",
+	2: "IP_API_ECN_ECT1",
+	3: "IP_API_ECN_CE",
+}
+
+var IPEcn_value = map[string]uint8{
+	"IP_API_ECN_NONE": 0,
+	"IP_API_ECN_ECT0": 1,
+	"IP_API_ECN_ECT1": 2,
+	"IP_API_ECN_CE":   3,
+}
+
+func (x IPEcn) String() string {
+	s, ok := IPEcn_name[uint8(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// IPProto represents VPP binary API enum 'ip_proto'.
+type IPProto uint32
+
+const (
+	IP_API_PROTO_HOPOPT   IPProto = 0
+	IP_API_PROTO_ICMP     IPProto = 1
+	IP_API_PROTO_IGMP     IPProto = 2
+	IP_API_PROTO_TCP      IPProto = 6
+	IP_API_PROTO_UDP      IPProto = 17
+	IP_API_PROTO_GRE      IPProto = 47
+	IP_API_PROTO_AH       IPProto = 50
+	IP_API_PROTO_ESP      IPProto = 51
+	IP_API_PROTO_EIGRP    IPProto = 88
+	IP_API_PROTO_OSPF     IPProto = 89
+	IP_API_PROTO_SCTP     IPProto = 132
+	IP_API_PROTO_RESERVED IPProto = 255
+)
+
+var IPProto_name = map[uint32]string{
+	0:   "IP_API_PROTO_HOPOPT",
+	1:   "IP_API_PROTO_ICMP",
+	2:   "IP_API_PROTO_IGMP",
+	6:   "IP_API_PROTO_TCP",
+	17:  "IP_API_PROTO_UDP",
+	47:  "IP_API_PROTO_GRE",
+	50:  "IP_API_PROTO_AH",
+	51:  "IP_API_PROTO_ESP",
+	88:  "IP_API_PROTO_EIGRP",
+	89:  "IP_API_PROTO_OSPF",
+	132: "IP_API_PROTO_SCTP",
+	255: "IP_API_PROTO_RESERVED",
+}
+
+var IPProto_value = map[string]uint32{
+	"IP_API_PROTO_HOPOPT":   0,
+	"IP_API_PROTO_ICMP":     1,
+	"IP_API_PROTO_IGMP":     2,
+	"IP_API_PROTO_TCP":      6,
+	"IP_API_PROTO_UDP":      17,
+	"IP_API_PROTO_GRE":      47,
+	"IP_API_PROTO_AH":       50,
+	"IP_API_PROTO_ESP":      51,
+	"IP_API_PROTO_EIGRP":    88,
+	"IP_API_PROTO_OSPF":     89,
+	"IP_API_PROTO_SCTP":     132,
+	"IP_API_PROTO_RESERVED": 255,
+}
+
+func (x IPProto) String() string {
+	s, ok := IPProto_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// LinkDuplex represents VPP binary API enum 'link_duplex'.
+type LinkDuplex uint32
+
+const (
+	LINK_DUPLEX_API_UNKNOWN LinkDuplex = 0
+	LINK_DUPLEX_API_HALF    LinkDuplex = 1
+	LINK_DUPLEX_API_FULL    LinkDuplex = 2
+)
+
+var LinkDuplex_name = map[uint32]string{
+	0: "LINK_DUPLEX_API_UNKNOWN",
+	1: "LINK_DUPLEX_API_HALF",
+	2: "LINK_DUPLEX_API_FULL",
+}
+
+var LinkDuplex_value = map[string]uint32{
+	"LINK_DUPLEX_API_UNKNOWN": 0,
+	"LINK_DUPLEX_API_HALF":    1,
+	"LINK_DUPLEX_API_FULL":    2,
+}
+
+func (x LinkDuplex) String() string {
+	s, ok := LinkDuplex_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// MtuProto represents VPP binary API enum 'mtu_proto'.
+type MtuProto uint32
+
+const (
+	MTU_PROTO_API_L3   MtuProto = 1
+	MTU_PROTO_API_IP4  MtuProto = 2
+	MTU_PROTO_API_IP6  MtuProto = 3
+	MTU_PROTO_API_MPLS MtuProto = 4
+	MTU_PROTO_API_N    MtuProto = 5
+)
+
+var MtuProto_name = map[uint32]string{
+	1: "MTU_PROTO_API_L3",
+	2: "MTU_PROTO_API_IP4",
+	3: "MTU_PROTO_API_IP6",
+	4: "MTU_PROTO_API_MPLS",
+	5: "MTU_PROTO_API_N",
+}
+
+var MtuProto_value = map[string]uint32{
+	"MTU_PROTO_API_L3":   1,
+	"MTU_PROTO_API_IP4":  2,
+	"MTU_PROTO_API_IP6":  3,
+	"MTU_PROTO_API_MPLS": 4,
+	"MTU_PROTO_API_N":    5,
+}
+
+func (x MtuProto) String() string {
+	s, ok := MtuProto_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// RxMode represents VPP binary API enum 'rx_mode'.
+type RxMode uint32
+
+const (
+	RX_MODE_API_UNKNOWN   RxMode = 0
+	RX_MODE_API_POLLING   RxMode = 1
+	RX_MODE_API_INTERRUPT RxMode = 2
+	RX_MODE_API_ADAPTIVE  RxMode = 3
+	RX_MODE_API_DEFAULT   RxMode = 4
+)
+
+var RxMode_name = map[uint32]string{
+	0: "RX_MODE_API_UNKNOWN",
+	1: "RX_MODE_API_POLLING",
+	2: "RX_MODE_API_INTERRUPT",
+	3: "RX_MODE_API_ADAPTIVE",
+	4: "RX_MODE_API_DEFAULT",
+}
+
+var RxMode_value = map[string]uint32{
+	"RX_MODE_API_UNKNOWN":   0,
+	"RX_MODE_API_POLLING":   1,
+	"RX_MODE_API_INTERRUPT": 2,
+	"RX_MODE_API_ADAPTIVE":  3,
+	"RX_MODE_API_DEFAULT":   4,
+}
+
+func (x RxMode) String() string {
+	s, ok := RxMode_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// SubIfFlags represents VPP binary API enum 'sub_if_flags'.
+type SubIfFlags uint32
+
+const (
+	SUB_IF_API_FLAG_NO_TAGS           SubIfFlags = 1
+	SUB_IF_API_FLAG_ONE_TAG           SubIfFlags = 2
+	SUB_IF_API_FLAG_TWO_TAGS          SubIfFlags = 4
+	SUB_IF_API_FLAG_DOT1AD            SubIfFlags = 8
+	SUB_IF_API_FLAG_EXACT_MATCH       SubIfFlags = 16
+	SUB_IF_API_FLAG_DEFAULT           SubIfFlags = 32
+	SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY SubIfFlags = 64
+	SUB_IF_API_FLAG_INNER_VLAN_ID_ANY SubIfFlags = 128
+	SUB_IF_API_FLAG_MASK_VNET         SubIfFlags = 254
+	SUB_IF_API_FLAG_DOT1AH            SubIfFlags = 256
+)
+
+var SubIfFlags_name = map[uint32]string{
+	1:   "SUB_IF_API_FLAG_NO_TAGS",
+	2:   "SUB_IF_API_FLAG_ONE_TAG",
+	4:   "SUB_IF_API_FLAG_TWO_TAGS",
+	8:   "SUB_IF_API_FLAG_DOT1AD",
+	16:  "SUB_IF_API_FLAG_EXACT_MATCH",
+	32:  "SUB_IF_API_FLAG_DEFAULT",
+	64:  "SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY",
+	128: "SUB_IF_API_FLAG_INNER_VLAN_ID_ANY",
+	254: "SUB_IF_API_FLAG_MASK_VNET",
+	256: "SUB_IF_API_FLAG_DOT1AH",
+}
+
+var SubIfFlags_value = map[string]uint32{
+	"SUB_IF_API_FLAG_NO_TAGS":           1,
+	"SUB_IF_API_FLAG_ONE_TAG":           2,
+	"SUB_IF_API_FLAG_TWO_TAGS":          4,
+	"SUB_IF_API_FLAG_DOT1AD":            8,
+	"SUB_IF_API_FLAG_EXACT_MATCH":       16,
+	"SUB_IF_API_FLAG_DEFAULT":           32,
+	"SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY": 64,
+	"SUB_IF_API_FLAG_INNER_VLAN_ID_ANY": 128,
+	"SUB_IF_API_FLAG_MASK_VNET":         254,
+	"SUB_IF_API_FLAG_DOT1AH":            256,
+}
+
+func (x SubIfFlags) String() string {
+	s, ok := SubIfFlags_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
 
 // InterfaceIndex represents VPP binary API alias 'interface_index'.
 type InterfaceIndex uint32
 
+// IP4Address represents VPP binary API alias 'ip4_address'.
+type IP4Address [4]uint8
+
+// IP6Address represents VPP binary API alias 'ip6_address'.
+type IP6Address [16]uint8
+
+// MacAddress represents VPP binary API alias 'mac_address'.
+type MacAddress [6]uint8
+
+// Address represents VPP binary API type 'address'.
+type Address struct {
+	Af AddressFamily
+	Un AddressUnion
+}
+
+func (*Address) GetTypeName() string {
+	return "address"
+}
+
+// IP4Prefix represents VPP binary API type 'ip4_prefix'.
+type IP4Prefix struct {
+	Address IP4Address
+	Len     uint8
+}
+
+func (*IP4Prefix) GetTypeName() string {
+	return "ip4_prefix"
+}
+
+// IP6Prefix represents VPP binary API type 'ip6_prefix'.
+type IP6Prefix struct {
+	Address IP6Address
+	Len     uint8
+}
+
+func (*IP6Prefix) GetTypeName() string {
+	return "ip6_prefix"
+}
+
+// Mprefix represents VPP binary API type 'mprefix'.
+type Mprefix struct {
+	Af               AddressFamily
+	GrpAddressLength uint16
+	GrpAddress       AddressUnion
+	SrcAddress       AddressUnion
+}
+
+func (*Mprefix) GetTypeName() string {
+	return "mprefix"
+}
+
+// Prefix represents VPP binary API type 'prefix'.
+type Prefix struct {
+	Address Address
+	Len     uint8
+}
+
+func (*Prefix) GetTypeName() string {
+	return "prefix"
+}
+
+// PrefixMatcher represents VPP binary API type 'prefix_matcher'.
+type PrefixMatcher struct {
+	Le uint8
+	Ge uint8
+}
+
+func (*PrefixMatcher) GetTypeName() string {
+	return "prefix_matcher"
+}
+
+// AddressUnion represents VPP binary API union 'address_union'.
+type AddressUnion struct {
+	XXX_UnionData [16]byte
+}
+
+func (*AddressUnion) GetTypeName() string {
+	return "address_union"
+}
+
+func AddressUnionIP4(a IP4Address) (u AddressUnion) {
+	u.SetIP4(a)
+	return
+}
+func (u *AddressUnion) SetIP4(a IP4Address) {
+	var b = new(bytes.Buffer)
+	if err := struc.Pack(b, &a); err != nil {
+		return
+	}
+	copy(u.XXX_UnionData[:], b.Bytes())
+}
+func (u *AddressUnion) GetIP4() (a IP4Address) {
+	var b = bytes.NewReader(u.XXX_UnionData[:])
+	struc.Unpack(b, &a)
+	return
+}
+
+func AddressUnionIP6(a IP6Address) (u AddressUnion) {
+	u.SetIP6(a)
+	return
+}
+func (u *AddressUnion) SetIP6(a IP6Address) {
+	var b = new(bytes.Buffer)
+	if err := struc.Pack(b, &a); err != nil {
+		return
+	}
+	copy(u.XXX_UnionData[:], b.Bytes())
+}
+func (u *AddressUnion) GetIP6() (a IP6Address) {
+	var b = bytes.NewReader(u.XXX_UnionData[:])
+	struc.Unpack(b, &a)
+	return
+}
+
 // CollectDetailedInterfaceStats represents VPP binary API message 'collect_detailed_interface_stats'.
 type CollectDetailedInterfaceStats struct {
-	SwIfIndex     uint32
-	EnableDisable uint8
+	SwIfIndex     InterfaceIndex
+	EnableDisable bool
 }
 
 func (*CollectDetailedInterfaceStats) GetMessageName() string {
 	return "collect_detailed_interface_stats"
 }
 func (*CollectDetailedInterfaceStats) GetCrcString() string {
-	return "69d24598"
+	return "35049db2"
 }
 func (*CollectDetailedInterfaceStats) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -65,14 +586,14 @@ func (*CollectDetailedInterfaceStatsReply) GetMessageType() api.MessageType {
 
 // CreateLoopback represents VPP binary API message 'create_loopback'.
 type CreateLoopback struct {
-	MacAddress []byte `struc:"[6]byte"`
+	MacAddress MacAddress
 }
 
 func (*CreateLoopback) GetMessageName() string {
 	return "create_loopback"
 }
 func (*CreateLoopback) GetCrcString() string {
-	return "3b54129c"
+	return "16e13d38"
 }
 func (*CreateLoopback) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -80,8 +601,8 @@ func (*CreateLoopback) GetMessageType() api.MessageType {
 
 // CreateLoopbackInstance represents VPP binary API message 'create_loopback_instance'.
 type CreateLoopbackInstance struct {
-	MacAddress   []byte `struc:"[6]byte"`
-	IsSpecified  uint8
+	MacAddress   MacAddress
+	IsSpecified  bool
 	UserInstance uint32
 }
 
@@ -89,7 +610,7 @@ func (*CreateLoopbackInstance) GetMessageName() string {
 	return "create_loopback_instance"
 }
 func (*CreateLoopbackInstance) GetCrcString() string {
-	return "7bbd53b6"
+	return "c9794285"
 }
 func (*CreateLoopbackInstance) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -98,14 +619,14 @@ func (*CreateLoopbackInstance) GetMessageType() api.MessageType {
 // CreateLoopbackInstanceReply represents VPP binary API message 'create_loopback_instance_reply'.
 type CreateLoopbackInstanceReply struct {
 	Retval    int32
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 }
 
 func (*CreateLoopbackInstanceReply) GetMessageName() string {
 	return "create_loopback_instance_reply"
 }
 func (*CreateLoopbackInstanceReply) GetCrcString() string {
-	return "fda5941f"
+	return "903324db"
 }
 func (*CreateLoopbackInstanceReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -114,14 +635,14 @@ func (*CreateLoopbackInstanceReply) GetMessageType() api.MessageType {
 // CreateLoopbackReply represents VPP binary API message 'create_loopback_reply'.
 type CreateLoopbackReply struct {
 	Retval    int32
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 }
 
 func (*CreateLoopbackReply) GetMessageName() string {
 	return "create_loopback_reply"
 }
 func (*CreateLoopbackReply) GetCrcString() string {
-	return "fda5941f"
+	return "903324db"
 }
 func (*CreateLoopbackReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -129,25 +650,18 @@ func (*CreateLoopbackReply) GetMessageType() api.MessageType {
 
 // CreateSubif represents VPP binary API message 'create_subif'.
 type CreateSubif struct {
-	SwIfIndex      uint32
-	SubID          uint32
-	NoTags         uint8
-	OneTag         uint8
-	TwoTags        uint8
-	Dot1ad         uint8
-	ExactMatch     uint8
-	DefaultSub     uint8
-	OuterVlanIDAny uint8
-	InnerVlanIDAny uint8
-	OuterVlanID    uint16
-	InnerVlanID    uint16
+	SwIfIndex   InterfaceIndex
+	SubID       uint32
+	SubIfFlags  SubIfFlags
+	OuterVlanID uint16
+	InnerVlanID uint16
 }
 
 func (*CreateSubif) GetMessageName() string {
 	return "create_subif"
 }
 func (*CreateSubif) GetCrcString() string {
-	return "86cfe408"
+	return "a51a5dd3"
 }
 func (*CreateSubif) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -156,14 +670,14 @@ func (*CreateSubif) GetMessageType() api.MessageType {
 // CreateSubifReply represents VPP binary API message 'create_subif_reply'.
 type CreateSubifReply struct {
 	Retval    int32
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 }
 
 func (*CreateSubifReply) GetMessageName() string {
 	return "create_subif_reply"
 }
 func (*CreateSubifReply) GetCrcString() string {
-	return "fda5941f"
+	return "903324db"
 }
 func (*CreateSubifReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -171,7 +685,7 @@ func (*CreateSubifReply) GetMessageType() api.MessageType {
 
 // CreateVlanSubif represents VPP binary API message 'create_vlan_subif'.
 type CreateVlanSubif struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 	VlanID    uint32
 }
 
@@ -179,7 +693,7 @@ func (*CreateVlanSubif) GetMessageName() string {
 	return "create_vlan_subif"
 }
 func (*CreateVlanSubif) GetCrcString() string {
-	return "70cadeda"
+	return "bc534dd3"
 }
 func (*CreateVlanSubif) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -188,14 +702,14 @@ func (*CreateVlanSubif) GetMessageType() api.MessageType {
 // CreateVlanSubifReply represents VPP binary API message 'create_vlan_subif_reply'.
 type CreateVlanSubifReply struct {
 	Retval    int32
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 }
 
 func (*CreateVlanSubifReply) GetMessageName() string {
 	return "create_vlan_subif_reply"
 }
 func (*CreateVlanSubifReply) GetCrcString() string {
-	return "fda5941f"
+	return "903324db"
 }
 func (*CreateVlanSubifReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -203,14 +717,14 @@ func (*CreateVlanSubifReply) GetMessageType() api.MessageType {
 
 // DeleteLoopback represents VPP binary API message 'delete_loopback'.
 type DeleteLoopback struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 }
 
 func (*DeleteLoopback) GetMessageName() string {
 	return "delete_loopback"
 }
 func (*DeleteLoopback) GetCrcString() string {
-	return "529cb13f"
+	return "d85aab0d"
 }
 func (*DeleteLoopback) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -233,14 +747,14 @@ func (*DeleteLoopbackReply) GetMessageType() api.MessageType {
 
 // DeleteSubif represents VPP binary API message 'delete_subif'.
 type DeleteSubif struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 }
 
 func (*DeleteSubif) GetMessageName() string {
 	return "delete_subif"
 }
 func (*DeleteSubif) GetCrcString() string {
-	return "529cb13f"
+	return "d85aab0d"
 }
 func (*DeleteSubif) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -263,7 +777,7 @@ func (*DeleteSubifReply) GetMessageType() api.MessageType {
 
 // HwInterfaceSetMtu represents VPP binary API message 'hw_interface_set_mtu'.
 type HwInterfaceSetMtu struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 	Mtu       uint16
 }
 
@@ -271,7 +785,7 @@ func (*HwInterfaceSetMtu) GetMessageName() string {
 	return "hw_interface_set_mtu"
 }
 func (*HwInterfaceSetMtu) GetCrcString() string {
-	return "132da1e7"
+	return "e6c533aa"
 }
 func (*HwInterfaceSetMtu) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -294,7 +808,7 @@ func (*HwInterfaceSetMtuReply) GetMessageType() api.MessageType {
 
 // InterfaceNameRenumber represents VPP binary API message 'interface_name_renumber'.
 type InterfaceNameRenumber struct {
-	SwIfIndex          uint32
+	SwIfIndex          InterfaceIndex
 	NewShowDevInstance uint32
 }
 
@@ -302,7 +816,7 @@ func (*InterfaceNameRenumber) GetMessageName() string {
 	return "interface_name_renumber"
 }
 func (*InterfaceNameRenumber) GetCrcString() string {
-	return "39194269"
+	return "642d5410"
 }
 func (*InterfaceNameRenumber) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -325,19 +839,17 @@ func (*InterfaceNameRenumberReply) GetMessageType() api.MessageType {
 
 // SwInterfaceAddDelAddress represents VPP binary API message 'sw_interface_add_del_address'.
 type SwInterfaceAddDelAddress struct {
-	SwIfIndex     uint32
-	IsAdd         uint8
-	IsIPv6        uint8
-	DelAll        uint8
-	AddressLength uint8
-	Address       []byte `struc:"[16]byte"`
+	SwIfIndex InterfaceIndex
+	IsAdd     bool
+	DelAll    bool
+	Prefix    Prefix
 }
 
 func (*SwInterfaceAddDelAddress) GetMessageName() string {
 	return "sw_interface_add_del_address"
 }
 func (*SwInterfaceAddDelAddress) GetCrcString() string {
-	return "7b583179"
+	return "43a487bd"
 }
 func (*SwInterfaceAddDelAddress) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -360,14 +872,14 @@ func (*SwInterfaceAddDelAddressReply) GetMessageType() api.MessageType {
 
 // SwInterfaceClearStats represents VPP binary API message 'sw_interface_clear_stats'.
 type SwInterfaceClearStats struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 }
 
 func (*SwInterfaceClearStats) GetMessageName() string {
 	return "sw_interface_clear_stats"
 }
 func (*SwInterfaceClearStats) GetCrcString() string {
-	return "529cb13f"
+	return "d85aab0d"
 }
 func (*SwInterfaceClearStats) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -390,44 +902,40 @@ func (*SwInterfaceClearStatsReply) GetMessageType() api.MessageType {
 
 // SwInterfaceDetails represents VPP binary API message 'sw_interface_details'.
 type SwInterfaceDetails struct {
-	SwIfIndex         uint32
-	SupSwIfIndex      uint32
-	L2AddressLength   uint32
-	L2Address         []byte `struc:"[8]byte"`
-	InterfaceName     []byte `struc:"[64]byte"`
-	AdminUpDown       uint8
-	LinkUpDown        uint8
-	LinkDuplex        uint8
-	LinkSpeed         uint32
-	LinkMtu           uint16
-	Mtu               []uint32 `struc:"[4]uint32"`
-	SubID             uint32
-	SubDot1ad         uint8
-	SubDot1ah         uint8
-	SubNumberOfTags   uint8
-	SubOuterVlanID    uint16
-	SubInnerVlanID    uint16
-	SubExactMatch     uint8
-	SubDefault        uint8
-	SubOuterVlanIDAny uint8
-	SubInnerVlanIDAny uint8
-	VtrOp             uint32
-	VtrPushDot1q      uint32
-	VtrTag1           uint32
-	VtrTag2           uint32
-	Tag               []byte `struc:"[64]byte"`
-	OuterTag          uint16
-	BDmac             []byte `struc:"[6]byte"`
-	BSmac             []byte `struc:"[6]byte"`
-	BVlanid           uint16
-	ISid              uint32
+	SwIfIndex            InterfaceIndex
+	SupSwIfIndex         uint32
+	L2Address            MacAddress
+	Flags                IfStatusFlags
+	Type                 IfType
+	LinkDuplex           LinkDuplex
+	LinkSpeed            uint32
+	LinkMtu              uint16
+	Mtu                  []uint32 `struc:"[4]uint32"`
+	SubID                uint32
+	SubNumberOfTags      uint8
+	SubOuterVlanID       uint16
+	SubInnerVlanID       uint16
+	SubIfFlags           SubIfFlags
+	VtrOp                uint32
+	VtrPushDot1q         uint32
+	VtrTag1              uint32
+	VtrTag2              uint32
+	OuterTag             uint16
+	BDmac                MacAddress
+	BSmac                MacAddress
+	BVlanid              uint16
+	ISid                 uint32
+	XXX_InterfaceNameLen uint32   `struc:"sizeof=InterfaceName"`
+	InterfaceName        []string `struc:"[64]string"`
+	XXX_TagLen           uint32   `struc:"sizeof=Tag"`
+	Tag                  []string `struc:"[64]string"`
 }
 
 func (*SwInterfaceDetails) GetMessageName() string {
 	return "sw_interface_details"
 }
 func (*SwInterfaceDetails) GetCrcString() string {
-	return "e4ee7eb6"
+	return "e67d02b6"
 }
 func (*SwInterfaceDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -435,16 +943,17 @@ func (*SwInterfaceDetails) GetMessageType() api.MessageType {
 
 // SwInterfaceDump represents VPP binary API message 'sw_interface_dump'.
 type SwInterfaceDump struct {
-	SwIfIndex       InterfaceIndex
-	NameFilterValid uint8
-	NameFilter      []byte `struc:"[49]byte"`
+	SwIfIndex         InterfaceIndex
+	NameFilterValid   bool
+	XXX_NameFilterLen uint32 `struc:"sizeof=NameFilter"`
+	NameFilter        string
 }
 
 func (*SwInterfaceDump) GetMessageName() string {
 	return "sw_interface_dump"
 }
 func (*SwInterfaceDump) GetCrcString() string {
-	return "052753c5"
+	return "4ecaa564"
 }
 func (*SwInterfaceDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -452,18 +961,17 @@ func (*SwInterfaceDump) GetMessageType() api.MessageType {
 
 // SwInterfaceEvent represents VPP binary API message 'sw_interface_event'.
 type SwInterfaceEvent struct {
-	PID         uint32
-	SwIfIndex   uint32
-	AdminUpDown uint8
-	LinkUpDown  uint8
-	Deleted     uint8
+	PID       uint32
+	SwIfIndex InterfaceIndex
+	Flags     IfStatusFlags
+	Deleted   bool
 }
 
 func (*SwInterfaceEvent) GetMessageName() string {
 	return "sw_interface_event"
 }
 func (*SwInterfaceEvent) GetCrcString() string {
-	return "bf9938e4"
+	return "a98c55b5"
 }
 func (*SwInterfaceEvent) GetMessageType() api.MessageType {
 	return api.EventMessage
@@ -471,14 +979,14 @@ func (*SwInterfaceEvent) GetMessageType() api.MessageType {
 
 // SwInterfaceGetMacAddress represents VPP binary API message 'sw_interface_get_mac_address'.
 type SwInterfaceGetMacAddress struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 }
 
 func (*SwInterfaceGetMacAddress) GetMessageName() string {
 	return "sw_interface_get_mac_address"
 }
 func (*SwInterfaceGetMacAddress) GetCrcString() string {
-	return "529cb13f"
+	return "d85aab0d"
 }
 func (*SwInterfaceGetMacAddress) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -487,14 +995,14 @@ func (*SwInterfaceGetMacAddress) GetMessageType() api.MessageType {
 // SwInterfaceGetMacAddressReply represents VPP binary API message 'sw_interface_get_mac_address_reply'.
 type SwInterfaceGetMacAddressReply struct {
 	Retval     int32
-	MacAddress []byte `struc:"[6]byte"`
+	MacAddress MacAddress
 }
 
 func (*SwInterfaceGetMacAddressReply) GetMessageName() string {
 	return "sw_interface_get_mac_address_reply"
 }
 func (*SwInterfaceGetMacAddressReply) GetCrcString() string {
-	return "8ea538d3"
+	return "f7723cdb"
 }
 func (*SwInterfaceGetMacAddressReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -502,15 +1010,15 @@ func (*SwInterfaceGetMacAddressReply) GetMessageType() api.MessageType {
 
 // SwInterfaceGetTable represents VPP binary API message 'sw_interface_get_table'.
 type SwInterfaceGetTable struct {
-	SwIfIndex uint32
-	IsIPv6    uint8
+	SwIfIndex InterfaceIndex
+	IsIPv6    bool
 }
 
 func (*SwInterfaceGetTable) GetMessageName() string {
 	return "sw_interface_get_table"
 }
 func (*SwInterfaceGetTable) GetCrcString() string {
-	return "6b7bcd0a"
+	return "6cfbc675"
 }
 func (*SwInterfaceGetTable) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -534,17 +1042,17 @@ func (*SwInterfaceGetTableReply) GetMessageType() api.MessageType {
 
 // SwInterfaceRxPlacementDetails represents VPP binary API message 'sw_interface_rx_placement_details'.
 type SwInterfaceRxPlacementDetails struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 	QueueID   uint32
 	WorkerID  uint32
-	Mode      uint8
+	Mode      RxMode
 }
 
 func (*SwInterfaceRxPlacementDetails) GetMessageName() string {
 	return "sw_interface_rx_placement_details"
 }
 func (*SwInterfaceRxPlacementDetails) GetCrcString() string {
-	return "0e9e33f4"
+	return "93d413ec"
 }
 func (*SwInterfaceRxPlacementDetails) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -552,14 +1060,14 @@ func (*SwInterfaceRxPlacementDetails) GetMessageType() api.MessageType {
 
 // SwInterfaceRxPlacementDump represents VPP binary API message 'sw_interface_rx_placement_dump'.
 type SwInterfaceRxPlacementDump struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 }
 
 func (*SwInterfaceRxPlacementDump) GetMessageName() string {
 	return "sw_interface_rx_placement_dump"
 }
 func (*SwInterfaceRxPlacementDump) GetCrcString() string {
-	return "529cb13f"
+	return "d85aab0d"
 }
 func (*SwInterfaceRxPlacementDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -567,15 +1075,15 @@ func (*SwInterfaceRxPlacementDump) GetMessageType() api.MessageType {
 
 // SwInterfaceSetFlags represents VPP binary API message 'sw_interface_set_flags'.
 type SwInterfaceSetFlags struct {
-	SwIfIndex   uint32
-	AdminUpDown uint8
+	SwIfIndex InterfaceIndex
+	Flags     IfStatusFlags
 }
 
 func (*SwInterfaceSetFlags) GetMessageName() string {
 	return "sw_interface_set_flags"
 }
 func (*SwInterfaceSetFlags) GetCrcString() string {
-	return "555485f5"
+	return "b2dc5eb2"
 }
 func (*SwInterfaceSetFlags) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -598,15 +1106,15 @@ func (*SwInterfaceSetFlagsReply) GetMessageType() api.MessageType {
 
 // SwInterfaceSetIPDirectedBroadcast represents VPP binary API message 'sw_interface_set_ip_directed_broadcast'.
 type SwInterfaceSetIPDirectedBroadcast struct {
-	SwIfIndex uint32
-	Enable    uint8
+	SwIfIndex InterfaceIndex
+	Enable    bool
 }
 
 func (*SwInterfaceSetIPDirectedBroadcast) GetMessageName() string {
 	return "sw_interface_set_ip_directed_broadcast"
 }
 func (*SwInterfaceSetIPDirectedBroadcast) GetCrcString() string {
-	return "a36fadc0"
+	return "4ea0cbc4"
 }
 func (*SwInterfaceSetIPDirectedBroadcast) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -629,15 +1137,15 @@ func (*SwInterfaceSetIPDirectedBroadcastReply) GetMessageType() api.MessageType 
 
 // SwInterfaceSetMacAddress represents VPP binary API message 'sw_interface_set_mac_address'.
 type SwInterfaceSetMacAddress struct {
-	SwIfIndex  uint32
-	MacAddress []byte `struc:"[6]byte"`
+	SwIfIndex  InterfaceIndex
+	MacAddress MacAddress
 }
 
 func (*SwInterfaceSetMacAddress) GetMessageName() string {
 	return "sw_interface_set_mac_address"
 }
 func (*SwInterfaceSetMacAddress) GetCrcString() string {
-	return "eed5dfca"
+	return "5b2186bf"
 }
 func (*SwInterfaceSetMacAddress) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -660,7 +1168,7 @@ func (*SwInterfaceSetMacAddressReply) GetMessageType() api.MessageType {
 
 // SwInterfaceSetMtu represents VPP binary API message 'sw_interface_set_mtu'.
 type SwInterfaceSetMtu struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 	Mtu       []uint32 `struc:"[4]uint32"`
 }
 
@@ -668,7 +1176,7 @@ func (*SwInterfaceSetMtu) GetMessageName() string {
 	return "sw_interface_set_mtu"
 }
 func (*SwInterfaceSetMtu) GetCrcString() string {
-	return "d0008db8"
+	return "e768babe"
 }
 func (*SwInterfaceSetMtu) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -691,17 +1199,17 @@ func (*SwInterfaceSetMtuReply) GetMessageType() api.MessageType {
 
 // SwInterfaceSetRxMode represents VPP binary API message 'sw_interface_set_rx_mode'.
 type SwInterfaceSetRxMode struct {
-	SwIfIndex    uint32
-	QueueIDValid uint8
+	SwIfIndex    InterfaceIndex
+	QueueIDValid bool
 	QueueID      uint32
-	Mode         uint8
+	Mode         RxMode
 }
 
 func (*SwInterfaceSetRxMode) GetMessageName() string {
 	return "sw_interface_set_rx_mode"
 }
 func (*SwInterfaceSetRxMode) GetCrcString() string {
-	return "2a1cc58c"
+	return "9897721c"
 }
 func (*SwInterfaceSetRxMode) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -724,17 +1232,17 @@ func (*SwInterfaceSetRxModeReply) GetMessageType() api.MessageType {
 
 // SwInterfaceSetRxPlacement represents VPP binary API message 'sw_interface_set_rx_placement'.
 type SwInterfaceSetRxPlacement struct {
-	SwIfIndex uint32
+	SwIfIndex InterfaceIndex
 	QueueID   uint32
 	WorkerID  uint32
-	IsMain    uint8
+	IsMain    bool
 }
 
 func (*SwInterfaceSetRxPlacement) GetMessageName() string {
 	return "sw_interface_set_rx_placement"
 }
 func (*SwInterfaceSetRxPlacement) GetCrcString() string {
-	return "4ef4377d"
+	return "e462d0d9"
 }
 func (*SwInterfaceSetRxPlacement) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -757,8 +1265,8 @@ func (*SwInterfaceSetRxPlacementReply) GetMessageType() api.MessageType {
 
 // SwInterfaceSetTable represents VPP binary API message 'sw_interface_set_table'.
 type SwInterfaceSetTable struct {
-	SwIfIndex uint32
-	IsIPv6    uint8
+	SwIfIndex InterfaceIndex
+	IsIPv6    bool
 	VrfID     uint32
 }
 
@@ -766,7 +1274,7 @@ func (*SwInterfaceSetTable) GetMessageName() string {
 	return "sw_interface_set_table"
 }
 func (*SwInterfaceSetTable) GetCrcString() string {
-	return "acb25d89"
+	return "2d412a82"
 }
 func (*SwInterfaceSetTable) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -789,16 +1297,16 @@ func (*SwInterfaceSetTableReply) GetMessageType() api.MessageType {
 
 // SwInterfaceSetUnnumbered represents VPP binary API message 'sw_interface_set_unnumbered'.
 type SwInterfaceSetUnnumbered struct {
-	SwIfIndex           uint32
-	UnnumberedSwIfIndex uint32
-	IsAdd               uint8
+	SwIfIndex           InterfaceIndex
+	UnnumberedSwIfIndex InterfaceIndex
+	IsAdd               bool
 }
 
 func (*SwInterfaceSetUnnumbered) GetMessageName() string {
 	return "sw_interface_set_unnumbered"
 }
 func (*SwInterfaceSetUnnumbered) GetCrcString() string {
-	return "a2c1bbda"
+	return "61e660a5"
 }
 func (*SwInterfaceSetUnnumbered) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -821,16 +1329,17 @@ func (*SwInterfaceSetUnnumberedReply) GetMessageType() api.MessageType {
 
 // SwInterfaceTagAddDel represents VPP binary API message 'sw_interface_tag_add_del'.
 type SwInterfaceTagAddDel struct {
-	IsAdd     uint8
-	SwIfIndex uint32
-	Tag       []byte `struc:"[64]byte"`
+	IsAdd      bool
+	SwIfIndex  InterfaceIndex
+	XXX_TagLen uint32   `struc:"sizeof=Tag"`
+	Tag        []string `struc:"[64]string"`
 }
 
 func (*SwInterfaceTagAddDel) GetMessageName() string {
 	return "sw_interface_tag_add_del"
 }
 func (*SwInterfaceTagAddDel) GetCrcString() string {
-	return "14cc636c"
+	return "7b32df5b"
 }
 func (*SwInterfaceTagAddDel) GetMessageType() api.MessageType {
 	return api.RequestMessage

@@ -5,7 +5,7 @@
 Package nat is a generated VPP binary API for 'nat' module.
 
 It consists of:
-	  6 enums
+	 12 enums
 	  3 aliases
 	  7 types
 	  1 union
@@ -27,9 +27,9 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "nat"
 	// APIVersion is the API version of this module.
-	APIVersion = "5.1.0"
+	APIVersion = "5.2.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x11e8f685
+	VersionCrc = 0xdc89bb61
 )
 
 // AddressFamily represents VPP binary API enum 'address_family'.
@@ -52,6 +52,64 @@ var AddressFamily_value = map[string]uint32{
 
 func (x AddressFamily) String() string {
 	s, ok := AddressFamily_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// IfStatusFlags represents VPP binary API enum 'if_status_flags'.
+type IfStatusFlags uint32
+
+const (
+	IF_STATUS_API_FLAG_ADMIN_UP IfStatusFlags = 1
+	IF_STATUS_API_FLAG_LINK_UP  IfStatusFlags = 2
+)
+
+var IfStatusFlags_name = map[uint32]string{
+	1: "IF_STATUS_API_FLAG_ADMIN_UP",
+	2: "IF_STATUS_API_FLAG_LINK_UP",
+}
+
+var IfStatusFlags_value = map[string]uint32{
+	"IF_STATUS_API_FLAG_ADMIN_UP": 1,
+	"IF_STATUS_API_FLAG_LINK_UP":  2,
+}
+
+func (x IfStatusFlags) String() string {
+	s, ok := IfStatusFlags_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// IfType represents VPP binary API enum 'if_type'.
+type IfType uint32
+
+const (
+	IF_API_TYPE_HARDWARE IfType = 1
+	IF_API_TYPE_SUB      IfType = 2
+	IF_API_TYPE_P2P      IfType = 3
+	IF_API_TYPE_PIPE     IfType = 4
+)
+
+var IfType_name = map[uint32]string{
+	1: "IF_API_TYPE_HARDWARE",
+	2: "IF_API_TYPE_SUB",
+	3: "IF_API_TYPE_P2P",
+	4: "IF_API_TYPE_PIPE",
+}
+
+var IfType_value = map[string]uint32{
+	"IF_API_TYPE_HARDWARE": 1,
+	"IF_API_TYPE_SUB":      2,
+	"IF_API_TYPE_P2P":      3,
+	"IF_API_TYPE_PIPE":     4,
+}
+
+func (x IfType) String() string {
+	s, ok := IfType_name[uint32(x)]
 	if ok {
 		return s
 	}
@@ -229,6 +287,70 @@ func (x IPProto) String() string {
 	return strconv.Itoa(int(x))
 }
 
+// LinkDuplex represents VPP binary API enum 'link_duplex'.
+type LinkDuplex uint32
+
+const (
+	LINK_DUPLEX_API_UNKNOWN LinkDuplex = 0
+	LINK_DUPLEX_API_HALF    LinkDuplex = 1
+	LINK_DUPLEX_API_FULL    LinkDuplex = 2
+)
+
+var LinkDuplex_name = map[uint32]string{
+	0: "LINK_DUPLEX_API_UNKNOWN",
+	1: "LINK_DUPLEX_API_HALF",
+	2: "LINK_DUPLEX_API_FULL",
+}
+
+var LinkDuplex_value = map[string]uint32{
+	"LINK_DUPLEX_API_UNKNOWN": 0,
+	"LINK_DUPLEX_API_HALF":    1,
+	"LINK_DUPLEX_API_FULL":    2,
+}
+
+func (x LinkDuplex) String() string {
+	s, ok := LinkDuplex_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// MtuProto represents VPP binary API enum 'mtu_proto'.
+type MtuProto uint32
+
+const (
+	MTU_PROTO_API_L3   MtuProto = 1
+	MTU_PROTO_API_IP4  MtuProto = 2
+	MTU_PROTO_API_IP6  MtuProto = 3
+	MTU_PROTO_API_MPLS MtuProto = 4
+	MTU_PROTO_API_N    MtuProto = 5
+)
+
+var MtuProto_name = map[uint32]string{
+	1: "MTU_PROTO_API_L3",
+	2: "MTU_PROTO_API_IP4",
+	3: "MTU_PROTO_API_IP6",
+	4: "MTU_PROTO_API_MPLS",
+	5: "MTU_PROTO_API_N",
+}
+
+var MtuProto_value = map[string]uint32{
+	"MTU_PROTO_API_L3":   1,
+	"MTU_PROTO_API_IP4":  2,
+	"MTU_PROTO_API_IP6":  3,
+	"MTU_PROTO_API_MPLS": 4,
+	"MTU_PROTO_API_N":    5,
+}
+
+func (x MtuProto) String() string {
+	s, ok := MtuProto_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
 // NatConfigFlags represents VPP binary API enum 'nat_config_flags'.
 type NatConfigFlags uint8
 
@@ -308,6 +430,91 @@ var NatLogLevel_value = map[string]uint8{
 
 func (x NatLogLevel) String() string {
 	s, ok := NatLogLevel_name[uint8(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// RxMode represents VPP binary API enum 'rx_mode'.
+type RxMode uint32
+
+const (
+	RX_MODE_API_UNKNOWN   RxMode = 0
+	RX_MODE_API_POLLING   RxMode = 1
+	RX_MODE_API_INTERRUPT RxMode = 2
+	RX_MODE_API_ADAPTIVE  RxMode = 3
+	RX_MODE_API_DEFAULT   RxMode = 4
+)
+
+var RxMode_name = map[uint32]string{
+	0: "RX_MODE_API_UNKNOWN",
+	1: "RX_MODE_API_POLLING",
+	2: "RX_MODE_API_INTERRUPT",
+	3: "RX_MODE_API_ADAPTIVE",
+	4: "RX_MODE_API_DEFAULT",
+}
+
+var RxMode_value = map[string]uint32{
+	"RX_MODE_API_UNKNOWN":   0,
+	"RX_MODE_API_POLLING":   1,
+	"RX_MODE_API_INTERRUPT": 2,
+	"RX_MODE_API_ADAPTIVE":  3,
+	"RX_MODE_API_DEFAULT":   4,
+}
+
+func (x RxMode) String() string {
+	s, ok := RxMode_name[uint32(x)]
+	if ok {
+		return s
+	}
+	return strconv.Itoa(int(x))
+}
+
+// SubIfFlags represents VPP binary API enum 'sub_if_flags'.
+type SubIfFlags uint32
+
+const (
+	SUB_IF_API_FLAG_NO_TAGS           SubIfFlags = 1
+	SUB_IF_API_FLAG_ONE_TAG           SubIfFlags = 2
+	SUB_IF_API_FLAG_TWO_TAGS          SubIfFlags = 4
+	SUB_IF_API_FLAG_DOT1AD            SubIfFlags = 8
+	SUB_IF_API_FLAG_EXACT_MATCH       SubIfFlags = 16
+	SUB_IF_API_FLAG_DEFAULT           SubIfFlags = 32
+	SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY SubIfFlags = 64
+	SUB_IF_API_FLAG_INNER_VLAN_ID_ANY SubIfFlags = 128
+	SUB_IF_API_FLAG_MASK_VNET         SubIfFlags = 254
+	SUB_IF_API_FLAG_DOT1AH            SubIfFlags = 256
+)
+
+var SubIfFlags_name = map[uint32]string{
+	1:   "SUB_IF_API_FLAG_NO_TAGS",
+	2:   "SUB_IF_API_FLAG_ONE_TAG",
+	4:   "SUB_IF_API_FLAG_TWO_TAGS",
+	8:   "SUB_IF_API_FLAG_DOT1AD",
+	16:  "SUB_IF_API_FLAG_EXACT_MATCH",
+	32:  "SUB_IF_API_FLAG_DEFAULT",
+	64:  "SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY",
+	128: "SUB_IF_API_FLAG_INNER_VLAN_ID_ANY",
+	254: "SUB_IF_API_FLAG_MASK_VNET",
+	256: "SUB_IF_API_FLAG_DOT1AH",
+}
+
+var SubIfFlags_value = map[string]uint32{
+	"SUB_IF_API_FLAG_NO_TAGS":           1,
+	"SUB_IF_API_FLAG_ONE_TAG":           2,
+	"SUB_IF_API_FLAG_TWO_TAGS":          4,
+	"SUB_IF_API_FLAG_DOT1AD":            8,
+	"SUB_IF_API_FLAG_EXACT_MATCH":       16,
+	"SUB_IF_API_FLAG_DEFAULT":           32,
+	"SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY": 64,
+	"SUB_IF_API_FLAG_INNER_VLAN_ID_ANY": 128,
+	"SUB_IF_API_FLAG_MASK_VNET":         254,
+	"SUB_IF_API_FLAG_DOT1AH":            256,
+}
+
+func (x SubIfFlags) String() string {
+	s, ok := SubIfFlags_name[uint32(x)]
 	if ok {
 		return s
 	}
@@ -665,15 +872,15 @@ type Nat44AddDelIdentityMapping struct {
 	Port       uint16
 	SwIfIndex  InterfaceIndex
 	VrfID      uint32
-	XXX_TagLen uint32 `struc:"sizeof=Tag"`
-	Tag        string
+	XXX_TagLen uint32   `struc:"sizeof=Tag"`
+	Tag        []string `struc:"[64]string"`
 }
 
 func (*Nat44AddDelIdentityMapping) GetMessageName() string {
 	return "nat44_add_del_identity_mapping"
 }
 func (*Nat44AddDelIdentityMapping) GetCrcString() string {
-	return "27cfdf6a"
+	return "42dce21f"
 }
 func (*Nat44AddDelIdentityMapping) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -734,17 +941,17 @@ type Nat44AddDelLbStaticMapping struct {
 	ExternalPort uint16
 	Protocol     uint8
 	Affinity     uint32
-	LocalNum     uint32 `struc:"sizeof=Locals"`
+	XXX_TagLen   uint32   `struc:"sizeof=Tag"`
+	Tag          []string `struc:"[64]string"`
+	LocalNum     uint32   `struc:"sizeof=Locals"`
 	Locals       []Nat44LbAddrPort
-	XXX_TagLen   uint32 `struc:"sizeof=Tag"`
-	Tag          string
 }
 
 func (*Nat44AddDelLbStaticMapping) GetMessageName() string {
 	return "nat44_add_del_lb_static_mapping"
 }
 func (*Nat44AddDelLbStaticMapping) GetCrcString() string {
-	return "fdbafb24"
+	return "f1d96602"
 }
 func (*Nat44AddDelLbStaticMapping) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -776,15 +983,15 @@ type Nat44AddDelStaticMapping struct {
 	ExternalPort      uint16
 	ExternalSwIfIndex InterfaceIndex
 	VrfID             uint32
-	XXX_TagLen        uint32 `struc:"sizeof=Tag"`
-	Tag               string
+	XXX_TagLen        uint32   `struc:"sizeof=Tag"`
+	Tag               []string `struc:"[64]string"`
 }
 
 func (*Nat44AddDelStaticMapping) GetMessageName() string {
 	return "nat44_add_del_static_mapping"
 }
 func (*Nat44AddDelStaticMapping) GetCrcString() string {
-	return "e26e4d05"
+	return "7e918064"
 }
 func (*Nat44AddDelStaticMapping) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -937,15 +1144,15 @@ type Nat44IdentityMappingDetails struct {
 	Port       uint16
 	SwIfIndex  InterfaceIndex
 	VrfID      uint32
-	XXX_TagLen uint32 `struc:"sizeof=Tag"`
-	Tag        string
+	XXX_TagLen uint32   `struc:"sizeof=Tag"`
+	Tag        []string `struc:"[64]string"`
 }
 
 func (*Nat44IdentityMappingDetails) GetMessageName() string {
 	return "nat44_identity_mapping_details"
 }
 func (*Nat44IdentityMappingDetails) GetCrcString() string {
-	return "ede3c486"
+	return "87236490"
 }
 func (*Nat44IdentityMappingDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -1156,17 +1363,17 @@ type Nat44LbStaticMappingDetails struct {
 	Protocol     uint8
 	Flags        NatConfigFlags
 	Affinity     uint32
-	LocalNum     uint32 `struc:"sizeof=Locals"`
+	XXX_TagLen   uint32   `struc:"sizeof=Tag"`
+	Tag          []string `struc:"[64]string"`
+	LocalNum     uint32   `struc:"sizeof=Locals"`
 	Locals       []Nat44LbAddrPort
-	XXX_TagLen   uint32 `struc:"sizeof=Tag"`
-	Tag          string
 }
 
 func (*Nat44LbStaticMappingDetails) GetMessageName() string {
 	return "nat44_lb_static_mapping_details"
 }
 func (*Nat44LbStaticMappingDetails) GetCrcString() string {
-	return "561d7343"
+	return "fa4bb25d"
 }
 func (*Nat44LbStaticMappingDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -1195,15 +1402,15 @@ type Nat44StaticMappingDetails struct {
 	ExternalPort      uint16
 	ExternalSwIfIndex InterfaceIndex
 	VrfID             uint32
-	XXX_TagLen        uint32 `struc:"sizeof=Tag"`
-	Tag               string
+	XXX_TagLen        uint32   `struc:"sizeof=Tag"`
+	Tag               []string `struc:"[64]string"`
 }
 
 func (*Nat44StaticMappingDetails) GetMessageName() string {
 	return "nat44_static_mapping_details"
 }
 func (*Nat44StaticMappingDetails) GetCrcString() string {
-	return "68e5b3cc"
+	return "86389137"
 }
 func (*Nat44StaticMappingDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -2651,15 +2858,15 @@ func (*NatShowConfigReply) GetMessageType() api.MessageType {
 type NatWorkerDetails struct {
 	WorkerIndex uint32
 	LcoreID     uint32
-	XXX_NameLen uint32 `struc:"sizeof=Name"`
-	Name        string
+	XXX_NameLen uint32   `struc:"sizeof=Name"`
+	Name        []string `struc:"[64]string"`
 }
 
 func (*NatWorkerDetails) GetMessageName() string {
 	return "nat_worker_details"
 }
 func (*NatWorkerDetails) GetCrcString() string {
-	return "9922dabd"
+	return "84bf06fc"
 }
 func (*NatWorkerDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage

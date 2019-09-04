@@ -2,7 +2,7 @@
     "types": [],
     "messages": [
         [
-            "http_static_enable",
+            "tls_openssl_set_engine",
             [
                 "u16",
                 "_vl_msg_id"
@@ -17,36 +17,29 @@
             ],
             [
                 "u32",
-                "fifo_size"
+                "async_enable"
             ],
             [
-                "u32",
-                "cache_size_limit"
+                "u8",
+                "engine",
+                64
             ],
             [
-                "u32",
-                "prealloc_fifos"
+                "u8",
+                "algorithm",
+                64
             ],
             [
-                "u32",
-                "private_segment_size"
-            ],
-            [
-                "string",
-                "www_root",
-                256
-            ],
-            [
-                "string",
-                "uri",
-                256
+                "u8",
+                "ciphers",
+                64
             ],
             {
-                "crc": "0x075f8292"
+                "crc": "0xe34d95c1"
             }
         ],
         [
-            "http_static_enable_reply",
+            "tls_openssl_set_engine_reply",
             [
                 "u16",
                 "_vl_msg_id"
@@ -67,13 +60,13 @@
     "unions": [],
     "enums": [],
     "services": {
-        "http_static_enable": {
-            "reply": "http_static_enable_reply"
+        "tls_openssl_set_engine": {
+            "reply": "tls_openssl_set_engine_reply"
         }
     },
     "options": {
-        "version": "2.1.0"
+        "version": "2.0.0"
     },
     "aliases": {},
-    "vl_api_version": "0x8ce15783"
+    "vl_api_version": "0xa50ae180"
 }
