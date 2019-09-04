@@ -6,13 +6,13 @@ SCRIPT_DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 vpp_img=${VPP_IMG:-'ligato/vpp-base:master'}
 
 function log() {
-	/bin/echo >&2 -ne "\e[1;30m"
-	/bin/echo "$*"
-	/bin/echo >&2 -ne "\e[0;0m"
+	echo >&2 -ne "\e[1;30m"
+	echo >&2 "$*"
+	echo >&2 -ne "\e[0;0m"
 }
 
 function export_vppapi() {
-	if [ -n "${PULL-}" ]; then
+	if [ ! -n "${NOPULL-}" ]; then
 		log "# Pulling VPP image ${vpp_img}"
 		docker pull "${vpp_img}"
 	fi
@@ -26,12 +26,10 @@ function export_vppapi() {
 		-v $(pwd)/vppapi:/vpp/api \
 		"$vpp_img" \
 		sh -c 'cp -r /usr/share/vpp/api/* /vpp/api'
-
-	log "$(tree vppapi | tail -n1)"
 }
 
 function generate_binapi() {
-	if [ -n "${INSTALL-}" ]; then
+	if [ ! -n "${NOINSTALL-}" ]; then
 		log "# Installing binapi generator"
 		go get -u git.fd.io/govpp.git/cmd/binapi-generator@master
 	fi
@@ -47,8 +45,6 @@ function generate_binapi() {
 	if [ "${warns}" -gt "0" ]; then
 		echo "Detected $warns warnings"
 	fi
-
-	log "$(tree binapi | tail -n1)"
 }
 
 function check_previous() {
