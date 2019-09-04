@@ -31,19 +31,16 @@ function export_vppapi() {
 function generate_binapi() {
 	if [ ! -n "${NOINSTALL-}" ]; then
 		log "# Installing binapi generator"
-		go get -u git.fd.io/govpp.git/cmd/binapi-generator@master
+		go install git.fd.io/govpp.git/cmd/binapi-generator
 	fi
-
-	gen_ver=$(binapi-generator -version)
+	binapi-generator version
 
 	log "# Generating binapi code"
-	echo "$gen_ver"
-
 	out=$(binapi-generator --input-dir=vppapi --output-dir=binapi 2>&1)
 
 	warns=$(echo "$out" | grep -ci WARN)
 	if [ "${warns}" -gt "0" ]; then
-		echo "Detected $warns warnings"
+		echo -e "\e[0;33mDetected $warns warnings\e[0;0m"
 	fi
 }
 
