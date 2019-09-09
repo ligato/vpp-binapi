@@ -26,13 +26,13 @@ const (
 	// APIVersion is the API version of this module.
 	APIVersion = "2.1.0"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0x949f3cb1
+	VersionCrc = 0x4b04e3e8
 )
 
 // MessageTableEntry represents VPP binary API type 'message_table_entry'.
 type MessageTableEntry struct {
 	Index uint16
-	Name  []byte `struc:"[64]byte"`
+	Name  string `struc:"[64]byte"`
 }
 
 func (*MessageTableEntry) GetTypeName() string {
@@ -44,7 +44,7 @@ type ModuleVersion struct {
 	Major uint32
 	Minor uint32
 	Patch uint32
-	Name  []byte `struc:"[64]byte"`
+	Name  string `struc:"[64]byte"`
 }
 
 func (*ModuleVersion) GetTypeName() string {
@@ -75,7 +75,7 @@ func (*APIVersionsReply) GetMessageName() string {
 	return "api_versions_reply"
 }
 func (*APIVersionsReply) GetCrcString() string {
-	return "76f45113"
+	return "5f0d99d6"
 }
 func (*APIVersionsReply) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -83,14 +83,14 @@ func (*APIVersionsReply) GetMessageType() api.MessageType {
 
 // GetFirstMsgID represents VPP binary API message 'get_first_msg_id'.
 type GetFirstMsgID struct {
-	Name []byte `struc:"[64]byte"`
+	Name string `struc:"[64]byte"`
 }
 
 func (*GetFirstMsgID) GetMessageName() string {
 	return "get_first_msg_id"
 }
 func (*GetFirstMsgID) GetCrcString() string {
-	return "0cb71b0e"
+	return "ebf79a66"
 }
 func (*GetFirstMsgID) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -116,7 +116,7 @@ func (*GetFirstMsgIDReply) GetMessageType() api.MessageType {
 type MemclntCreate struct {
 	CtxQuota    int32
 	InputQueue  uint64
-	Name        []byte   `struc:"[64]byte"`
+	Name        string   `struc:"[64]byte"`
 	APIVersions []uint32 `struc:"[8]uint32"`
 }
 
@@ -124,7 +124,7 @@ func (*MemclntCreate) GetMessageName() string {
 	return "memclnt_create"
 }
 func (*MemclntCreate) GetCrcString() string {
-	return "6d33c5ea"
+	return "9c5e1c2f"
 }
 func (*MemclntCreate) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -323,14 +323,14 @@ func (*SockInitShmReply) GetMessageType() api.MessageType {
 
 // SockclntCreate represents VPP binary API message 'sockclnt_create'.
 type SockclntCreate struct {
-	Name []byte `struc:"[64]byte"`
+	Name string `struc:"[64]byte"`
 }
 
 func (*SockclntCreate) GetMessageName() string {
 	return "sockclnt_create"
 }
 func (*SockclntCreate) GetCrcString() string {
-	return "df2cf94d"
+	return "455fb9c4"
 }
 func (*SockclntCreate) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -348,7 +348,7 @@ func (*SockclntCreateReply) GetMessageName() string {
 	return "sockclnt_create_reply"
 }
 func (*SockclntCreateReply) GetCrcString() string {
-	return "21795657"
+	return "35166268"
 }
 func (*SockclntCreateReply) GetMessageType() api.MessageType {
 	return api.RequestMessage
@@ -386,7 +386,7 @@ func (*SockclntDeleteReply) GetMessageType() api.MessageType {
 
 // TracePluginMsgIds represents VPP binary API message 'trace_plugin_msg_ids'.
 type TracePluginMsgIds struct {
-	PluginName []byte `struc:"[128]byte"`
+	PluginName string `struc:"[128]byte"`
 	FirstMsgID uint16
 	LastMsgID  uint16
 }
@@ -395,7 +395,7 @@ func (*TracePluginMsgIds) GetMessageName() string {
 	return "trace_plugin_msg_ids"
 }
 func (*TracePluginMsgIds) GetCrcString() string {
-	return "64af79f9"
+	return "f476d3ce"
 }
 func (*TracePluginMsgIds) GetMessageType() api.MessageType {
 	return api.RequestMessage

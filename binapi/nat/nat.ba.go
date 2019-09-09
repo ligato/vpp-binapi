@@ -865,15 +865,14 @@ func (*Nat44AddDelAddressRangeReply) GetMessageType() api.MessageType {
 
 // Nat44AddDelIdentityMapping represents VPP binary API message 'nat44_add_del_identity_mapping'.
 type Nat44AddDelIdentityMapping struct {
-	IsAdd      bool
-	Flags      NatConfigFlags
-	IPAddress  IP4Address
-	Protocol   uint8
-	Port       uint16
-	SwIfIndex  InterfaceIndex
-	VrfID      uint32
-	XXX_TagLen uint32   `struc:"sizeof=Tag"`
-	Tag        []string `struc:"[64]string"`
+	IsAdd     bool
+	Flags     NatConfigFlags
+	IPAddress IP4Address
+	Protocol  uint8
+	Port      uint16
+	SwIfIndex InterfaceIndex
+	VrfID     uint32
+	Tag       string `struc:"[64]byte"`
 }
 
 func (*Nat44AddDelIdentityMapping) GetMessageName() string {
@@ -941,9 +940,8 @@ type Nat44AddDelLbStaticMapping struct {
 	ExternalPort uint16
 	Protocol     uint8
 	Affinity     uint32
-	XXX_TagLen   uint32   `struc:"sizeof=Tag"`
-	Tag          []string `struc:"[64]string"`
-	LocalNum     uint32   `struc:"sizeof=Locals"`
+	Tag          string `struc:"[64]byte"`
+	LocalNum     uint32 `struc:"sizeof=Locals"`
 	Locals       []Nat44LbAddrPort
 }
 
@@ -983,8 +981,7 @@ type Nat44AddDelStaticMapping struct {
 	ExternalPort      uint16
 	ExternalSwIfIndex InterfaceIndex
 	VrfID             uint32
-	XXX_TagLen        uint32   `struc:"sizeof=Tag"`
-	Tag               []string `struc:"[64]string"`
+	Tag               string `struc:"[64]byte"`
 }
 
 func (*Nat44AddDelStaticMapping) GetMessageName() string {
@@ -1138,14 +1135,13 @@ func (*Nat44ForwardingIsEnabledReply) GetMessageType() api.MessageType {
 
 // Nat44IdentityMappingDetails represents VPP binary API message 'nat44_identity_mapping_details'.
 type Nat44IdentityMappingDetails struct {
-	Flags      NatConfigFlags
-	IPAddress  IP4Address
-	Protocol   uint8
-	Port       uint16
-	SwIfIndex  InterfaceIndex
-	VrfID      uint32
-	XXX_TagLen uint32   `struc:"sizeof=Tag"`
-	Tag        []string `struc:"[64]string"`
+	Flags     NatConfigFlags
+	IPAddress IP4Address
+	Protocol  uint8
+	Port      uint16
+	SwIfIndex InterfaceIndex
+	VrfID     uint32
+	Tag       string `struc:"[64]byte"`
 }
 
 func (*Nat44IdentityMappingDetails) GetMessageName() string {
@@ -1363,9 +1359,8 @@ type Nat44LbStaticMappingDetails struct {
 	Protocol     uint8
 	Flags        NatConfigFlags
 	Affinity     uint32
-	XXX_TagLen   uint32   `struc:"sizeof=Tag"`
-	Tag          []string `struc:"[64]string"`
-	LocalNum     uint32   `struc:"sizeof=Locals"`
+	Tag          string `struc:"[64]byte"`
+	LocalNum     uint32 `struc:"sizeof=Locals"`
 	Locals       []Nat44LbAddrPort
 }
 
@@ -1402,8 +1397,7 @@ type Nat44StaticMappingDetails struct {
 	ExternalPort      uint16
 	ExternalSwIfIndex InterfaceIndex
 	VrfID             uint32
-	XXX_TagLen        uint32   `struc:"sizeof=Tag"`
-	Tag               []string `struc:"[64]string"`
+	Tag               string `struc:"[64]byte"`
 }
 
 func (*Nat44StaticMappingDetails) GetMessageName() string {
@@ -2858,8 +2852,7 @@ func (*NatShowConfigReply) GetMessageType() api.MessageType {
 type NatWorkerDetails struct {
 	WorkerIndex uint32
 	LcoreID     uint32
-	XXX_NameLen uint32   `struc:"sizeof=Name"`
-	Name        []string `struc:"[64]string"`
+	Name        string `struc:"[64]byte"`
 }
 
 func (*NatWorkerDetails) GetMessageName() string {

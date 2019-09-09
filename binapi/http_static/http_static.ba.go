@@ -34,10 +34,8 @@ type HTTPStaticEnable struct {
 	CacheSizeLimit     uint32
 	PreallocFifos      uint32
 	PrivateSegmentSize uint32
-	XXX_WwwRootLen     uint32   `struc:"sizeof=WwwRoot"`
-	WwwRoot            []string `struc:"[256]string"`
-	XXX_URILen         uint32   `struc:"sizeof=URI"`
-	URI                []string `struc:"[256]string"`
+	WwwRoot            string `struc:"[256]byte"`
+	URI                string `struc:"[256]byte"`
 }
 
 func (*HTTPStaticEnable) GetMessageName() string {

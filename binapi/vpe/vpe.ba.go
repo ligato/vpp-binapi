@@ -16,11 +16,10 @@ package vpe
 import (
 	bytes "bytes"
 	context "context"
-	io "io"
-	strconv "strconv"
-
 	api "git.fd.io/govpp.git/api"
 	struc "github.com/lunixbochs/struc"
+	io "io"
+	strconv "strconv"
 )
 
 const (
@@ -395,12 +394,10 @@ func (*GetNodeIndexReply) GetMessageType() api.MessageType {
 
 // LogDetails represents VPP binary API message 'log_details'.
 type LogDetails struct {
-	Timestamp       Timestamp
-	Level           LogLevel
-	XXX_MsgClassLen uint32   `struc:"sizeof=MsgClass"`
-	MsgClass        []string `struc:"[32]string"`
-	XXX_MessageLen  uint32   `struc:"sizeof=Message"`
-	Message         []string `struc:"[256]string"`
+	Timestamp Timestamp
+	Level     LogLevel
+	MsgClass  string `struc:"[32]byte"`
+	Message   string `struc:"[256]byte"`
 }
 
 func (*LogDetails) GetMessageName() string {
@@ -473,15 +470,11 @@ func (*ShowVersion) GetMessageType() api.MessageType {
 
 // ShowVersionReply represents VPP binary API message 'show_version_reply'.
 type ShowVersionReply struct {
-	Retval                int32
-	XXX_ProgramLen        uint32   `struc:"sizeof=Program"`
-	Program               string   `struc:"[32]string"`
-	XXX_VersionLen        uint32   `struc:"sizeof=Version"`
-	Version               []string `struc:"[32]string"`
-	XXX_BuildDateLen      uint32   `struc:"sizeof=BuildDate"`
-	BuildDate             []string `struc:"[32]string"`
-	XXX_BuildDirectoryLen uint32   `struc:"sizeof=BuildDirectory"`
-	BuildDirectory        []string `struc:"[256]string"`
+	Retval         int32
+	Program        string `struc:"[32]byte"`
+	Version        string `struc:"[32]byte"`
+	BuildDate      string `struc:"[32]byte"`
+	BuildDirectory string `struc:"[256]byte"`
 }
 
 func (*ShowVersionReply) GetMessageName() string {

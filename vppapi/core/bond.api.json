@@ -312,8 +312,60 @@
                 "u8",
                 "is_long_timeout"
             ],
+            [
+                "u8",
+                "is_local_numa"
+            ],
+            [
+                "u32",
+                "weight"
+            ],
             {
-                "crc": "0xd5c58e45"
+                "crc": "0xeef053c2"
+            }
+        ],
+        [
+            "sw_interface_set_bond_weight",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "u32",
+                "sw_if_index"
+            ],
+            [
+                "u32",
+                "weight"
+            ],
+            {
+                "crc": "0xa5ea7c88"
+            }
+        ],
+        [
+            "sw_interface_set_bond_weight_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
             }
         ]
     ],
@@ -339,11 +391,14 @@
         "sw_interface_slave_dump": {
             "reply": "sw_interface_slave_details",
             "stream": true
+        },
+        "sw_interface_set_bond_weight": {
+            "reply": "sw_interface_set_bond_weight_reply"
         }
     },
     "options": {
-        "version": "1.0.1"
+        "version": "1.0.2"
     },
     "aliases": {},
-    "vl_api_version": "0xf29d9886"
+    "vl_api_version": "0xa998f17a"
 }

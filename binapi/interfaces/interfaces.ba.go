@@ -902,33 +902,31 @@ func (*SwInterfaceClearStatsReply) GetMessageType() api.MessageType {
 
 // SwInterfaceDetails represents VPP binary API message 'sw_interface_details'.
 type SwInterfaceDetails struct {
-	SwIfIndex            InterfaceIndex
-	SupSwIfIndex         uint32
-	L2Address            MacAddress
-	Flags                IfStatusFlags
-	Type                 IfType
-	LinkDuplex           LinkDuplex
-	LinkSpeed            uint32
-	LinkMtu              uint16
-	Mtu                  []uint32 `struc:"[4]uint32"`
-	SubID                uint32
-	SubNumberOfTags      uint8
-	SubOuterVlanID       uint16
-	SubInnerVlanID       uint16
-	SubIfFlags           SubIfFlags
-	VtrOp                uint32
-	VtrPushDot1q         uint32
-	VtrTag1              uint32
-	VtrTag2              uint32
-	OuterTag             uint16
-	BDmac                MacAddress
-	BSmac                MacAddress
-	BVlanid              uint16
-	ISid                 uint32
-	XXX_InterfaceNameLen uint32   `struc:"sizeof=InterfaceName"`
-	InterfaceName        []string `struc:"[64]string"`
-	XXX_TagLen           uint32   `struc:"sizeof=Tag"`
-	Tag                  []string `struc:"[64]string"`
+	SwIfIndex       InterfaceIndex
+	SupSwIfIndex    uint32
+	L2Address       MacAddress
+	Flags           IfStatusFlags
+	Type            IfType
+	LinkDuplex      LinkDuplex
+	LinkSpeed       uint32
+	LinkMtu         uint16
+	Mtu             []uint32 `struc:"[4]uint32"`
+	SubID           uint32
+	SubNumberOfTags uint8
+	SubOuterVlanID  uint16
+	SubInnerVlanID  uint16
+	SubIfFlags      SubIfFlags
+	VtrOp           uint32
+	VtrPushDot1q    uint32
+	VtrTag1         uint32
+	VtrTag2         uint32
+	OuterTag        uint16
+	BDmac           MacAddress
+	BSmac           MacAddress
+	BVlanid         uint16
+	ISid            uint32
+	InterfaceName   string `struc:"[64]byte"`
+	Tag             string `struc:"[64]byte"`
 }
 
 func (*SwInterfaceDetails) GetMessageName() string {
@@ -1329,10 +1327,9 @@ func (*SwInterfaceSetUnnumberedReply) GetMessageType() api.MessageType {
 
 // SwInterfaceTagAddDel represents VPP binary API message 'sw_interface_tag_add_del'.
 type SwInterfaceTagAddDel struct {
-	IsAdd      bool
-	SwIfIndex  InterfaceIndex
-	XXX_TagLen uint32   `struc:"sizeof=Tag"`
-	Tag        []string `struc:"[64]string"`
+	IsAdd     bool
+	SwIfIndex InterfaceIndex
+	Tag       string `struc:"[64]byte"`
 }
 
 func (*SwInterfaceTagAddDel) GetMessageName() string {

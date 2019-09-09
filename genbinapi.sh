@@ -37,8 +37,12 @@ function generate_binapi() {
 
 	log "# Generating binapi code"
 	out=$(binapi-generator --input-dir=vppapi --output-dir=binapi 2>&1)
+	if [ "$?" -ne 0 ]; then
+		echo "$out"
+		exit 3
+	fi
 
-	warns=$(echo "$out" | grep -ci WARN)
+	warns=$(echo "$out" | grep -ci WARN || true)
 	if [ "${warns}" -gt "0" ]; then
 		echo -e "\e[0;33mDetected $warns warnings\e[0;0m"
 	fi
@@ -60,4 +64,5 @@ rm -rf vppapi/* binapi/*
 export_vppapi
 generate_binapi
 
+log "# Storing VPP version"
 echo "$vpp_ver" > VPP_VERSION

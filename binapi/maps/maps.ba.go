@@ -382,8 +382,7 @@ type MapAddDomain struct {
 	PsidOffset uint8
 	PsidLength uint8
 	Mtu        uint16
-	XXX_TagLen uint32   `struc:"sizeof=Tag"`
-	Tag        []string `struc:"[64]string"`
+	Tag        string `struc:"[64]byte"`
 }
 
 func (*MapAddDomain) GetMessageName() string {
@@ -453,8 +452,7 @@ type MapDomainDetails struct {
 	PsidLength  uint8
 	Flags       uint8
 	Mtu         uint16
-	XXX_TagLen  uint32   `struc:"sizeof=Tag"`
-	Tag         []string `struc:"[64]string"`
+	Tag         string `struc:"[64]byte"`
 }
 
 func (*MapDomainDetails) GetMessageName() string {

@@ -1,5 +1,80 @@
 {
-    "types": [],
+    "types": [
+        [
+            "address",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "vl_api_address_union_t",
+                "un"
+            ]
+        ],
+        [
+            "prefix",
+            [
+                "vl_api_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "mprefix",
+            [
+                "vl_api_address_family_t",
+                "af"
+            ],
+            [
+                "u16",
+                "grp_address_length"
+            ],
+            [
+                "vl_api_address_union_t",
+                "grp_address"
+            ],
+            [
+                "vl_api_address_union_t",
+                "src_address"
+            ]
+        ],
+        [
+            "ip6_prefix",
+            [
+                "vl_api_ip6_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "ip4_prefix",
+            [
+                "vl_api_ip4_address_t",
+                "address"
+            ],
+            [
+                "u8",
+                "len"
+            ]
+        ],
+        [
+            "prefix_matcher",
+            [
+                "u8",
+                "le"
+            ],
+            [
+                "u8",
+                "ge"
+            ]
+        ]
+    ],
     "messages": [
         [
             "bfd_udp_set_echo_source",
@@ -16,11 +91,11 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             {
-                "crc": "0x529cb13f"
+                "crc": "0xd85aab0d"
             }
         ],
         [
@@ -110,33 +185,31 @@
                 "retval"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
+                "bool",
                 "is_set"
             ],
             [
-                "u8",
+                "bool",
                 "have_usable_ip4"
             ],
             [
-                "u8",
-                "ip4_addr",
-                4
+                "vl_api_ip4_address_t",
+                "ip4_addr"
             ],
             [
-                "u8",
+                "bool",
                 "have_usable_ip6"
             ],
             [
-                "u8",
-                "ip6_addr",
-                16
+                "vl_api_ip6_address_t",
+                "ip6_addr"
             ],
             {
-                "crc": "0x6924ca6b"
+                "crc": "0x8334ab75"
             }
         ],
         [
@@ -154,7 +227,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -166,25 +239,19 @@
                 "required_min_rx"
             ],
             [
-                "u8",
-                "local_addr",
-                16
+                "vl_api_address_t",
+                "local_addr"
             ],
             [
-                "u8",
-                "peer_addr",
-                16
-            ],
-            [
-                "u8",
-                "is_ipv6"
+                "vl_api_address_t",
+                "peer_addr"
             ],
             [
                 "u8",
                 "detect_mult"
             ],
             [
-                "u8",
+                "bool",
                 "is_authenticated"
             ],
             [
@@ -196,7 +263,7 @@
                 "conf_key_id"
             ],
             {
-                "crc": "0x61cf1850"
+                "crc": "0x438c89b5"
             }
         ],
         [
@@ -232,7 +299,7 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
@@ -244,25 +311,19 @@
                 "required_min_rx"
             ],
             [
-                "u8",
-                "local_addr",
-                16
+                "vl_api_address_t",
+                "local_addr"
             ],
             [
-                "u8",
-                "peer_addr",
-                16
-            ],
-            [
-                "u8",
-                "is_ipv6"
+                "vl_api_address_t",
+                "peer_addr"
             ],
             [
                 "u8",
                 "detect_mult"
             ],
             {
-                "crc": "0x6049bf47"
+                "crc": "0x4c260e28"
             }
         ],
         [
@@ -298,25 +359,19 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
-                "local_addr",
-                16
+                "vl_api_address_t",
+                "local_addr"
             ],
             [
-                "u8",
-                "peer_addr",
-                16
-            ],
-            [
-                "u8",
-                "is_ipv6"
+                "vl_api_address_t",
+                "peer_addr"
             ],
             {
-                "crc": "0xc9e9cc5a"
+                "crc": "0xb5acf44c"
             }
         ],
         [
@@ -366,29 +421,23 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
-                "local_addr",
-                16
+                "vl_api_address_t",
+                "local_addr"
             ],
             [
-                "u8",
-                "peer_addr",
-                16
+                "vl_api_address_t",
+                "peer_addr"
             ],
             [
-                "u8",
-                "is_ipv6"
-            ],
-            [
-                "u8",
+                "vl_api_bfd_state_t",
                 "state"
             ],
             [
-                "u8",
+                "bool",
                 "is_authenticated"
             ],
             [
@@ -412,7 +461,7 @@
                 "detect_mult"
             ],
             {
-                "crc": "0x837bb0ed"
+                "crc": "0x275671fd"
             }
         ],
         [
@@ -430,29 +479,23 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
-                "local_addr",
-                16
+                "vl_api_address_t",
+                "local_addr"
             ],
             [
-                "u8",
-                "peer_addr",
-                16
+                "vl_api_address_t",
+                "peer_addr"
             ],
             [
-                "u8",
-                "is_ipv6"
-            ],
-            [
-                "u8",
-                "admin_up_down"
+                "vl_api_if_status_flags_t",
+                "flags"
             ],
             {
-                "crc": "0x667d6e7c"
+                "crc": "0x0b7af34d"
             }
         ],
         [
@@ -488,7 +531,7 @@
                 "context"
             ],
             [
-                "u32",
+                "bool",
                 "enable_disable"
             ],
             [
@@ -496,7 +539,7 @@
                 "pid"
             ],
             {
-                "crc": "0x476f5a08"
+                "crc": "0xc5e2af94"
             }
         ],
         [
@@ -669,25 +712,19 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
-                "local_addr",
-                16
+                "vl_api_address_t",
+                "local_addr"
             ],
             [
-                "u8",
-                "peer_addr",
-                16
+                "vl_api_address_t",
+                "peer_addr"
             ],
             [
-                "u8",
-                "is_ipv6"
-            ],
-            [
-                "u8",
+                "bool",
                 "is_delayed"
             ],
             [
@@ -699,7 +736,7 @@
                 "conf_key_id"
             ],
             {
-                "crc": "0x1bae0947"
+                "crc": "0x76d0bcc0"
             }
         ],
         [
@@ -735,29 +772,23 @@
                 "context"
             ],
             [
-                "u32",
+                "vl_api_interface_index_t",
                 "sw_if_index"
             ],
             [
-                "u8",
-                "local_addr",
-                16
+                "vl_api_address_t",
+                "local_addr"
             ],
             [
-                "u8",
-                "peer_addr",
-                16
+                "vl_api_address_t",
+                "peer_addr"
             ],
             [
-                "u8",
-                "is_ipv6"
-            ],
-            [
-                "u8",
+                "bool",
                 "is_delayed"
             ],
             {
-                "crc": "0x10661991"
+                "crc": "0xa5a3adf2"
             }
         ],
         [
@@ -779,8 +810,375 @@
             }
         ]
     ],
-    "unions": [],
-    "enums": [],
+    "unions": [
+        [
+            "address_union",
+            [
+                "vl_api_ip4_address_t",
+                "ip4"
+            ],
+            [
+                "vl_api_ip6_address_t",
+                "ip6"
+            ]
+        ]
+    ],
+    "enums": [
+        [
+            "if_status_flags",
+            [
+                "IF_STATUS_API_FLAG_ADMIN_UP",
+                1
+            ],
+            [
+                "IF_STATUS_API_FLAG_LINK_UP",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "mtu_proto",
+            [
+                "MTU_PROTO_API_L3",
+                1
+            ],
+            [
+                "MTU_PROTO_API_IP4",
+                2
+            ],
+            [
+                "MTU_PROTO_API_IP6",
+                3
+            ],
+            [
+                "MTU_PROTO_API_MPLS",
+                4
+            ],
+            [
+                "MTU_PROTO_API_N",
+                5
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "link_duplex",
+            [
+                "LINK_DUPLEX_API_UNKNOWN",
+                0
+            ],
+            [
+                "LINK_DUPLEX_API_HALF",
+                1
+            ],
+            [
+                "LINK_DUPLEX_API_FULL",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "sub_if_flags",
+            [
+                "SUB_IF_API_FLAG_NO_TAGS",
+                1
+            ],
+            [
+                "SUB_IF_API_FLAG_ONE_TAG",
+                2
+            ],
+            [
+                "SUB_IF_API_FLAG_TWO_TAGS",
+                4
+            ],
+            [
+                "SUB_IF_API_FLAG_DOT1AD",
+                8
+            ],
+            [
+                "SUB_IF_API_FLAG_EXACT_MATCH",
+                16
+            ],
+            [
+                "SUB_IF_API_FLAG_DEFAULT",
+                32
+            ],
+            [
+                "SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY",
+                64
+            ],
+            [
+                "SUB_IF_API_FLAG_INNER_VLAN_ID_ANY",
+                128
+            ],
+            [
+                "SUB_IF_API_FLAG_MASK_VNET",
+                254
+            ],
+            [
+                "SUB_IF_API_FLAG_DOT1AH",
+                256
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "rx_mode",
+            [
+                "RX_MODE_API_UNKNOWN",
+                0
+            ],
+            [
+                "RX_MODE_API_POLLING",
+                1
+            ],
+            [
+                "RX_MODE_API_INTERRUPT",
+                2
+            ],
+            [
+                "RX_MODE_API_ADAPTIVE",
+                3
+            ],
+            [
+                "RX_MODE_API_DEFAULT",
+                4
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "if_type",
+            [
+                "IF_API_TYPE_HARDWARE",
+                1
+            ],
+            [
+                "IF_API_TYPE_SUB",
+                2
+            ],
+            [
+                "IF_API_TYPE_P2P",
+                3
+            ],
+            [
+                "IF_API_TYPE_PIPE",
+                4
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "address_family",
+            [
+                "ADDRESS_IP4",
+                0
+            ],
+            [
+                "ADDRESS_IP6",
+                1
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "ip_ecn",
+            [
+                "IP_API_ECN_NONE",
+                0
+            ],
+            [
+                "IP_API_ECN_ECT0",
+                1
+            ],
+            [
+                "IP_API_ECN_ECT1",
+                2
+            ],
+            [
+                "IP_API_ECN_CE",
+                3
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "ip_dscp",
+            [
+                "IP_API_DSCP_CS0",
+                0
+            ],
+            [
+                "IP_API_DSCP_CS1",
+                8
+            ],
+            [
+                "IP_API_DSCP_AF11",
+                10
+            ],
+            [
+                "IP_API_DSCP_AF12",
+                12
+            ],
+            [
+                "IP_API_DSCP_AF13",
+                14
+            ],
+            [
+                "IP_API_DSCP_CS2",
+                16
+            ],
+            [
+                "IP_API_DSCP_AF21",
+                18
+            ],
+            [
+                "IP_API_DSCP_AF22",
+                20
+            ],
+            [
+                "IP_API_DSCP_AF23",
+                22
+            ],
+            [
+                "IP_API_DSCP_CS3",
+                24
+            ],
+            [
+                "IP_API_DSCP_AF31",
+                26
+            ],
+            [
+                "IP_API_DSCP_AF32",
+                28
+            ],
+            [
+                "IP_API_DSCP_AF33",
+                30
+            ],
+            [
+                "IP_API_DSCP_CS4",
+                32
+            ],
+            [
+                "IP_API_DSCP_AF41",
+                34
+            ],
+            [
+                "IP_API_DSCP_AF42",
+                36
+            ],
+            [
+                "IP_API_DSCP_AF43",
+                38
+            ],
+            [
+                "IP_API_DSCP_CS5",
+                40
+            ],
+            [
+                "IP_API_DSCP_EF",
+                46
+            ],
+            [
+                "IP_API_DSCP_CS6",
+                48
+            ],
+            [
+                "IP_API_DSCP_CS7",
+                50
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "ip_proto",
+            [
+                "IP_API_PROTO_HOPOPT",
+                0
+            ],
+            [
+                "IP_API_PROTO_ICMP",
+                1
+            ],
+            [
+                "IP_API_PROTO_IGMP",
+                2
+            ],
+            [
+                "IP_API_PROTO_TCP",
+                6
+            ],
+            [
+                "IP_API_PROTO_UDP",
+                17
+            ],
+            [
+                "IP_API_PROTO_GRE",
+                47
+            ],
+            [
+                "IP_API_PROTO_AH",
+                50
+            ],
+            [
+                "IP_API_PROTO_ESP",
+                51
+            ],
+            [
+                "IP_API_PROTO_EIGRP",
+                88
+            ],
+            [
+                "IP_API_PROTO_OSPF",
+                89
+            ],
+            [
+                "IP_API_PROTO_SCTP",
+                132
+            ],
+            [
+                "IP_API_PROTO_RESERVED",
+                255
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "bfd_state",
+            [
+                "BFD_STATE_API_ADMIN_DOWN",
+                0
+            ],
+            [
+                "BFD_STATE_API_DOWN",
+                1
+            ],
+            [
+                "BFD_STATE_API_INIT",
+                2
+            ],
+            [
+                "BFD_STATE_API_UP",
+                3
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ]
+    ],
     "services": {
         "bfd_udp_set_echo_source": {
             "reply": "bfd_udp_set_echo_source_reply"
@@ -828,8 +1226,20 @@
         }
     },
     "options": {
-        "version": "1.0.0"
+        "version": "2.0.0"
     },
-    "aliases": {},
-    "vl_api_version": "0x5c3ba394"
+    "aliases": {
+        "interface_index": {
+            "type": "u32"
+        },
+        "ip4_address": {
+            "type": "u8",
+            "length": 4
+        },
+        "ip6_address": {
+            "type": "u8",
+            "length": 16
+        }
+    },
+    "vl_api_version": "0xf9832e53"
 }

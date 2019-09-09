@@ -15,7 +15,7 @@
                 "patch"
             ],
             [
-                "u8",
+                "string",
                 "name",
                 64
             ]
@@ -27,7 +27,7 @@
                 "index"
             ],
             [
-                "u8",
+                "string",
                 "name",
                 64
             ]
@@ -53,7 +53,7 @@
                 "input_queue"
             ],
             [
-                "u8",
+                "string",
                 "name",
                 64
             ],
@@ -63,7 +63,7 @@
                 8
             ],
             {
-                "crc": "0x6d33c5ea"
+                "crc": "0x9c5e1c2f"
             }
         ],
         [
@@ -255,12 +255,12 @@
                 "context"
             ],
             [
-                "u8",
+                "string",
                 "name",
                 64
             ],
             {
-                "crc": "0x0cb71b0e"
+                "crc": "0xebf79a66"
             }
         ],
         [
@@ -328,7 +328,7 @@
                 "count"
             ],
             {
-                "crc": "0x76f45113"
+                "crc": "0x5f0d99d6"
             }
         ],
         [
@@ -346,7 +346,7 @@
                 "context"
             ],
             [
-                "u8",
+                "string",
                 "plugin_name",
                 128
             ],
@@ -359,7 +359,7 @@
                 "last_msg_id"
             ],
             {
-                "crc": "0x64af79f9"
+                "crc": "0xf476d3ce"
             }
         ],
         [
@@ -373,12 +373,12 @@
                 "context"
             ],
             [
-                "u8",
+                "string",
                 "name",
                 64
             ],
             {
-                "crc": "0xdf2cf94d"
+                "crc": "0x455fb9c4"
             }
         ],
         [
@@ -414,7 +414,7 @@
                 "count"
             ],
             {
-                "crc": "0x21795657"
+                "crc": "0x35166268"
             }
         ],
         [
@@ -591,5 +591,5 @@
         "version": "2.1.0"
     },
     "aliases": {},
-    "vl_api_version": "0x949f3cb1"
+    "vl_api_version": "0x4b04e3e8"
 }

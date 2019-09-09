@@ -5,8 +5,8 @@
 Package bond is a generated VPP binary API for 'bond' module.
 
 It consists of:
-	 12 messages
-	  6 services
+	 14 messages
+	  7 services
 */
 package bond
 
@@ -23,9 +23,9 @@ const (
 	// ModuleName is the name of this module.
 	ModuleName = "bond"
 	// APIVersion is the API version of this module.
-	APIVersion = "1.0.1"
+	APIVersion = "1.0.2"
 	// VersionCrc is the CRC of this module.
-	VersionCrc = 0xf29d9886
+	VersionCrc = 0xa998f17a
 )
 
 // BondCreate represents VPP binary API message 'bond_create'.
@@ -192,19 +192,52 @@ func (*SwInterfaceBondDump) GetMessageType() api.MessageType {
 	return api.RequestMessage
 }
 
+// SwInterfaceSetBondWeight represents VPP binary API message 'sw_interface_set_bond_weight'.
+type SwInterfaceSetBondWeight struct {
+	SwIfIndex uint32
+	Weight    uint32
+}
+
+func (*SwInterfaceSetBondWeight) GetMessageName() string {
+	return "sw_interface_set_bond_weight"
+}
+func (*SwInterfaceSetBondWeight) GetCrcString() string {
+	return "a5ea7c88"
+}
+func (*SwInterfaceSetBondWeight) GetMessageType() api.MessageType {
+	return api.RequestMessage
+}
+
+// SwInterfaceSetBondWeightReply represents VPP binary API message 'sw_interface_set_bond_weight_reply'.
+type SwInterfaceSetBondWeightReply struct {
+	Retval int32
+}
+
+func (*SwInterfaceSetBondWeightReply) GetMessageName() string {
+	return "sw_interface_set_bond_weight_reply"
+}
+func (*SwInterfaceSetBondWeightReply) GetCrcString() string {
+	return "e8d4e804"
+}
+func (*SwInterfaceSetBondWeightReply) GetMessageType() api.MessageType {
+	return api.ReplyMessage
+}
+
 // SwInterfaceSlaveDetails represents VPP binary API message 'sw_interface_slave_details'.
 type SwInterfaceSlaveDetails struct {
 	SwIfIndex     uint32
 	InterfaceName []byte `struc:"[64]byte"`
 	IsPassive     uint8
 	IsLongTimeout uint8
+	IsLocalNuma   uint8
+	Weight        uint32
 }
 
 func (*SwInterfaceSlaveDetails) GetMessageName() string {
 	return "sw_interface_slave_details"
 }
 func (*SwInterfaceSlaveDetails) GetCrcString() string {
-	return "d5c58e45"
+	return "eef053c2"
 }
 func (*SwInterfaceSlaveDetails) GetMessageType() api.MessageType {
 	return api.ReplyMessage
@@ -236,6 +269,8 @@ func init() {
 	api.RegisterMessage((*BondEnslaveReply)(nil), "bond.BondEnslaveReply")
 	api.RegisterMessage((*SwInterfaceBondDetails)(nil), "bond.SwInterfaceBondDetails")
 	api.RegisterMessage((*SwInterfaceBondDump)(nil), "bond.SwInterfaceBondDump")
+	api.RegisterMessage((*SwInterfaceSetBondWeight)(nil), "bond.SwInterfaceSetBondWeight")
+	api.RegisterMessage((*SwInterfaceSetBondWeightReply)(nil), "bond.SwInterfaceSetBondWeightReply")
 	api.RegisterMessage((*SwInterfaceSlaveDetails)(nil), "bond.SwInterfaceSlaveDetails")
 	api.RegisterMessage((*SwInterfaceSlaveDump)(nil), "bond.SwInterfaceSlaveDump")
 }
@@ -253,6 +288,8 @@ func AllMessages() []api.Message {
 		(*BondEnslaveReply)(nil),
 		(*SwInterfaceBondDetails)(nil),
 		(*SwInterfaceBondDump)(nil),
+		(*SwInterfaceSetBondWeight)(nil),
+		(*SwInterfaceSetBondWeightReply)(nil),
 		(*SwInterfaceSlaveDetails)(nil),
 		(*SwInterfaceSlaveDump)(nil),
 	}
@@ -266,6 +303,7 @@ type RPCService interface {
 	BondDelete(ctx context.Context, in *BondDelete) (*BondDeleteReply, error)
 	BondDetachSlave(ctx context.Context, in *BondDetachSlave) (*BondDetachSlaveReply, error)
 	BondEnslave(ctx context.Context, in *BondEnslave) (*BondEnslaveReply, error)
+	SwInterfaceSetBondWeight(ctx context.Context, in *SwInterfaceSetBondWeight) (*SwInterfaceSetBondWeightReply, error)
 }
 
 type serviceClient struct {
@@ -357,6 +395,15 @@ func (c *serviceClient) BondDetachSlave(ctx context.Context, in *BondDetachSlave
 
 func (c *serviceClient) BondEnslave(ctx context.Context, in *BondEnslave) (*BondEnslaveReply, error) {
 	out := new(BondEnslaveReply)
+	err := c.ch.SendRequest(in).ReceiveReply(out)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *serviceClient) SwInterfaceSetBondWeight(ctx context.Context, in *SwInterfaceSetBondWeight) (*SwInterfaceSetBondWeightReply, error) {
+	out := new(SwInterfaceSetBondWeightReply)
 	err := c.ch.SendRequest(in).ReceiveReply(out)
 	if err != nil {
 		return nil, err
