@@ -5,6 +5,8 @@ on:
       branches: master
   pull_request:
       branches: master
+  schedule:
+    - cron: "0 5 * * *"
 
 jobs:
   generate:
@@ -16,7 +18,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: Setup Go ${{ matrix.go_version }}
+    - name: Install Go ${{ matrix.go_version }}
       uses: actions/setup-go@v1
       with:
         go-version: ${{ matrix.go_version }}
@@ -24,9 +26,13 @@ jobs:
     - name: Generate binapi
       run: bash ./genbinapi.sh
     - name: Test generated code
-      run: |
-        go test -v ./binapi/...
+      run: go test -v ./binapi/...
     - name: List changes
       run: |
         git status
         git diff
+    - name: Publish update
+      if: github.event == 'push'
+      run: |
+        git add binapi/ vppapi/ VPP_VERSION
+        git status
