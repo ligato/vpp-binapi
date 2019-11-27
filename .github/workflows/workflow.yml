@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+      branches: master
+  pull_request:
+      branches: master
+
+jobs:
+  generate:
+    name: Generate binapi
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go_version: ['1.13']
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup Go ${{ matrix.go_version }}
+      uses: actions/setup-go@v1
+      with:
+        go-version: ${{ matrix.go_version }}
+
+    - name: Generate binapi
+      run: bash ./genbinapi.sh
+    - name: Test generated code
+      run: |
+        go test -v ./binapi/...
+    - name: List changes
+      run: |
+        git status
+        git diff

@@ -31,7 +31,14 @@ function export_vppapi() {
 function generate_binapi() {
 	if [ ! -n "${NOINSTALL-}" ]; then
 		log "# Installing binapi generator"
-		go install git.fd.io/govpp.git/cmd/binapi-generator
+		set -x
+		go env
+		env | sort
+		mkdir -p bin
+		export BINDIR="$(pwd)/bin"
+		GOBIN="$BINDIR" go install -v git.fd.io/govpp.git/cmd/binapi-generator
+		export PATH=$PATH:"$BINDIR"
+		set +x
 	fi
 	binapi-generator version
 
