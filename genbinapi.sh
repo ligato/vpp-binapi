@@ -6,9 +6,17 @@ SCRIPT_DIR="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 vpp_img=${VPP_IMG:-'ligato/vpp-base:master'}
 
 function log() {
-	echo >&2 -ne "\e[1;30m"
-	echo >&2 "$*"
-	echo >&2 -ne "\e[0;0m"
+	echo >&2 -ne "\e[35;1m$*\e[0;0m\n"
+}
+
+function err() {
+	echo >&2 -ne "\e[31;1mERROR: \e[0;31m$*\e[0;0m\n"
+}
+
+function group() {
+	[ -n "$GITHUB_ACTIONS" ] && echo >&2 -e "##[group]$1"
+	echo >&2 -e "$2"
+	[ -n "$GITHUB_ACTIONS" ] && echo >&2 -e "##[endgroup]"
 }
 
 function export_vppapi() {
@@ -16,21 +24,24 @@ function export_vppapi() {
 		log "# Pulling VPP image ${vpp_img}"
 		docker pull "${vpp_img}"
 	fi
-
+	
 	vpp_ver=$(docker run --rm "$vpp_img" dpkg-query -f '${Version}\n' -W vpp)
-
-	log "# Exporting VPP API"
-	echo "vpp $vpp_ver"
-
-	docker run --rm -u $(id -u):$(id -g) \
+	log "# Exporting VPP API ($vpp_ver)"
+	
+	docker run --rm \
+		-u $(id -u):$(id -g) \
 		-v $(pwd)/vppapi:/vpp/api \
 		"$vpp_img" \
 		sh -c 'cp -r /usr/share/vpp/api/* /vpp/api'
+	
+	vppapi_files=$(find vppapi -type f -name '*.api.json')
+	group "$(echo "$vppapi_files" | wc -l) exported VPP API files" "$vppapi_files"
+	#log "$(echo "$vppapi_files" | wc -l) VPP API files"
 }
 
 function generate_binapi() {
 	if [ ! -n "${NOINSTALL-}" ]; then
-		log "# Installing binapi generator"
+		log "# Installing binapi-generator"
 		set -x
 		go env
 		env | sort
@@ -38,20 +49,30 @@ function generate_binapi() {
 		export BINDIR="$(pwd)/bin"
 		GOBIN="$BINDIR" go install -v git.fd.io/govpp.git/cmd/binapi-generator
 		export PATH=$PATH:"$BINDIR"
+		echo "binapi-generator installed:"
+		binapi-generator version
 		set +x
 	fi
-	binapi-generator version
-
-	log "# Generating binapi code"
-	out=$(binapi-generator --input-dir=vppapi --output-dir=binapi 2>&1)
+	
+	bingen_ver=$(binapi-generator -version)
+	log "# Generating binapi ($bingen_ver)"
+	
+	out=$(binapi-generator --debug --input-dir=vppapi --output-dir=binapi 2>&1)
 	if [ "$?" -ne 0 ]; then
+		err "Generating binapi failed!"
 		echo "$out"
 		exit 3
 	fi
-
+	
+	binapi_files=$(find binapi -type f -name '*.ba.go')
+	group "$(echo "$binapi_files" | wc -l) generated binapi Go files" "$binapi_files"
+	#log "$(echo "$binapi_files" | wc -l) binapi Go files generated"
+	
+	group "Generator output" "$out"
+	
 	warns=$(echo "$out" | grep -ci WARN || true)
 	if [ "${warns}" -gt "0" ]; then
-		echo -e "\e[0;33mDetected $warns warnings\e[0;0m"
+		echo >&2 -e "\e[33;1m$warns warnings detected in output!\e[0;0m"
 	fi
 }
 
@@ -71,5 +92,4 @@ rm -rf vppapi/* binapi/*
 export_vppapi
 generate_binapi
 
-log "# Storing VPP version"
-echo "$vpp_ver" > VPP_VERSION
+echo -n "$vpp_ver" > VPP_VERSION

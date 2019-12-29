@@ -1,0 +1,69 @@
+name: Generate binapi
+
+on:
+  push:
+      branches: master
+  pull_request:
+      branches: master
+  schedule:
+    - cron: "0 5 * * *"
+
+jobs:
+  generate:
+    name: VPP master
+    runs-on: ubuntu-latest
+    env: 
+      VPP_IMG: ligato/vpp-base:master
+#    strategy:
+#      fail-fast: false
+#      matrix:
+#        vpp_version: ['latest', '19.08', '19.04', 'master']
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Install Go
+      uses: actions/setup-go@v1
+      with:
+        go-version: '1.13'
+
+    - name: Pull VPP image
+      run: |
+        docker pull $VPP_IMG
+    
+    - name: Install generator
+      run: |
+        mkdir -p bin
+        GOBIN=$(pwd)/bin make -C "$(go list -f '{{.Dir}}' git.fd.io/govpp.git)" install
+        export PATH=$PATH:"$(pwd)/bin"
+        echo "Binapi generator installed"
+        binapi-generator version
+
+    - name: Generate binapi
+      env:
+        NOPULL: y
+        NOINSTALL: y
+      run: |
+        export PATH=$PATH:"$(pwd)/bin"
+        bash ./genbinapi.sh
+    
+    - name: Test generated code
+      run: go build -v ./binapi/...
+    
+    - name: List changes
+      run: |
+        git diff --color --stat HEAD vppapi
+        git diff --color --stat HEAD binapi
+    
+    - name: Show diff
+      run: |
+        git diff --color HEAD VPP_VERSION
+        git diff --color HEAD vppapi
+        git diff --color HEAD binapi
+    
+    - name: Publish update
+      if: github.event_name == 'pull_request'
+      run: |
+        git add VPP_VERSION binapi/ vppapi/
+        git status
