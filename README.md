@@ -1,9 +1,15 @@
-# vpp-binapi
-**vpp-binapi** repository contains generated Go code for [VPP binary API](https://wiki.fd.io/view/VPP/The_VPP_API) generated with [GoVPP](https://github.com/FDio/govpp)'s binapi-generator. 
+<h1 align="center">vpp-binapi</h1>
 
-The actual code generation is done by Jenkins and then comitted to this repository automatically on any change in definitions of VPP API (`*.api`) found on VPP's [**master**](https://github.com/FDio/vpp/tree/master/) branch. 
+<p align="center">
+  <a href="https://github.com/ligato/vpp-binapi/actions?query=workflow%3A%22Generate+binapi%22"><img src="https://github.com/ligato/vpp-binapi/workflows/Generate%20binapi/badge.svg" alt="Workflow"></a>
+</p>
+
+<p align="center">The <b>vpp-binapi</b> generates Go code for the <a href="https://wiki.fd.io/view/VPP/The_VPP_API">VPP binary API</a> using <a href="https://github.com/FDio/govpp">GoVPP</a>'s binapi-generator. </p>
+
+---
 
 ## Versioning
+
 The version of VPP that was used for generating the code is defined in [`VPP_VERSION`](VPP_VERSION) file.
 
 Compatibility with VPP instance is verified at runtime by comparing version hash of all generated binapi messages with version hashes of connected VPP. This means that any change to a specific message will result in runtime incompatibility.
