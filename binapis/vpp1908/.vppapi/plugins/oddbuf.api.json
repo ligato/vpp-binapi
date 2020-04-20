@@ -1,0 +1,65 @@
+{
+    "types": [],
+    "messages": [
+        [
+            "oddbuf_enable_disable",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "enable_disable"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index"
+            ],
+            {
+                "crc": "0x3865946c"
+            }
+        ],
+        [
+            "oddbuf_enable_disable_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ]
+    ],
+    "unions": [],
+    "enums": [],
+    "services": {
+        "oddbuf_enable_disable": {
+            "reply": "oddbuf_enable_disable_reply"
+        }
+    },
+    "options": {
+        "version": "0.1.0"
+    },
+    "aliases": {
+        "interface_index": {
+            "type": "u32"
+        }
+    },
+    "vl_api_version": "0x723de524"
+}

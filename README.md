@@ -4,12 +4,14 @@
   <a href="https://github.com/ligato/vpp-binapi/actions?query=workflow%3A%22Generate+binapi%22"><img src="https://github.com/ligato/vpp-binapi/workflows/Generate%20binapi/badge.svg" alt="Workflow"></a>
 </p>
 
-<p align="center">The <b>vpp-binapi</b> generates Go code for the <a href="https://wiki.fd.io/view/VPP/The_VPP_API">VPP binary API</a> using <a href="https://github.com/FDio/govpp">GoVPP</a>'s binapi-generator. </p>
+<p align="center">The <b>vpp-binapi</b> contains generated Go code for the <a href="https://wiki.fd.io/view/VPP/The_VPP_API">VPP binary API</a> using <a href="https://github.com/FDio/govpp">GoVPP</a>'s binapi-generator. </p>
 
 ---
 
-## Versioning
+Run `go generate` to update generated binapi.
 
-The version of VPP that was used for generating the code is defined in [`VPP_VERSION`](VPP_VERSION) file.
+## Versions
 
-Compatibility with VPP instance is verified at runtime by comparing version hash of all generated binapi messages with version hashes of connected VPP. This means that any change to a specific message will result in runtime incompatibility.
+- VPP 20.01 - [binapis/vpp2001](binapis/vpp2001)
+- VPP 19.08 - [binapis/vpp1908](binapis/vpp1908)
+- VPP 19.04 - [binapis/vpp1904](binapis/vpp1904)

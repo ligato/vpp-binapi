@@ -29,15 +29,15 @@ function export_vppapi() {
 	vpp_ver=$(docker run --rm "$vpp_img" dpkg-query -f '${Version}\n' -W vpp)
 	log "# Exporting VPP API ($vpp_ver)"
 
-	mkdir -p "${binapi_dir}"/vppapi
+	mkdir -p "${binapi_dir}"/.vppapi
 	
 	docker run --rm \
 		-u $(id -u):$(id -g) \
-		-v $(pwd)/${binapi_dir}/vppapi:/vpp/api \
+		-v $(pwd)/${binapi_dir}/.vppapi:/vpp/api \
 		"$vpp_img" \
 		sh -c 'cp -r /usr/share/vpp/api/* /vpp/api'
 	
-	vppapi_files=$(find "${binapi_dir}"/vppapi -type f -name '*.api.json')
+	vppapi_files=$(find "${binapi_dir}"/.vppapi -type f -name '*.api.json')
 	log "$(echo "$vppapi_files" | wc -l) VPP API files"
 	#group "$(echo "$vppapi_files" | wc -l) exported VPP API files" "$vppapi_files"
 }
@@ -60,14 +60,14 @@ function generate_binapi() {
 	bingen_ver=$(binapi-generator -version)
 	log "# Generating binapi ($bingen_ver)"
 	
-	out=$(binapi-generator --debug --input-dir=${binapi_dir}/vppapi --output-dir=${binapi_dir}/binapi 2>&1)
+	out=$(binapi-generator --debug --input-dir=${binapi_dir}/.vppapi --output-dir=${binapi_dir} 2>&1)
 	if [ "$?" -ne 0 ]; then
 		err "Generating binapi failed!"
 		echo "$out"
 		exit 3
 	fi
 	
-	binapi_files=$(find "${binapi_dir}"/binapi -type f -name '*.ba.go')
+	binapi_files=$(find "${binapi_dir}" -type f -name '*.ba.go')
 	#group "$(echo "$binapi_files" | wc -l) generated binapi Go files" "$binapi_files"
 	log "$(echo "$binapi_files" | wc -l) binapi Go files generated"
 	
@@ -96,4 +96,4 @@ rm -rf ${binapi_dir}
 export_vppapi
 generate_binapi
 
-echo -n "$vpp_ver" > ${binapi_dir}/VPP_VERSION
+echo -n "$vpp_ver" > ${binapi_dir}/.vppapi/VPP_VERSION
