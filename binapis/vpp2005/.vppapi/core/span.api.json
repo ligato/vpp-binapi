@@ -1,0 +1,303 @@
+{
+    "types": [],
+    "messages": [
+        [
+            "sw_interface_span_enable_disable",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index_from"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index_to"
+            ],
+            [
+                "vl_api_span_state_t",
+                "state"
+            ],
+            [
+                "bool",
+                "is_l2"
+            ],
+            {
+                "crc": "0xacc8fea1"
+            }
+        ],
+        [
+            "sw_interface_span_enable_disable_reply",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "i32",
+                "retval"
+            ],
+            {
+                "crc": "0xe8d4e804"
+            }
+        ],
+        [
+            "sw_interface_span_dump",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "client_index"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "bool",
+                "is_l2"
+            ],
+            {
+                "crc": "0xd6cf0c3d"
+            }
+        ],
+        [
+            "sw_interface_span_details",
+            [
+                "u16",
+                "_vl_msg_id"
+            ],
+            [
+                "u32",
+                "context"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index_from"
+            ],
+            [
+                "vl_api_interface_index_t",
+                "sw_if_index_to"
+            ],
+            [
+                "vl_api_span_state_t",
+                "state"
+            ],
+            [
+                "bool",
+                "is_l2"
+            ],
+            {
+                "crc": "0x055643fc"
+            }
+        ]
+    ],
+    "unions": [],
+    "enums": [
+        [
+            "if_status_flags",
+            [
+                "IF_STATUS_API_FLAG_ADMIN_UP",
+                1
+            ],
+            [
+                "IF_STATUS_API_FLAG_LINK_UP",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "mtu_proto",
+            [
+                "MTU_PROTO_API_L3",
+                0
+            ],
+            [
+                "MTU_PROTO_API_IP4",
+                1
+            ],
+            [
+                "MTU_PROTO_API_IP6",
+                2
+            ],
+            [
+                "MTU_PROTO_API_MPLS",
+                3
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "link_duplex",
+            [
+                "LINK_DUPLEX_API_UNKNOWN",
+                0
+            ],
+            [
+                "LINK_DUPLEX_API_HALF",
+                1
+            ],
+            [
+                "LINK_DUPLEX_API_FULL",
+                2
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "sub_if_flags",
+            [
+                "SUB_IF_API_FLAG_NO_TAGS",
+                1
+            ],
+            [
+                "SUB_IF_API_FLAG_ONE_TAG",
+                2
+            ],
+            [
+                "SUB_IF_API_FLAG_TWO_TAGS",
+                4
+            ],
+            [
+                "SUB_IF_API_FLAG_DOT1AD",
+                8
+            ],
+            [
+                "SUB_IF_API_FLAG_EXACT_MATCH",
+                16
+            ],
+            [
+                "SUB_IF_API_FLAG_DEFAULT",
+                32
+            ],
+            [
+                "SUB_IF_API_FLAG_OUTER_VLAN_ID_ANY",
+                64
+            ],
+            [
+                "SUB_IF_API_FLAG_INNER_VLAN_ID_ANY",
+                128
+            ],
+            [
+                "SUB_IF_API_FLAG_MASK_VNET",
+                254
+            ],
+            [
+                "SUB_IF_API_FLAG_DOT1AH",
+                256
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "rx_mode",
+            [
+                "RX_MODE_API_UNKNOWN",
+                0
+            ],
+            [
+                "RX_MODE_API_POLLING",
+                1
+            ],
+            [
+                "RX_MODE_API_INTERRUPT",
+                2
+            ],
+            [
+                "RX_MODE_API_ADAPTIVE",
+                3
+            ],
+            [
+                "RX_MODE_API_DEFAULT",
+                4
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "if_type",
+            [
+                "IF_API_TYPE_HARDWARE",
+                0
+            ],
+            [
+                "IF_API_TYPE_SUB",
+                1
+            ],
+            [
+                "IF_API_TYPE_P2P",
+                2
+            ],
+            [
+                "IF_API_TYPE_PIPE",
+                3
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ],
+        [
+            "span_state",
+            [
+                "SPAN_STATE_API_DISABLED",
+                0
+            ],
+            [
+                "SPAN_STATE_API_RX",
+                1
+            ],
+            [
+                "SPAN_STATE_API_TX",
+                2
+            ],
+            [
+                "SPAN_STATE_API_RX_TX",
+                3
+            ],
+            {
+                "enumtype": "u32"
+            }
+        ]
+    ],
+    "services": {
+        "sw_interface_span_enable_disable": {
+            "reply": "sw_interface_span_enable_disable_reply"
+        },
+        "sw_interface_span_dump": {
+            "reply": "sw_interface_span_details",
+            "stream": true
+        }
+    },
+    "options": {
+        "version": "2.0.0"
+    },
+    "aliases": {
+        "interface_index": {
+            "type": "u32"
+        }
+    },
+    "vl_api_version": "0x9f4dec7c",
+    "imports": [
+        "vnet/interface_types.api"
+    ]
+}

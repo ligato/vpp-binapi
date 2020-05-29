@@ -1,0 +1,98 @@
+{
+    "types": [],
+    "messages": [],
+    "unions": [],
+    "enums": [
+        [
+            "sr_policy_op",
+            [
+                "SR_POLICY_OP_API_NONE",
+                0
+            ],
+            [
+                "SR_POLICY_OP_API_ADD",
+                1
+            ],
+            [
+                "SR_POLICY_OP_API_DEL",
+                2
+            ],
+            [
+                "SR_POLICY_OP_API_MOD",
+                3
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "sr_behavior",
+            [
+                "SR_BEHAVIOR_API_END",
+                1
+            ],
+            [
+                "SR_BEHAVIOR_API_X",
+                2
+            ],
+            [
+                "SR_BEHAVIOR_API_T",
+                3
+            ],
+            [
+                "SR_BEHAVIOR_API_D_FIRST",
+                4
+            ],
+            [
+                "SR_BEHAVIOR_API_DX2",
+                5
+            ],
+            [
+                "SR_BEHAVIOR_API_DX6",
+                6
+            ],
+            [
+                "SR_BEHAVIOR_API_DX4",
+                7
+            ],
+            [
+                "SR_BEHAVIOR_API_DT6",
+                8
+            ],
+            [
+                "SR_BEHAVIOR_API_DT4",
+                9
+            ],
+            [
+                "SR_BEHAVIOR_API_LAST",
+                10
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ],
+        [
+            "sr_steer",
+            [
+                "SR_STEER_API_L2",
+                2
+            ],
+            [
+                "SR_STEER_API_IPV4",
+                4
+            ],
+            [
+                "SR_STEER_API_IPV6",
+                6
+            ],
+            {
+                "enumtype": "u8"
+            }
+        ]
+    ],
+    "services": {},
+    "options": {},
+    "aliases": {},
+    "vl_api_version": "0x2ac0a9d5",
+    "imports": []
+}

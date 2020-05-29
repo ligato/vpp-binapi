@@ -12,6 +12,7 @@ Run `go generate` to update generated binapi.
 
 ## Versions
 
+- VPP 20.05 - [binapis/vpp2005](binapis/vpp2005)
 - VPP 20.01 - [binapis/vpp2001](binapis/vpp2001)
 - VPP 19.08 - [binapis/vpp1908](binapis/vpp1908)
 - VPP 19.04 - [binapis/vpp1904](binapis/vpp1904)
