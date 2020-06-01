@@ -10,10 +10,10 @@ on:
 
 jobs:
   generate:
-    name: VPP master
+    name: VPP binapis
     runs-on: ubuntu-latest
-    env: 
-      VPP_IMG: ligato/vpp-base:master
+#    env: 
+#      VPP_IMG: ligato/vpp-base:master
 #    strategy:
 #      fail-fast: false
 #      matrix:
@@ -26,11 +26,11 @@ jobs:
     - name: Install Go
       uses: actions/setup-go@v1
       with:
-        go-version: '1.13'
+        go-version: '1.14'
 
-    - name: Pull VPP image
-      run: |
-        docker pull $VPP_IMG
+#    - name: Pull VPP image
+#      run: |
+#        docker pull $VPP_IMG
     
     - name: Install generator
       run: |
@@ -46,24 +46,21 @@ jobs:
         NOINSTALL: y
       run: |
         export PATH=$PATH:"$(pwd)/bin"
-        bash ./genbinapi.sh
+        go generate -x
     
     - name: Test generated code
-      run: go build -v ./binapi/...
+      run: go build -v ./binapis/...
     
     - name: List changes
       run: |
-        git diff --color --stat HEAD vppapi
-        git diff --color --stat HEAD binapi
+        git diff --color --stat HEAD binapis
     
     - name: Show diff
       run: |
-        git diff --color HEAD VPP_VERSION
-        git diff --color HEAD vppapi
-        git diff --color HEAD binapi
+        git diff --color HEAD binapis
     
     - name: Publish update
       if: github.event_name == 'pull_request'
       run: |
-        git add VPP_VERSION binapi/ vppapi/
+        git add binapis/
         git status
