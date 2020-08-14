@@ -1,4 +1,4 @@
-module github.com/ligato/vpp-binapi
+module go.ligato.io/vpp-binapi
 
 go 1.13
 
